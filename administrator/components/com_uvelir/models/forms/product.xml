@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+
+        <field name="id" type="text" default="0" label="COM_JUGRAAUTO_FORM_LBL_COMPANY_ID"
+                     readonly="true" class="readonly"
+                     description="JGLOBAL_FIELD_ID_DESC" /> 
+        <field name="name" type="text"
+              label="COM_JUGRAAUTO_FORM_LBL_COMPANY_NAME"
+              description="COM_JUGRAAUTO_FORM_DESC_COMPANY_NAME" 
+              required="true" 
+              filter="raw"
+              size="80"
+              maxlength="255" /> 
+        <field name="alias" type="text"
+              label="COM_JUGRAAUTO_FORM_LBL_COMPANY_ALIAS"
+              description="COM_JUGRAAUTO_FORM_DESC_COMPANY_ALIAS" 
+              size="40"
+              maxlength="255" /> 
+        <field name="city_id" type="sql"
+              label="COM_JUGRAAUTO_FORM_LBL_COMPANY_CITY_ID"
+              description="COM_JUGRAAUTO_FORM_DESC_COMPANY_CITY_ID" 
+              required="true" 
+              filter="int"
+              query="select `id`, `name` from `#__jugraauto_cities`"
+              key_field="id"
+              value_field="name" /> 
+        <field name="street_type" type="text"
+              label="COM_JUGRAAUTO_FORM_LBL_STREET_TYPE"
+              description="COM_JUGRAAUTO_FORM_DESC_STREET_TYPE" 
+              required="true" 
+              filter="raw"
+              size="10"
+              maxlength="255" /> 
+        <field name="street" type="text"
+              label="COM_JUGRAAUTO_FORM_LBL_STREET"
+              description="COM_JUGRAAUTO_FORM_DESC_STREET" 
+              required="true" 
+              filter="raw"
+              size="30"
+              maxlength="255" /> 
+        <field name="house" type="text"
+              label="COM_JUGRAAUTO_FORM_LBL_HOUSE"
+              description="COM_JUGRAAUTO_FORM_DESC_HOUSE" 
+              required="true" 
+              filter="raw"
+              size="5"
+              maxlength="255" /> 
+        <field name="address_else" type="text"
+              label="COM_JUGRAAUTO_FORM_LBL_ADDRESS_ELSE"
+              description="COM_JUGRAAUTO_FORM_DESC_ADDRESS_ELSE" 
+              filter="raw"
+              size="20"
+              maxlength="255" /> 
+        <field  name="email"
+                type="text"
+                size="20"
+                label="COM_JUGRAAUTO_FORM_LBL_EMAIL"
+                description="COM_JUGRAAUTO_FORM_DESC_EMAIL"
+                class="inputbox validate-email"
+                default=""
+                validate="email"
+            />
+        <field name="fio" type="text"
+              label="COM_JUGRAAUTO_FORM_LBL_FIO"
+              description="COM_JUGRAAUTO_FORM_DESC_FIO" 
+              class="inputbox validate-fio"
+              filter="fio"
+              size="50"
+              maxlength="50" /> 
+        <field
+                name="phone"
+                type="text"
+                size="20"
+                label="COM_JUGRAAUTO_FORM_LBL_PHONE"
+                description="COM_JUGRAAUTO_FORM_DESC_PHONE"
+                class="inputbox"
+                default=""
+            />
+        <field
+                name="fax"
+                type="text"
+                size="20"
+                label="COM_JUGRAAUTO_FORM_LBL_FAX"
+                description="COM_JUGRAAUTO_FORM_DESC_FAX"
+                class="inputbox"
+                default=""
+            />
+        <field name="logo" type="media" directory="logo"
+                hide_none="1" label="COM_JUGRAAUTO_FORM_FIELD_LOGO_LABEL"
+                size="40"
+                description="COM_JUGRAAUTO_FORM_FIELD_LOGO_DESC" 
+            />
+        <field name="type" type="radio"
+                label="COM_JUGRAAUTO_FIELD_TYPE_LABEL" description="COM_JUGRAAUTO_FIELD_TYPE_DESC"
+                default="0" 
+                class="inputbox"
+                
+            >
+                <option value="0">COM_JUGRAAUTO_FIELD_VALUE_IMAGE
+                </option>
+                <option value="1">COM_JUGRAAUTO_FIELD_VALUE_2GIDS
+                </option>
+                <option value="2">COM_JUGRAAUTO_FIELD_VALUE_YANDEX
+                </option>
+        </field>
+        <field name="image" type="media" directory="maps"
+                hide_none="1" label="COM_JUGRAAUTO_FORM_FIELD_IMAGE_LABEL"
+                size="40"
+                description="COM_JUGRAAUTO_FORM_FIELD_IMAGE_DESC" 
+            />
+        <field
+                name="pointx"
+                type="text"
+                size="20"
+                label="COM_JUGRAAUTO_FORM_LBL_POINTX"
+                description="COM_JUGRAAUTO_FORM_DESC_POINTX"
+                class="inputbox"
+                default=""
+            />
+        <field
+                name="pointy"
+                type="text"
+                size="20"
+                label="COM_JUGRAAUTO_FORM_LBL_POINTY"
+                description="COM_JUGRAAUTO_FORM_DESC_POINTY"
+                class="inputbox"
+                default=""
+            />
+             
+        <field name="category" type="categories"
+              label="COM_JUGRAAUTO_FIELD_CATEGORY_LABEL"
+              description="COM_JUGRAAUTO_FIELD_CATEGORY_DESC" 
+              required="true" 
+              filter="int"
+              multiple="true"
+              size="20"
+              height="200"
+            /> 
+
+        <field name="desc" 
+               type="editor" 
+               class="inputbox"
+               height="400" 
+               filter="raw"
+               label="COM_JUGRAAUTO_FIELD_CUSTOMCODE_LABEL" 
+               description="COM_JUGRAAUTO_FIELD_CUSTOMCODE_DESC" />
+              
+        <field name="created_by" type="createdby" default="" 
+              label="COM_JUGRAAUTO_FORM_LBL_COMPANY_CREATED_BY"
+              description="COM_JUGRAAUTO_FORM_DESC_COMPANY_CREATED_BY"  /> 
+        <field
+            name="state"
+            type="list"
+            label="JSTATUS"
+            description="JFIELD_PUBLISHED_DESC"
+            class="inputbox"
+            size="1"
+            default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field> 
+
+        <field name="checked_out" type="hidden" filter="unset" />
+        <field name="checked_out_time" type="hidden" filter="unset" /> 
+
+    </fieldset> 
+
+    <fieldset 
+        name="accesscontrol">
+        <field name="asset_id" type="hidden" filter="unset" />
+        <field name="rules"
+                              type="rules"
+                              label="JFIELD_RULES_LABEL"
+                              translate_label="false"
+                              filter="rules"
+                              validate="rules"
+                              class="inputbox"
+                              component="com_jugraauto"
+                              section="company"
+                        />
+
+    </fieldset>
+
+</form>

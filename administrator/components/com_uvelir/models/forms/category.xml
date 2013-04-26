@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<field
+		name="id"
+		type="text"
+		default="0"
+		label="JGLOBAL_FIELD_ID_LABEL"
+		description ="JGLOBAL_FIELD_ID_DESC"
+		class="readonly"
+		readonly="true"/>
+
+	<field
+		name="parent_id"
+		type="categoryedit"
+		label="COM_CATEGORIES_FIELD_PARENT_LABEL"
+		description="COM_CATEGORIES_FIELD_PARENT_DESC"
+		class="inputbox"/>
+
+	<field
+		name="path"
+		type="text"
+		label="CATEGORIES_PATH_LABEL"
+		description="CATEGORIES_PATH_DESC"
+		class="readonly"
+		size="40"
+		readonly="true"/>
+
+	<field
+		name="name"
+		type="text"
+		label="JGLOBAL_TITLE"
+		description="JFIELD_TITLE_DESC"
+		class="inputbox"
+		size="40"
+		required="true"/>
+
+	<field
+		name="alias"
+		type="text"
+		label="JFIELD_ALIAS_LABEL"
+		description="JFIELD_ALIAS_DESC"
+		class="inputbox"
+		size="40"/>
+
+	<field
+		name="base_url"
+		type="text"
+		label="COM_UVELIR_BASE_URL"
+		description="JFIELD_ALIAS_DESC"
+		class="inputbox"
+		size="40"/>
+
+	<field
+		name="note"
+		type="text"
+		label="JFIELD_NOTE_LABEL"
+		description="JFIELD_NOTE_DESC"
+		class="inputbox"
+		size="40"/>
+
+	<field
+		name="description"
+		type="editor"
+		label="JGLOBAL_DESCRIPTION"
+		description="COM_CATEGORIES_DESCRIPTION_DESC"
+		class="inputbox"
+		filter="JComponentHelper::filterText"
+		buttons="true"
+		hide="readmore,pagebreak"/>
+
+
+</form>
