@@ -155,6 +155,7 @@ class UvelirModelCaddy extends JModel
                     $item = array(
                         'id'=>$id,
                         'zavod_name'=>$zavod_name,
+                        'zavod_id'=>$zavod_id,
                         'artikul'=>$product->artikul,
                         'src'=>$desc->img_small,
                         'price'=>$product->cena_tut,
@@ -166,4 +167,35 @@ class UvelirModelCaddy extends JModel
             }
             return $items;
         }
+    /**
+     * Пересчет товара в корзине
+     * @return type 
+     */
+    public function correction()
+    {
+        $counts = JRequest::getVar('count', array());
+        
+        // Проверк на наличие ИД завода и ИД товара
+        if(!($counts))
+        {
+            return array(0,  JText::_('COM_UVELIR_DATA_NOT_MATCH'));
+        }
+        
+        $caddy = array();
+        foreach($counts as $key=>$count)
+        {
+            list($zavod, $item_id) = explode('_', $key);
+            $product = $this->getTable('product_'.$zavod);
+            if($product->load($item_id))
+            {
+                $caddy[$zavod.'_'.$item_id]['count'] = $count;
+                $caddy[$zavod.'_'.$item_id]['sum'] = $product->cena_tut*$count;
+            }
+        }
+        JFactory::getApplication()->setUserState('com_uvelir.caddy', $caddy);
+        
+        return array(1, $this->get_caddy_data($caddy));
+    }
+    
+        
 }

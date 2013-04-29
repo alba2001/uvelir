@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Форма клиента">
+		<message>Редактирование реквизитов клиента</message>
+	</layout>
+	<!-- Add fields to the request variables for the layout. -->
+<!--	<fields name="request">
+		<fieldset name="userform" label="COM_USLUGI_FIELDSET_OPTIONAL_LABEL">
+                    <field
+                        name="user_id"
+                        type="users"
+                        multiple="false"
+                        size="1"
+                        label="COM_USLUGI_USER"
+                        description="COM_USLUGI_DESC_USER"
+                        default=""
+                        required="true"
+                    >
+                    </field>
+		</fieldset>
+	</fields>-->
+</metadata>
+

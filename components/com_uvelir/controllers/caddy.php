@@ -41,4 +41,18 @@ class UvelirControllerCaddy extends UvelirController
         echo $result;
         exit;
     }
+    
+    /**
+     * корректировка данных в корзине 
+     */
+    function correction()
+    {
+        // Check for request forgeries.
+        JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+        $model = $this->getModel('Caddy');
+        $result = json_encode($model->correction());
+        echo $result;
+        exit;
+        
+    }
 }

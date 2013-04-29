@@ -58,3 +58,47 @@
         });
     }
 
+jQuery(function($){
+    $(document).ready(function(){
+        $('.caddy_item_count').change(function(e){
+            var item = this;
+            var count = parseInt($(item).val());
+            if(!count || count < 1)
+            {
+                count = 0;
+            }
+            var id = $(this).attr('rel');
+            var prise = $('#caddy_item_price_'+id).text();
+            var sum = prise*count;
+            // Изменяем сумму товара
+            $('#caddy_item_sum_'+id).text(sum);
+            $(item).val(count);
+            
+            // Меняем сумму корзины
+            var item_sums = $('.caddy_item_sum');
+            var total = 0;
+            $.each(item_sums, function(i,item_sum){
+                sum = parseInt($(item_sum).text());
+                total += sum;
+            });
+            // Всего стоимость товаров в корзине
+            $('#caddy_total_sum').text(total);
+            
+            // Отправляем изменения в корзине на серер
+            var form  = $('#caddy_show');
+            $.ajax({
+                type: 'POST',
+                url: $(form).attr('action'),
+                data: $(form).serialize(),
+                success: function(html){
+//                    $('#uvelir_debud').html(html);
+                    var data = $.parseJSON(html);
+            console.log(data);
+                    $('#mod_caddy_product_count').text(data[1].count);
+                    $('#mod_caddy_product_sum').text(data[1].sum);
+                }
+            });
+            
+        });
+    });
+});

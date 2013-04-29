@@ -1,3 +1,20 @@
+DROP TABLE IF EXISTS `#__uvelir_users`;
+CREATE TABLE `#__uvelir_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL COMMENT 'ИД пользователя в системе',
+  `user_type_id` int(2) NOT NULL COMMENT 'Тип клиента',
+  `fam` varchar(25) NOT NULL COMMENT 'Фамилия',
+  `im` varchar(25) NOT NULL COMMENT 'Имя',
+  `ot` varchar(25) NOT NULL COMMENT 'Отчество',
+  `address` varchar(100) NOT NULL COMMENT 'Почтовый адрес',
+  `phone` varchar(20) NOT NULL COMMENT 'Телефон',
+  `email` varchar(70) NOT NULL COMMENT 'E-mail',
+   PRIMARY KEY  (`id`),
+   KEY `uid` (`uid`),
+   KEY `user_type_id` (`user_type_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT 'Клиенты';
+
+
 INSERT INTO `#__menu_types` (`menutype`,`title`,`description`) VALUES
         ('com_uvelir','Ювелир','Меню для магазина ювелирных изделий');
 
