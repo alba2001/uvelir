@@ -36,7 +36,7 @@ defined('_JEXEC') or die;
         <dd><?=$this->user->email?></dd>
     </dl>
     <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="view" value="userform" />
+    <input type="hidden" name="task" value="caddy.order_add" />
     <?php echo JHtml::_('form.token'); ?>
     <input type="submit" value="<?=JTEXT::_('COM_UVELIR_EDIT_USERDATA')?>" />
 
@@ -70,7 +70,7 @@ defined('_JEXEC') or die;
     </table>
     
     <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="task" value="caddy.checkout" />
+    <input type="hidden" name="task" value="caddy.order_add" />
     <?php echo JHtml::_('form.token'); ?>
     <input type="submit" value="<?=JTEXT::_('COM_UVELIR_CHECKOUT')?>" />
     

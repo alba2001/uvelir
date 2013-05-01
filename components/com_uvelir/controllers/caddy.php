@@ -30,6 +30,24 @@ class UvelirControllerCaddy extends UvelirController
         exit;
     }
     /**
+     * Добавить новый заказ 
+     */
+    function order_add()
+    {
+        // Check for request forgeries.
+        JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+        $model = $this->getModel('Caddy');
+        if($model->order_add())
+        {
+            echo JTEXT::_('COM_UVELIR_ORDER_SAVER');
+        }
+        else
+        {
+            echo JTEXT::_('COM_UVELIR_ERROR_SAVE_ORDER');
+        }
+        return true;
+    }
+    /**
      * Удалить товар из корзины
      */
     function del()

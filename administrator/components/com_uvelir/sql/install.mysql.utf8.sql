@@ -14,6 +14,33 @@ CREATE TABLE `#__uvelir_users` (
    KEY `user_type_id` (`user_type_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT 'Клиенты';
 
+DROP TABLE IF EXISTS `#__uvelir_orders`;
+CREATE TABLE `#__uvelir_orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL COMMENT 'ИД пользователя в системе',
+  `order_status_id` int(2) NOT NULL COMMENT 'Статус заказа',
+  `order_dt` datetime NOT NULL COMMENT 'Дата и время заказа',
+  `sum` DECIMAL(15,2)  NOT NULL COMMENT 'Сумма заказа',
+  `caddy` text NOT NULL COMMENT 'Детали заказа',
+  `ch_status` text NOT NULL COMMENT 'Инф. об изменении заказа',
+   PRIMARY KEY  (`id`),
+   KEY `userid` (`userid`),
+   KEY `order_status_id` (`order_status_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT 'Заказы';
+
+DROP TABLE IF EXISTS `#__uvelir_order_statuses`;
+CREATE TABLE `#__uvelir_order_statuses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT 'Наименование статуза заказа',
+   PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT 'Статусы заказа';
+
+INSERT INTO `#__uvelir_order_statuses` (`id`, `name`) VALUES
+(1, 'Начальный'),
+(2, 'Оплачен'),
+(3, 'Отгружен'),
+(4, 'Доставлен');
+
 
 INSERT INTO `#__menu_types` (`menutype`,`title`,`description`) VALUES
         ('com_uvelir','Ювелир','Меню для магазина ювелирных изделий');

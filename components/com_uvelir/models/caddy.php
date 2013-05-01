@@ -20,6 +20,27 @@ class UvelirModelCaddy extends ModelKModelform
 {
     
     /**
+     * Добавить новый заказ
+     * @return bolean
+     */
+    public function order_add()
+    {
+        $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
+        $user = $this->getUser();
+        $caddy_data = $this->get_caddy_data($caddy);
+        $data = array(
+            'userid'=>$user->id,
+            'order_status_id'=>'1',
+            'order_dt'=>JFactory::getDate()->toMySQL(),
+            'sum'=>$caddy_data['sum'],
+            'caddy'=>  json_encode($caddy),
+            'ch_status'=> date('d.m.Y H:i:s').' '.$user->fam.' '.$user->im.' '.$user->ot.' '.JText::_('COM_UVELIR_CHANGE_ORDER_STATUS_TO_INITIAL'),
+        );
+        $order = $this->getTable('order');
+        return $order->save($data);
+    }
+    
+    /**
      * Добавить товара в корзину
      * @return type 
      */
