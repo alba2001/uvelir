@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 
     
-    jQuery('#member-registration').submit(function(e){
+    jQuery('#member-registration_submit').click(function(e){
         e.preventDefault();
         var isValid=true;
         var forms = $$('form.form-validate');
@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
                 }
         }
         // Если нужно зарегистрировать пользователя
-        if (isValid && $('#com_uslugi_user_registration').is(':checked'))
+        if (isValid && $('#com_uvelir_user_registration').is(':checked'))
         {
             isValid = false;
             var url = 'index.php?option=com_users&task=userform.register&'+Token+'=1';
@@ -26,7 +26,7 @@ jQuery(document).ready(function($){
                         'jform[email1]':$('#jform_email1').val(),
                         'jform[email2]':$('#jform_email1').val()
                     };
-//            console.log(jform_data);
+            console.log(jform_data);
 //            var form = $('#member-registration');
             $.ajax({
                 beforeSend : function (){
@@ -50,13 +50,16 @@ jQuery(document).ready(function($){
                         $('#error_msg').html(data[1]).show('slow');
                         
                     }
+                },
+                error: function(result){
+                    $('#error_msg').html(result).show('slow');
                 }
             });
 
         }
         if (isValid)
         {
-                Joomla.submitform();
+                jQuery('#member-registration').submit();
                 return true;
         }
         else

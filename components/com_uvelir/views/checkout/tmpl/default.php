@@ -12,6 +12,36 @@ defined('_JEXEC') or die;
 //    var_dump($this->caddy);
 ?>
 <?php if( $this->items ) : ?>
+<style type="text/css">
+    dl.dl_user_detail dt{
+        float: left;
+        font-weight: bold;
+        width: 200px;
+    }
+    div.div_user_detail{
+        padding: 5px;
+        margin: 5px;
+    }
+</style>
+<div class="div_user_detail">
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="user_detail_show" id="user_detail_show">
+    <dl class="dl_user_detail">
+        <dt><?=JTEXT::_('COM_UVELIR_FIO').': '?></dt>
+        <dd><?=$this->user->fam.' '.$this->user->im.' '.$this->user->ot?></dd>
+        <dt><?=JTEXT::_('COM_UVELIR_ADDRESS').': '?></dt>
+        <dd><?=$this->user->address?></dd>
+        <dt><?=JTEXT::_('COM_UVELIR_PHONE').': '?></dt>
+        <dd><?=$this->user->phone?></dd>
+        <dt><?=JTEXT::_('COM_UVELIR_EMAIL').': '?></dt>
+        <dd><?=$this->user->email?></dd>
+    </dl>
+    <input type="hidden" name="option" value="com_uvelir" />
+    <input type="hidden" name="view" value="userform" />
+    <?php echo JHtml::_('form.token'); ?>
+    <input type="submit" value="<?=JTEXT::_('COM_UVELIR_EDIT_USERDATA')?>" />
+
+</form>
+</div>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="caddy_show" id="caddy_show">
     <table>
         <thead>
@@ -28,12 +58,9 @@ defined('_JEXEC') or die;
             <tr>
                 <td><img src="<?=$item['src']?>" alt="<?=$item['artikul']?>"> <?=$item['zavod_name']?></td>
                 <td><?=$item['artikul']?></td>
-                <td id="caddy_item_price_<?=$id?>"><?=$item['price']?></td>
-                <td>
-                    <input name="count[<?=$id?>]" size="1" class="caddy_item_count" type="text" rel="<?=$id?>" value="<?=$item['count']?>"/>
-                    
-                </td>
-                <td class="caddy_item_sum" id="caddy_item_sum_<?=$id?>"><?=(int)$item['sum']?></td>
+                <td><?=$item['price']?></td>
+                <td><?=$item['count']?></td>
+                <td><?=(int)$item['sum']?></td>
             </tr>
         <?php endforeach;?>
         <tfoot>
@@ -43,10 +70,9 @@ defined('_JEXEC') or die;
     </table>
     
     <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="view" value="checkout" />
-    <input type="hidden" name="task" value="caddy.correction" />
+    <input type="hidden" name="task" value="caddy.checkout" />
     <?php echo JHtml::_('form.token'); ?>
-    <input type="submit" value="<?=JTEXT::_('COM_UVELIR_CONFIRM')?>" onclick="document.caddy_show.task.value = '';" />
+    <input type="submit" value="<?=JTEXT::_('COM_UVELIR_CHECKOUT')?>" />
     
 </form>    
 <?php else: ?>

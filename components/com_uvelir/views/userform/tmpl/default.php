@@ -60,16 +60,12 @@ $uid = $client_fiz['jform_uid']->value;
     <div id="com_uvelir_user_registration_div" <?=$show_reg_checkbox?>>
         <label for="com_uvelir_user_registration">
                 <?=JTEXT::_('COM_UVELIR_USER_REGISTRATION')?>
-                <?=JTEXT::_('COM_UVELIR_USER_REGISTRATION_START_TIPE')?>
-                <span class="com_uvelir-tooltipe"><?=JTEXT::_('COM_UVELIR_USER_REGISTRATION_WHOT_IT_IS')?></span>
-                <?=JTEXT::_('COM_UVELIR_END_TIPE')?>
-
         </label>
         <input id="com_uvelir_user_registration" type="checkbox" name="registration" value="1"/>
 
    </div>
         <input type="hidden" name="task" value="userform.submit" />
         <?php echo JHtml::_('form.token'); ?>
-        <input type="submit" name="jform_submit" value="<?php echo JText::_('COM_UVELIR_FORM_SUBMIT');?>">
+        <input id="member-registration_submit" type="submit" name="jform_submit" value="<?php echo JText::_('COM_UVELIR_FORM_SUBMIT');?>">
 </form>
 <div class="clear" style="clear: both"></div>

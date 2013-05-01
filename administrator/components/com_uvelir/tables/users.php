@@ -64,5 +64,5 @@ class UvelirTableUsers extends UvelirTableKtable
             }
             return FALSE;
         }
-
+        
 }

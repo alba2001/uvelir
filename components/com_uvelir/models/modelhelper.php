@@ -15,6 +15,7 @@ class ModelHelper
 	function getUser() 
 	{
                 $id = JFactory::getApplication()->getUserState('com_uvelir.users_id',0,0);
+//                var_dump($id);exit;
                 $uid = JFactory::getUser()->id;
                 $table = self::getTable('users');
                 if($id AND $table->load($id))
@@ -30,6 +31,7 @@ class ModelHelper
                     $this_user = new stdClass;
                     $this_user->id = 0;
                 }
+//                var_dump($this_user);exit;
             return $this_user;
 	}
 	/**

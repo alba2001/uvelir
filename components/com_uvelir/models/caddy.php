@@ -10,12 +10,13 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.model');
-
+//jimport('joomla.application.component.model');
+require_once dirname(__FILE__) . '/kmodelform.php'; 
 /**
  * Uvelir model.
  */
-class UvelirModelCaddy extends JModel
+//class UvelirModelCaddy extends JModel
+class UvelirModelCaddy extends ModelKModelform
 {
     
     /**

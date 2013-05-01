@@ -15,6 +15,6 @@ require_once dirname(__FILE__) . '/caddy.php';
 /**
  * Uvelir model.
  */
-class UvelirModelCheckout extends JModel
+class UvelirModelCheckout extends UvelirModelCaddy
 {
 }

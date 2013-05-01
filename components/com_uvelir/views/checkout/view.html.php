@@ -28,11 +28,12 @@ class UvelirViewCheckout extends JView {
 
         // Проверяем пользователя
         $this->user = $this->get('User');
+//        var_dump($this->user);exit;
         if(!$this->user->id)
         {
             $mainframe = JFactory::getApplication();
             // Redirect to login
-            $mainframe->setUserState('com_uvelir.old_uri',JFactory::getURI());
+            $mainframe->setUserState('com_uvelir.old_uri',JURI::base().'index.php?option=com_uvelir&view=checkout');
             $url = JRoute::_(JURI::base().'index.php?option=com_uvelir&view=userform');
             $mainframe->redirect($url, JText::_('You must login first'));
 

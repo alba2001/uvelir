@@ -44,6 +44,6 @@ class UvelirViewUserform extends JView
         $doc->addStyleSheet('media/com_uvelir/css/site.stylesheet.css');
         $doc->addScript(JURI::root()."components/com_uvelir/views/userform/submitbutton.js");
         $doc->addScript(JURI::root()."components/com_uvelir/models/forms/userform.js");
-        $doc->addScript(JURI::base().'media/com_uvelir/js/jquery.maskedinput-1.3.min.js');
+        $doc->addScript(JURI::base().'components/com_uvelir/assets/js/jquery.maskedinput-1.3.min.js');
     }
 }

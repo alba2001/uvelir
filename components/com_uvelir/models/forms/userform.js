@@ -9,37 +9,15 @@ window.addEvent('domready', function() {
         $.mask.definitions['#']='[9]';  
         $("#jform_phone").mask("+7(#99) 999-99-99");
         
-        if($("#jform_user_type_id").val() == 2)
-        {
-            $('#uslugi-user_add_info').show('slow');
-            $('.addinfo').attr('required','required');
-        }
-        else
-        {
-            $('#uslugi-user_add_info').hide('slow');
-            $('.addinfo').removeAttr('required');
-        }
-        $("#jform_user_type_id").change(function(){
-            if($(this).val() == 2)
-            {
-                $('#uslugi-user_add_info').show('slow');
-                $('.addinfo').attr('required','required');
-            }
-            else
-            {
-                $('#uslugi-user_add_info').hide('slow');
-                $('.addinfo').removeAttr('required');
-            }
-        });
-        $('#com_uslugi_user_registration').click(function() {
+        $('#com_uvelir_user_registration').click(function() {
             if ($(this).is(':checked')) 
             {
-                $('#uslugi-user_register').show('slow');
+                $('#uvelir-user_register').show('slow');
                 $('.registration').attr('required','required');
             }
             else
             {
-                $('#uslugi-user_register').hide('slow');
+                $('#uvelir-user_register').hide('slow');
                 $('#error_msg').hide('slow');
                 $('.registration').removeAttr('required');
             }
