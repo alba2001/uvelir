@@ -40,9 +40,9 @@ class JFormFieldCategories extends JFormFieldList
 	{
 		// Initialize variables.
 		$options = array();
-                $company_id = JFactory::getApplication()->getUserState('com_jugraauto.company_id',FALSE);
+                $company_id = JFactory::getApplication()->getUserState('com_uvelir.company_id',FALSE);
 		// Initialize some field attributes.
-		$query = 'SELECT `category_id` FROM `#__jugraauto_companies_categories` WHERE `company_id`='.$company_id;
+		$query = 'SELECT `category_id` FROM `#__uvelir_companies_categories` WHERE `company_id`='.$company_id;
 
 		// Get the database object.
 		$db = JFactory::getDBO();
@@ -78,7 +78,7 @@ class JFormFieldCategories extends JFormFieldList
             $result = array();
             // Get the database object.
             $db = JFactory::getDBO();
-            $query = 'SELECT `id`, `title` FROM `#__categories` WHERE `extension`="com_jugraauto" AND `parent_id` = '.$parent_id;
+            $query = 'SELECT `id`, `title` FROM `#__categories` WHERE `extension`="com_uvelir" AND `parent_id` = '.$parent_id;
             // Set the query and get the result list.
             $db->setQuery($query);
             $items = $db->loadObjectlist();

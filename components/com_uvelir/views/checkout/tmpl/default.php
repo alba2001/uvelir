@@ -78,6 +78,4 @@ defined('_JEXEC') or die;
 <?php else: ?>
     <?=JTEXT::_('COM_UVELIR_CADDY_IS_EMPTY')?>
 <?php endif ?>
-<script type="text/javascript">
-</script>
 <div id="uvelir_debud"></div>

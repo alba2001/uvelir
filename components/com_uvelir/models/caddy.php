@@ -157,9 +157,12 @@ class UvelirModelCaddy extends ModelKModelform
          * Список товаров в корзине
          * @return array 
          */
-        public function getItems()
+        public function getItems($caddy=NULL)
         {
-            $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
+            if(!isset($caddy))
+            {
+                $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
+            }
             $items = array();
             foreach ($caddy as $key=>$value)
             {

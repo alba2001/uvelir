@@ -28,4 +28,21 @@ class UvelirTableOrder extends UvelirTableKtable {
         parent::__construct('#__uvelir_orders', 'id', $db);
         
     }
+    /**
+     * Overload bind function
+     * @param string $array
+     * @param type $ignore
+     * @return type 
+     */
+    public function bind($array, $ignore = '') {
+        // Если статус менялся менеджером, то заносим запись об этом в журнал
+        $new_status = JRequest::getString('new_status', '');
+        if($new_status)
+        {
+            $date = date('d.m.Y H:i:s');
+            $user_name = JFactory::getUser()->username;
+            $array['ch_status'] .= ' \n '.$date.' '.$user_name.' '.JText::_('COM_UVELIR_NEW_STATUS').' '.$new_status;
+        }
+        return parent::bind($array, $ignore);
+    }
 }

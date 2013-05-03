@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addrulepath="/administrator/components/com_uvelir/models/rules"
+>
+	<fieldset name="order_fields">
+		<field
+			name="id"
+			type="hidden"
+		/>
+		<field
+			name="ch_status"
+			type="hidden"
+		/>
+		<field
+			name="userid"
+			type="orderuser"
+			label="COM_UVELIR_CUSTOMER"
+			description="COM_UVELIR_CUSTOMER_DESC"
+		/>
+                <field
+                        name="order_status_id"
+                        type="orderstatus"
+                        label="COM_UVELIR_ORDER_STATUS"
+                        description="COM_UVELIR_ORDER_STATUS_DESC"
+                />
+                <field
+                    name="order_dt"
+                    type="text"
+                    class="inputbox"
+                    multiple="false"
+                    label="COM_UVELIR_ORDER_DATE"
+                    description="COM_UVELIR_ORDER_DATE_DESC"
+                    readonly="true"
+                ></field>
+                <field
+                    name="sum"
+                    type="text"
+                    class="inputbox"
+                    multiple="false"
+                    label="COM_UVELIR_ORDER_SUM"
+                    description="COM_UVELIR_ORDER_SUM_DESC"
+                    readonly="true"
+                ></field>
+            </fieldset>
+</form>

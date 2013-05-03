@@ -10,11 +10,10 @@
 
 // no direct access
 defined('_JEXEC') or die;
-
 // Import CSS
 $document = JFactory::getDocument();
-$document->addScript(JUri::base().'components/com_uvelir/assets/scripts/jquery.min.js');
-
+$document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js');
+$document->addScript(JURI::base().'components/com_uvelir/assets/scripts/jquery.maskedinput-1.3.min.js');
 // Access check.
 if (!JFactory::getUser()->authorise('core.manage', 'com_uvelir')) 
 {

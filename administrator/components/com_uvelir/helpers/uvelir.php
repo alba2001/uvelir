@@ -20,14 +20,10 @@ class UvelirHelper
 	 */
 	public static function addSubmenu($vName = '')
 	{
-                JSubMenuHelper::addEntry(
-                        JText::_('COM_UVELIR_SUBMENU_CATEGORIES'), 
-                        'index.php?option=com_categories&view=categories&extension=com_uvelir', 
-                        $vName == 'categories');
 		JSubMenuHelper::addEntry(
 			JText::_('COM_UVELIR_SUBMENU_CATEGORIES'),
 			'index.php?option=com_uvelir&view=categories',
-			$vName == 'products'
+			$vName == 'categories'
 		);
 		JSubMenuHelper::addEntry(
 			JText::_('COM_UVELIR_TITLE_PRODUCTS'),
@@ -38,6 +34,16 @@ class UvelirHelper
 			JText::_('COM_UVELIR_TITLE_ZAVODS'),
 			'index.php?option=com_uvelir&view=zavods',
 			$vName == 'zavods'
+		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_USER_ADMINISTRATION'),
+			'index.php?option=com_uvelir&view=users',
+			$vName == 'users'
+		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_ORDER_ADMINISTRATION'),
+			'index.php?option=com_uvelir&view=orders',
+			$vName == 'orders'
 		);
 
 	}
@@ -62,7 +68,6 @@ class UvelirHelper
 		foreach ($actions as $action) {
 			$result->set($action, $user->authorise($action, $assetName));
 		}
-                var_dump($result);
 		return $result;
 	}
 	/**
