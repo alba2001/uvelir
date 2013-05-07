@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
-
+require_once JPATH_COMPONENT.'/helpers/component.php';
 /**
  * View class for a list of Uvelir.
  */
@@ -81,4 +81,16 @@ class UvelirViewCategories extends JView
 
 
 	}
+        
+        /**
+         * Наименование завода
+         * @param int $zavod
+         * @return string 
+         */
+        protected function get_zavod_name($zavod)
+        {
+            return ComponentHelper::getZavod_name($zavod);
+            
+        }
+        
 }

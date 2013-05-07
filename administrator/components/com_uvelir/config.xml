@@ -24,7 +24,7 @@
         <field 
             name="rules" 
             type="rules"
-            component="com_jugraauto"
+            component="com_uvelir"
             class="inputbox"
             filter="rules"
             validate="rules"

@@ -13,23 +13,23 @@ defined('_JEXEC') or die;
 /**
  * Uvelir helper.
  */
-class ComponentHelper
+class KhtmlHelper
 {
         /**
-        * ФИО клиента
-        * @param int $user_id
-        * @return string 
+        * Список заводов
+        * @param noting
+        * @return object list
         */
-	public static function getUserFio($user_id)
+	public static function zavods()
 	{
-            $fio = '';
-            $table = self::getTable('Users');
-            if($table->load($user_id))
-            {
-                $fio = $table->fam.' '.$table->im.' '.$table->ot;
-            }
+            $db = JFactory::getDbo();
+            $query	= $db->getQuery(true);
 
-            return $fio;
+            // Select the required fields from the table.
+            $query->select('`id` AS value, `name` AS text')
+                    ->from('`#__uvelir_zavods`');
+            $db->setQuery($query);
+            return $db->loadObjectList();
 	}
 
         /**

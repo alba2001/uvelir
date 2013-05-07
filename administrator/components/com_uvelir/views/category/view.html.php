@@ -26,22 +26,22 @@ class UvelirViewCategory extends JView
 	 */
 	public function display($tpl = null)
 	{
-		$this->state	= $this->get('State');
-		$this->item		= $this->get('Item');
-                if($this->item->id)
-                {
-                    JFactory::getApplication()->setUserState('com_uvelir.category_id',$this->item->id);
-                }
-		$this->form		= $this->get('Form');
+            $this->state	= $this->get('State');
+            $this->item		= $this->get('Item');
+            if($this->item->id)
+            {
+                JFactory::getApplication()->setUserState('com_uvelir.category_id',$this->item->id);
+            }
+            $this->form		= $this->get('Form');
 
-		// Check for errors.
-		if (count($errors = $this->get('Errors'))) {
-            throw new Exception(implode("\n", $errors));
-		}
+            // Check for errors.
+            if (count($errors = $this->get('Errors'))) {
+                throw new Exception(implode("\n", $errors));
+            }
 
-		$this->addToolbar();
-		$this->addDocStyle();
-		parent::display($tpl);
+            $this->addToolbar();
+            $this->addDocStyle();
+            parent::display($tpl);
 	}
 	/**
 	 * Add the stylesheet to the document.
@@ -49,7 +49,6 @@ class UvelirViewCategory extends JView
 	protected function addDocStyle()
 	{
             $doc = JFactory::getDocument();
-            $doc->addScript("//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js");
         }
 	/**
 	 * Add the page title and toolbar.

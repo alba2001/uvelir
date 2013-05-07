@@ -33,7 +33,6 @@ class UvelirModelProducts extends UvelirModelKModelList
                 'ordering', 'a.ordering',
                 'state', 'a.state',
                 'created_by', 'a.created_by',
-                'city_id', 'a.city_id',
 
             );
         }
@@ -41,6 +40,31 @@ class UvelirModelProducts extends UvelirModelKModelList
         parent::__construct($config);
     }
 
+    /**
+     * Overload parent populateState function
+     * @param type $ordering
+     * @param type $direction 
+     */
+    protected function populateState($ordering = null, $direction = null) {
+
+        // Load the filter state.
+        $app = JFactory::getApplication();
+        $zavod = $app->getUserStateFromRequest($this->context.'.filter.zavod', 'filter_zavod', '2', 'string');
+        $this->setState('filter.zavod', $zavod);        
+        parent::populateState($ordering, $direction);
+    }
+
+    /**
+     * Overload parent getStoreId function
+     * @param type $id
+     * @return type 
+     */
+    protected function getStoreId($id = '') {
+        $id .= parent::getStoreId($id);
+        $id.= ':' . $this->getState('filter.zavod');
+
+        return parent::getStoreId($id);
+    }
 	/**
 	 * Build an SQL query to load the list data.
 	 *
@@ -50,7 +74,8 @@ class UvelirModelProducts extends UvelirModelKModelList
 	protected function getListQuery()
 	{
             $query = parent::getListQuery();
-            $query->from('`#__uvelir_products_2` AS a');
+            $zavod = $this->getState('filter.zavod', '2');
+            $query->from('`#__uvelir_products_'.$zavod.'` AS a');
 
             // Filter by search in title
             $search = $this->getState('filter.search');
@@ -62,7 +87,7 @@ class UvelirModelProducts extends UvelirModelKModelList
                 } 
                 else 
                 {
-                    $search = $db->Quote('%'.$db->escape($search, true).'%');
+                    $search = $this->_db->Quote('%'.$this->_db->escape($search, true).'%');
                     $query->where('( a.name LIKE '.$search.' )');
                 }
             }

@@ -54,7 +54,6 @@ class UvelirViewOrders extends JView
 	protected function addToolBar() 
 	{
             JToolBarHelper::title(JText::_('COM_ORDER_ADMINISTRATION'), 'order.png');
-            JToolBarHelper::addNew('order.add', 'JTOOLBAR_NEW');
             JToolBarHelper::editList('order.edit', 'JTOOLBAR_EDIT');
             JToolBarHelper::deleteList('', 'orders.delete', 'JTOOLBAR_DELETE');
             JToolBarHelper::divider();

@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
+require_once JPATH_COMPONENT.'/helpers/component.php';
 
 /**
  * View class for a list of Uvelir.
@@ -95,7 +96,15 @@ class UvelirViewProducts extends JView
 		if ($canDo->get('core.admin')) {
 			JToolBarHelper::preferences('com_uvelir');
 		}
-
-
 	}
+        
+        /**
+         * Наименование категории с путем
+         * @param int $category_id
+         * @return string
+         */
+        protected function get_category_path($category_id)
+        {
+            return ComponentHelper::getCategory_path($category_id);
+        }
 }

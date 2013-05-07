@@ -33,7 +33,7 @@ class UvelirModelProduct extends JModelAdmin
 	 * @return	JTable	A database object
 	 * @since	1.6
 	 */
-	public function getTable($type = 'Company', $prefix = 'UvelirTable', $config = array())
+	public function getTable($type = 'Product', $prefix = 'UvelirTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -97,44 +97,5 @@ class UvelirModelProduct extends JModelAdmin
 
 		return $item;
 	}
-
-
-        public function save($data) 
-        {
-//            $alias = $data['alias'];
-//            $parent_id = $data['category_id'];
-//            list($name, $alias) = $this->generateNewTitle($parent_id, $alias, $title);
-            if(!parent::save($data))
-            {
-                return FALSE;
-            }
-            // Обновляем записи в таблице связи компаний с категориями
-            $company_id = $this->getState($this->getName().'.id');
-            if($company_id)
-            {
-                // Удаляем все записи с текущей компанией.
-                $query = 'DELETE FROM `#__uvelir_products_categories` WHERE `company_id` ="'.$company_id.'"'; 
-                $this->_db->setQuery($query);
-                // Сохраняем новые записи с текущей компанией.
-                if($this->_db->query())
-                {
-                    $categories = $_POST['jform']['category'];
-                    $query_0 = 'INSERT INTO `#__uvelir_products_categories` (`company_id`,`category_id`) VALUES ';
-                    foreach ($categories as $category_id)
-                    {
-                        $query = $query_0.'("'.$company_id.'","'.$category_id.'")';
-                        $this->_db->setQuery($query);
-                        if(!$this->_db->query())
-                        {
-                            JFactory::getApplication()
-                            ->enqueueMessage(JText::_('COM_UVELIR_ERROR_UPDATE_COMPANY_CATEGORIES_TABLE'), 'error');
-                            
-                            var_dump($this->_db->getErrorMsg());
-                        }
-                    }
-                }
-            }
-            return TRUE;
-        }
 
 }

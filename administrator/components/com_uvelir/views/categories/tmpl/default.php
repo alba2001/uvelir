@@ -20,7 +20,7 @@ $listDirn = $this->state->get('list.direction');
 //exit;
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_uvelir&view=categories'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm">
     <fieldset id="filter-bar">
         <div class="filter-search fltlft">
             <label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
@@ -49,30 +49,22 @@ $listDirn = $this->state->get('list.direction');
                 </th>
 
                 <th class='left'>
-<?php echo JHtml::_('grid.sort', 'COM_UVELIR_CATEGORIES_NAME', 'a.name', $listDirn, $listOrder); ?>
+                    <?php echo JText::_('COM_UVELIR_CATEGORIES_NAME'); ?>
                 </th>
                 <th class='left'>
-<?php echo JHtml::_('grid.sort', 'COM_UVELIR_CATEGORIES_CREATED_BY', 'a.created_by', $listDirn, $listOrder); ?>
+                    <?php echo JText::_('COM_UVELIR_CATEGORIES_CREATED_BY'); ?>
                 </th>
                 <th class='left'>
-<?php echo JHtml::_('grid.sort', 'COM_UVELIR_CATEGORIES_CITY_ID', 'a.city_id', $listDirn, $listOrder); ?>
+                    <?php echo JText::_('COM_UVELIR_CATEGORIES_ZAVOD'); ?>
                 </th>
-
-
-<?php if (isset($this->items[0]->state)) { ?>
-                    <th width="5%">
-                    <?php echo JHtml::_('grid.sort', 'JPUBLISHED', 'a.state', $listDirn, $listOrder); ?>
-                    </th>
-                    <?php } ?>
-                <?php if (isset($this->items[0]->ordering)) { ?>
-                    <th width="10%">
-                    <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ORDERING', 'a.ordering', $listDirn, $listOrder); ?>
-                        <?php echo JHtml::_('grid.order', $this->items, 'filesave.png', 'categories.saveorder'); ?>
-                    </th>
+                    <?php if (isset($this->items[0]->state)) { ?>
+                <th width="5%">
+                    <?php echo JText::_('JPUBLISHED'); ?>
+                </th>
                     <?php } ?>
                 <?php if (isset($this->items[0]->id)) { ?>
                     <th width="1%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+                    <?php echo JText::_('JGRID_HEADING_ID'); ?>
                     </th>
                     <?php } ?>
             </tr>
@@ -94,7 +86,6 @@ if (isset($this->items[0])) {
         <tbody>
 <?php
 foreach ($this->items as $i => $item) :
-    $ordering = ($listOrder == 'a.ordering');
     ?>
                 <tr class="row<?php echo $i % 2; ?>">
                     <td class="center">
@@ -102,41 +93,29 @@ foreach ($this->items as $i => $item) :
                     </td>
 
                     <td>
-    <?php if (isset($item->checked_out) && $item->checked_out) : ?>
-                            <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'categories.', $canCheckin); ?>
-                        <?php endif; ?>
+                        <?php if (isset($item->checked_out) && $item->checked_out) : ?>
+                            <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'categories.', 1); ?>
+                         <?php endif; ?>
                         <a href="<?php echo JRoute::_('index.php?option=com_uvelir&task=company.edit&id=' . (int) $item->id); ?>">
-                        <?php echo $this->escape($item->name); ?></a>
+                        <?php echo str_repeat('|-----', ($item->level-1)).$this->escape($item->name); ?></a>
                     </td>
                     <td>
-    <?php echo $item->created_by; ?>
+                        <?php echo $item->created_by; ?>
                     </td>
                     <td>
-    <?php echo $item->city_id; ?>
+                        <?php echo $this->get_zavod_name($item->zavod); ?>
                     </td>
 
 
-    <?php if (isset($this->items[0]->state)) { ?>
-                        <td class="center">
-                        <?php echo JHtml::_('jgrid.published', $item->state, $i, 'categories.', $canChange, 'cb'); ?>
-                        </td>
+                        <?php if (isset($this->items[0]->state)) { ?>
+                    <td class="center">
+                        <?php echo JHtml::_('jgrid.published', $item->state, $i, 'categories.', 1, 'cb'); ?>
+                    </td>
                         <?php } ?>
-                    <?php if (isset($this->items[0]->ordering)) { ?>
-                        <td class="order">
-                        <?php if ($listDirn == 'asc') : ?>
-                                <span><?php echo $this->pagination->orderUpIcon($i, true, 'categories.orderup', 'JLIB_HTML_MOVE_UP', $ordering); ?></span>
-                                <span><?php echo $this->pagination->orderDownIcon($i, $this->pagination->total, true, 'categories.orderdown', 'JLIB_HTML_MOVE_DOWN', $ordering); ?></span>
-        <?php elseif ($listDirn == 'desc') : ?>
-                                <span><?php echo $this->pagination->orderUpIcon($i, true, 'categories.orderdown', 'JLIB_HTML_MOVE_UP', $ordering); ?></span>
-                                <span><?php echo $this->pagination->orderDownIcon($i, $this->pagination->total, true, 'categories.orderup', 'JLIB_HTML_MOVE_DOWN', $ordering); ?></span>
-        <?php endif; ?>
-                            <input type="text" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="text-area-order" />
-                        </td>
-    <?php } ?>
-                    <?php if (isset($this->items[0]->id)) { ?>
-                        <td class="center">
+                        <?php if (isset($this->items[0]->id)) { ?>
+                    <td class="center">
                         <?php echo (int) $item->id; ?>
-                        </td>
+                    </td>
                         <?php } ?>
                 </tr>
                 <?php endforeach; ?>
@@ -144,6 +123,8 @@ foreach ($this->items as $i => $item) :
     </table>
 
     <div>
+        <input type="hidden" name="option" value="com_uvelir" />
+        <input type="hidden" name="view" value="categories" />
         <input type="hidden" name="task" value="" />
         <input type="hidden" name="boxchecked" value="0" />
         <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
