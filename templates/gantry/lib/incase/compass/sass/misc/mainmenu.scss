@@ -1,0 +1,78 @@
+.lt-ie8 {
+position:relative;
+display:block;
+float:left;
+width:100%;
+}
+
+.lt-ie8 .menu {
+display:block;
+float:left;
+}
+
+.lt-ie8 .menu li {
+display:block;
+float:left;
+clear:right;
+zoom:1;
+// line-height:57px;
+}
+
+.menu {
+display:table;
+width:99%;
+padding-left:10px;
+margin:0;
+}
+
+.menu li {
+vertical-align:middle;
+display:table-cell;
+text-align:center;
+width:11%;
+}
+
+.menu a {
+width:100px;
+display:block;
+text-decoration:none;
+}
+
+.menu a:hover {
+text-decoration:underline;
+}
+
+.menu li.parent {
+position:relative;
+}
+
+.menu li.parent ul {
+min-width:200px;
+display:none;
+position:absolute;
+top:100%;
+width:auto;
+z-index:1000;
+margin:0;
+}
+
+.menu li.parent ul li {
+display:block;
+width:auto;
+text-align:left;
+white-space:nowrap;
+margin:0;
+padding:10px;
+}
+
+.menu li.parent ul li.separator {
+display:none!important;
+}
+
+.menu li.parent ul li a {
+width:auto;
+}
+
+.menu li.parent:hover ul {
+display:block;
+}

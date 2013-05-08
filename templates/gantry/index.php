@@ -13,6 +13,7 @@ defined( '_JEXEC' ) or die( 'Restricted index access' );
 
 // load and inititialize gantry class
 require_once(dirname(__FILE__) . '/lib/gantry/gantry.php');
+require_once ('lib/incase/index.php');
 $gantry->init();
 
 // get the current preset

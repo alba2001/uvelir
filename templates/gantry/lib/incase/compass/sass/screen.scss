@@ -1,0 +1,154 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+$menu-bg-repeat: repeat-x;
+
+@import "compass/css3";
+@import "misc/mainmenu";
+@import "misc/990fixed";
+@import "misc/sticky";
+@import "filter/*.png";
+@import "icons/*.png";
+@import "menu/*.png";
+@include all-filter-sprites(true);
+@include all-icons-sprites(true);
+@include all-menu-sprites(true);
+
+body{
+	// background: #F7F2E1;
+	&.test{
+	}
+}
+#rt-top-surround{
+	#rt-top{
+		@include menu-sprite(bg);
+		background-repeat: repeat-x;
+		width: 100%;
+		z-index: 100;
+		.rt-block{
+			margin: 0;
+			padding: 0;
+		}
+		.menu{
+			@include menu-sprite(bg);
+			background-repeat: repeat-x;
+			margin-bottom: 20px;
+			margin-top: 0;
+			width: 750px;
+			li{
+				a{
+					color: #f6df98;
+					font-size: 11px;
+					font-weight:normal;
+					&:hover{
+						text-decoration: none;
+						color: #feeca8;
+					}
+					&:before{
+						content: none;
+					}
+				}
+				&.separator{
+					@include menu-sprite(separator);
+					display: block;
+					height: 50px;
+					margin: 0 auto;
+					width: 3px;
+				}
+			}
+			li.parent{
+				ul{
+					background: #262626;
+					margin-left: -14px;
+					li{
+						a{
+							border-bottom: 1px dotted #f6df98;
+						}
+						&:not(:last-child){
+						}
+					}
+				}
+			}
+		}
+		.gf-menu1{
+			@include menu-sprite(bg);
+			background-repeat: repeat-x;
+			height: 50px;
+			margin-top: 0;
+			li{
+				margin: 0;
+				.item{
+					line-height: 50px;
+					margin: 0;
+					padding: 0 30px;
+					text-shadow:none;
+					color: #f6df98;
+					font-size: 11px;
+					&:after{
+						content: none;
+					}
+				}
+				// &.active:hover,
+				&.active{
+					// @include box-shadow(none);
+					// background: none;
+					// border:0;
+				}
+				&:after{
+					@include menu-sprite(separator);
+					content: " ";
+					width: 3px;
+					height: 50px;
+					position: absolute;
+					top: -1px;
+					left: 0;
+				}
+			}
+		}
+	}
+	#rt-header{
+		.workphone{
+			float: right;
+			.icons-clock,
+			.icons-phone{
+				float: left;
+			}
+			.icons-clock{
+				margin: 13px 10px 0 0;
+			}
+			.icons-phone{
+				margin: 7px 10px 0 0;
+			}
+			.left,
+			.right{
+				width: 180px;
+				float: left;
+			}
+			.left{
+				.gold{
+					font-size: 12px;
+				}
+				.black{
+					font-size: 22px;
+				}
+			}
+			.right{
+				.gold{
+					font-size: 11px;
+				}
+				.black{
+					font-size: 14px;
+				}
+			}
+			.gold{
+				display: block;
+				color: #c5b07d;
+			}
+			.black{
+				color: #000;
+			}
+		}
+	}
+}
