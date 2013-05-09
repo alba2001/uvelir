@@ -18,6 +18,7 @@ $document->addStyleSheet('components/com_uvelir/assets/css/uvelir.css');
 
 $listOrder = $this->state->get('list.ordering');
 $listDirn = $this->state->get('list.direction');
+$href = 'index.php?option=com_uvelir&view=product&zavod='.$this->state->get('filter.zavod');
 //exit;
 ?>
 
@@ -100,7 +101,7 @@ foreach ($this->items as $i => $item) :
                         <?php if (isset($item->checked_out) && $item->checked_out) : ?>
                             <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'products.', 1); ?>
                          <?php endif; ?>
-                        <a href="<?php echo JRoute::_('index.php?option=com_uvelir&task=product.edit&id=' . (int) $item->id); ?>">
+                        <a href="<?php echo JRoute::_($href.'&id=' . (int) $item->id); ?>">
                         <?php echo $this->escape($item->name); ?></a>
                     </td>
                     <td>

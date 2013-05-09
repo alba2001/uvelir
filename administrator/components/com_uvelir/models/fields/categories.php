@@ -40,23 +40,8 @@ class JFormFieldCategories extends JFormFieldList
 	{
 		// Initialize variables.
 		$options = array();
-                $company_id = JFactory::getApplication()->getUserState('com_uvelir.company_id',FALSE);
-		// Initialize some field attributes.
-		$query = 'SELECT `category_id` FROM `#__uvelir_companies_categories` WHERE `company_id`='.$company_id;
-
-		// Get the database object.
-		$db = JFactory::getDBO();
-		// Выбираем массив категорий.
-		$db->setQuery($query);
-		$this->value = $db->loadResultArray();
-                // Список уатегорий с учетом родителя
+                // Список уатегорий с учетом завода
                 $items = $this->_get_categories();
-		// Check for an error.
-		if ($db->getErrorNum())
-		{
-			JError::raiseWarning(500, $db->getErrorMsg());
-			return $options;
-		}
 
 		// Build the field options.
 		if (!empty($items))
@@ -73,26 +58,48 @@ class JFormFieldCategories extends JFormFieldList
 		return $options;
 	}
         
-        private function _get_categories($parent_id = 1, $key = 0)
+
+        /**
+         * Выборка категорий
+         * @return string 
+         */
+        private function _get_categories()
         {
+            $zavod = JRequest::getInt('zavod', '2');
             $result = array();
             // Get the database object.
             $db = JFactory::getDBO();
-            $query = 'SELECT `id`, `title` FROM `#__categories` WHERE `extension`="com_uvelir" AND `parent_id` = '.$parent_id;
+            $query = 'SELECT `id`, `name`, `parent_id` FROM `#__uvelir_categories` WHERE `zavod`='.$zavod;
             // Set the query and get the result list.
             $db->setQuery($query);
             $items = $db->loadObjectlist();
-            $new_key = $key+1;
             foreach ($items as $item)
             {
+                $title = $item->parent_id?$this->_get_name($item->parent_id,$item->name):$item->name;
                 $result[] = array(
                     'id'=>$item->id,
-//                    'title'=>str_repeat(' ', $key*10).$item->title,
-                    'title'=>str_repeat('|---', $key).' '.$item->title,
+                    'title'=>$title,
                 ); 
-                $get_result = $this->_get_categories($item->id, $new_key);
-                $result = array_merge($result, $get_result);
             }
             return $result;
+        }
+        
+        private function _get_name($id=0, $name='')
+        {
+            $db = JFactory::getDBO();
+            $query = 'SELECT `name`, `parent_id` FROM `#__uvelir_categories` WHERE `id`='.$id;
+            // Set the query and get the result list.
+            $db->setQuery($query);
+            $item = $db->loadObject();
+            if($item->parent_id)
+            {
+                $name = $this->_get_name($item->parent_id, $item->name).' | '.$name;
+            }
+            else 
+            {
+                $name = $item->name.' | '.$name;
+            }
+            return $name;
+            
         }
 }
