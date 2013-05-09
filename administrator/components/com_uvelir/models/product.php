@@ -33,9 +33,14 @@ class UvelirModelProduct extends JModelAdmin
 	 * @return	JTable	A database object
 	 * @since	1.6
 	 */
-	public function getTable($type = 'Product', $prefix = 'UvelirTable', $config = array())
+	public function getTable($type = '', $prefix = 'UvelirTable', $config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+            if(!$type)
+            {
+                $zavod = JRequest::getInt('zavod','2');
+                $type = 'Product_'.$zavod;
+            }
+            return JTable::getInstance($type, $prefix, $config);
 	}
 
 	/**
@@ -52,7 +57,7 @@ class UvelirModelProduct extends JModelAdmin
 		$app	= JFactory::getApplication();
 
 		// Get the form.
-		$form = $this->loadForm('com_uvelir.company', 'company', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_uvelir.product', 'product', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form)) {
 			return false;
 		}
@@ -69,7 +74,7 @@ class UvelirModelProduct extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_uvelir.edit.company.data', array());
+		$data = JFactory::getApplication()->getUserState('com_uvelir.edit.product.data', array());
 
 		if (empty($data)) {
 			$data = $this->getItem();
@@ -77,25 +82,6 @@ class UvelirModelProduct extends JModelAdmin
 		}
 
 		return $data;
-	}
-
-	/**
-	 * Method to get a single record.
-	 *
-	 * @param	integer	The id of the primary key.
-	 *
-	 * @return	mixed	Object on success, false on failure.
-	 * @since	1.6
-	 */
-	public function getItem($pk = null)
-	{
-		if ($item = parent::getItem($pk)) {
-
-			//Do any procesing on fields here if needed
-
-		}
-
-		return $item;
 	}
 
 }

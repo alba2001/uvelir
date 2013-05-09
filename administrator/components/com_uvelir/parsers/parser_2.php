@@ -79,7 +79,7 @@ class UvelirParseZavod_2
         $category_save_data = array(
             'name'=>  $product_category_data[0],
             'parent_path'=>$category_data['path'][0],
-            'level'=>$category_data['level']+1,
+            'level'=>'2',
             'zavod'=>'2',
         );
         
@@ -139,7 +139,7 @@ class UvelirParseZavod_2
         $category_save_data = array(
             'name'=>  $sub_category['name'],
             'parent_path'=>$category_data['path'][0],
-            'level'=>$category_data['level']+1,
+            'level'=>'3',
             'zavod'=>'2',
         );
         
@@ -236,9 +236,10 @@ class UvelirParseZavod_2
             // закладываем переход к следующей подкатегории
             array_shift($data['link']);
             array_shift($data['func']);
-//            JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
-//            $msg = 'Возвращаемся к предыдущей подкатегории';
-//            return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$data['link'][0].'<hr/>'.$msg); // Продолжаем парсинг
+            // Убираем путь к текущей подкатегории
+            $category_data = JFactory::getApplication()->getUserState('com_uvelir.category_data', array());
+            array_shift($category_data['path']);
+            JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
         }
         array_unshift($data['link'],$data_items[0]['desc']['item_link']);
         array_unshift($data['func'],'parse_item');
@@ -262,7 +263,6 @@ class UvelirParseZavod_2
 
         // Исходные данные
         $data_item = array_shift($data['items']); // Выбираем данные элемента
-        $data_item['material'] = '';
         $base_link = $data['base_link']; // Ссылка на главную страницу
         
         
@@ -274,7 +274,6 @@ class UvelirParseZavod_2
             $link = isset($data['link'][0])?$data['link'][0]:'';
             return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link);
         }
-
         // Переходим на карточку товара
         $item_link = $data_item['desc']['item_link'];
         // Очищаем текущую ссылу
@@ -316,15 +315,27 @@ class UvelirParseZavod_2
             {
                 $data_item['average_weight'] = $matches[1];
             }
+            else 
+            {
+                $data_item['average_weight'] = '';
+            }
             if (preg_match("/Вставка: \<\/b\>([^Z]+)/", $detail->innertext, $matches))
             {
                 $vstavki = iconv("windows-1251", "utf-8", $matches[1]);
                 $data_item['vstavki'] = $vstavki;
             }
+            else
+            {
+                $data_item['vstavki'] = '';
+            }
             if (preg_match("/Материал: \<\/b\>([^Z]+)/", $detail->innertext, $matches))
             {
-                $vstavki = iconv("windows-1251", "utf-8", $matches[1]);
-                $data_item['material'] = $vstavki;
+                $material = iconv("windows-1251", "utf-8", $matches[1]);
+                $data_item['material'] = $material;
+            }
+            else
+            {
+                $data_item['material'] = '';
             }
         }
         $img_small = $data_item['desc']['img_small'];
@@ -341,7 +352,7 @@ class UvelirParseZavod_2
         $menu_parent_id = $category_model->menu_find_parent_id($category_data['path'][0]); 
         JFactory::getApplication()->setUserState('com_uvelir.menu_parent_id', $menu_parent_id);
         // Уровень пункта меню
-        $data_item['level'] = $category_data['level']+1;
+        $data_item['level'] = '4';
         
         // Вставляем запись
         $table = $this->getTable('product_2');

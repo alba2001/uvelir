@@ -167,7 +167,7 @@ class UvelirModelZavod extends JModelAdmin
                 // Создаем категорию для завода
                 $category = array(
                     'name'=>  $zavod->name,
-                    'parent_path'=>'com-uvelir',
+                    'parent_path'=>'',
                     'level'=>1,
                     'zavod'=>$cid,
                 );

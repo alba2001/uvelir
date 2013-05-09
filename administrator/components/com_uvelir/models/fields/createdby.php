@@ -42,10 +42,8 @@ class JFormFieldCreatedby extends JFormField
 			$user = JFactory::getUser($user_id);
 		} else {
 			$user = JFactory::getUser();
-			$html[] = '<input type="hidden" name="'.$this->name.'" value="'.$user->id.'" />';
 		}
-		$html[] = "<div>".$user->name." (".$user->username.")</div>";
-        
+                $html[] = '<input type="text"  value="'.$user->name.' ('.$user->username.')" disabled="disabled" class="readonly"/>';
 		return implode($html);
 	}
 }
