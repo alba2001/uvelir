@@ -35,7 +35,7 @@ class UvelirParseZavod_2
         $category = array_shift($data['products_categories']);
         $product_category_data = explode('^', $category);
         $name = $product_category_data[0]; 
-        // Если категории закончились - возвращаем флаг выхода из парсинна
+        // Если категории закончились - возвращаем флаг выхода из парсинга
         if(!$name)
         {
             return array(1,JText::_('COM_UVELIR_PARSE_SUCCES'));
@@ -62,9 +62,15 @@ class UvelirParseZavod_2
         for($i=0; $i<count($links); $i++) 
         {
             $imgs = $links[$i]->find('img');
-            $datas[$i]['name'] = $imgs[0]->alt;
-            $datas[$i]['src'] = $base_link.$imgs[0]->src;
-            $datas[$i]['href'] = $base_link.$links[$i]->href;
+            // Исключаем Новинки из подкатегорий, т.к. товары из этой подкатегории включены в другие подкатегории
+            if($imgs[0]->alt != 'Новинки')
+            {
+                $datas[] = array(
+                    'name' => $imgs[0]->alt,
+                    'src' => $base_link.$imgs[0]->src,
+                    'href' => $base_link.$links[$i]->href,
+                );
+            }
         }
         $data['subcategories'] = $datas;
         $sub_link = $datas[0]['href'];
@@ -228,24 +234,22 @@ class UvelirParseZavod_2
         // Если найдена ссылка на следующую страницу, то выставляем ее
         if($next_page_link)
         {
+            $msg = 'переходим к следующей странице';
             array_unshift($data['link'], $data['link'][0].$next_page_link);
         }
         else
         {
+            $msg = 'переходим к следующей подкатегории';
             // Если не найдена следующая страница, то 
             // закладываем переход к следующей подкатегории
             array_shift($data['link']);
             array_shift($data['func']);
-            // Убираем путь к текущей подкатегории
-            $category_data = JFactory::getApplication()->getUserState('com_uvelir.category_data', array());
-            array_shift($category_data['path']);
-            JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
+            $data['last_page'] = TRUE;
         }
         array_unshift($data['link'],$data_items[0]['desc']['item_link']);
         array_unshift($data['func'],'parse_item');
 
         JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
-        $msg = 'переходим к следующей странице';
         return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$data['link'][0].'<hr/>'.$msg); // Продолжаем парсинг
     }
 
@@ -268,6 +272,17 @@ class UvelirParseZavod_2
         
         if(!$data_item)
         {
+        
+            //  Если это последняя страница, то убираем путь с этой подкатегорией
+            if(isset($data['last_page']) AND $data['last_page'])
+            {
+                unset($data['last_page']);
+                // Убираем путь к текущей подкатегории
+                $category_data = JFactory::getApplication()->getUserState('com_uvelir.category_data', array());
+                array_shift($category_data['path']);
+                JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
+            }
+            
             // Если не находим 'страницу'элемент в массиве $data['items'], то продолжаем поиск уже со следующей страницы категории
             array_shift($data['func']);
             JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
@@ -348,8 +363,10 @@ class UvelirParseZavod_2
         // Ищем родительскую категорию
         $category_model = new UvelirModelCategory;
         $data_item['category_id'] = $category_model->find_parent_id($category_data['path'][0]);
+        
         // ищем родителя пункта меню
         $menu_parent_id = $category_model->menu_find_parent_id($category_data['path'][0]); 
+        
         JFactory::getApplication()->setUserState('com_uvelir.menu_parent_id', $menu_parent_id);
         // Уровень пункта меню
         $data_item['level'] = '4';
@@ -359,19 +376,9 @@ class UvelirParseZavod_2
         if($table->load(array('artikul'=>$data_item['artikul'])))
         {
             $data_item['id'] = $table->id;
+//            var_dump($data_item);exit;
         }
         $save_item = $table->save($data_item);
-        
-//var_dump($table);
-//echo '<hr/>';
-//var_dump($item_link);
-//var_dump($data_item);
-//echo '<hr/>';
-//var_dump($data);
-//        JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
-//        $link = isset($data['link'][0])?$data['link'][0]:'';
-//        return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link.'<hr/>'.$msg);
-        
         $msg = '';
         if(isset($data['items'][0]['desc']['img_small']))
         {

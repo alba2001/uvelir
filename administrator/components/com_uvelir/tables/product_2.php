@@ -89,7 +89,7 @@ class UvelirTableProduct_2 extends UvelirTableKtable {
                 return FALSE;
             }
             // Обновляем путь, т.к. он подставляется не правильно
-            $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" , `parent_id` =  "'.$menu_parent_id.'" WHERE  `id` ='.$menu->id;
+            $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" , `level` =  "'.$src['level'].'" , `parent_id` =  "'.$menu_parent_id.'" WHERE  `id` ='.$menu->id;
             $this->_db->setQuery($query);
             $this->_db->query();
             

@@ -42,16 +42,15 @@ class UvelirTableCategory extends UvelirTableKtable {
 	}
  
 	/**
-	 * Override store function
+	 * Override save function
 	 *
 	 * @return  boolean
 	 *
 	 */
-        public function store($updateNulls = false) {
-            if(!parent::store($updateNulls))
+        public function save($src, $orderingFilter = '', $ignore = '') 
+        {
+            if(!parent::save($src, $orderingFilter, $ignore))
             {
-                JFactory::getApplication()
-                        ->enqueueMessage(JText::_('COM_UVELIR_ERROR_EDIT_MENU_RECORD'), 'error');
                 return FALSE;
             }
             // Создаем пункт меню с этой категорией
@@ -91,7 +90,7 @@ class UvelirTableCategory extends UvelirTableKtable {
             }
 //            var_dump($data);exit;
             // Обновляем путь, т.к. он подставляется не правильно
-            $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" WHERE  `id` ='.$menu->id;
+            $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" , `level` =  "'.$src['level'].'" , `parent_id` =  "'.$menu_parent_id.'" WHERE  `id` ='.$menu->id;
             $this->_db->setQuery($query);
             $this->_db->query();
             return TRUE;

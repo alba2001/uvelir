@@ -209,7 +209,7 @@ class UvelirModelCategory extends JModelAdmin
             $category = array(
                 'name'=>  addslashes($category['name']),
                 'alias'=>$category_alias,
-                'path'=>$category['parent_path'].'/'.$category_alias,
+                'path'=>$category['parent_path']?$category['parent_path'].'/'.$category_alias:$category_alias,
                 'parent_id'=>  $this->find_parent_id($category['parent_path']),
                 'level'=>$category['level'],
                 'zavod'=>$category['zavod'],
