@@ -9,12 +9,12 @@
  */
 // No direct access
 defined('_JEXEC') or die;
-require_once dirname(__FILE__) . '/ktable.php'; 
+require_once dirname(__FILE__) . '/ntable.php'; 
 
 /**
  * product Table class
  */
-class UvelirTableCategory extends UvelirTableKtable {
+class UvelirTableCategory extends UvelirTableNtable {
 
     protected $asset_name;
 
@@ -51,12 +51,15 @@ class UvelirTableCategory extends UvelirTableKtable {
         {
             if(!parent::save($src, $orderingFilter, $ignore))
             {
+                
                 return FALSE;
             }
             // Создаем пункт меню с этой категорией
             $menu = $this->getTable('menu');
             // Если еще не создан пункт меню - создаем, если создан - переписываем алиас и путь
             $menu_parent_id = JFactory::getApplication()->getUserState('com_uvelir.menu_parent_id', 1);
+            // Nesteed tree
+            $menu->setLocation( $menu_parent_id, 'last-child' );
             $component = JTable::getInstance('extension');
             $component->load(array('name'=>'com_uvelir'));
             $data = array(

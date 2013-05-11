@@ -101,23 +101,29 @@ DROP TABLE IF EXISTS `#__uvelir_categories`;
 CREATE TABLE IF NOT EXISTS `#__uvelir_categories` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 `parent_id` int(11) UNSIGNED NOT NULL,
+`lft` int(11) NOT NULL DEFAULT '0',
+`rgt` int(11) NOT NULL DEFAULT '0',
+`level` INT(10)  NOT NULL ,
+`title` VARCHAR(255)  NOT NULL ,
+`alias` VARCHAR(255)  NOT NULL ,
+`access` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+`path` VARCHAR(255)  NOT NULL ,
 `zavod` int(2) UNSIGNED NOT NULL,
 `name` VARCHAR(255)  NOT NULL ,
-`alias` VARCHAR(255)  NOT NULL ,
-`path` VARCHAR(255)  NOT NULL ,
 `img` VARCHAR(255)  NOT NULL ,
 `note` VARCHAR(255)  NOT NULL ,
 `desc` TEXT  NOT NULL ,
 `ordering` INT(11)  NOT NULL ,
-`level` INT(2)  NOT NULL ,
 `state` TINYINT(1)  NOT NULL DEFAULT '1',
 `checked_out` INT(11)  NOT NULL ,
 `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 `created_by` INT(11)  NOT NULL ,
 KEY `name` (`name`),
+KEY `title` (`title`),
+KEY `idx_left_right` (`lft`,`rgt`),
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
-
+INSERT INTO `#__uvelir_categories` SET parent_id = 0, lft = 0, rgt = 1, level = 0, title = 'root', alias = 'root', access = 1, path = '';
 
 DROP TABLE IF EXISTS `#__uvelir_zavods`;
 CREATE TABLE IF NOT EXISTS `#__uvelir_zavods` (

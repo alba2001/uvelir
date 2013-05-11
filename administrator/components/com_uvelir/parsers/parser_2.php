@@ -85,6 +85,7 @@ class UvelirParseZavod_2
         $category_save_data = array(
             'name'=>  $product_category_data[0],
             'parent_path'=>$category_data['path'][0],
+            'parent_id'=>$category_data['parent_id'][0],
             'level'=>'2',
             'zavod'=>'2',
         );
@@ -99,9 +100,9 @@ class UvelirParseZavod_2
         $category_data['name'] = $category_created['name'];
         $category_data['alias'] = $category_created['alias'];
         array_unshift($category_data['path'], $category_created['path']);
+        array_unshift($category_data['parent_id'], $category_created['id']);
         $category_data['level'] = $category_created['level'];
         JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
-
         // Возвращаем результат
         $msg = $datas[0]['name'];
         return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$sub_link.'<hr/>'.$msg); // Продолжаем парсинг
@@ -122,6 +123,12 @@ class UvelirParseZavod_2
         // Если кончились подкатегории, переходим к следующей категории
         if(!$data['subcategories'])
         {
+            // Меняем родителя категорий
+            $category_data = JFactory::getApplication()->getUserState('com_uvelir.category_data', array());
+            array_shift($category_data['path']);
+            array_shift($category_data['prent_id']);
+            JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
+            
             array_shift($data['link']);
             array_shift($data['func']);
             JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
@@ -145,6 +152,7 @@ class UvelirParseZavod_2
         $category_save_data = array(
             'name'=>  $sub_category['name'],
             'parent_path'=>$category_data['path'][0],
+            'parent_id'=>$category_data['parent_id'][0],
             'level'=>'3',
             'zavod'=>'2',
         );
@@ -159,6 +167,7 @@ class UvelirParseZavod_2
         $category_data['name'] = $category_created['name'];
         $category_data['alias'] = $category_created['alias'];
         array_unshift($category_data['path'], $category_created['path']);
+        array_unshift($category_data['parent_id'], $category_created['parent_id']);
         $category_data['level'] = $category_created['level'];
         JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
         
@@ -280,6 +289,7 @@ class UvelirParseZavod_2
                 // Убираем путь к текущей подкатегории
                 $category_data = JFactory::getApplication()->getUserState('com_uvelir.category_data', array());
                 array_shift($category_data['path']);
+                array_shift($category_data['parent_id']);
                 JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
             }
             
@@ -324,33 +334,24 @@ class UvelirParseZavod_2
         
         // Детали товара
         $details = $item->find('div');
+        $data_item['average_weight'] = '';
+        $data_item['vstavki'] = '';
+        $data_item['material'] = '';
         foreach ($details as $detail)
         {
             if (preg_match("/Средний вес: (\d+\.\d+)/", $detail->innertext, $matches))
             {
                 $data_item['average_weight'] = $matches[1];
             }
-            else 
-            {
-                $data_item['average_weight'] = '';
-            }
             if (preg_match("/Вставка: \<\/b\>([^Z]+)/", $detail->innertext, $matches))
             {
                 $vstavki = iconv("windows-1251", "utf-8", $matches[1]);
                 $data_item['vstavki'] = $vstavki;
             }
-            else
-            {
-                $data_item['vstavki'] = '';
-            }
             if (preg_match("/Материал: \<\/b\>([^Z]+)/", $detail->innertext, $matches))
             {
                 $material = iconv("windows-1251", "utf-8", $matches[1]);
                 $data_item['material'] = $material;
-            }
-            else
-            {
-                $data_item['material'] = '';
             }
         }
         $img_small = $data_item['desc']['img_small'];

@@ -114,7 +114,7 @@ class UvelirModelCategory extends JModelList
             $categories = $this->getTable('Category');
             $children = $categories->get_rows(array(
                 'parent_id' => $parent_id,
-                'state' => '1',
+//                'state' => '1',
             ));
             return $children;
         }
@@ -126,12 +126,12 @@ class UvelirModelCategory extends JModelList
         public function getItems_()
         {
             $category_id = $this->_item->id;
+            $zavod = $this->_item->zavod;
 //            $zavod = $this->_item->zavod;
-            $zavod = 2;
+//            $zavod = 2;
             $table = $this->getTable('Product_'.$zavod);
             $data = array(
                 'category_id' => $category_id,
-//                'zavod' => $zavod,
                 'state' => '1',
             );
             $items = $table->get_rows($data);

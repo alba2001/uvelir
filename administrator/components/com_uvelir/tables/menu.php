@@ -19,16 +19,21 @@ jimport('joomla.database.tablenested');
  * @subpackage	com_menus
  */
 //class UvelirTableMenu extends JTableMenu
-class UvelirTableMenu extends JTableMenu
+class UvelirTableMenu extends JTableNested
 {
-    /**
-     * Constructor
-     *
-     * @param JDatabase A database connector object
-     */
-	public function delete($pk = null, $children = false)
+	/**
+	 * Constructor
+	 *
+	 * @param   JDatabase  &$db  A database connector object
+	 *
+	 * @since   11.1
+	 */
+	public function __construct(&$db)
 	{
-		return parent::delete($pk, $children);
+		parent::__construct('#__menu', 'id', $db);
+
+		// Set the default access level.
+		$this->access = (int) JFactory::getConfig()->get('access');
 	}
         
        

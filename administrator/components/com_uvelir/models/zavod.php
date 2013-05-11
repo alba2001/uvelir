@@ -170,6 +170,7 @@ class UvelirModelZavod extends JModelAdmin
                     'parent_path'=>'',
                     'level'=>1,
                     'zavod'=>$cid,
+                    'parent_id'=>'1',
                 );
                 $category_model = new UvelirModelCategory;
                 // Сохраняем категорию для завода
@@ -184,6 +185,7 @@ class UvelirModelZavod extends JModelAdmin
                     'alias'=>$category_created['alias'],
                     'path'=>array($category_created['path']),
                     'level'=>$category_created['level'],
+                    'parent_id'=>array($category_created['id']),
                 );
                 $data = array(
                     'base_link'=>$zavod->base_url,

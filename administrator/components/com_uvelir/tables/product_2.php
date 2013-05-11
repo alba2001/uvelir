@@ -57,6 +57,8 @@ class UvelirTableProduct_2 extends UvelirTableKtable {
             $menu = $this->getTable('menu');
             // Если еще не создан пункт меню - создаем, если создан - переписываем алиас и путь
             $menu_parent_id = JFactory::getApplication()->getUserState('com_uvelir.menu_parent_id', 1);
+            // Nesteed tree
+            $menu->setLocation( $menu_parent_id, 'last-child' );
             $component = JTable::getInstance('extension');
             $component->load(array('name'=>'com_uvelir'));
             $data = array(

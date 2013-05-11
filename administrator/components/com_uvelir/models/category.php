@@ -131,11 +131,13 @@ class UvelirModelCategory extends JModelAdmin
                 $data['id'] = $this->_find_id($data['alias']);
             }
             $table = $this->getTable('Category');
+            $parent_id = $data['parent_id'];
+            $table->setLocation( $parent_id, 'last-child' );            
             if(!$table->save($data))
             {
-                return FALSE;
+                return 0;
             }
-            return TRUE;
+            return $table->id;
         }
         
         /**
@@ -165,14 +167,14 @@ class UvelirModelCategory extends JModelAdmin
         {
             if(!$path)
             {
-                return 0;
+                return 1;
             }
             $table = $this->getTable('Category');
             if($table->load(array('path'=>$path)))
             {
                 return $table->id;
             }
-            return 0;
+            return 1;
         }
         /**
          * Находим ИД родительского меню
@@ -201,7 +203,8 @@ class UvelirModelCategory extends JModelAdmin
         public function create_category($category)
         {
             // ищем родителя пункта меню
-            $menu_parent_id = $this->menu_find_parent_id($category['parent_path']); 
+            $parent_menu_path = $category['parent_path']?$category['parent_path']:'com-uvelir';
+            $menu_parent_id = $this->menu_find_parent_id($parent_menu_path); 
             JFactory::getApplication()->setUserState('com_uvelir.menu_parent_id', $menu_parent_id);
             
             // Готовим данные категории
@@ -210,12 +213,13 @@ class UvelirModelCategory extends JModelAdmin
                 'name'=>  addslashes($category['name']),
                 'alias'=>$category_alias,
                 'path'=>$category['parent_path']?$category['parent_path'].'/'.$category_alias:$category_alias,
-                'parent_id'=>  $this->find_parent_id($category['parent_path']),
+                'parent_id'=>  $category['parent_id'],
                 'level'=>$category['level'],
                 'zavod'=>$category['zavod'],
             );
             // Сохраняем категорию
-            if(!$this->save($category))
+            $category['id'] = $this->save($category);
+            if(!$category['id'])
             {
                 // Не смогли сохранить категорию
                 return array(0,  JText::_('COM_UVELIR_CANOT_SAVE_CATEGORY'));

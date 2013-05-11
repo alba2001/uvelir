@@ -66,6 +66,7 @@ class UvelirModelCategories extends UvelirModelKModelList
                     $query->where('( a.name LIKE '.$search.' )');
                 }
             }
+            $query->order('lft');
             return $query;
         }
 }

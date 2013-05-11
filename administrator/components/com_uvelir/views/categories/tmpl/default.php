@@ -86,6 +86,7 @@ if (isset($this->items[0])) {
         <tbody>
 <?php
 foreach ($this->items as $i => $item) :
+    if($item->level>0):
     ?>
                 <tr class="row<?php echo $i % 2; ?>">
                     <td class="center">
@@ -118,7 +119,8 @@ foreach ($this->items as $i => $item) :
                     </td>
                         <?php } ?>
                 </tr>
-                <?php endforeach; ?>
+    <?php endif; ?>
+<?php endforeach; ?>
         </tbody>
     </table>
 
