@@ -33,7 +33,8 @@ width:11%;
 }
 
 .menu a {
-width:100px;
+white-space: nowrap;
+// min-width:100px;
 display:block;
 text-decoration:none;
 }

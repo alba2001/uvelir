@@ -35,7 +35,7 @@ require_once (YOURBASEPATH . DS . "lib/incase/phpthumb/ThumbLib.inc.php");
 	// file_put_contents(YOURBASEPATH . DS . 'css/styless.css', $less->parse());
 	// JHTML::script($filename, $path, $mootools);
 	// $doc->addStyleSheet($this->baseurl.'/templates/'.$this->template. '/css/styless.css');
-	JHTML::stylesheet('screen.css', TEMPLATEPATH . DS . 'lib/incase/compass/stylesheets/');
+	// JHTML::stylesheet('screen.css', TEMPLATEPATH . DS . 'lib/incase/compass/stylesheets/');
 	// $doc->addStyleSheet(TEMPLATEPATH . DS . 'css/styless.less');
 
 // production
