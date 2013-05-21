@@ -10,8 +10,10 @@ body #rt-page-surround {
   overflow: visible;
 }
 body .rt-container {
-  width: 92%;
+  // width: 92%;
+  width: 96%;
   min-width: 990px;
+  max-width: 1600px;
 }
 
 

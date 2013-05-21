@@ -1,0 +1,30 @@
+<script type="text/javascript">
+
+	jQuery("html").addClass("js");
+	jQuery.fn.accordion.defaults.container = false;
+	jQuery(function() {
+	  jQuery("#acc1").accordion({
+	      el: ".h",
+	      head: "h4",
+	      next: "div",
+	      showMethod: "slideFadeDown",
+	      hideMethod: "slideFadeUp",
+	      initShow : "div.shown"
+	  });
+	  jQuery("html").removeClass("js");
+	});
+
+</script>
+
+<ul id="acc1" class="accordion">
+	<li>
+		<h4>наружное освещение</h4>
+		<div class="sub">
+			<ul>
+				<li>
+					<a href="">Прожектора</a>
+				</li>
+			</ul>
+		</div>
+	</li>
+</ul>

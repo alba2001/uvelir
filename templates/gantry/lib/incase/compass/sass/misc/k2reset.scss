@@ -1,0 +1,61 @@
+body{
+	.title,
+	.component-content h2,
+	h3{
+		border:none;
+		@include text-shadow(none);
+		@include box-shadow(none);
+	}
+}
+
+#k2Container{
+
+}
+.component-content{
+	#k2Container{
+		h2{
+			border:none;
+		}
+		.itemListSubCategories{
+			h3{
+				display: none;
+			}
+			.subCategory{
+				height: auto !important;
+				background: none;
+				border:none;
+				margin: 0;
+				padding: 0;
+				h2{
+					font-size: 18px;
+					position: relative;
+					padding-left: 12px;
+					line-height: 22px;
+					&:before {
+						// color:#7AA03D;
+						color:#717767;
+					    content: "•";
+					    position: absolute;
+					    top: 0px;
+					    left: 0px;
+					}
+				}
+				.subCategoryMore{
+					display: none;
+				}
+			}
+		}
+		.itemListCategory{
+			background: none;
+			border:none;
+			margin: 0;
+			padding: 0;
+		}
+		.itemBodyContainer{
+			.itemImageBlock{
+				float: left;
+				margin: 0 10px 10px 0;
+			}
+		}
+	}
+}
