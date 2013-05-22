@@ -49,23 +49,18 @@ function UvelirParseRoute($segments)
     
 	// view is always the first element of the array
 	$count = count($segments);
-    
-    if ($count)
-	{
-		$count--;
-		$segment = array_pop($segments) ;
-		if (is_numeric($segment)) {
-			$vars['id'] = $segment;
-		}
-        else{
-            $count--;
-            $vars['task'] = array_pop($segments) . '.' . $segment;
+        if($count)
+        {
+            $uris = explode('/',$_SERVER["REQUEST_URI"]);
+            switch ($uris[1]) {
+                case 'atoll-g-novosibirsk':
+                    $vars['zavod'] = '2';
+                    break;
+                default:
+            }            
+            $segment = array_pop($segments) ;
+            $vars['alias'] = $segment;
+            $vars['view'] = 'product';
         }
-	}
-
-	if ($count)
-	{   
-        $vars['task'] = implode('.',$segments);
-	}
-	return $vars;
+    	return $vars;
 }

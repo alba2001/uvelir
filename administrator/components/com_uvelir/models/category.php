@@ -145,7 +145,7 @@ class UvelirModelCategory extends JModelAdmin
          * @param string $alias
          * @return int 
          */
-        private function _find_id($alias = FALSE)
+        private function _find_id($alias = FALSE, $field = 'id')
         {
             if(!$alias)
             {
@@ -154,12 +154,13 @@ class UvelirModelCategory extends JModelAdmin
             $table = $this->getTable('Category');
             if($table->load(array('alias'=>$alias)))
             {
-                return $table->id;
+                return $table->$field;
             }
             return 0;
         }
+        
         /**
-         * Находим ИД категрии по ее алиасу
+         * Находим ИД категрии по ее пути
          * @param string $alias
          * @return int 
          */
@@ -209,6 +210,14 @@ class UvelirModelCategory extends JModelAdmin
             
             // Готовим данные категории
             $category_alias = JApplication::stringURLSafe($category['name']);
+            
+            // Проверяем наличие этого алиаса на других уровнях
+            $othe_level = $this->_find_id($category_alias, 'level');
+            if($othe_level AND $othe_level != $category['level'])
+            {
+                // если находим, то изменяем алиас
+                $category_alias .= '_'.$category['level'];
+            }
             $category = array(
                 'name'=>  addslashes($category['name']),
                 'alias'=>$category_alias,

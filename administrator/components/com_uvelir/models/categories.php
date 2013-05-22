@@ -40,7 +40,9 @@ class UvelirModelCategories extends UvelirModelKModelList
         parent::__construct($config);
     }
     
-
+    protected function populateState($ordering = null, $direction = null) {
+        parent::populateState('lft', 'asc');
+    }
 	/**
 	 * Build an SQL query to load the list data.
 	 *
@@ -66,7 +68,6 @@ class UvelirModelCategories extends UvelirModelKModelList
                     $query->where('( a.name LIKE '.$search.' )');
                 }
             }
-            $query->order('lft');
             return $query;
         }
 }

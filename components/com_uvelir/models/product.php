@@ -33,15 +33,7 @@ class UvelirModelProduct extends JModel
             // Load the parameters.
             $params = $app->getParams();
             $params_array = $params->toArray();
-            if(isset($params_array['item_id'])){
-                $this->setState('product.id', $params_array['item_id']);
-            }
-            else
-            {
-                $item_id = JRequest::getInt('item_id',0);
-                $this->setState('product.id', $item_id);
-            }
-            
+            // Завод
             if(isset($params_array['zavod'])){
                 $this->setState('product.zavod', $params_array['zavod']);
             }
@@ -50,7 +42,26 @@ class UvelirModelProduct extends JModel
                 $zavod = JRequest::getInt('zavod',0);
                 $this->setState('product.zavod', $zavod);
             }
-//            var_dump($params_array);
+            // Продукт
+            $alias = JRequest::getString('alias','');
+            
+            if ($alias) // если есть артикул, то сразу загружаем продукт
+            {
+                $table = $this->getTable('Product_'.$zavod);
+                if($table->load(array('alias'=>$alias)))
+                {
+                   $this->setState('product.id', $table->id);
+                }
+            }
+            elseif(isset($params_array['item_id'])){
+                $this->setState('product.id', $params_array['item_id']);
+            }
+            else
+            {
+                $item_id = JRequest::getInt('item_id',0);
+                $this->setState('product.id', $item_id);
+            }
+            
             $this->setState('params', $params);
 
 	}
