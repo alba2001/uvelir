@@ -54,48 +54,53 @@ class UvelirTableCategory extends UvelirTableNtable {
                 
                 return FALSE;
             }
-            // Создаем пункт меню с этой категорией
-            $menu = $this->getTable('menu');
-            // Если еще не создан пункт меню - создаем, если создан - переписываем алиас и путь
-            $menu_parent_id = JFactory::getApplication()->getUserState('com_uvelir.menu_parent_id', 1);
-            // Nesteed tree
-            $menu->setLocation( $menu_parent_id, 'last-child' );
-            $component = JTable::getInstance('extension');
-            $component->load(array('name'=>'com_uvelir'));
-            $data = array(
-                        'id'=>$this->_find_menu_id($this->alias),
-                        'title'=>$this->name,
-                        'alias'=>$this->alias,
-                        'path'=>$this->path,
-                        'menutype' => 'com_uvelir',
-                        'link' => 'index.php?option=com_uvelir&view=category',
-                        'type' => 'component',
-                        'component_id' => $component->extension_id,
-                        'published' => '1',
-                        'parent_id' => $menu_parent_id,
-                        'level' => $this->level,
-                        'access' => '1',
-                        );
-            // Convert to the JObject before adding the params.
-            $properties = $menu->getProperties(1);
-            $result = JArrayHelper::toObject($properties, 'JObject');
-            // Convert the params field to an array.
-            $registry = new JRegistry;
-            $registry->loadString($menu->params);
-            $result->params = $registry->toArray();
-            $result->params = array_merge($result->params, array('item_id'=>$this->id));
-            $data['params'] = json_encode($result->params);
-            if(!$menu->save($data))
+            // Если это парсинг
+            if(isset($src['level']))
             {
-                JFactory::getApplication()
-                        ->enqueueMessage(JText::_('COM_UVELIR_ERROR_EDIT_MENU_RECORD'), 'error');
-                return FALSE;
+                
+                // Создаем пункт меню с этой категорией
+                $menu = $this->getTable('menu');
+                // Если еще не создан пункт меню - создаем, если создан - переписываем алиас и путь
+                $menu_parent_id = JFactory::getApplication()->getUserState('com_uvelir.menu_parent_id', 1);
+                // Nesteed tree
+                $menu->setLocation( $menu_parent_id, 'last-child' );
+                $component = JTable::getInstance('extension');
+                $component->load(array('name'=>'com_uvelir'));
+                $data = array(
+                            'id'=>$this->_find_menu_id($this->alias),
+                            'title'=>$this->name,
+                            'alias'=>$this->alias,
+                            'path'=>$this->path,
+                            'menutype' => 'com_uvelir',
+                            'link' => 'index.php?option=com_uvelir&view=category',
+                            'type' => 'component',
+                            'component_id' => $component->extension_id,
+                            'published' => '1',
+                            'parent_id' => $menu_parent_id,
+                            'level' => $this->level,
+                            'access' => '1',
+                            );
+                // Convert to the JObject before adding the params.
+                $properties = $menu->getProperties(1);
+                $result = JArrayHelper::toObject($properties, 'JObject');
+                // Convert the params field to an array.
+                $registry = new JRegistry;
+                $registry->loadString($menu->params);
+                $result->params = $registry->toArray();
+                $result->params = array_merge($result->params, array('item_id'=>$this->id));
+                $data['params'] = json_encode($result->params);
+                if(!$menu->save($data))
+                {
+                    JFactory::getApplication()
+                            ->enqueueMessage(JText::_('COM_UVELIR_ERROR_EDIT_MENU_RECORD'), 'error');
+                    return FALSE;
+                }
+    //            var_dump($data);exit;
+                // Обновляем путь, т.к. он подставляется не правильно
+                $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" , `level` =  "'.$src['level'].'" , `parent_id` =  "'.$menu_parent_id.'" WHERE  `id` ='.$menu->id;
+                $this->_db->setQuery($query);
+                $this->_db->query();
             }
-//            var_dump($data);exit;
-            // Обновляем путь, т.к. он подставляется не правильно
-            $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" , `level` =  "'.$src['level'].'" , `parent_id` =  "'.$menu_parent_id.'" WHERE  `id` ='.$menu->id;
-            $this->_db->setQuery($query);
-            $this->_db->query();
             return TRUE;
         }
         

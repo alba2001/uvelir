@@ -12,10 +12,9 @@ defined('_JEXEC') or die;
 
 //var_dump($this->children);
     $empty_img_src = JURI::base().'components/com_uvelir/assets/img/empty_64.png';
-    if(isset($this->item->desc))
+    if($this->item->img)
     {
-        $desc = json_decode($this->item->desc);
-        $img_src = isset($desc->img_small)?$desc->img_small:$empty_img_src;
+        $img_src = JURI::base().$this->item->img;
     }
     else
     {
@@ -28,7 +27,12 @@ defined('_JEXEC') or die;
         <img src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
         <?=$this->item->name?>
     </h1>
-
+    <?php if($this->item->note):?>
+        <h6><?=$this->item->note?></h6>
+    <?php endif;?>
+    <?php if($this->item->description):?>
+        <?=$this->item->description?>
+    <?php endif;?>
 <!--Список зависимых категорий-->
     <?php if($this->children):?>
         <div class="uvelir_subcategiries">
