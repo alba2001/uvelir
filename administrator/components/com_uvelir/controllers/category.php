@@ -6,8 +6,8 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controllerform');
  
 /**
- * User Controller
+ * Order Controller
  */
-class UvelirControllerUser extends JControllerForm
+class UvelirControllerCategory extends JControllerForm
 {
 }

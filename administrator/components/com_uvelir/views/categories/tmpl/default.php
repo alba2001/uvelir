@@ -97,7 +97,7 @@ foreach ($this->items as $i => $item) :
                         <?php if (isset($item->checked_out) && $item->checked_out) : ?>
                             <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'categories.', 1); ?>
                          <?php endif; ?>
-                        <a href="<?php echo JRoute::_('index.php?option=com_uvelir&task=company.edit&id=' . (int) $item->id); ?>">
+                        <a href="<?php echo JRoute::_('index.php?option=com_uvelir&task=category.edit&id=' . (int) $item->id); ?>">
                         <?php echo str_repeat('|-----', ($item->level-1)).$this->escape($item->name); ?></a>
                     </td>
                     <td>
