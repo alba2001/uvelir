@@ -5,16 +5,17 @@
 		type="text"
 		default="0"
 		label="JGLOBAL_FIELD_ID_LABEL"
-		description ="JGLOBAL_FIELD_ID_DESC"
 		class="readonly"
-		readonly="true"/>
+		readonly="true"
+        />
 
 	<field
 		name="parent_id"
-		type="categoryedit"
+		type="text"
 		label="COM_CATEGORIES_FIELD_PARENT_LABEL"
-		description="COM_CATEGORIES_FIELD_PARENT_DESC"
-		class="inputbox"/>
+		class="readonly"
+		readonly="true"
+        />
 
 	<field
 		name="path"
@@ -39,17 +40,24 @@
 		type="text"
 		label="JFIELD_ALIAS_LABEL"
 		description="JFIELD_ALIAS_DESC"
-		class="inputbox"
-		size="40"/>
+		class="readonly"
+		readonly="true"
+                />
 
 	<field
-		name="base_url"
+		name="source_url"
 		type="text"
-		label="COM_UVELIR_BASE_URL"
-		description="JFIELD_ALIAS_DESC"
-		class="inputbox"
-		size="40"/>
-
+		label="COM_UVELIR_SOURCE_URL"
+		description="JFIELD_SOURCE_URL_DESC"
+		class="readonly"
+		readonly="true"
+                />
+	<field
+		name="img"
+		type="media"
+                directory="stories"
+		label="COM_UVELIR_IMAG"
+                />
 	<field
 		name="note"
 		type="text"
