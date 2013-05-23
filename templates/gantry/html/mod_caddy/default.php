@@ -25,7 +25,7 @@ defined('_JEXEC') or die;
 	        <span id="mod_caddy_product_sum">
 	        	<?php echo $caddy_data['sum']?>
 	        </span>
-	        p.
+	        <span class="ruble">p</span>
 	    </div>
 	    <div class="count">
 	        <span id="mod_caddy_product_count">(<?php echo $caddy_data['count']?>)</span>

@@ -1,0 +1,83 @@
+// @mixins
+.ruble{
+	font-family: 'Ruble';
+}
+.pink-hover{
+	&:hover{
+		background-color: #9c184f;
+		@include border-top-radius(4px);
+		@include border-bottom-radius(4px);
+		@include menu-sprite(hover);
+		background-repeat: repeat-x;
+		a{
+			color: #FFF;
+		}
+	}
+}
+.bullet-menu{
+	li{
+		// display: inline;
+		display: block;
+		text-align: left;
+		position: relative;
+		margin: 0;
+		a{
+			// font-size: 11.03px;
+			content: none;
+			font-weight: normal;
+			&:before{
+				content: '';
+				margin-right: 17px;
+			}
+		}
+		&.parent:hover{
+			display: block;
+		}
+		&:before{
+			@include icons-sprite(bullet);
+			width: 4px;
+			height: 8px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			margin: 5px 0 0 1px;
+			content: '';
+		}
+		&.separator:before{
+			display:none;
+		}
+	}
+}
+.pink-btn{
+	@include filter-sprite(pink);
+	background-position: 0 -91px;
+	background-repeat: repeat-x;
+	position: relative;
+	&:after{
+		// @include filter-sprite(pink-satin);
+		// background-position: -80px 0;
+		// background-repeat: repeat-x;
+		// content: '#';
+		// display: block;
+		// // height: 40px;
+		// position: absolute;
+		// text-indent: -1000px;
+		// width: 100%;
+		// margin-left: -20px;
+	}
+	&:before{
+		@include filter-sprite(pink-satin);
+		background-position: -80px 0;
+		background-repeat: repeat-x;
+		content: '#';
+		display: block;
+		// height: 40px;
+		position: absolute;
+		text-indent: -1000px;
+		width: 100%;
+		top: 0;
+		left: 0;
+		z-index: 0;
+	}
+}
+// @mixins

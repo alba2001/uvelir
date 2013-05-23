@@ -1,0 +1,56 @@
+#mod_caddy_uvelir{
+	line-height: 40px;
+	font-size: 12px;
+	margin-left: 17px;
+	.inner{
+		@extend .pink-btn;
+		@include border-bottom-radius(5px);
+		border: 1px solid #d24188;
+		display: inline-block;
+		height: 40px;
+		overflow: hidden;
+		padding: 0 20px;
+		div{
+			display: block;
+			float: left;
+		}
+		.separator{
+			@include menu-sprite(separator);
+			display: inline-block;
+			height: 17px;
+			width: 3px;
+			margin: -3px 6px;
+		}
+		.cart{
+			.submit{
+				font-size: 11px;
+				color: #FFF;
+				border:none;
+				background: none;
+			}
+			span{
+				@include icons-sprite(cart);
+				display: inline-block;
+				height: 15px;
+				margin: -2px -3px;
+				width: 16px;
+			}
+		}
+		.sum{
+			color: #F6DF98;
+			margin-right: 7px;
+			.ruble{
+				font-size: 11px;
+			}
+		}
+		.count{
+			color: #ff94b4;
+		}
+		.cart,
+		.sum,
+		.count{
+			position: relative;
+			z-index: 10;
+		}
+	}
+}

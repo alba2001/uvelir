@@ -22,49 +22,54 @@ defined('_JEXEC') or die;
     }
 ?>
 <?php if( $this->item ) : ?>
-<!--Детали категории-->
-    <h1>
-        <img src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
-        <?=$this->item->name?>
-    </h1>
-    <?php if($this->item->note):?>
-        <h6><?=$this->item->note?></h6>
-    <?php endif;?>
-    <?php if($this->item->description):?>
-        <?=$this->item->description?>
-    <?php endif;?>
-<!--Список зависимых категорий-->
-    <?php if($this->children):?>
-        <div class="uvelir_subcategiries">
-            <ul>
-            <?php foreach ($this->children as $child):?>
-                <?php 
-                    if(isset($child->desc))
-                    {
-                        $desc = json_decode($child->desc);
-                        $img_src = isset($desc->img_small)?$desc->img_small:$empty_img_src;
-                    }
-                    else
-                    {
-                        $img_src = $empty_img_src;
-                    }
-                ?>
-                <li>
-                    <?php $href = JRoute::_('index.php?option=com_uvelir&alias='.$child->alias)?>
-                    <a href="<?=$href?>">
-                        <img src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
-                        <?=$child->name?>
-                    </a>
-                </li>
-            <?php endforeach;?>
-            </ul>
-        </div>
-    <?php endif;?>
+	<div class="category">
 
-<!--Список товаров категории-->
-<?php if($this->items):?>
-<?php echo $this->loadTemplate('products');?>
-<?php endif;?>
+		<!--Детали категории-->
+	    <h1>
+	        <img class="thumb" src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
+	        <?=$this->item->name?>
+	    </h1>
+	    <div class="description">
+		    <?php if($this->item->note):?>
+		        <h6><?=$this->item->note?></h6>
+		    <?php endif;?>
+		    <?php if($this->item->description):?>
+		        <?=$this->item->description?>
+		    <?php endif;?>
+	    </div>
 
+		<!--Список зависимых категорий-->
+	    <?php if($this->children):?>
+	        <div class="uvelir_subcategiries">
+	            <ul>
+	            <?php foreach ($this->children as $child):?>
+	                <?php
+	                    if(isset($child->desc))
+	                    {
+	                        $desc = json_decode($child->desc);
+	                        $img_src = isset($desc->img_small)?$desc->img_small:$empty_img_src;
+	                    }
+	                    else
+	                    {
+	                        $img_src = $empty_img_src;
+	                    }
+	                ?>
+	                <li>
+	                    <?php $href = JRoute::_('index.php?option=com_uvelir&alias='.$child->alias)?>
+	                    <a href="<?=$href?>">
+	                        <img src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
+	                        <?=$child->name?>
+	                    </a>
+	                </li>
+	            <?php endforeach;?>
+	            </ul>
+	        </div>
+	    <?php endif;?>
+
+		<!--Список товаров категории-->
+		<?php if($this->items):?>
+			<?php echo $this->loadTemplate('products');?>
+		<?php endif;?>
+	</div><!-- category -->
 <?php endif ?>
 
