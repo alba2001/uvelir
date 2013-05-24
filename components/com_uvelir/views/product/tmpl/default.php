@@ -9,28 +9,37 @@
 
 // no direct access
 defined('_JEXEC') or die;
+
+//$params = array('size'=>array('x'=>100, 'y'=>100));
+//
+//JHTML::_('behavior.modal', 'a.mymodal', $params);
+
+
 //var_dump($this->item);
 //echo '<hr/>';
 $desc = json_decode($this->item->desc);
-//var_dump($desc);
 //echo '<hr/>';
 //exit;
     // Обработка корзины
-    if(isset($this->caddy[$this->item->zavod.'_'.$this->item->id]))
+    if(isset($this->caddy[$this->item->id]))
     {
         $btn_del_style = $count_li_style = '';
-        $caddy_count = $this->caddy[$this->item->zavod.'_'.$this->item->id]['count'];
+        $caddy_count = $this->caddy[$this->item->id]['count'];
     }
     else
     {
         $caddy_count = 0;
         $btn_del_style = $count_li_style = 'style="display:none"';
     }
-
+    
 ?>
 <?php if( $this->item ) : ?>
     <div class="item_fields">
-        <img src="<?=$desc->img_large?>" alt="<?=$this->item->name?>"/>
+        <a class="fancybox"
+        href="<?=$desc->img_large?>"
+        rel="{handler: 'iframe'}">
+        <img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>
+        </a>
         <ul class="fields_list">
             
             <?php if(isset($this->item->artikul) AND $this->item->artikul):?>
@@ -104,7 +113,6 @@ $desc = json_decode($this->item->desc);
                                 option:     'com_uvelir',
                                 task:       'caddy.del',
                                 item_id:    '<?php echo $this->item->id?>',
-                                zavod:    '<?php echo $this->item->zavod?>',
                                 '<?php echo JUtility::getToken()?>':'1'
                             }
                        })"
@@ -116,7 +124,6 @@ $desc = json_decode($this->item->desc);
                                 option:     'com_uvelir',
                                 task:       'caddy.add',
                                 item_id:    '<?php echo $this->item->id?>',
-                                zavod:    '<?php echo $this->item->zavod?>',
                                 '<?php echo JUtility::getToken()?>':'1'
                             }
                        })"
@@ -124,3 +131,8 @@ $desc = json_decode($this->item->desc);
         
     </div>
 <?php endif ?>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>

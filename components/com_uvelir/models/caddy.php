@@ -47,14 +47,13 @@ class UvelirModelCaddy extends ModelKModelform
     public function add()
     {
         $item_id = JRequest::getInt('item_id');
-        $zavod = JRequest::getInt('zavod');
         
         // Проверк на наличие ИД завода и ИД товара
-        if(!($item_id AND $zavod))
+        if(!$item_id)
         {
             return array(0,  JText::_('COM_UVELIR_DATA_NOT_MATCH'));
         }
-        $product = $this->getTable('product_'.$zavod);
+        $product = $this->getTable('product');
         
         // Если товар не найден, возвращаем ошибку
         if(!$product->load($item_id))
@@ -64,15 +63,15 @@ class UvelirModelCaddy extends ModelKModelform
         $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
 //        unset($caddy);
         // Добавляем товар в корзину
-        if(!isset($caddy[$zavod.'_'.$product->id]))
+        if(!isset($caddy[$product->id]))
         {
-            $caddy[$zavod.'_'.$product->id]['count'] = 1;
-            $caddy[$zavod.'_'.$product->id]['sum'] = $product->cena_tut;
+            $caddy[$product->id]['count'] = 1;
+            $caddy[$product->id]['sum'] = $product->cena_tut;
         }
         else
         {
-            $caddy[$zavod.'_'.$product->id]['count']++;
-            $caddy[$zavod.'_'.$product->id]['sum'] += $product->cena_tut;
+            $caddy[$product->id]['count']++;
+            $caddy[$product->id]['sum'] += $product->cena_tut;
         }
         JFactory::getApplication()->setUserState('com_uvelir.caddy', $caddy);
 //        var_dump($_SESSION);
@@ -89,14 +88,13 @@ class UvelirModelCaddy extends ModelKModelform
     public function del()
     {
         $item_id = JRequest::getInt('item_id');
-        $zavod = JRequest::getInt('zavod');
         
         // Проверк на наличие ИД завода и ИД товара
-        if(!($item_id AND $zavod))
+        if(!$item_id)
         {
             return array(0,  JText::_('COM_UVELIR_DATA_NOT_MATCH'));
         }
-        $product = $this->getTable('product_'.$zavod);
+        $product = $this->getTable('product');
         
         // Если товар не найден, возвращаем ошибку
         if(!$product->load($item_id))
@@ -106,13 +104,13 @@ class UvelirModelCaddy extends ModelKModelform
         $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
 //        unset($caddy);
         // Удаляем товар из корзины
-        if(isset($caddy[$zavod.'_'.$product->id]))
+        if(isset($caddy[$product->id]))
         {
-            $caddy[$zavod.'_'.$product->id]['count']--;
-            $caddy[$zavod.'_'.$product->id]['sum'] -= $product->cena_tut;
-            if($caddy[$zavod.'_'.$product->id]['count'] < 1)
+            $caddy[$product->id]['count']--;
+            $caddy[$product->id]['sum'] -= $product->cena_tut;
+            if($caddy[$product->id]['count'] < 1)
             {
-                unset($caddy[$zavod.'_'.$product->id]);
+                unset($caddy[$product->id]);
             }
         }
         JFactory::getApplication()->setUserState('com_uvelir.caddy', $caddy);
@@ -164,23 +162,18 @@ class UvelirModelCaddy extends ModelKModelform
                 $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
             }
             $items = array();
-            foreach ($caddy as $key=>$value)
+            foreach ($caddy as $id=>$value)
             {
-                list($zavod_id, $id) = explode('_', $key);
-                $product = $this->getTable('product_'.$zavod_id);
-                $zavod_name = '';
-                $zavod = $this->getTable('zavod');
-                if($zavod->load($zavod_id))
-                {
-                    $zavod_name = $zavod->name;
-                }
+                $product = $this->getTable('product');
                 if($product->load($id))
                 {
+                    $zavod = $this->getTable('zavod');
+                    $zavod_name = $zavod->load($product->zavod_id)?$zavod->name:'';
                     $desc = json_decode($product->desc);
                     $item = array(
                         'id'=>$id,
                         'zavod_name'=>$zavod_name,
-                        'zavod_id'=>$zavod_id,
+                        'zavod_id'=>$product->zavod_id,
                         'artikul'=>$product->artikul,
                         'src'=>$desc->img_small,
                         'price'=>$product->cena_tut,
@@ -207,14 +200,13 @@ class UvelirModelCaddy extends ModelKModelform
         }
         
         $caddy = array();
-        foreach($counts as $key=>$count)
+        foreach($counts as $item_id=>$count)
         {
-            list($zavod, $item_id) = explode('_', $key);
-            $product = $this->getTable('product_'.$zavod);
+            $product = $this->getTable('product');
             if($product->load($item_id))
             {
-                $caddy[$zavod.'_'.$item_id]['count'] = $count;
-                $caddy[$zavod.'_'.$item_id]['sum'] = $product->cena_tut*$count;
+                $caddy[$item_id]['count'] = $count;
+                $caddy[$item_id]['sum'] = $product->cena_tut*$count;
             }
         }
         JFactory::getApplication()->setUserState('com_uvelir.caddy', $caddy);

@@ -126,10 +126,7 @@ class UvelirModelCategory extends JModelList
         public function getItems_()
         {
             $category_id = $this->_item->id;
-            $zavod = $this->_item->zavod;
-//            $zavod = $this->_item->zavod;
-//            $zavod = 2;
-            $table = $this->getTable('Product_'.$zavod);
+            $table = $this->getTable('Product');
             $data = array(
                 'category_id' => $category_id,
                 'state' => '1',
@@ -145,7 +142,6 @@ class UvelirModelCategory extends JModelList
      */
     protected function getListQuery() {
         
-        $zavod = JRequest::getInt('zavod',2);
         // Create a new query object.
         $db = $this->getDbo();
         $query = $db->getQuery(true);
@@ -155,7 +151,7 @@ class UvelirModelCategory extends JModelList
                 $this->getState('list.select', 'a.*')
         );
         
-        $query->from('`#__uvelir_products_'.$zavod.'` AS a');
+        $query->from('`#__uvelir_products` AS a');
         $query->where('`a`.`state` = 1');
         $query->where('`a`.`category_id` = '.$this->_item->id);
 

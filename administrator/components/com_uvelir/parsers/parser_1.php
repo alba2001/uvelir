@@ -11,13 +11,15 @@
 defined('_JEXEC') or die;
 
 include_once('simple_html_dom.php');
+require_once JPATH_ADMINISTRATOR.'/components/com_uvelir/models/category.php'; 
+require_once JPATH_ADMINISTRATOR.'/components/com_uvelir/models/product.php'; 
+
 /**
  * zavod parser class.
  * Ювелиры Урала
  */
 class UvelirParseZavod_1
 {
-    private $_table_name = 'product_1';
 
     /**
      * Парсинг главной страницы
@@ -41,6 +43,41 @@ class UvelirParseZavod_1
         {
             $data['product_name'] = $name;
         }
+        
+        /**
+         *  Создаем категорию
+         */
+        $category_data = JFactory::getApplication()->getUserState('com_uvelir.category_data', array());
+        $category_model = new UvelirModelCategory;
+        $category_save_data = array(
+            'name'=>  $name,
+            'parent_path'=>$category_data['path'][0],
+            'parent_id'=>$category_data['parent_id'][0],
+            'level'=>'2',
+            'zavod'=>'1',
+        );
+        
+        // Сохраняем категорию
+        list($result, $category_created) = $category_model->create_category($category_save_data);
+        if(!$result)
+        {
+            // Не смогли сохранить категорию
+            return array(0,  $category_created);
+        }
+        $category_data['name'] = $category_created['name'];
+        $category_data['alias'] = $category_created['alias'];
+//        array_unshift($category_data['path'], $category_created['path']);
+//        array_unshift($category_data['parent_id'], $category_created['id']);
+        $category_data['level'] = $category_created['level'];
+        JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
+        
+        // Подготавливаем данные о категории для таблицы товаров
+        $data['category'] = array(
+            'category_id' => $category_created['id'],
+            'path' => $category_created['path'],
+        );
+        // END -Создаем категорию
+        
         // Открываем главную страницу и перебираем все ссылки
         $html = file_get_html($link);
         foreach($html->find('a') as $home_page_link) 
@@ -55,7 +92,14 @@ class UvelirParseZavod_1
                 JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
             }
         }
-        return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$sub_link); // Продолжаем парсинг
+        
+        
+//var_dump($data);echo 'main_page <hr>';
+
+
+        // Возвращаем результат
+        $link = isset($data['link'][0])?$data['link'][0]:'';
+        return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link); // Продолжаем парсинг
     }
     
 
@@ -83,6 +127,10 @@ class UvelirParseZavod_1
             // Если не находим страницу, то продолжаем поиск уже со следующей категории
             array_shift($data['func']);
             JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+            
+//var_dump($data);echo 'get_page 2 <hr>';
+
+
             $link = isset($data['link'][0])?$data['link'][0]:'';
             return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link); // Продолжаем парсинг
         }
@@ -121,10 +169,12 @@ class UvelirParseZavod_1
         }
         $data['items'] = $data_items;    
         // Вычисляем следующую страницу
+        $data['last_page'] = TRUE; // Для вычисления последней страницы
         foreach($html->find('a') as $sub_link) 
         {
             if(preg_match("/^&rarr;$/", $sub_link->innertext))
             {
+                $data['last_page'] = FALSE;
                 // Ссылка на следующую страницу
                 $next_link = str_replace('&amp;', '&', $base_link.$sub_link->href);
                 array_unshift($data['link'],$next_link);
@@ -135,6 +185,9 @@ class UvelirParseZavod_1
         array_unshift($data['func'],'parse_item');
         // Продолжаем парсить уже карточку товара
         JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+        
+//var_dump($data);echo 'get_page 1 <hr>';
+        
         $link = isset($data['link'][0])?$data['link'][0]:'';
         return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link); // Продолжаем парсинг
     }
@@ -155,10 +208,21 @@ class UvelirParseZavod_1
         $data_item = array_shift($data['items']); // Ссылка на главную страницу
         
         if(!$data_item)
+//        if(TRUE)
         {
             // Если не находим 'страницу'элемент в массиве $data['items'], то продолжаем поиск уже со следующей страницы категории
             array_shift($data['func']);
+            array_shift($data['link']);
+            // Если это последняя страница, то переходим на главную страницу
+            if($data['last_page'])
+            {
+                $data['last_page'] = FALSE;
+                array_shift($data['func']);
+            }
             JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+
+//var_dump($data);echo 'parse_item 2 <hr>';
+            
             $link = isset($data['link'][0])?$data['link'][0]:'';
             return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link);
         }
@@ -167,15 +231,19 @@ class UvelirParseZavod_1
         $item_link = $data_item['desc']['item_link'];
         // Если ссылка на товар в данных товара и текущая ссылка совпадают
         // то очищаем текущую ссылку
-        if($item_link == $data['link'][0])
-        {
+//        if($item_link == $data['link'][0])
+//        {
             array_shift($data['link']);
-        }
+//        }
         // Если присутствует ссылка на сдедующий товар в данных товара
         // то устанавливаем ее в качестве текущей ссылки
         if(isset($data['items'][0]['item_link']))
         {
             array_unshift($data['link'],$data['items'][0]['item_link']);
+        }
+        else
+        {
+            array_unshift($data['link'],'End Items');
         }
         $html = file_get_html($item_link);
 
@@ -184,14 +252,14 @@ class UvelirParseZavod_1
         $item = $items[0];
 
         // Ссылка на рисунок товара
-        $img_links = $item->find('a');
-        foreach ($img_links as $img_link)
-        {
-            if (preg_match("/src=/", $img_link->innertext))
-            {
-                $data_item['desc']['img_large'] = $img_link->href;
-            }
-        }
+//        $img_links = $item->find('a');
+//        foreach ($img_links as $img_link)
+//        {
+//            if (preg_match("/src=/", $img_link->innertext))
+//            {
+//                $data_item['desc']['img_large'] = $img_link->href;
+//            }
+//        }
 
         // Ссылка на тизер рисунка в карточке товара
         $teaser_links = $item->find('img');
@@ -200,11 +268,17 @@ class UvelirParseZavod_1
             if (preg_match("/medium/", $teaser_link->src))
             {
                 $data_item['desc']['img_medium'] = $teaser_link->src;
+                $data_item['desc']['img_large'] = str_replace('medium', 'large', $teaser_link->src);
             }
         }
 
         // Детали товара
         $details = $item->find('p');
+        $data_item['material'] = '';
+        $data_item['proba'] = '';
+        $data_item['average_weight'] = '';
+        $data_item['vstavki'] = '';
+        
         foreach ($details as $detail)
         {
             if (preg_match("/Шифр/", $detail->innertext))
@@ -241,17 +315,23 @@ class UvelirParseZavod_1
         // Вставляем запись
         $img_small = $data_item['desc']['img_small'];
         $data_item['desc'] = json_encode($data_item['desc']);
-        $data_item['name'] = $data['product_name'];
-        $table = $this->getTable('product');
-        $table->save($data_item);
+        
+        $data_item['name'] = $data_item['artikul'];
+        $data_item['alias'] = JApplication::stringURLSafe($data_item['name']);
+        $data_item['category_id'] = $data['category']['category_id'];
+        $data_item['zavod_id'] = '1';
+        
+        $product_model = new UvelirModelProduct;
+        $save_item = $product_model->save_product($data_item);
         
         $msg = '';
         if(isset($data['items'][0]['desc']['img_small']))
         {
             $msg .= '<img src="'.$img_small.'" style="float:left;">';
         }
+        $color = $save_item?'green':'red';
         $msg .= '
-            <table>
+            <table style="color:'.$color.'">
                 <tr>
                     <th>Артикул</th>
                     <td>'.$data_item['artikul'].'</td>
@@ -274,28 +354,14 @@ class UvelirParseZavod_1
                 </tr>
             </table>
             ';
-        
         JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+        
+//var_dump($data);echo 'parse_item 1 <hr>';
+
+
         $link = isset($data['link'][0])?$data['link'][0]:'';
         return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link.'<hr/>'.$msg);
     }
-     /**
-	 * Returns a reference to the a Table object, always creating it.
-	 *
-	 * @param	type	The table type to instantiate
-	 * @param	string	A prefix for the table class name. Optional.
-	 * @param	array	Configuration array for model. Optional.
-	 * @return	JTable	A database object
-	 * @since	1.6
-	 */
-	public function getTable($type = NULL, $prefix = 'UvelirTable', $config = array()) 
-	{
-            if(!isset($type))
-            {
-                $type = $this->_table_name;
-            }
-            return JTable::getInstance($type, $prefix, $config);
-	}
-   
+  
 }
 

@@ -24,7 +24,7 @@ defined('_JEXEC') or die;
             </tr>
         </thead>
         <?php foreach($this->items as $item):?>
-            <?php $id = $item['zavod_id'].'_'.$item['id']?>
+            <?php $id = $item['id']?>
             <tr>
                 <td><img src="<?=$item['src']?>" alt="<?=$item['artikul']?>"> <?=$item['zavod_name']?></td>
                 <td><?=$item['artikul']?></td>

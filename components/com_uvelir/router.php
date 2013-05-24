@@ -51,13 +51,28 @@ function UvelirParseRoute($segments)
 	$count = count($segments);
         if($count)
         {
-            $uris = explode('/',$_SERVER["REQUEST_URI"]);
-            switch ($uris[1]) {
-                case 'atoll-g-novosibirsk':
-                    $vars['zavod'] = '2';
-                    break;
-                default:
-            }            
+//            $uris = explode('/',$_SERVER["REQUEST_URI"]);
+//            switch ($uris[1]) {
+//                case 'yuveliry-urala':
+//                    $vars['zavod'] = '1';
+//                    break;
+//                case 'atoll-g-novosibirsk':
+//                    $vars['zavod'] = '2';
+//                    break;
+//                default:
+//            }    
+            $zavods = array(
+                '1'=>'yuveliry-urala',
+                '2'=>'atoll-g-novosibirsk',
+            );
+            foreach ($zavods as $key=>$value)
+            {
+                if(preg_match("/$value/", $_SERVER["REQUEST_URI"], $regs))
+                {
+                    $vars['zavod'] = $key;
+                }
+            }
+
             $segment = array_pop($segments) ;
             $vars['alias'] = $segment;
             $vars['view'] = 'product';

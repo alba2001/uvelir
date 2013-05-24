@@ -12,6 +12,8 @@ defined('_JEXEC') or die;
 
 include_once('simple_html_dom.php');
 require_once JPATH_ADMINISTRATOR.'/components/com_uvelir/models/category.php'; 
+require_once JPATH_ADMINISTRATOR.'/components/com_uvelir/models/product.php'; 
+
 /**
  * zavod parser class.
  * Ювелиры Урала
@@ -103,6 +105,8 @@ class UvelirParseZavod_2
         array_unshift($category_data['parent_id'], $category_created['id']);
         $category_data['level'] = $category_created['level'];
         JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
+        
+        
         // Возвращаем результат
         $msg = $datas[0]['name'];
         return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$sub_link.'<hr/>'.$msg); // Продолжаем парсинг
@@ -224,7 +228,7 @@ class UvelirParseZavod_2
         
         $next_page_link = '';
         $div_pagination = $div->find('div[class=pagination]');
-        $next = $prev = FALSE;
+        $next = $prev = FALSE; // Для вычисления последней страницы
         if($div_pagination)
         {
             $hrefs = $div_pagination[0]->find('a');
@@ -337,6 +341,7 @@ class UvelirParseZavod_2
         // Ссылка на рисунок товара
         $imgs = $item->find('img');
         $img = $imgs[0];
+        $data_item['desc']['img_medium'] = $base_link.$img->src;
         $data_item['desc']['img_large'] = $base_link.$img->src;
         
         // Описание товара
@@ -376,29 +381,19 @@ class UvelirParseZavod_2
         $data_item['path'] = $category_data['path'][0].'/'.$data_item['alias'];
         // Ищем родительскую категорию
         $category_model = new UvelirModelCategory;
-        $data_item['category_id'] = $category_model->find_parent_id($category_data['path'][0]);
+        $data_item['category_id'] = $category_model->find_parent_id($category_data['path'][0], '2');
         
-        // ищем родителя пункта меню
-        $menu_parent_id = $category_model->menu_find_parent_id($category_data['path'][0]); 
-        
-        JFactory::getApplication()->setUserState('com_uvelir.menu_parent_id', $menu_parent_id);
-        // Уровень пункта меню
-        $data_item['level'] = '4';
+        $data_item['zavod_id'] = '2';
         
         // Вставляем запись
-        $table = $this->getTable('product_2');
-        if($table->load(array('artikul'=>$data_item['artikul'])))
-        {
-            $data_item['id'] = $table->id;
-//            var_dump($data_item);exit;
-        }
-        $save_item = $table->save($data_item);
+        $product_model = new UvelirModelProduct;
+        $save_item = $product_model->save_product($data_item);
+        
         $msg = '';
         if(isset($data['items'][0]['desc']['img_small']))
         {
             $msg .= '<img src="'.$img_small.'" style="float:left;">';
         }
-//        var_dump($img_small);
         $color = $save_item?'green':'red';
         $msg .= '
             <table style="color:'.$color.'">

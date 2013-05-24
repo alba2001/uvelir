@@ -14,7 +14,7 @@ require_once dirname(__FILE__) . '/ktable.php';
 /**
  * product Table class
  */
-class UvelirTableProduct_2 extends UvelirTableKtable {
+class UvelirTableProduct extends UvelirTableKtable {
 
     protected $asset_name;
 
@@ -24,9 +24,8 @@ class UvelirTableProduct_2 extends UvelirTableKtable {
      * @param JDatabase A database connector object
      */
     public function __construct(&$db) {
-
-        $this->asset_name = 'product_2';
-        parent::__construct('#__uvelir_products_2', 'id', $db);
+        $this->asset_name = 'product';
+        parent::__construct('#__uvelir_products', 'id', $db);
         
     }
 }

@@ -59,7 +59,7 @@ class UvelirTableCategory extends UvelirTableNtable {
             {
                 
                 // Создаем пункт меню с этой категорией
-                $menu = $this->getTable('menu');
+                $menu = &$this->getTable('menu');
                 // Если еще не создан пункт меню - создаем, если создан - переписываем алиас и путь
                 $menu_parent_id = JFactory::getApplication()->getUserState('com_uvelir.menu_parent_id', 1);
                 // Nesteed tree
@@ -67,7 +67,7 @@ class UvelirTableCategory extends UvelirTableNtable {
                 $component = JTable::getInstance('extension');
                 $component->load(array('name'=>'com_uvelir'));
                 $data = array(
-                            'id'=>$this->_find_menu_id($this->alias),
+                            'id'=>$this->_find_menu_id($this->path),
                             'title'=>$this->name,
                             'alias'=>$this->alias,
                             'path'=>$this->path,
@@ -95,11 +95,15 @@ class UvelirTableCategory extends UvelirTableNtable {
                             ->enqueueMessage(JText::_('COM_UVELIR_ERROR_EDIT_MENU_RECORD'), 'error');
                     return FALSE;
                 }
+//            var_dump($data);
+//            echo '<hr>';
+//            var_dump($menu);
+                
     //            var_dump($data);exit;
                 // Обновляем путь, т.к. он подставляется не правильно
-                $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" , `level` =  "'.$src['level'].'" , `parent_id` =  "'.$menu_parent_id.'" WHERE  `id` ='.$menu->id;
-                $this->_db->setQuery($query);
-                $this->_db->query();
+//                $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" , `level` =  "'.$src['level'].'" , `parent_id` =  "'.$menu_parent_id.'" WHERE  `id` ='.$menu->id;
+//                $this->_db->setQuery($query);
+//                $this->_db->query();
             }
             return TRUE;
         }
@@ -109,10 +113,10 @@ class UvelirTableCategory extends UvelirTableNtable {
          * @param string $alias
          * @return int 
          */
-        private function _find_menu_id($alias)
+        private function _find_menu_id($path)
         {
             $menu = $this->getTable('menu');
-            if($menu->load(array('alias'=> $alias)))
+            if($menu->load(array('path'=> $path)))
             {
                 return $menu->id;
             }

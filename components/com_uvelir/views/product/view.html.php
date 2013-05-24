@@ -49,6 +49,8 @@ class UvelirViewProduct extends JView {
 	{
                 $doc = JFactory::getDocument();
 		$doc->setTitle($this->item->name);
+                $doc->addStyleSheet(JURI::root()."components/com_uvelir/assets/jquery.fancybox.css");
+                $doc->addScript(JURI::root()."components/com_uvelir/assets/js/jquery.fancybox.js");
                 $doc->addScript(JURI::root()."components/com_uvelir/assets/js/caddy.js");
 	}
    

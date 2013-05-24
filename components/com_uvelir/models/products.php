@@ -73,8 +73,9 @@ class UvelirModelProducts extends JModelList {
                 $this->getState('list.select', 'a.*')
         );
         
-        $query->from('`#__uvelir_products_'.$zavod.'` AS a');
+        $query->from('`#__uvelir_products` AS a');
         $query->where('`a`.`state` = 1');
+        $query->where('`a`.`zavid_id` = '.$zavod);
 
         // Filter by search in title
         $search = $this->getState('filter.search');
@@ -83,8 +84,8 @@ class UvelirModelProducts extends JModelList {
                         $query->where('a.id = '.(int) substr($search, 3));
                 } else {
                         $search = $db->Quote('%'.$db->escape($search, true).'%');
-        $query->where('( a.name LIKE '.$search.' )');
-                }
+            $query->where('( a.name LIKE '.$search.' )');
+                    }
         }
         
         return $query;

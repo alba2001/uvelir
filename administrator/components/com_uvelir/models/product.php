@@ -84,4 +84,11 @@ class UvelirModelProduct extends JModelAdmin
 		return $data;
 	}
 
+        public function save_product($data)
+        {
+            $table = $this->getTable('Product');
+            $table->load(array('alias'=>$data['alias']));
+            return $table->save($data);
+        }
+        
 }

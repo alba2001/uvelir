@@ -128,9 +128,13 @@ class UvelirModelCategory extends JModelAdmin
             
             if(!isset($data['id']) AND isset($data['alias']))
             {
-                $data['id'] = $this->_find_id($data['alias']);
+                $data['id'] = $this->_find_id($data['alias'],'id',$data['zavod']);
             }
-            $table = $this->getTable('Category');
+            if($data['id'])
+            {
+                return $data['id'];
+            }
+            $table = &$this->getTable('Category');
             $parent_id = $data['parent_id'];
             $table->setLocation( $parent_id, 'last-child' );            
             if(!$table->save($data))
@@ -145,14 +149,24 @@ class UvelirModelCategory extends JModelAdmin
          * @param string $alias
          * @return int 
          */
-        private function _find_id($alias = FALSE, $field = 'id')
+        private function _find_id($alias = FALSE, $field = 'id', $zavod = 0)
         {
             if(!$alias)
             {
                 return 0;
             }
             $table = $this->getTable('Category');
-            if($table->load(array('alias'=>$alias)))
+            $keys = array('alias'=>$alias);
+            if($zavod)
+            {
+                $keys['zavod'] = $zavod;
+            }
+            
+//            var_dump($keys);
+//            echo '<hr>';
+//            var_dump($table->load($keys));
+       
+            if($table->load($keys))
             {
                 return $table->$field;
             }
@@ -164,14 +178,14 @@ class UvelirModelCategory extends JModelAdmin
          * @param string $alias
          * @return int 
          */
-        public function find_parent_id($path = FALSE)
+        public function find_parent_id($path = FALSE, $zavod )
         {
-            if(!$path)
+            if(!$path OR !$zavod)
             {
                 return 1;
             }
             $table = $this->getTable('Category');
-            if($table->load(array('path'=>$path)))
+            if($table->load(array('path'=>$path, 'zavod'=>$zavod)))
             {
                 return $table->id;
             }
@@ -212,7 +226,7 @@ class UvelirModelCategory extends JModelAdmin
             $category_alias = JApplication::stringURLSafe($category['name']);
             
             // Проверяем наличие этого алиаса на других уровнях
-            $othe_level = $this->_find_id($category_alias, 'level');
+            $othe_level = $this->_find_id($category_alias, 'level', $category['zavod']);
             if($othe_level AND $othe_level != $category['level'])
             {
                 // если находим, то изменяем алиас

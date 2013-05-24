@@ -25,7 +25,7 @@ defined('_JEXEC') or die;
 <div class="items">
         <?php foreach ($this->items as $item) : ?>
         <?php 
-            $href = JRoute::_('index.php?option=com_uvelir&alias='.$item->alias);
+            $href = JRoute::_('index.php?option=com_uvelir&alias='.$item->id);
             $desc = json_decode($item->desc);
             $src = $desc->img_small;
             // Обработка корзины

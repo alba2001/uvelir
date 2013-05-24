@@ -44,14 +44,15 @@ class UvelirModelProduct extends JModel
             }
             // Продукт
             $alias = JRequest::getString('alias','');
-            
+
             if ($alias) // если есть артикул, то сразу загружаем продукт
             {
-                $table = $this->getTable('Product_'.$zavod);
-                if($table->load(array('alias'=>$alias)))
-                {
-                   $this->setState('product.id', $table->id);
-                }
+//                $table = $this->getTable('Product_'.$zavod);
+//                if($table->load(array('alias'=>$alias)))
+//                {
+                   $this->setState('product.id', $alias);
+//                   $this->setState('product.id', $table->id);
+//                }
             }
             elseif(isset($params_array['item_id'])){
                 $this->setState('product.id', $params_array['item_id']);
@@ -76,7 +77,6 @@ class UvelirModelProduct extends JModel
 	 */
 	public function &getItem($id = null)
 	{
-            $zavod = $this->getState('product.zavod');
 		if ($this->_item === null)
 		{
 			$this->_item = false;
@@ -86,7 +86,7 @@ class UvelirModelProduct extends JModel
 			}
 
 			// Get a level row instance.
-			$table = $this->getTable('Product_'.$zavod);
+			$table = $this->getTable('Product');
 
 			// Attempt to load the row.
 			if ($table->load($id))
@@ -106,7 +106,6 @@ class UvelirModelProduct extends JModel
 				$this->setError($error);
 			}
 		}
-                $this->_item->zavod = $zavod;
                 
 		return $this->_item;
 	}
