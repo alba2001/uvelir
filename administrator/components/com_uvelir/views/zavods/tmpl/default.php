@@ -202,12 +202,27 @@ $error_msg = ''.
         {
             return false;
         }
+        if(action[1] == 'parse_continue')
+        {
+            return false;
+        }
         Joomla.submitform(task);
     };
     jQuery(document).ready(function($){
         $('#toolbar-parse').click(function(e){
             $('#task').val('zavod.parse');
             parse(1);
+        });
+    });
+
+    jQuery(document).ready(function($){
+        $('#toolbar-parse_continue').click(function(e){
+            $('#task').val('zavod.parse');
+            var form = $('#adminForm');
+            var div_txt = $('#show_process');
+            $(form).hide('slow');
+            $(div_txt).show('slow');
+            parse(0);
         });
     });
 

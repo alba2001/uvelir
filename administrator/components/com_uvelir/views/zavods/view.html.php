@@ -77,6 +77,7 @@ class UvelirViewZavods extends JView
             }
             JToolBarHelper::divider();
             JToolBarHelper::custom( 'zavod.parse', 'parse', '', 'PARSE', TRUE, false );
+            JToolBarHelper::custom( 'zavod.parse_continue', 'parse_continue', '', 'PARSE_CONTINUE', TRUE, false );
 
             if ($canDo->get('core.edit.state')) 
             {
