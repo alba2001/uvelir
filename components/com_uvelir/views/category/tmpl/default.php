@@ -63,7 +63,8 @@ defined('_JEXEC') or die;
 
 <!--Список товаров категории-->
 <?php if($this->items):?>
-<?php echo $this->loadTemplate('products');?>
+<?php //echo $this->loadTemplate('products');?>
+<?php require_once JPATH_COMPONENT.DS.'views'.DS.'products'.DS.'tmpl'.DS.'default_products.php';  ?>
 <?php endif;?>
 
 <?php endif ?>

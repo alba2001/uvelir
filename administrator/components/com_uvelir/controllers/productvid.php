@@ -13,21 +13,14 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.controllerform');
 
 /**
- * Company controller class.
+ * productvid controller class.
  */
-class UvelirControllerProduct extends JControllerForm
+class UvelirControllerProductvid extends JControllerForm
 {
 
     function __construct() {
-        $this->view_list = 'products';
+        $this->view_list = 'productvids';
         parent::__construct();
     }
     
-    /**
-     * Заглушка родительского метода
-     * @return boolean 
-     */
-    protected function checkEditId() {
-        return TRUE;
-    }
 }

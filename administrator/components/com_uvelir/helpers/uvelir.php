@@ -45,6 +45,11 @@ class UvelirHelper
 			'index.php?option=com_uvelir&view=orders',
 			$vName == 'orders'
 		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_UVELIR_PRODUCTVID'),
+			'index.php?option=com_uvelir&view=productvids',
+			$vName == 'productvids'
+		);
 
 	}
 

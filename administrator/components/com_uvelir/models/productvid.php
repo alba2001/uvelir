@@ -15,7 +15,7 @@ jimport('joomla.application.component.modeladmin');
 /**
  * Uvelir model.
  */
-class UvelirModelProduct extends JModelAdmin
+class UvelirModelProductvid extends JModelAdmin
 {
 	/**
 	 * @var		string	The prefix to use with controller messages.
@@ -33,13 +33,9 @@ class UvelirModelProduct extends JModelAdmin
 	 * @return	JTable	A database object
 	 * @since	1.6
 	 */
-	public function getTable($type = '', $prefix = 'UvelirTable', $config = array())
+	public function getTable($type = 'Productvid', $prefix = 'UvelirTable', $config = array())
 	{
-            if(!$type)
-            {
-                $type = 'Product';
-            }
-            return JTable::getInstance($type, $prefix, $config);
+		return JTable::getInstance($type, $prefix, $config);
 	}
 
 	/**
@@ -52,16 +48,14 @@ class UvelirModelProduct extends JModelAdmin
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
-		// Initialise variables.
-		$app	= JFactory::getApplication();
 
-		// Get the form.
-		$form = $this->loadForm('com_uvelir.product', 'product', array('control' => 'jform', 'load_data' => $loadData));
-		if (empty($form)) {
-			return false;
-		}
+            // Get the form.
+            $form = $this->loadForm('com_uvelir.productvid', 'productvid', array('control' => 'jform', 'load_data' => $loadData));
+            if (empty($form)) {
+                    return false;
+            }
 
-		return $form;
+            return $form;
 	}
 
 	/**
@@ -73,21 +67,33 @@ class UvelirModelProduct extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_uvelir.edit.product.data', array());
+		$data = JFactory::getApplication()->getUserState('com_uvelir.edit.productvid.data', array());
 
-		if (empty($data)) {
+		if (empty($data)) 
+                {
 			$data = $this->getItem();
-            
 		}
 
 		return $data;
 	}
 
-        public function save_product($data)
-        {
-            $table = $this->getTable('Product');
-            $table->load(array('alias'=>$data['alias']));
-            return $table->save($data);
-        }
-        
+	/**
+	 * Method to get a single record.
+	 *
+	 * @param	integer	The id of the primary key.
+	 *
+	 * @return	mixed	Object on success, false on failure.
+	 * @since	1.6
+	 */
+	public function getItem($pk = null)
+	{
+		if ($item = parent::getItem($pk)) {
+
+			//Do any procesing on fields here if needed
+
+		}
+
+		return $item;
+	}
+
 }

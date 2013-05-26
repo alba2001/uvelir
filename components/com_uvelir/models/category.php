@@ -119,21 +119,6 @@ class UvelirModelCategory extends JModelList
             return $children;
         }
  
-        /**
-         * Находим список товаров категорий
-         * @return object list 
-         */
-        public function getItems_()
-        {
-            $category_id = $this->_item->id;
-            $table = $this->getTable('Product');
-            $data = array(
-                'category_id' => $category_id,
-                'state' => '1',
-            );
-            $items = $table->get_rows($data);
-            return $items;
-        }
      /**
      * Build an SQL query to load the list data.
      *

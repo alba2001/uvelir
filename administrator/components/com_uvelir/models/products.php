@@ -75,7 +75,8 @@ class UvelirModelProducts extends UvelirModelKModelList
 	{
             $query = parent::getListQuery();
             $zavod = $this->getState('filter.zavod', '2');
-            $query->from('`#__uvelir_products_'.$zavod.'` AS a');
+            $query->from('`#__uvelir_products` AS a');
+            $query->where('zavod_id = '.$zavod);
 
             // Filter by search in title
             $search = $this->getState('filter.search');

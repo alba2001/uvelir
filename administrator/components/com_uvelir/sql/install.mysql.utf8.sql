@@ -59,12 +59,16 @@ CREATE TABLE IF NOT EXISTS `#__uvelir_products` (
 `average_weight` DECIMAL(10,2)  NOT NULL ,
 `vstavki` VARCHAR(255)  NOT NULL ,
 `opisanije` VARCHAR(255)  NOT NULL ,
+`razmer` VARCHAR(255)  NOT NULL ,
 `cena_mag` DECIMAL(15,2)  NOT NULL ,
 `cena_tut` DECIMAL(15,2)  NOT NULL ,
 `ordering` INT(11)  NOT NULL ,
 `state` TINYINT(1)  NOT NULL DEFAULT '1',
 `checked_out` INT(11)  NOT NULL ,
 `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+`spets_predl` TINYINT(1)  NOT NULL DEFAULT '0',
+`novinka_dt` DATE NOT NULL DEFAULT '0000-00-00',
+`created_dt` DATE NOT NULL DEFAULT '0000-00-00',
 `created_by` INT(11)  NOT NULL ,
 KEY `category_id` (`category_id`),
 KEY `zavod_id` (`zavod_id`),
@@ -101,6 +105,34 @@ KEY `idx_left_right` (`lft`,`rgt`),
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
 INSERT INTO `#__uvelir_categories` SET parent_id = 0, lft = 0, rgt = 1, level = 0, title = 'root', alias = 'root', access = 1, path = '';
+
+DROP TABLE IF EXISTS `#__uvelir_productvids`;
+CREATE TABLE IF NOT EXISTS `#__uvelir_productvids` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`title` VARCHAR(255)  NOT NULL ,
+`alias` VARCHAR(255)  NOT NULL ,
+`sizes` VARCHAR(255)  NOT NULL ,
+`state` TINYINT(1)  NOT NULL DEFAULT '1',
+`checked_out` INT(11)  NOT NULL ,
+`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+`created_by` INT(11)  NOT NULL ,
+KEY `alias` (`alias`),
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+INSERT INTO `#__uvelir_productvids` (`id`, `title`, `alias`, `sizes`, `state`, `checked_out`, `checked_out_time`, `created_by`) VALUES
+(1, 'Кольца', 'koltsa', '10:20', 1, 0, '0000-00-00 00:00:00', 386),
+(2, 'Серьги', 'sergi', '', 1, 0, '0000-00-00 00:00:00', 386),
+(3, 'Броши', 'broshi', '', 1, 0, '0000-00-00 00:00:00', 386),
+(4, 'Подвеска', 'podveska', '', 1, 0, '0000-00-00 00:00:00', 386),
+(5, 'Браслеты', 'braslety', '', 1, 0, '0000-00-00 00:00:00', 386),
+(6, 'Колье', 'kole', '', 1, 0, '0000-00-00 00:00:00', 386),
+(7, 'Цепи', 'tsepi', '', 1, 0, '0000-00-00 00:00:00', 386),
+(8, 'Сувениры', 'suveniry', '', 1, 0, '0000-00-00 00:00:00', 386),
+(9, 'Иконы', 'ikony', '', 1, 0, '0000-00-00 00:00:00', 386),
+(10, 'Пирсинг', 'pirsing', '', 1, 0, '0000-00-00 00:00:00', 386);
+
+
 
 DROP TABLE IF EXISTS `#__uvelir_zavods`;
 CREATE TABLE IF NOT EXISTS `#__uvelir_zavods` (

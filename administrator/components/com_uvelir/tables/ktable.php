@@ -17,6 +17,11 @@ class UvelirTableKtable extends JTable {
 
 
     protected $asset_name = '';
+    protected $_check_fields = array();
+    protected $_date_fields = array();
+    protected $_array_fields = array();
+    protected $_phone_fields = array();
+    
     /**
      * Overloaded bind function to pre-process the params.
      *
@@ -66,10 +71,83 @@ class UvelirTableKtable extends JTable {
         if (property_exists($this, 'ordering') && $this->id == 0) {
             $this->ordering = self::getNextOrder();
         }
+            // Конвертируем номер телефона
+            foreach($this->_phone_fields as $phone_field)
+            {
+                if (substr($this->$phone_field,0,3) == '+7(') 
+                {
+                    preg_match("/\+7\(([0-9]{3})\) ([0-9]{3})-([0-9]{2})-([0-9]{2})/", $this->$phone_field, $regs);
+                    $this->$phone_field = $regs[1].$regs[2].$regs[3].$regs[4];
+                }
+            }
+        
+            // Добавляем слеши к текстовым полям
+            foreach($this->_check_fields as $check_field)
+            {
+                $this->$check_field = addslashes($this->$check_field);
+            }
+            // Преобразуем архив в текстовое поле
+            foreach($this->_array_fields as $array_field)
+            {
+                $this->$array_field = json_encode($this->$array_field);
+            }
+            // Меняем формат даты
+            foreach($this->_date_fields as $date_field)
+            {
+                preg_match("/([0-9]{2}).([0-9]{2}).([0-9]{4})/", $this->$date_field, $regs);
+                if(count($regs) == 4)
+                {
+                    $this->$date_field = $regs[3].'-'.$regs[2].'-'.$regs[1];
+                }
+            }
+            return parent::check();
 
         return parent::check();
     }
 
+    /**
+     * owerload load function
+     * @param type $keys
+     * @param type $reset
+     * @return boolean 
+     */
+    public function load($keys = null, $reset = true) {
+            if( parent::load($keys, $reset))
+            {
+                // Конвертируем номер телефона
+                foreach($this->_phone_fields as $phone_field)
+                {
+                    if (preg_match("/([0-9]{3})([0-9]{3})([0-9]{2})([0-9]{2})/", $this->$phone_field, $regs)) 
+                    {
+                        $this->$phone_field = '+7 ('.$regs[1].') '.$regs[2].'-'.$regs[3].'-'.$regs[4];
+                    }
+                }
+                
+                // Меняем формат даты
+                foreach($this->_date_fields as $date_field)
+                {
+                    preg_match("/([0-9]{4})-([0-9]{2})-([0-9]{2})/", $this->$date_field, $regs);
+                    if(count($regs) == 4)
+                    {
+                        $this->$date_field = $regs[3].'.'.$regs[2].'.'.$regs[1];
+                    }
+                }
+                
+                // Преобразуем текстовое поле в архив
+                foreach($this->_array_fields as $array_field)
+                {
+                    $this->$array_field = json_decode($this->$array_field, TRUE);
+                }
+                
+                // Конвертируем дату оплаты
+                foreach($this->_check_fields as $check_field)
+                {
+                    $this->$check_field = stripcslashes($this->$check_field);
+                }
+                return TRUE;
+            }
+            return FALSE;
+    }
     /**
      * Method to set the publishing state for a row or list of rows in the database
      * table.  The method respects checked out rows by other users and will attempt
@@ -201,7 +279,7 @@ class UvelirTableKtable extends JTable {
             }
         }
         $this->_db->setQuery($query);
-//        var_dump($this->_db->loadObjectList());exit;
+        
         return  $this->_db->loadObjectList();
     }    
 

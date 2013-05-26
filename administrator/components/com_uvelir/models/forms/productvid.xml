@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+
+        <field name="id" type="text" default="0" label="COM_UVELIR_FORM_LBL_PRODUCTVID_ID"
+                     readonly="true" class="readonly"
+                     description="" /> 
+        <field name="title" type="text"
+              label="COM_UVELIR_FORM_LBL_PRODUCTVID_TITLE"
+              description="" 
+              required="true" 
+              filter="raw"
+              size="80"
+              maxlength="255" /> 
+        <field name="alias" type="text"
+              label="COM_UVELIR_FORM_LBL_PRODUCTVID_ALIAS"
+              description="" 
+              filter="raw"
+              readonly="true" class="readonly"
+              size="80"
+              maxlength="255" /> 
+        <field name="sizes" type="text"
+              label="COM_UVELIR_FORM_LBL_PRODUCTVID_SIZES"
+              description="COM_UVELIR_FORM_DESC_PRODUCTVID_SIZES" 
+              filter="raw"
+              size="80"
+              maxlength="255" /> 
+    </fieldset> 
+</form>
