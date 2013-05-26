@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 include_once('simple_html_dom.php');
 require_once JPATH_ADMINISTRATOR.'/components/com_uvelir/models/category.php'; 
 require_once JPATH_ADMINISTRATOR.'/components/com_uvelir/models/product.php'; 
+jimport('joomla.filesystem.file');
 
 /**
  * zavod parser class.
@@ -21,12 +22,19 @@ require_once JPATH_ADMINISTRATOR.'/components/com_uvelir/models/product.php';
 class UvelirParseZavod_1
 {
 
+    private $_file_data;
+    private $_file_category;
+    
+    public function __construct() {
+        $this->_file_data = JPATH_ROOT.DS.'tmp'.DS.'parse_1_data.txt';
+        $this->_file_category = JPATH_ROOT.DS.'tmp'.DS.'parse_1_category.txt';
+    }
     /**
      * Парсинг главной страницы
      */
     public function main_page()
     {
-        $data = JFactory::getApplication()->getUserState('com_uvelir.parse', array());
+        $data = $this->_get_data();
         if(!$data)
         {
             return array(0,  JText::_('COM_UVELIR_CAN_NOT_PARSE_PAGE'));
@@ -47,7 +55,7 @@ class UvelirParseZavod_1
         /**
          *  Создаем категорию
          */
-        $category_data = JFactory::getApplication()->getUserState('com_uvelir.category_data', array());
+        $category_data = $this->_get_category_data();
         $category_model = new UvelirModelCategory;
         $category_save_data = array(
             'name'=>  $name,
@@ -66,10 +74,8 @@ class UvelirParseZavod_1
         }
         $category_data['name'] = $category_created['name'];
         $category_data['alias'] = $category_created['alias'];
-//        array_unshift($category_data['path'], $category_created['path']);
-//        array_unshift($category_data['parent_id'], $category_created['id']);
         $category_data['level'] = $category_created['level'];
-        JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
+        $this->_set_category_data($category_save_data);
         
         // Подготавливаем данные о категории для таблицы товаров
         $data['category'] = array(
@@ -89,9 +95,11 @@ class UvelirParseZavod_1
                 $sub_link = str_replace('&amp;', '&', $base_link.$home_page_link->href);
                 array_unshift($data['link'], $sub_link);
                 array_unshift($data['func'], "get_page");
-                JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+                break;
             }
         }
+        $this->_set_data($data);
+        
         
         
 //var_dump($data);echo 'main_page <hr>';
@@ -110,7 +118,7 @@ class UvelirParseZavod_1
     public function get_page()
     {
         
-        $data = JFactory::getApplication()->getUserState('com_uvelir.parse', array());
+        $data = $this->_get_data();
         if(!$data)
         {
             return array(0,  JText::_('COM_UVELIR_CAN_NOT_PARSE_PAGE'));
@@ -126,11 +134,8 @@ class UvelirParseZavod_1
         {
             // Если не находим страницу, то продолжаем поиск уже со следующей категории
             array_shift($data['func']);
-            JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+            $this->_set_data($data);
             
-//var_dump($data);echo 'get_page 2 <hr>';
-
-
             $link = isset($data['link'][0])?$data['link'][0]:'';
             return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link); // Продолжаем парсинг
         }
@@ -184,7 +189,7 @@ class UvelirParseZavod_1
         array_unshift($data['link'],$data_items[0]['desc']['item_link']);
         array_unshift($data['func'],'parse_item');
         // Продолжаем парсить уже карточку товара
-        JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+        $this->_set_data($data);
         
 //var_dump($data);echo 'get_page 1 <hr>';
         
@@ -198,7 +203,7 @@ class UvelirParseZavod_1
     function parse_item()
     {
        
-        $data = JFactory::getApplication()->getUserState('com_uvelir.parse', array());
+        $data = $this->_get_data();
         if(!$data)
         {
             return array(0,  JText::_('COM_UVELIR_CAN_NOT_PARSE_PAGE'));
@@ -219,7 +224,7 @@ class UvelirParseZavod_1
                 $data['last_page'] = FALSE;
                 array_shift($data['func']);
             }
-            JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+            $this->_set_data($data);
 
 //var_dump($data);echo 'parse_item 2 <hr>';
             
@@ -354,14 +359,66 @@ class UvelirParseZavod_1
                 </tr>
             </table>
             ';
-        JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+        $this->_set_data($data);
         
-//var_dump($data);echo 'parse_item 1 <hr>';
-
-
         $link = isset($data['link'][0])?$data['link'][0]:'';
         return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link.'<hr/>'.$msg);
     }
   
+    /**
+     * Сохраняем данные перед выходом
+     * @param array $data 
+     */
+    private function _set_data($data)
+    {
+        JFactory::getApplication()->setUserState('com_uvelir.parse', $data);
+        if (!JFile::write($this->_file_data, json_encode($data)))
+        {
+            return FALSE;
+        }
+        return TRUE;
+    }
+    
+    /**
+     * Сохраняем данные категории перед выходом
+     * @param array $data 
+     */
+    private function _set_category_data($category_data)
+    {
+        JFactory::getApplication()->setUserState('com_uvelir.category_data', $category_data);
+        if (!JFile::write($this->_file_category, json_encode($category_data)))
+        {
+            return FALSE;
+        }
+        return TRUE;
+    }
+    
+    /**
+     * Берем сохраненные данные
+     * @param array $data 
+     */
+    private function _get_data()
+    {
+        $data = JFactory::getApplication()->getUserState('com_uvelir.parse', array());
+        if(JFile::exists($this->_file_data))
+        {
+            $data = json_decode(JFile::read($this->_file_data),TRUE);
+        }
+        return $data;
+    }
+    
+    /**
+     * Берем сохраненные данные категории
+     * @param array $data 
+     */
+    private function _get_category_data()
+    {
+        $category_data = JFactory::getApplication()->getUserState('com_uvelir.category_data', array());
+        if(JFile::exists($this->_file_category))
+        {
+            $category_data = json_decode(JFile::read($this->_file_category),TRUE);
+        }
+        return $category_data;
+    }
 }
 
