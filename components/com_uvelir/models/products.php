@@ -36,6 +36,31 @@ class UvelirModelProducts extends JModelList {
      */
     protected function populateState($ordering = null, $direction = null) {
         
+        // Обработка данных модуля фильтрации 
+        $usearch_data = JRequest::getVar('usearch_data', 
+                JFactory::getApplication()->getUserState('com_uvelir.usearch', array()),
+                '','array');
+        if($usearch_data)
+        {
+            JFactory::getApplication()->setUserState('com_uvelir.usearch', $usearch_data);
+            $this->setState('usearch_data.izdelie', $usearch_data['izdelie']);
+            $this->setState('usearch_data.metal', $usearch_data['metal']);
+            $this->setState('usearch_data.vstavki', $usearch_data['vstavki']);
+            $this->setState('usearch_data.razmer', $usearch_data['razmer']);
+            $this->setState('usearch_data.proba', $usearch_data['proba']);
+            $this->setState('usearch_data.cost_1', $usearch_data['cost_1']);
+            $this->setState('usearch_data.cost_2', $usearch_data['cost_2']);
+        }
+        // Вычисляем группу продуктов
+        $menu = JSite::getMenu();
+        $active = $menu->getActive();
+        $params = isset($active)?$active->params:NULL;
+        $product_group = isset($params)?$params->get('product_group'):0;
+//        var_dump(JRequest::getInt('product_group'));
+        $group = JRequest::getInt('product_group',
+                $product_group);
+        $this->setState('products_group', $group);
+        
         // Initialise variables.
         $app = JFactory::getApplication();
 
@@ -61,9 +86,14 @@ class UvelirModelProducts extends JModelList {
      * @return	JDatabaseQuery
      * @since	1.6
      */
+     /**
+     * Build an SQL query to load the list data.
+     *
+     * @return	JDatabaseQuery
+     * @since	1.6
+     */
     protected function getListQuery() {
         
-        $zavod = JRequest::getInt('zavod',2);
         // Create a new query object.
         $db = $this->getDbo();
         $query = $db->getQuery(true);
@@ -75,7 +105,6 @@ class UvelirModelProducts extends JModelList {
         
         $query->from('`#__uvelir_products` AS a');
         $query->where('`a`.`state` = 1');
-        $query->where('`a`.`zavid_id` = '.$zavod);
 
         // Filter by search in title
         $search = $this->getState('filter.search');
@@ -84,11 +113,127 @@ class UvelirModelProducts extends JModelList {
                         $query->where('a.id = '.(int) substr($search, 3));
                 } else {
                         $search = $db->Quote('%'.$db->escape($search, true).'%');
-            $query->where('( a.name LIKE '.$search.' )');
-                    }
+        $query->where('( a.name LIKE '.$search.' )');
+                }
         }
         
+        // Обрабртка данных модуля фильтра 
+            // Фильтр по виду изделия
+            if($productvid_id = $this->getState('usearch_data.izdelie', 0))
+            {
+                $product_vid = &$this->getTable('Productvid');
+                if($product_vid->load($productvid_id))
+                {
+                    $category_ids = $this->_get_categiry_ids($product_vid->alias);
+                    if($category_ids)
+                    {
+//                        var_dump($category_ids);
+                        $query->where('category_id IN ('.  implode(', ', $category_ids).')');
+                    }
+                }
+            }
+            // Фильтр по металлу
+            if($metal = $this->getState('usearch_data.metal', ''))
+            {
+                $query->where('material = "'.$metal.'"');
+            }
+            // Фильтр по вставкам
+            if($vstavki = $this->getState('usearch_data.vstavki', ''))
+            {
+                $query->where('vstavki = "'.$vstavki.'"');
+            }
+            // Фильтр по размеру
+            if($razmer = $this->getState('usearch_data.razmer', ''))
+            {
+                $query->where('razmer LIKE "%'.$razmer.'%"');
+            }
+            // Фильтр по пробе
+            if($proba = $this->getState('usearch_data.proba', ''))
+            {
+                $query->where('proba = "'.$proba.'"');
+            }
+            // Фильтр по цене
+            if($cost_1 = (int)$this->getState('usearch_data.cost_1', ''))
+            {
+                $query->where('cena_tut >= "'.$cost_1.'"');
+            }
+            if($cost_2 = (int)$this->getState('usearch_data.cost_2', ''))
+            {
+                $query->where('cena_tut <= "'.$cost_2.'"');
+            }
+            
+            // Фильтр по группам товаров
+            $group_flt = $this->_group_flt();
+            if($group_flt)
+            {
+                $query->where($group_flt);
+            }
+//            var_dump((string)$query);
         return $query;
     }
+    /**
+     * Заглавие страницы 
+     * @return string 
+     */
+    public function getTitle()
+    {
+        $group = (int) $this->getState('products_group');
+        switch ($group)
+        {
+            case 1:
+                $title = JText::_('COM_UVELIR_PRODUCT_NEW');
+                break;
+            case 2:
+                $title = JText::_('COM_UVELIR_PRODUCT_SPETS');
+                break;
+            default :
+                $title = JText::_('COM_UVELIR_PRODUCT_ALL');
+        }
+        return $title;
+    }
+    /**
+     * Фильтр по группам изделий
+     * @return string 
+     */
+    private function _group_flt()
+    {
+        $group = (int) $this->getState('products_group');
+        switch ($group)
+        {
+            case 1: // Новинки
+                $where = '`novinka_dt` > "'.date('Y-m-d').'"';
+                break;
+            case 2: // Спецпредложения
+                $where = '`spets_predl` = "1"';
+                break;
+            default : // Все изделия
+                $where = '';
+        }
+        return $where;
+    }
+	/**
+	 * Returns a reference to the a Table object, always creating it.
+	 *
+	 * @param	type	The table type to instantiate
+	 * @param	string	A prefix for the table class name. Optional.
+	 * @param	array	Configuration array for model. Optional.
+	 * @return	JTable	A database object
+	 * @since	1.6
+	 */
+	public function getTable($type = 'Products', $prefix = 'UvelirTable', $config = array())
+	{
+		return JTable::getInstance($type, $prefix, $config);
+	}
 
+        private function _get_categiry_ids($alias)
+        {
+            $_query = &$this->_db->getQuery(true);
+            $_query->select('id');
+            $_query->from('#__uvelir_categories');
+            $_query->where('`alias` LIKE "%'.$alias.'%"');
+            $this->_db->setQuery($_query);
+//            var_dump((string)$_query);
+            return $this->_db->loadResultArray();
+
+        }
 }

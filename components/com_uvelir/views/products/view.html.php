@@ -15,27 +15,25 @@ jimport('joomla.application.component.view');
 /**
  * View to edit
  */
-class UvelirViewCategory extends JView {
+class UvelirViewProducts extends JView {
 
     protected $state;
-    protected $item;
-    protected $params;
     protected $_model;
     protected $pagination;
-    protected $caddy;
+    protected $items;
 
 
     /**
      * Display the view
      */
     public function display($tpl = null) {
+        $usearch_data = JRequest::getVar('usearch_data', 'array');
         $this->_model = $this->getModel();
-        $this->item = $this->get('Item');
         $this->items = $this->get('Items');
-        $this->children = $this->get('Children');
+        $this->title = $this->get('Title');
+        $this->products_group = (int) $this->_model->getState('products_group');
         $this->pagination	= $this->get('Pagination');
         $this->caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
-        $this->products_group = 0;
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {
@@ -54,7 +52,7 @@ class UvelirViewCategory extends JView {
 	protected function _prepareDocument()
 	{
                 $doc = JFactory::getDocument();
-		$doc->setTitle($this->item->name);
+		$doc->setTitle($this->title);
                 $doc->addScript(JURI::root()."components/com_uvelir/assets/js/caddy.js");
 	}
    

@@ -14,7 +14,7 @@ require_once dirname(__FILE__) . '/ktable.php';
 /**
  * product Table class
  */
-class UvelirTableProduct extends UvelirTableKtable {
+class UvelirTableProductvid extends UvelirTableKtable {
 
     protected $asset_name;
 
@@ -24,11 +24,19 @@ class UvelirTableProduct extends UvelirTableKtable {
      * @param JDatabase A database connector object
      */
     public function __construct(&$db) {
-        $this->asset_name = 'product';
-        $this->_check_fields = array('opisanije');
-        $this->_date_fields = array('created_dt','novinka_dt');
-        
-        parent::__construct('#__uvelir_products', 'id', $db);
-        
+        $this->asset_name = 'productvid';
+        $this->_check_fields = array('title');
+        parent::__construct('#__uvelir_productvids', 'id', $db);
+    }
+    
+    
+    public function store($updateNulls = false) {
+        // Переписываем псевдоним
+        if($this->title)
+        {
+            $this->alias = JApplication::stringURLSafe($this->title);
+        }
+        return parent::store($updateNulls);
+//        var_dump($this);
     }
 }

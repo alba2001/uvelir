@@ -199,6 +199,7 @@ class UvelirTableNtable extends JTableNested {
         }
         $this->_db->setQuery($query);
 //        var_dump($this->_db->loadObjectList());exit;
+//        var_dump((string)$query);exit;
         return  $this->_db->loadObjectList();
     }    
 

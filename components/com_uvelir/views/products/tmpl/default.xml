@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Список продуктов" option="View">
+	</layout>
+	<fields name="params">
+		<fieldset 
+            name="basic"
+			label="Список продуктов">
+            <field
+                name="product_group"
+                type="list"
+                label="Группа"
+                require="true"
+                description="Выбор группу продуктов">
+                <option value="0">COM_UVELIR_ALL_PRODUCTS</option>
+                <option value="1">COM_UVELIR_NEW_PRODUCTS</option>
+                <option value="2">COM_UVELIR_SPETS_PRODUCTS</option>
+            </field>
+		</fieldset>
+	</fields>
+</metadata>
