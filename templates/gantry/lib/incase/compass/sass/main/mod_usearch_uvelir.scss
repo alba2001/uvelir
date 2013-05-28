@@ -1,0 +1,106 @@
+#mod_usearch_uvelir{
+	@include border-bottom-radius(3px);
+	@include border-top-radius(3px);
+	@include filter-sprite(bg);
+	// height: 56px;
+	background-repeat: repeat-x;
+	box-sizing: border-box;
+	color: #3d3d3d;
+	font-size: 12px;
+	height: 98px;
+	overflow: hidden;
+	padding: 21px 24px;
+	// padding: 21px 0px;
+	width: 100%;
+	#mod_usearch_header{
+		float: left;
+		h1{
+			color: #FFF;
+			font-size: 16px;
+			line-height: 21px;
+			span{
+				font-size: 14px;
+			}
+		}
+	}
+	.separator{
+		@include filter-sprite(separator);
+		float: left;
+		height: 98px;
+		margin: -19px 22px 0;
+		width: 3px;
+	}
+	#mod_usearch_body{
+		float: left;
+		width: 70%;
+		input{
+			height: 12px;
+			width: 30%;
+			margin-right: 4%;
+			padding: 5px 6px 3px 6px;
+		}
+		input,
+		select{
+			color: #98834F;
+			font-size: 12px;
+		}
+		select{
+			height: 22px;
+			width: 100%;
+			min-width: 140px;
+		}
+		table{
+			tr{
+				td{
+					vertical-align: top;
+					label{
+						color: #3d3d3d;
+						font-size: 12px;
+						text-align: right;
+						margin: 0 16px;
+					}
+					width: 10%;
+				}
+			}
+		}
+	}
+	#mod_usearch_footer{
+		@include border-bottom-radius(3px);
+		@include border-top-radius(3px);
+		@include pinkButton;
+		background-position-x: -62px;
+		float: right;
+		height: 52px;
+		overflow: hidden;
+		position: relative;
+		width: 140px;
+		button,
+		input{
+			// padding: 0px 17px;
+			// padding: 0px 30px;
+			// width: 100%;
+			// word-wrap: break-word;
+			background: none;
+			border: none;
+			color: #FFF;
+			font-size: 12px;
+			height: 100%;
+			line-height: 15px;
+			padding-left: 17px;
+			position: relative;
+			text-align: left;
+			width: 100%;
+			&:before{
+				@include filter-sprite(arrow);
+				content: '#';
+				display: block;
+				height: 26px;
+				position: absolute;
+				right: 14px;
+				text-indent: -1000px;
+				top: 12px;
+				width: 13px;
+			}
+		}
+	}
+}

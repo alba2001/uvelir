@@ -3,8 +3,9 @@
 	font-size: 12px;
 	margin-left: 17px;
 	.inner{
-		@extend .pink-btn;
 		@include border-bottom-radius(5px);
+		@include pinkButton;
+		background-position-x: -82px;
 		border: 1px solid #d24188;
 		display: inline-block;
 		height: 40px;

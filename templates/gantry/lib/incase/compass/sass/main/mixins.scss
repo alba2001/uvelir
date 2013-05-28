@@ -1,4 +1,3 @@
-// @mixins
 .ruble{
 	font-family: 'Ruble';
 }
@@ -48,9 +47,8 @@
 		}
 	}
 }
-.pink-btn{
+@mixin pinkButton{
 	@include filter-sprite(pink);
-	background-position: 0 -91px;
 	background-repeat: repeat-x;
 	position: relative;
 	&:after{
@@ -66,18 +64,18 @@
 		// margin-left: -20px;
 	}
 	&:before{
+		// background-position: -80px 0;
+		// height: 40px;
 		@include filter-sprite(pink-satin);
-		background-position: -80px 0;
 		background-repeat: repeat-x;
 		content: '#';
 		display: block;
-		// height: 40px;
+		height: 100%;
+		left: 0;
 		position: absolute;
 		text-indent: -1000px;
-		width: 100%;
 		top: 0;
-		left: 0;
+		width: 100%;
 		z-index: 0;
 	}
 }
-// @mixins

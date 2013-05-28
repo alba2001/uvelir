@@ -6,16 +6,19 @@
 
 // sprites
 $filter-pink-satin-repeat: repeat-x;
+$filter-bg-repeat: repeat-x;
 $filter-pink-repeat: repeat-x;
 $menu-hover-repeat: repeat-x;
 $menu-bg-repeat: repeat-x;
 @import "filter/*.png";
 @import "slider/*.png";
 @import "icons/*.png";
+@import "misc/*.png";
 @import "menu/*.png";
 @include all-filter-sprites(true);
 @include all-slider-sprites(true);
 @include all-icons-sprites(true);
+@include all-misc-sprites(true);
 @include all-menu-sprites(true);
 
 // mixins
@@ -34,10 +37,18 @@ $menu-bg-repeat: repeat-x;
 
 // main
 @import "main/com_uvelir";
+@import "main/mod_usearch_uvelir";
 @import "main/mod_caddy";
 
 body{
 	// background: #F7F2E1;
+	// @include misc-sprite(light);
+	// background-image:
+	// 	url('/templates/gantry/lib/incase/compass/images/misc-s33cdf18309.png'),
+	// 	url('/templates/gantry/lib/incase/compass/images/misc-s33cdf18309.png'),
+	// 	url('/templates/gantry/lib/incase/compass/images/misc-s33cdf18309.png');
+	// background-repeat: no-repeat;
+	// background-position: -7% -230px, 105% 6%, 128% -350px;
 	&.test{
 	}
 }
@@ -45,6 +56,7 @@ body{
 	#rt-top{
 		@include menu-sprite(bg);
 		background-repeat: repeat-x;
+		min-width: 990px;
 		width: 100%;
 		z-index: 100;
 		.rt-block{
@@ -52,8 +64,8 @@ body{
 			padding: 0;
 		}
 		.main.menu{
-			@include menu-sprite(bg);
-			background-repeat: repeat-x;
+			// @include menu-sprite(bg);
+			// background-repeat: repeat-x;
 			margin-bottom: 20px;
 			margin-top: 0;
 			// min-width: 750px;
