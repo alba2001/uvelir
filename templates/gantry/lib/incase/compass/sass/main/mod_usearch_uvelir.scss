@@ -3,9 +3,9 @@
 	@include border-top-radius(5px);
 	@include box-shadow(rgba(#000, 0.2) 0px 4px 16px, rgba(#ffffbe, 1) 0px 1px 0px 0px inset, rgba(#baa575, 1) 0px -1px 0px 0px inset);
 	@include filter-sprite(bg);
+	@include box-sizing(border-box);
 	// height: 56px;
 	background-repeat: repeat-x;
-	box-sizing: border-box;
 	color: #3d3d3d;
 	font-size: 12px;
 	height: 98px;

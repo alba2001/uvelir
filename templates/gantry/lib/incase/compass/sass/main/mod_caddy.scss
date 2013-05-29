@@ -5,9 +5,9 @@
 	.inner{
 		@include border-bottom-radius(5px);
 		@include pinkButton;
+		@include inline-block;
 		background-position-x: -82px;
 		border: 1px solid #d24188;
-		display: inline-block;
 		height: 40px;
 		overflow: hidden;
 		padding: 0 20px;
@@ -17,7 +17,7 @@
 		}
 		.separator{
 			@include menu-sprite(separator);
-			display: inline-block;
+			@include inline-block;
 			height: 17px;
 			width: 3px;
 			margin: -3px 6px;
@@ -31,7 +31,7 @@
 			}
 			span{
 				@include icons-sprite(cart);
-				display: inline-block;
+				@include inline-block;
 				height: 15px;
 				margin: -2px -3px;
 				width: 16px;

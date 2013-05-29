@@ -107,7 +107,6 @@ defined('_JEXEC') or die;
 					</div><!-- show -->
 	            </div><!-- com_uvelir_item -->
         <?php endforeach; ?>
-		<div class="clearfix"></div>
 	</div><!-- items -->
 	<div class="pagination">
 	    <?php echo $this->pagination->getListFooter(); ?>

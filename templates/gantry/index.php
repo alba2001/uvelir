@@ -33,7 +33,7 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
     <?php
         $gantry->displayHead();
 
-		$gantry->addStyle('/templates/gantry/lib/incase/compass/stylesheets/screen.css" type="text/css', 100);
+		$gantry->addStyle('templates/' . $app->getTemplate() . '/lib/incase/compass/stylesheets/screen.css" type="text/css', 100);
 		$gantry->addStyle('grid-responsive.css', 5);
 		$gantry->addLess('bootstrap.less', 'bootstrap.css', 6);
         $gantry->addLess('global.less', 'master.css', 8, array('headerstyle'=>$gantry->get('headerstyle','dark')));
@@ -52,6 +52,9 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
 		$hidden = ' class="rt-hidden"';}
 
     ?>
+    <!--[if lt IE 9]>
+    	<script src="<?='templates/' . $app->getTemplate();?>/lib/css3-mediaqueries.js"></script>
+    <![endif]-->
 </head>
 <body <?php echo $gantry->displayBodyTag(); ?>>
     <?php /** Begin Top Surround **/ if ($gantry->countModules('top') or $gantry->countModules('header')) : ?>
