@@ -81,10 +81,12 @@ foreach ($list as $i => &$item) :
 	else {
 		echo '</li>';
 	}
+
 	// insert separator.
-	if( count($list)-1 != $i ){
-		echo '<li class="separator"></li>';
-	}
+	echo '<li class="separator"></li>';
+	// echo count($list)-1 . ' != ' . $i;
+	// if( count($list)-1 != $i ){
+	// }
 endforeach;
 ?></ul>
 
