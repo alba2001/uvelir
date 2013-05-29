@@ -2,28 +2,28 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8283",
   "files" : {
-    "\/sass\/misc\/990fixed.scss" : {
+    "\/images\/menu\/separator.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/misc\/990fixed.scss",
+      "inputAbbreviatedPath" : "\/images\/menu\/separator.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/menu\/separator.png",
+      "initialSize" : 1120,
+      "fileType" : 8192
+    },
+    "\/sass\/misc\/k2reset.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/misc\/k2reset.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/990fixed.css",
+      "outputAbbreviatedPath" : "\/stylesheets\/k2reset.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/images\/filter\/pink-satin.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/filter\/pink-satin.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/filter\/pink-satin.png",
-      "initialSize" : 3933,
-      "fileType" : 8192
     },
     "\/images\/icons\/camera.png" : {
       "ignoreWasSetByUser" : 0,
@@ -36,17 +36,25 @@
       "initialSize" : 1239,
       "fileType" : 8192
     },
-    "\/sass\/print.scss" : {
+    "\/images\/misc-s33cdf18309.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/print.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/print.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/images\/misc-s33cdf18309.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/misc-s33cdf18309.png",
+      "initialSize" : 22712,
+      "fileType" : 8192
+    },
+    "\/stylesheets\/print.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/stylesheets\/print.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/sass\/ie.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -59,15 +67,6 @@
       "outputAbbreviatedPath" : "\/stylesheets\/ie.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/stylesheets\/print.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/stylesheets\/print.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
     },
     "\/images\/icons\/cart.png" : {
       "ignoreWasSetByUser" : 0,
@@ -170,17 +169,6 @@
       "initialSize" : 1485,
       "fileType" : 8192
     },
-    "\/images\/icons\/bullet.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/icons\/bullet.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/icons\/bullet.png",
-      "initialSize" : 1118,
-      "fileType" : 8192
-    },
     "\/config.rb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -201,6 +189,17 @@
       "initialSize" : 592,
       "fileType" : 8192
     },
+    "\/images\/icons\/bullet.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/icons\/bullet.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/icons\/bullet.png",
+      "initialSize" : 1118,
+      "fileType" : 8192
+    },
     "\/sass\/main\/mod_usearch_uvelir.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -210,6 +209,18 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/stylesheets\/mod_usearch_uvelir.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/main\/com_uvelir_category.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/main\/com_uvelir_category.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/com_uvelir_category.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -224,27 +235,15 @@
       "initialSize" : 1590,
       "fileType" : 8192
     },
-    "\/sass\/main\/com_uvelir.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/main\/com_uvelir.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/com_uvelir.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/images\/icons-s7f6f463152.png" : {
+    "\/images\/icons\/file.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/icons-s7f6f463152.png",
+      "inputAbbreviatedPath" : "\/images\/icons\/file.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/icons-s7f6f463152.png",
-      "initialSize" : 3665,
+      "outputAbbreviatedPath" : "\/images\/icons\/file.png",
+      "initialSize" : 1881,
       "fileType" : 8192
     },
     "\/images\/filter\/separator.png" : {
@@ -258,15 +257,15 @@
       "initialSize" : 1394,
       "fileType" : 8192
     },
-    "\/images\/icons\/file.png" : {
+    "\/images\/icons-s7f6f463152.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/icons\/file.png",
+      "inputAbbreviatedPath" : "\/images\/icons-s7f6f463152.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/icons\/file.png",
-      "initialSize" : 1881,
+      "outputAbbreviatedPath" : "\/images\/icons-s7f6f463152.png",
+      "initialSize" : 3665,
       "fileType" : 8192
     },
     "\/stylesheets\/ie.css" : {
@@ -300,17 +299,6 @@
       "initialSize" : 7967,
       "fileType" : 8192
     },
-    "\/images\/button-s826493eef5.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/button-s826493eef5.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/button-s826493eef5.png",
-      "initialSize" : 229,
-      "fileType" : 8192
-    },
     "\/images\/slider\/bullet2.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -321,6 +309,15 @@
       "outputAbbreviatedPath" : "\/images\/slider\/bullet2.png",
       "initialSize" : 1168,
       "fileType" : 8192
+    },
+    "\/stylesheets\/main\/mod_caddy.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/stylesheets\/main\/mod_caddy.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/sass\/misc\/sticky.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -334,24 +331,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/stylesheets\/main\/mod_caddy.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/stylesheets\/main\/mod_caddy.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/sass\/misc\/mainmenu.scss" : {
+    "\/sass\/main\/com_uvelir_products.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/misc\/mainmenu.scss",
+      "inputAbbreviatedPath" : "\/sass\/main\/com_uvelir_products.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/mainmenu.css",
+      "outputAbbreviatedPath" : "\/stylesheets\/com_uvelir_products.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -389,6 +377,17 @@
       "initialSize" : 1762,
       "fileType" : 8192
     },
+    "\/images\/slider\/prev.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/slider\/prev.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/slider\/prev.png",
+      "initialSize" : 1670,
+      "fileType" : 8192
+    },
     "\/sass\/main\/mixins.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -401,16 +400,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/images\/slider\/prev.png" : {
+    "\/sass\/misc\/mainmenu.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/slider\/prev.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/slider\/prev.png",
-      "initialSize" : 1670,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/sass\/misc\/mainmenu.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/mainmenu.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/images\/menu\/hover.png" : {
       "ignoreWasSetByUser" : 0,
@@ -421,40 +421,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/menu\/hover.png",
       "initialSize" : 1124,
-      "fileType" : 8192
-    },
-    "\/sass\/misc\/k2reset.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/misc\/k2reset.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/k2reset.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/images\/filter\/arrow.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/filter\/arrow.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/filter\/arrow.png",
-      "initialSize" : 1393,
-      "fileType" : 8192
-    },
-    "\/images\/menu\/bg.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/menu\/bg.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/menu\/bg.png",
-      "initialSize" : 1036,
       "fileType" : 8192
     },
     "\/images\/slider\/bullet.png" : {
@@ -468,6 +434,17 @@
       "initialSize" : 1335,
       "fileType" : 8192
     },
+    "\/images\/filter\/arrow.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/filter\/arrow.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/filter\/arrow.png",
+      "initialSize" : 1393,
+      "fileType" : 8192
+    },
     "\/images\/misc\/light.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -477,17 +454,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/misc\/light.png",
       "initialSize" : 27764,
-      "fileType" : 8192
-    },
-    "\/images\/misc-s33cdf18309.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/misc-s33cdf18309.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/misc-s33cdf18309.png",
-      "initialSize" : 22712,
       "fileType" : 8192
     },
     "\/images\/icons\/bullet2.png" : {
@@ -501,16 +467,51 @@
       "initialSize" : 1325,
       "fileType" : 8192
     },
-    "\/images\/menu\/separator.png" : {
+    "\/images\/menu\/bg.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/menu\/separator.png",
+      "inputAbbreviatedPath" : "\/images\/menu\/bg.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/menu\/separator.png",
-      "initialSize" : 1120,
+      "outputAbbreviatedPath" : "\/images\/menu\/bg.png",
+      "initialSize" : 1036,
       "fileType" : 8192
+    },
+    "\/images\/filter\/pink-satin.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/filter\/pink-satin.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/filter\/pink-satin.png",
+      "initialSize" : 3933,
+      "fileType" : 8192
+    },
+    "\/sass\/print.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/print.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/print.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/misc\/990fixed.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/misc\/990fixed.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/990fixed.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     }
   },
   "manualImportLinks" : [

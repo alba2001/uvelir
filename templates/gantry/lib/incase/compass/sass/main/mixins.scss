@@ -80,3 +80,14 @@
 		z-index: 0;
 	}
 }
+.strike{
+    position: relative;
+}
+.strike::after {
+    border-bottom: 2px solid #C02654;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
