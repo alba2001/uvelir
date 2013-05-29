@@ -1,27 +1,28 @@
 {
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
-  "creatorBuild" : "8300",
+  "creatorBuild" : "8283",
   "files" : {
-    "\/images\/icons\/bullet2.png" : {
+    "\/sass\/misc\/990fixed.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/icons\/bullet2.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/icons\/bullet2.png",
-      "initialSize" : 1325,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/sass\/misc\/990fixed.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/990fixed.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
-    "\/images\/menu\/bg.png" : {
+    "\/images\/filter\/pink-satin.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/menu\/bg.png",
+      "inputAbbreviatedPath" : "\/images\/filter\/pink-satin.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/menu\/bg.png",
-      "initialSize" : 1036,
+      "outputAbbreviatedPath" : "\/images\/filter\/pink-satin.png",
+      "initialSize" : 3933,
       "fileType" : 8192
     },
     "\/images\/icons\/camera.png" : {
@@ -35,25 +36,17 @@
       "initialSize" : 1239,
       "fileType" : 8192
     },
-    "\/images\/menu\/separator.png" : {
+    "\/sass\/print.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/menu\/separator.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/menu\/separator.png",
-      "initialSize" : 1120,
-      "fileType" : 8192
-    },
-    "\/stylesheets\/print.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/stylesheets\/print.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/sass\/print.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/print.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/ie.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -66,6 +59,15 @@
       "outputAbbreviatedPath" : "\/stylesheets\/ie.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/stylesheets\/print.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/stylesheets\/print.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/images\/icons\/cart.png" : {
       "ignoreWasSetByUser" : 0,
@@ -168,15 +170,6 @@
       "initialSize" : 1485,
       "fileType" : 8192
     },
-    "\/config.rb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config.rb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 32768
-    },
     "\/images\/icons\/bullet.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -186,6 +179,26 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/icons\/bullet.png",
       "initialSize" : 1118,
+      "fileType" : 8192
+    },
+    "\/config.rb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/config.rb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 32768
+    },
+    "\/images\/menu-s58e6d61bb6.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/menu-s58e6d61bb6.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/menu-s58e6d61bb6.png",
+      "initialSize" : 592,
       "fileType" : 8192
     },
     "\/sass\/main\/mod_usearch_uvelir.scss" : {
@@ -234,6 +247,17 @@
       "initialSize" : 3665,
       "fileType" : 8192
     },
+    "\/images\/filter\/separator.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/filter\/separator.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/filter\/separator.png",
+      "initialSize" : 1394,
+      "fileType" : 8192
+    },
     "\/images\/icons\/file.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -245,16 +269,14 @@
       "initialSize" : 1881,
       "fileType" : 8192
     },
-    "\/images\/filter\/separator.png" : {
+    "\/stylesheets\/ie.css" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/filter\/separator.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/filter\/separator.png",
-      "initialSize" : 1394,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/stylesheets\/ie.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/images\/filter-s0df33fbe23.png" : {
       "ignoreWasSetByUser" : 0,
@@ -278,14 +300,16 @@
       "initialSize" : 7967,
       "fileType" : 8192
     },
-    "\/stylesheets\/ie.css" : {
+    "\/images\/button-s826493eef5.png" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/stylesheets\/ie.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/images\/button-s826493eef5.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/button-s826493eef5.png",
+      "initialSize" : 229,
+      "fileType" : 8192
     },
     "\/images\/slider\/bullet2.png" : {
       "ignoreWasSetByUser" : 0,
@@ -296,26 +320,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/slider\/bullet2.png",
       "initialSize" : 1168,
-      "fileType" : 8192
-    },
-    "\/stylesheets\/main\/mod_caddy.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/stylesheets\/main\/mod_caddy.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/images\/button-s826493eef5.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/button-s826493eef5.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/button-s826493eef5.png",
-      "initialSize" : 229,
       "fileType" : 8192
     },
     "\/sass\/misc\/sticky.scss" : {
@@ -330,6 +334,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/stylesheets\/main\/mod_caddy.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/stylesheets\/main\/mod_caddy.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/sass\/misc\/mainmenu.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -339,6 +352,18 @@
       "outputStyle" : 0,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/stylesheets\/mainmenu.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/misc\/accordion.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/misc\/accordion.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/accordion.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -353,18 +378,6 @@
       "initialSize" : 1705,
       "fileType" : 8192
     },
-    "\/sass\/misc\/accordion.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/misc\/accordion.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/accordion.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/images\/icons\/clock.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -374,17 +387,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/icons\/clock.png",
       "initialSize" : 1762,
-      "fileType" : 8192
-    },
-    "\/images\/slider\/prev.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/slider\/prev.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/slider\/prev.png",
-      "initialSize" : 1670,
       "fileType" : 8192
     },
     "\/sass\/main\/mixins.scss" : {
@@ -399,6 +401,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/images\/slider\/prev.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/slider\/prev.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/slider\/prev.png",
+      "initialSize" : 1670,
+      "fileType" : 8192
+    },
     "\/images\/menu\/hover.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -408,39 +421,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/menu\/hover.png",
       "initialSize" : 1124,
-      "fileType" : 8192
-    },
-    "\/images\/slider\/bullet.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/slider\/bullet.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/slider\/bullet.png",
-      "initialSize" : 1335,
-      "fileType" : 8192
-    },
-    "\/images\/filter\/arrow.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/filter\/arrow.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/filter\/arrow.png",
-      "initialSize" : 1393,
-      "fileType" : 8192
-    },
-    "\/images\/misc-s33cdf18309.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/misc-s33cdf18309.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/misc-s33cdf18309.png",
-      "initialSize" : 22712,
       "fileType" : 8192
     },
     "\/sass\/misc\/k2reset.scss" : {
@@ -455,6 +435,39 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/images\/filter\/arrow.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/filter\/arrow.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/filter\/arrow.png",
+      "initialSize" : 1393,
+      "fileType" : 8192
+    },
+    "\/images\/menu\/bg.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/menu\/bg.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/menu\/bg.png",
+      "initialSize" : 1036,
+      "fileType" : 8192
+    },
+    "\/images\/slider\/bullet.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/slider\/bullet.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/slider\/bullet.png",
+      "initialSize" : 1335,
+      "fileType" : 8192
+    },
     "\/images\/misc\/light.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -466,40 +479,38 @@
       "initialSize" : 27764,
       "fileType" : 8192
     },
-    "\/images\/filter\/pink-satin.png" : {
+    "\/images\/misc-s33cdf18309.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/filter\/pink-satin.png",
+      "inputAbbreviatedPath" : "\/images\/misc-s33cdf18309.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/filter\/pink-satin.png",
-      "initialSize" : 3933,
+      "outputAbbreviatedPath" : "\/images\/misc-s33cdf18309.png",
+      "initialSize" : 22712,
       "fileType" : 8192
     },
-    "\/sass\/print.scss" : {
+    "\/images\/icons\/bullet2.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/print.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/print.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/images\/icons\/bullet2.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/icons\/bullet2.png",
+      "initialSize" : 1325,
+      "fileType" : 8192
     },
-    "\/sass\/misc\/990fixed.scss" : {
+    "\/images\/menu\/separator.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/misc\/990fixed.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/990fixed.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/images\/menu\/separator.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/menu\/separator.png",
+      "initialSize" : 1120,
+      "fileType" : 8192
     }
   },
   "manualImportLinks" : [
@@ -574,26 +585,28 @@
       "curly" : 1,
       "trailing" : 1,
       "nonew" : 1,
-      "es3" : 0,
+      "withstmt" : 0,
       "yui" : 0,
       "mootools" : 0,
       "proto" : 0,
       "boss" : 0,
       "funcscope" : 0,
+      "regexdash" : 0,
       "jquery" : 1,
       "esnext" : 0,
       "camelcase" : 0,
+      "es5" : 0,
       "dojo" : 0,
       "strict" : 0,
       "devel" : 0,
+      "onecase" : 0,
       "wsh" : 0,
       "nonstandard" : 0,
       "asi" : 0,
-      "moz" : 0,
-      "rhino" : 0,
       "smarttabs" : 0,
-      "lastsemic" : 0,
+      "rhino" : 0,
       "noempty" : 0,
+      "lastsemic" : 0,
       "eqnull" : 0,
       "eqeqeq" : 1,
       "couch" : 0,
@@ -617,37 +630,43 @@
       "multistr" : 0,
       "shadow" : 0,
       "sub" : 0,
-      "plusplus" : 0,
+      "regexp" : 1,
       "scripturl" : 0,
       "forin" : 0,
       "loopfunc" : 0,
-      "laxbreak" : 0
+      "laxbreak" : 0,
+      "plusplus" : 0
     },
     "jsLintFlags" : {
       "white" : 0,
-      "unparam" : 0,
+      "bitwise" : 0,
       "regexp" : 0,
-      "nomen" : 0,
       "vars" : 0,
+      "anon" : 0,
       "sub" : 0,
       "stupid" : 0,
-      "continue" : 0,
-      "bitwise" : 0,
+      "nomen" : 0,
+      "unparam" : 0,
       "newcap" : 0,
+      "'continue'" : 0,
       "sloppy" : 0,
-      "closure" : 0,
+      "fragment" : 0,
+      "undef" : 0,
       "es5" : 0,
       "browser" : 1,
       "properties" : 0,
+      "forin" : 0,
       "plusplus" : 0,
       "debug" : 0,
-      "forin" : 0,
       "eqeq" : 0,
+      "confusion" : 0,
       "evil" : 0,
-      "node" : 0,
-      "rhino" : 0,
+      "on" : 0,
+      "windows" : 0,
       "devel" : 0,
-      "ass" : 0
+      "rhino" : 0,
+      "node" : 0,
+      "css" : 0
     },
     "uglifyFlags" : {
       "no-mangle-functions" : 0,

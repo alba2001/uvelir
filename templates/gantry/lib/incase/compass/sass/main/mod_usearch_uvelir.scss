@@ -1,6 +1,7 @@
 #mod_usearch_uvelir{
-	@include border-bottom-radius(3px);
-	@include border-top-radius(3px);
+	@include border-bottom-radius(5px);
+	@include border-top-radius(5px);
+	@include box-shadow(rgba(#000, 0.2) 0px 4px 16px, rgba(#ffffbe, 1) 0px 1px 0px 0px inset, rgba(#baa575, 1) 0px -1px 0px 0px inset);
 	@include filter-sprite(bg);
 	// height: 56px;
 	background-repeat: repeat-x;
@@ -15,6 +16,7 @@
 	#mod_usearch_header{
 		float: left;
 		h1{
+			@include text-shadow(rgba(black, 0.6) 0px 1px 1px);
 			color: #FFF;
 			font-size: 16px;
 			line-height: 21px;
@@ -24,10 +26,11 @@
 		}
 	}
 	.separator{
+		// margin: -19px 22px 0;
 		@include filter-sprite(separator);
 		float: left;
 		height: 98px;
-		margin: -19px 22px 0;
+		margin: -19px 7px 0 25px;
 		width: 3px;
 	}
 	#mod_usearch_body{
@@ -68,12 +71,14 @@
 		@include border-bottom-radius(3px);
 		@include border-top-radius(3px);
 		@include pinkButton;
-		background-position-x: -62px;
 		float: right;
 		height: 52px;
 		overflow: hidden;
 		position: relative;
 		width: 140px;
+		&:before{
+			background-position-x: -108px;
+		}
 		button,
 		input{
 			// padding: 0px 17px;

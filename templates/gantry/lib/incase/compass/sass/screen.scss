@@ -22,23 +22,24 @@ $menu-bg-repeat: repeat-x;
 @include all-menu-sprites(true);
 
 // mixins
-@import "compass/css3/text-shadow";
-@import "compass/css3/opacity";
 @import 'bourbon';
+@import "compass/css3/box-shadow";
+@import "compass/css3/opacity";
+@import "compass/css3/text-shadow";
 @import "main/mixins";
 
 // misc
-@import "misc/accordion";
-@import "misc/mainmenu";
-@import "misc/k2reset";
 @import "misc/990fluid";
+@import "misc/accordion";
+@import "misc/k2reset";
+@import "misc/mainmenu";
 @import "misc/ruble/";
 // @import "misc/sticky";
 
 // main
 @import "main/com_uvelir";
-@import "main/mod_usearch_uvelir";
 @import "main/mod_caddy";
+@import "main/mod_usearch_uvelir";
 
 body{
 	// background: #F7F2E1;

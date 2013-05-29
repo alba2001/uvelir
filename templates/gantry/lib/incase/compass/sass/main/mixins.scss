@@ -49,6 +49,7 @@
 }
 @mixin pinkButton{
 	@include filter-sprite(pink);
+	@include box-shadow(rgba(#000, 0.2) 0px 4px 16px);
 	background-repeat: repeat-x;
 	position: relative;
 	&:after{
