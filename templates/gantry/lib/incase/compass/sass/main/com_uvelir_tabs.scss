@@ -1,0 +1,67 @@
+.tabs{
+	// @include inline-block;
+	@include clearfix;
+	color: #841a4d;
+	font-size: 14px;
+	list-style-type: none;
+	list-style: none;
+	margin: 0 0 30px 0;
+	li{
+		@include box-shadow(rgba(#000, 0.2) 8px 4px 16px, rgba(#ffffbe, 1) 0px 1px 0px 0px inset, rgba(#baa575, 1) 0px -1px 0px 0px inset);
+		@include filter-sprite(bg);
+		background-repeat: repeat-x;
+		float: left;
+		// display: block;
+		// height: 26px;
+		&.first{
+			@include border-left-radius(3px);
+		}
+		&.last{
+			@include border-right-radius(3px);
+		}
+		&.separator{
+			@include filter-sprite(separator);
+			background-position: 0px -125px;
+			height: 26px;
+			margin: 0 -2px;
+			padding: 0;
+			width: 3px;
+		}
+		a{
+			display: inline-block;
+			// height: 17px;
+			height: 26px;
+			line-height: 26px;
+			// padding: 6px 26px;
+			padding: 0px 26px;
+			position: relative;
+			&.active{
+				position: relative;
+				@include border-bottom-radius(4px);
+				@include border-top-radius(4px);
+				@include box-shadow(rgba(#baa575, 1) 0px -1px 0px 0px inset);
+				@include filter-sprite(bg);
+				@include filter-sprite(pink);
+				background-position: 0 -190px;
+				background-repeat: repeat-x;
+				color: #FFF;
+				font-size: 16px;
+				font-weight: bold;
+				padding: 0px 26px 0px 26px;
+				// padding: 4px 26px 5px 26px;
+				// margin: 0 2px;
+				&::after{
+					@include misc-sprite(tab-a);
+					content: 'tab-a';
+					height: 8px;
+					left: 50%;
+					overflow: hidden;
+					position: absolute;
+					text-indent: -999px;
+					top: 98%;
+					width: 16px;
+				}
+			}
+		}
+	}
+}
