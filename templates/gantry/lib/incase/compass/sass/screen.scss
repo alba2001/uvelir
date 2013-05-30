@@ -39,6 +39,7 @@ $menu-bg-repeat: repeat-x;
 // main
 @import "main/com_uvelir_category";
 @import "main/com_uvelir_products";
+@import "main/com_uvelir_tabs";
 @import "main/mod_caddy";
 @import "main/mod_usearch_uvelir";
 
@@ -109,7 +110,7 @@ body{
 			}
 			& > li > a:hover{
 				// @include border-radius(4px);
-				@extend .pink-hover;
+				@include pink-hover;
 			}
 		}
 	}
@@ -273,7 +274,7 @@ body{
 		font-size: 12px;
 		padding-bottom: 36px;
 		p{
-			margin-bottom: 0;
+			margin-bottom: 6px;
 		}
 		ul{
 			list-style: none;
