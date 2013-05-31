@@ -35,7 +35,17 @@
 				}
 			}
 			.image{
-				img{
+				display: table;
+				margin: 0 auto;
+				min-height: 120px;
+				padding-bottom: 10px;
+				vertical-align: middle;
+				a{
+					display: table-cell;
+					vertical-align: middle;
+					img{
+						width: 120px;
+					}
 				}
 			}
 			.article{
