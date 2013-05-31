@@ -36,9 +36,14 @@ $desc = json_decode($this->item->desc);
 <?php if( $this->item ) : ?>
     <div class="item_fields">
 
-    	<?php if(isset($this->item->artikul) AND $this->item->artikul):?>
-    		<h2><?=$this->item->name?></h2>
-    	<?php endif;?>
+		<h2>
+	    	<?php if(isset($this->item->name) AND $this->item->name):?>
+	    		<? if ($this->item->name != $this->item->artikul){ ?>
+	    			<?=$this->item->name?>
+	    		<?}else{?>
+	    		<?}?>
+	    	<?php endif;?>
+		</h2>
 
     	<div class="leftside">
 	        <a class="fancybox"
@@ -48,92 +53,92 @@ $desc = json_decode($this->item->desc);
 	        </a>
 	        <!-- social block-->
         </div>
-        	<?php if(isset($this->item->name) AND $this->item->name):?>
 
-        <table class="fields_list">
+	    <table class="fields_list">
 
-        	<tr>
-        		<td>
-        			<span class="left">
-        				<?= JText::_('COM_UVELIR_ARTIKUL').': ' ?>
-        			</span>
-        		</td>
-        		<td>
-        			<span class="right">
-        				<?=$this->item->artikul?>
-        			</span>
-        		</td>
-        	</tr>
-        	<?php endif;?>
+      		 <?php if(isset($this->item->artikul) AND $this->item->artikul):?>
+	        	<tr>
+	        		<td>
+	        			<span class="left">
+	        				<?= JText::_('COM_UVELIR_ARTIKUL').': ' ?>
+	        			</span>
+	        		</td>
+	        		<td>
+	        			<span class="right">
+	        				<?=$this->item->artikul?>
+	        			</span>
+	        		</td>
+	        	</tr>
+	    	<?php endif;?>
 
-        	<?php if(isset($this->item->material) AND $this->item->material):?>
-        	<tr>
-        		<td>
-        			<span class="left">
-        				<?= JText::_('COM_UVELIR_MATERIAL').': ' ?></span>
-        		</td>
-        		<td>
-        			<span class="right">
-	        			<?=$this->item->material?>
-	        		</span>
-        		</td>
-        	</tr>
-        	<?php endif;?>
+	        <?php if(isset($this->item->material) AND $this->item->material):?>
+	        	<tr>
+	        		<td>
+	        			<span class="left">
+	        				<?= JText::_('COM_UVELIR_MATERIAL').': ' ?></span>
+	        		</td>
+	        		<td>
+	        			<span class="right">
+		        			<?=$this->item->material?>
+		        		</span>
+	        		</td>
+	        	</tr>
+	        <?php endif;?>
 
-        	<?php if(isset($this-> item->proba) AND $this->item->proba):?>
-        	<tr>
-        		<td>
-        			<span class="left">
-        				<?= JText::_('COM_UVELIR_PROBA').': ' ?></span>
-        		</td>
-        		<td>
-        			<span class="right">
-	        			<?=$this->item->proba?>
-	        		</span>
-        		</td>
-        	</tr>
+	        <?php if(isset($this-> item->proba) AND $this->item->proba):?>
+	        	<tr>
+	        		<td>
+	        			<span class="left">
+	        				<?= JText::_('COM_UVELIR_PROBA').': ' ?></span>
+	        		</td>
+	        		<td>
+	        			<span class="right">
+		        			<?=$this->item->proba?>
+		        		</span>
+	        		</td>
+	        	</tr>
         	<?php endif;?>
 
         	<?php if(isset($this->item->average_weight) AND $this->item->average_weight):?>
-        	<tr>
-        		<td>
-        			<span class="left">
-        				<?= JText::_('COM_UVELIR_AVERAGE_WEIGHT').': ' ?></span>
-        		</td>
-        		<td>
-        			<span class="right">
-	        			<?=$this->item->average_weight?>
-	        		</span>
-        		</td>
-        	</tr>
+	        	<tr>
+	        		<td>
+	        			<span class="left">
+	        				<?= JText::_('COM_UVELIR_AVERAGE_WEIGHT').': ' ?></span>
+	        		</td>
+	        		<td>
+	        			<span class="right">
+		        			<?=$this->item->average_weight?>
+		        		</span>
+	        		</td>
+	        	</tr>
         	<?php endif;?>
 
         	<?php if(isset($this->item->vstavki) AND $this->item->vstavki):?>
-        	<tr>
-        		<td>
-        			<span class="left">
-        				<?= JText::_('COM_UVELIR_VSTAVKI').': ' ?></span>
-        		</td>
-        		<td>
-        			<span class="right">
-	        			<?=$this->item->vstavki?>
-	        		</span>
-        		</td>
-        	</tr>
+	        	<tr>
+	        		<td>
+	        			<span class="left">
+	        				<?= JText::_('COM_UVELIR_VSTAVKI').': ' ?></span>
+	        		</td>
+	        		<td>
+	        			<span class="right">
+		        			<?=$this->item->vstavki?>
+		        		</span>
+	        		</td>
+	        	</tr>
         	<?php endif;?>
 
         	<?php if(isset($this->item->opisanije) AND $this->item->opisanije):?>
-        	<tr class="last">
-        		<td>
-        			<span class="left">
-        				<?= JText::_('COM_UVELIR_OPISANIJE').': ' ?></span>
-        		</td>
-        		<td>
-        			<span class="right">
-	        			<?=$this->item->opisanije?>
-	        		</span>
-        		</td>
-        	</tr>
+	        	<tr class="last">
+	        		<td>
+	        			<span class="left">
+	        				<?= JText::_('COM_UVELIR_OPISANIJE').': ' ?></span>
+	        		</td>
+	        		<td>
+	        			<span class="right">
+		        			<?=$this->item->opisanije?>
+		        		</span>
+	        		</td>
+	        	</tr>
         	<?php endif;?>
         </table>
 
