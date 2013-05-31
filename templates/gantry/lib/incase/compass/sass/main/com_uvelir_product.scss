@@ -1,0 +1,110 @@
+.item_fields{
+	.leftside{
+		margin-right: 20px;
+		margin-bottom: 46px;
+		overflow: hidden;
+		float: left;
+		a{
+			float: left;
+			img{
+			}
+		}
+	}
+	table.fields_list{
+		tr{
+			border-bottom: 1px solid #E4D8BE;
+			td{
+			}
+			&:last-child,
+			&.last{
+				// border-bottom: none;
+			}
+		}
+	}
+	table.bottom{
+		tr{
+			td{
+			}
+			&.size{
+				background: #f6dd97;
+				margin-bottom: 28px;
+				span{
+					text-transform: uppercase;
+					color: #494949;
+					// color: #a89059;
+				}
+				select{
+					margin-top: 4px;
+					height: 25px;
+					color: #98834F;
+				}
+			}
+			&.separatorBig{
+				td{
+					height: 30px;
+				}
+			}
+			&.separatorSmall{
+				td{
+					height: 20px;
+				}
+			}
+			.buttons{
+				// max-width: 132px;
+				text-align: center;
+				.removeButton,
+				.addButton{
+					@include border-bottom-radius(3px);
+					@include border-top-radius(3px);
+					@include filter-sprite(pink);
+					@include box-shadow(rgba(#000, 0.2) 0px 4px 16px);
+					border:none;
+					color: #FFF;
+					font-size: 12px;
+					height: 32px;
+					overflow: hidden;
+					position: relative;
+					text-align: center;
+					margin: 4px;
+					// width: 118px;
+				}
+				.removeButton{
+					display: none;
+				}
+				.count{
+				}
+			}
+		}
+	}
+	table{
+		width: 60%;
+		float: left;
+		font-size: 12px;
+		tr{
+			td{
+				padding: 0px 12px;
+				height: 46px;
+				width: 50%;
+				.left,
+				.gold{
+					color: #a89059;
+				}
+				.small{
+					font-size: 16px;
+					.ruble{
+						font-size: 14px;
+					}
+				}
+				.big{
+					font-size: 24px;
+					.ruble{
+						font-size: 16px;
+					}
+				}
+				.black{
+					color: #000;
+				}
+			}
+		}
+	}
+}

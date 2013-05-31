@@ -39,6 +39,7 @@ $menu-bg-repeat: repeat-x;
 // main
 @import "main/com_uvelir_category";
 @import "main/com_uvelir_products";
+@import "main/com_uvelir_product";
 @import "main/com_uvelir_tabs";
 @import "main/mod_caddy";
 @import "main/mod_usearch_uvelir";
@@ -52,6 +53,7 @@ body{
 	// 	url('/templates/gantry/lib/incase/compass/images/misc-s33cdf18309.png');
 	// background-repeat: no-repeat;
 	// background-position: -7% -230px, 105% 6%, 128% -350px;
+	color: #494949;
 	&.test{
 	}
 }
@@ -76,7 +78,7 @@ body{
 			li{
 				a{
 					color: #f6df98;
-					font-size: 11px;
+					font-size: 13px;
 					font-weight:normal;
 					padding: 0 10px;
 					&:hover{
