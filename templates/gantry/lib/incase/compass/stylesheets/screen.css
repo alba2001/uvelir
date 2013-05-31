@@ -4,8 +4,8 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* line 74, filter/*.png */
 .filter-sprite, .filter-arrow, .filter-bg, .filter-pink-satin, .filter-pink, .filter-separator, #caddy_show table tfoot th .back,
-#caddy_show table tfoot th .next, .item_fields table.bottom tr .buttons .removeButton,
-.item_fields table.bottom tr .buttons .addButton, .items-wrapper .items .com_uvelir_item .show .removeButton,
+#caddy_show table tfoot th .next, .item_fields .fields_list .bottom tr .buttons .removeButton,
+.item_fields .fields_list .bottom tr .buttons .addButton, .items-wrapper .items .com_uvelir_item .show .removeButton,
 .items-wrapper .items .com_uvelir_item .show .addButton, .tabs li, .tabs li.separator, .tabs li a.active, #mod_caddy_uvelir .inner, #mod_caddy_uvelir .inner:before, #mod_usearch_uvelir, #mod_usearch_uvelir .separator, #mod_usearch_uvelir #mod_usearch_footer, #mod_usearch_uvelir #mod_usearch_footer:before, #mod_usearch_uvelir #mod_usearch_footer button:before,
 #mod_usearch_uvelir #mod_usearch_footer input:before {
   background: url('/templates/gantry/lib/incase/compass/images/filter-s0df33fbe23.png') no-repeat; }
@@ -701,17 +701,21 @@ body h3 {
   float: left;
   margin-right: 5px; }
 
-/* line 2, ../sass/main/com_uvelir_product.scss */
+/* line 3, ../sass/main/com_uvelir_product.scss */
+.item_fields h2:first-letter {
+  text-transform: uppercase; }
+/* line 7, ../sass/main/com_uvelir_product.scss */
 .item_fields .leftside {
   margin-right: 20px;
   margin-bottom: 46px;
   overflow: hidden;
   float: left; }
-  /* line 7, ../sass/main/com_uvelir_product.scss */
+  /* line 12, ../sass/main/com_uvelir_product.scss */
   .item_fields .leftside a {
     float: left; }
-    /* line 9, ../sass/main/com_uvelir_product.scss */
+    /* line 14, ../sass/main/com_uvelir_product.scss */
     .item_fields .leftside a img {
+      max-width: 400px;
       -moz-border-radius-bottomleft: 5px;
       -webkit-border-bottom-left-radius: 5px;
       border-bottom-left-radius: 5px;
@@ -724,38 +728,74 @@ body h3 {
       -moz-border-radius-topright: 5px;
       -webkit-border-top-right-radius: 5px;
       border-top-right-radius: 5px; }
-/* line 16, ../sass/main/com_uvelir_product.scss */
-.item_fields table.fields_list tr {
-  border-bottom: 1px solid #E4D8BE; }
-/* line 26, ../sass/main/com_uvelir_product.scss */
-.item_fields table.bottom {
-  min-width: 406px; }
-  /* line 31, ../sass/main/com_uvelir_product.scss */
-  .item_fields table.bottom tr.size {
+/* line 21, ../sass/main/com_uvelir_product.scss */
+.item_fields .fields_list {
+  font-size: 12px; }
+  @media only screen and (max-width: 1400px) {
+    /* line 21, ../sass/main/com_uvelir_product.scss */
+    .item_fields .fields_list {
+      width: 315px; } }
+  @media only screen and (min-width: 1401px) and (max-width: 1599px) {
+    /* line 21, ../sass/main/com_uvelir_product.scss */
+    .item_fields .fields_list {
+      width: 420px; } }
+  @media only screen and (min-width: 1600px) {
+    /* line 21, ../sass/main/com_uvelir_product.scss */
+    .item_fields .fields_list {
+      width: 640px; } }
+  /* line 26, ../sass/main/com_uvelir_product.scss */
+  .item_fields .fields_list tr {
+    border-bottom: 1px solid #E4D8BE; }
+    /* line 32, ../sass/main/com_uvelir_product.scss */
+    .item_fields .fields_list tr td {
+      padding: 0px 12px;
+      height: 46px;
+      width: 50%; }
+      /* line 37, ../sass/main/com_uvelir_product.scss */
+      .item_fields .fields_list tr td .left,
+      .item_fields .fields_list tr td .gold {
+        color: #a89059; }
+      /* line 40, ../sass/main/com_uvelir_product.scss */
+      .item_fields .fields_list tr td .small {
+        font-size: 16px; }
+        /* line 42, ../sass/main/com_uvelir_product.scss */
+        .item_fields .fields_list tr td .small .ruble {
+          font-size: 14px; }
+      /* line 46, ../sass/main/com_uvelir_product.scss */
+      .item_fields .fields_list tr td .big {
+        font-size: 24px; }
+        /* line 48, ../sass/main/com_uvelir_product.scss */
+        .item_fields .fields_list tr td .big .ruble {
+          font-size: 16px; }
+      /* line 52, ../sass/main/com_uvelir_product.scss */
+      .item_fields .fields_list tr td .black {
+        color: #000; }
+  /* line 63, ../sass/main/com_uvelir_product.scss */
+  .item_fields .fields_list .bottom tr.size {
     background: #f6dd97;
     margin-bottom: 28px; }
-    /* line 34, ../sass/main/com_uvelir_product.scss */
-    .item_fields table.bottom tr.size span {
+    /* line 66, ../sass/main/com_uvelir_product.scss */
+    .item_fields .fields_list .bottom tr.size span {
       text-transform: uppercase;
       color: #494949; }
-    /* line 39, ../sass/main/com_uvelir_product.scss */
-    .item_fields table.bottom tr.size select {
+    /* line 71, ../sass/main/com_uvelir_product.scss */
+    .item_fields .fields_list .bottom tr.size select {
       width: 100%;
       margin-top: 4px;
       height: 25px;
       color: #98834F; }
-  /* line 47, ../sass/main/com_uvelir_product.scss */
-  .item_fields table.bottom tr.separatorBig td {
+  /* line 79, ../sass/main/com_uvelir_product.scss */
+  .item_fields .fields_list .bottom tr.separatorBig td {
     height: 30px; }
-  /* line 52, ../sass/main/com_uvelir_product.scss */
-  .item_fields table.bottom tr.separatorSmall td {
+  /* line 84, ../sass/main/com_uvelir_product.scss */
+  .item_fields .fields_list .bottom tr.separatorSmall td {
     height: 20px; }
-  /* line 56, ../sass/main/com_uvelir_product.scss */
-  .item_fields table.bottom tr .buttons {
+  /* line 88, ../sass/main/com_uvelir_product.scss */
+  .item_fields .fields_list .bottom tr .buttons {
     text-align: center; }
-    /* line 60, ../sass/main/com_uvelir_product.scss */
-    .item_fields table.bottom tr .buttons .removeButton,
-    .item_fields table.bottom tr .buttons .addButton {
+    /* line 92, ../sass/main/com_uvelir_product.scss */
+    .item_fields .fields_list .bottom tr .buttons .removeButton,
+    .item_fields .fields_list .bottom tr .buttons .addButton {
       -moz-border-radius-bottomleft: 3px;
       -webkit-border-bottom-left-radius: 3px;
       border-bottom-left-radius: 3px;
@@ -780,36 +820,9 @@ body h3 {
       position: relative;
       text-align: center;
       margin: 4px; }
-    /* line 75, ../sass/main/com_uvelir_product.scss */
-    .item_fields table.bottom tr .buttons .removeButton {
+    /* line 107, ../sass/main/com_uvelir_product.scss */
+    .item_fields .fields_list .bottom tr .buttons .removeButton {
       display: none; }
-/* line 83, ../sass/main/com_uvelir_product.scss */
-.item_fields table {
-  font-size: 12px; }
-  /* line 88, ../sass/main/com_uvelir_product.scss */
-  .item_fields table tr td {
-    padding: 0px 12px;
-    height: 46px;
-    width: 50%; }
-    /* line 93, ../sass/main/com_uvelir_product.scss */
-    .item_fields table tr td .left,
-    .item_fields table tr td .gold {
-      color: #a89059; }
-    /* line 96, ../sass/main/com_uvelir_product.scss */
-    .item_fields table tr td .small {
-      font-size: 16px; }
-      /* line 98, ../sass/main/com_uvelir_product.scss */
-      .item_fields table tr td .small .ruble {
-        font-size: 14px; }
-    /* line 102, ../sass/main/com_uvelir_product.scss */
-    .item_fields table tr td .big {
-      font-size: 24px; }
-      /* line 104, ../sass/main/com_uvelir_product.scss */
-      .item_fields table tr td .big .ruble {
-        font-size: 16px; }
-    /* line 108, ../sass/main/com_uvelir_product.scss */
-    .item_fields table tr td .black {
-      color: #000; }
 
 /* line 4, ../sass/main/com_uvelir_products.scss */
 .items-wrapper .items {
