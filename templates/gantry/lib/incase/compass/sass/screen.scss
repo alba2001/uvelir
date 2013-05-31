@@ -25,6 +25,7 @@ $menu-bg-repeat: repeat-x;
 @import 'bourbon';
 @import "compass/css3/box-shadow";
 @import "compass/css3/opacity";
+@import "compass/css3/border-radius";
 @import "compass/css3/text-shadow";
 @import "main/mixins";
 
@@ -37,9 +38,10 @@ $menu-bg-repeat: repeat-x;
 // @import "misc/sticky";
 
 // main
+@import "main/com_uvelir_caddy";
 @import "main/com_uvelir_category";
-@import "main/com_uvelir_products";
 @import "main/com_uvelir_product";
+@import "main/com_uvelir_products";
 @import "main/com_uvelir_tabs";
 @import "main/mod_caddy";
 @import "main/mod_usearch_uvelir";

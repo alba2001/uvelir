@@ -7,6 +7,8 @@
 		a{
 			float: left;
 			img{
+				@include border-bottom-radius(5px);
+				@include border-top-radius(5px);
 			}
 		}
 	}
@@ -22,6 +24,7 @@
 		}
 	}
 	table.bottom{
+		min-width: 406px;
 		tr{
 			td{
 			}
@@ -34,6 +37,7 @@
 					// color: #a89059;
 				}
 				select{
+					width: 100%;
 					margin-top: 4px;
 					height: 25px;
 					color: #98834F;
@@ -77,8 +81,8 @@
 		}
 	}
 	table{
-		width: 60%;
-		float: left;
+		// width: 60%;
+		// float: left;
 		font-size: 12px;
 		tr{
 			td{

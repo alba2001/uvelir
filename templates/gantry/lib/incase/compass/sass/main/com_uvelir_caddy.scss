@@ -1,0 +1,114 @@
+#caddy_show{
+	font-size: 11px;
+	.right{
+		text-align: right;
+	}
+	.left{
+		text-align: left;
+	}
+	table{
+		width: 100%;
+		text-align: center;
+		tr{
+			th{
+				text-align: center;
+				font-size: 12px;
+				color: #494949;
+				padding: 11px 29px;
+				background-color: #e4d8be;
+				font-weight: normal;
+				position: relative;
+				.separator{
+					@include misc-sprite(separator);
+					width: 1px;
+					height: 26px;
+					position: absolute;
+					top: 10px;
+					left: 0px;
+				}
+			}
+			td{
+				padding: 19px;
+				border-top: 1px dashed #c6ba9f;
+				input{
+					width: 30px;
+					text-align: center;
+					border-color: #D6BB7D;
+				}
+				&.info{
+					text-align: left;
+					color: #494949;
+					.item_title{
+						color: #c02654;
+					}
+					.article{
+						color: #9d9d9d;
+					}
+				}
+				&.price{
+					font-size: 16px;
+				}
+				&.caddy_item_sum{
+					color: #000;
+					font-size: 16px;
+					font-weight: bold;
+				}
+			}
+			&.separator{
+				td{
+					border:none;
+					height: 28px;
+					padding: 0;
+				}
+			}
+		}
+		thead{
+			th{
+				&:first-child{
+					@include border-top-left-radius(5px);
+				}
+				&:last-child{
+					@include border-top-right-radius(5px);
+				}
+			}
+		}
+		tfoot{
+			th{
+				.back,
+				.next{
+					@include border-bottom-radius(3px);
+					@include border-top-radius(3px);
+					@include filter-sprite(pink);
+					@include box-shadow(rgba(#000, 0.2) 0px 4px 16px);
+					border:none;
+					color: #FFF;
+					font-size: 12px;
+					overflow: hidden;
+					position: relative;
+					text-align: center;
+					padding: 3px 22px
+				}
+				&:first-child{
+					@include border-bottom-left-radius(5px);
+				}
+				&:last-child{
+					@include border-bottom-right-radius(5px);
+				}
+			}
+			td{
+				border:none;
+				.gray-sum{
+					color: #494949;
+					font-size: 16px;
+				}
+				.black-sum{
+					color: #000;
+					font-size: 24px;
+				}
+				.ruble{
+					font-size: 16px;
+				}
+			}
+		}
+	}
+}
