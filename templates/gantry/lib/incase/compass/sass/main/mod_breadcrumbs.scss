@@ -1,0 +1,16 @@
+.breadcrumbs{
+	span,
+	a{
+		font-size: 12px;
+	}
+	img{
+		margin-top: -2px;
+	}
+	.separator{
+		@include icons-sprite(bullet);
+		@include inline-block;
+		height: 8px;
+		margin: 0 15px;
+		width: 4px;
+	}
+}

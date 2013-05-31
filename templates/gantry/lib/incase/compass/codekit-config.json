@@ -2,17 +2,6 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8300",
   "files" : {
-    "\/images\/menu\/separator.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/menu\/separator.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/menu\/separator.png",
-      "initialSize" : 1120,
-      "fileType" : 8192
-    },
     "\/images\/misc\/light.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -23,6 +12,18 @@
       "outputAbbreviatedPath" : "\/images\/misc\/light.png",
       "initialSize" : 27764,
       "fileType" : 8192
+    },
+    "\/sass\/misc\/k2reset.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/misc\/k2reset.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/k2reset.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/images\/icons\/camera.png" : {
       "ignoreWasSetByUser" : 0,
@@ -35,25 +36,16 @@
       "initialSize" : 1239,
       "fileType" : 8192
     },
-    "\/images\/filter\/arrow.png" : {
+    "\/images\/menu\/separator.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/filter\/arrow.png",
+      "inputAbbreviatedPath" : "\/images\/menu\/separator.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/filter\/arrow.png",
-      "initialSize" : 1393,
+      "outputAbbreviatedPath" : "\/images\/menu\/separator.png",
+      "initialSize" : 1120,
       "fileType" : 8192
-    },
-    "\/stylesheets\/print.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/stylesheets\/print.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
     },
     "\/sass\/ie.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -66,6 +58,15 @@
       "outputAbbreviatedPath" : "\/stylesheets\/ie.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/stylesheets\/print.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/stylesheets\/print.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/images\/icons\/cart.png" : {
       "ignoreWasSetByUser" : 0,
@@ -125,15 +126,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/images\/filter\/pink.png" : {
+    "\/images\/misc-s831ec4294d.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/filter\/pink.png",
+      "inputAbbreviatedPath" : "\/images\/misc-s831ec4294d.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/filter\/pink.png",
-      "initialSize" : 1129,
+      "outputAbbreviatedPath" : "\/images\/misc-s831ec4294d.png",
+      "initialSize" : 20679,
       "fileType" : 8192
     },
     "\/sass\/misc\/990fluid.scss" : {
@@ -148,15 +149,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/images\/misc-s831ec4294d.png" : {
+    "\/images\/filter\/pink.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/misc-s831ec4294d.png",
+      "inputAbbreviatedPath" : "\/images\/filter\/pink.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/misc-s831ec4294d.png",
-      "initialSize" : 20679,
+      "outputAbbreviatedPath" : "\/images\/filter\/pink.png",
+      "initialSize" : 1129,
       "fileType" : 8192
     },
     "\/stylesheets\/screen.css" : {
@@ -199,6 +200,29 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 32768
     },
+    "\/images\/menu-s58e6d61bb6.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/menu-s58e6d61bb6.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/menu-s58e6d61bb6.png",
+      "initialSize" : 592,
+      "fileType" : 8192
+    },
+    "\/sass\/main\/com_uvelir_category.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/main\/com_uvelir_category.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/com_uvelir_category.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/sass\/main\/com_uvelir_product.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -223,26 +247,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/images\/menu-s58e6d61bb6.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/menu-s58e6d61bb6.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/menu-s58e6d61bb6.png",
-      "initialSize" : 592,
-      "fileType" : 8192
-    },
-    "\/sass\/main\/com_uvelir_category.scss" : {
+    "\/sass\/main\/mod_breadcrumbs.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/main\/com_uvelir_category.scss",
+      "inputAbbreviatedPath" : "\/sass\/main\/mod_breadcrumbs.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/com_uvelir_category.css",
+      "outputAbbreviatedPath" : "\/stylesheets\/mod_breadcrumbs.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -268,15 +281,15 @@
       "initialSize" : 3665,
       "fileType" : 8192
     },
-    "\/images\/filter\/separator.png" : {
+    "\/images\/icons\/file.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/filter\/separator.png",
+      "inputAbbreviatedPath" : "\/images\/icons\/file.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/filter\/separator.png",
-      "initialSize" : 1394,
+      "outputAbbreviatedPath" : "\/images\/icons\/file.png",
+      "initialSize" : 1881,
       "fileType" : 8192
     },
     "\/sass\/main\/com_uvelir_tabs.scss" : {
@@ -291,15 +304,26 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/images\/icons\/file.png" : {
+    "\/images\/filter\/separator.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/icons\/file.png",
+      "inputAbbreviatedPath" : "\/images\/filter\/separator.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/icons\/file.png",
-      "initialSize" : 1881,
+      "outputAbbreviatedPath" : "\/images\/filter\/separator.png",
+      "initialSize" : 1394,
+      "fileType" : 8192
+    },
+    "\/images\/logo.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/logo.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/logo.png",
+      "initialSize" : 7967,
       "fileType" : 8192
     },
     "\/images\/filter-s0df33fbe23.png" : {
@@ -321,17 +345,6 @@
       "inputAbbreviatedPath" : "\/stylesheets\/ie.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
-    },
-    "\/images\/logo.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/logo.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/logo.png",
-      "initialSize" : 7967,
-      "fileType" : 8192
     },
     "\/images\/slider\/bullet2.png" : {
       "ignoreWasSetByUser" : 0,
@@ -365,6 +378,18 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/sass\/misc\/mainmenu.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/misc\/mainmenu.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/stylesheets\/mainmenu.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/sass\/main\/com_uvelir_products.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -389,6 +414,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/images\/icons\/clock.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/icons\/clock.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/icons\/clock.png",
+      "initialSize" : 1762,
+      "fileType" : 8192
+    },
     "\/images\/slider\/next.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -399,18 +435,6 @@
       "outputAbbreviatedPath" : "\/images\/slider\/next.png",
       "initialSize" : 1705,
       "fileType" : 8192
-    },
-    "\/sass\/misc\/mainmenu.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/misc\/mainmenu.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/mainmenu.css",
-      "fileType" : 4,
-      "debugStyle" : 0
     },
     "\/images\/slider\/prev.png" : {
       "ignoreWasSetByUser" : 0,
@@ -435,17 +459,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/images\/icons\/clock.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/icons\/clock.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/icons\/clock.png",
-      "initialSize" : 1762,
-      "fileType" : 8192
-    },
     "\/images\/misc\/tab-a.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -457,18 +470,6 @@
       "initialSize" : 1304,
       "fileType" : 8192
     },
-    "\/sass\/misc\/k2reset.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/misc\/k2reset.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/stylesheets\/k2reset.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/images\/menu\/hover.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -478,6 +479,28 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/menu\/hover.png",
       "initialSize" : 1124,
+      "fileType" : 8192
+    },
+    "\/images\/filter\/arrow.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/filter\/arrow.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/filter\/arrow.png",
+      "initialSize" : 1393,
+      "fileType" : 8192
+    },
+    "\/images\/menu\/bg.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/menu\/bg.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/menu\/bg.png",
+      "initialSize" : 1036,
       "fileType" : 8192
     },
     "\/images\/slider\/bullet.png" : {
@@ -500,17 +523,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/icons\/bullet2.png",
       "initialSize" : 1325,
-      "fileType" : 8192
-    },
-    "\/images\/menu\/bg.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/menu\/bg.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/menu\/bg.png",
-      "initialSize" : 1036,
       "fileType" : 8192
     },
     "\/images\/filter\/pink-satin.png" : {

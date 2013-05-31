@@ -43,6 +43,7 @@ $menu-bg-repeat: repeat-x;
 @import "main/com_uvelir_tabs";
 @import "main/mod_caddy";
 @import "main/mod_usearch_uvelir";
+@import "main/mod_breadcrumbs";
 
 body{
 	// background: #F7F2E1;
@@ -203,6 +204,12 @@ body{
 	}
 }
 #rt-transition{
+	#rt-content-top{
+		position: absolute;
+		top: -35px;
+		left: 0;
+		width: 100%;
+	}
 	#rt-sidebar-a{
 		ul.accordion{
 			li{

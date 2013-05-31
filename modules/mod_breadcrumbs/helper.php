@@ -61,7 +61,7 @@ class modBreadCrumbsHelper
 				$_separator = JHtml::_('image', 'system/arrow.png', NULL, NULL, true);
 			}
 		} else {
-			$_separator = htmlspecialchars($custom);
+			$_separator = '<span class="separator">' . htmlspecialchars($custom) . '</span>';
 		}
 
 		return $_separator;
