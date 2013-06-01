@@ -1,4 +1,6 @@
-
+html{
+	min-width: 1040px;
+}
 body {
   padding-left: 0;
   padding-right: 0;
@@ -11,8 +13,10 @@ body #rt-page-surround {
 }
 body .rt-container {
   // width: 92%;
-  width: 96%;
-  min-width: 990px;
+  // width: 96%;
+  width: 100%;
+  // min-width: 990px;
+  min-width: 1040px;
   max-width: 1600px;
 }
 
