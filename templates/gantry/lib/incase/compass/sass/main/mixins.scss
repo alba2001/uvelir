@@ -83,6 +83,19 @@
 		z-index: 0;
 	}
 }
+.button{
+	@include border-bottom-radius(3px);
+	@include border-top-radius(3px);
+	@include filter-sprite(pink);
+	@include box-shadow(rgba(#000, 0.2) 0px 4px 16px);
+	border:none;
+	color: #FFF;
+	font-size: 12px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	padding: 3px 22px
+}
 
 $small: 1400px;
 $large: 1600px;

@@ -12,37 +12,64 @@ defined('_JEXEC') or die;
 //    var_dump($this->caddy);
 ?>
 <?php if( $this->items ) : ?>
+<style type="text/css">
+    dl.dl_user_detail dt{
+        float: left;
+        font-weight: bold;
+        width: 200px;
+    }
+</style>
 <ul class="step-wrapper">
-	<li class="step active"><span>1</span><div>Список покупок</div></li>
+	<li class="step"><span>1</span><div>Список покупок</div></li>
 	<li class="step"><span>2</span><div>Способ доставки</div></li>
 	<li class="step"><span>3</span><div>Способ оплаты</div></li>
-	<li class="step"><span>4</span><div>Завершение заказа</div></li>
+	<li class="step active"><span>4</span><div>Завершение заказа</div></li>
 </ul>
+<div class="div_user_detail expand-source">
+	<p>Личные данные</p>
+	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="user_detail_show" id="user_detail_show">
+	    <dl class="dl_user_detail">
+	        <dt><?=JTEXT::_('COM_UVELIR_FIO').': '?></dt>
+	        <dd><?=$this->user->fam.' '.$this->user->im.' '.$this->user->ot?></dd>
+	        <dt><?=JTEXT::_('COM_UVELIR_ADDRESS').': '?></dt>
+	        <dd><?=$this->user->address?></dd>
+	        <dt><?=JTEXT::_('COM_UVELIR_PHONE').': '?></dt>
+	        <dd><?=$this->user->phone?></dd>
+	        <dt><?=JTEXT::_('COM_UVELIR_EMAIL').': '?></dt>
+	        <dd><?=$this->user->email?></dd>
+	    </dl>
+	    <input type="hidden" name="option" value="com_uvelir" />
+	    <input type="hidden" name="task" value="caddy.order_add" />
+	    <?php echo JHtml::_('form.token'); ?>
+	    <input class="button" type="submit" value="<?=JTEXT::_('COM_UVELIR_EDIT_USERDATA')?>" />
+
+	</form>
+</div>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="caddy_show" id="caddy_show">
     <table>
-        <thead>
-            <tr>
-                <th colspan="2" class="left">Выбранные товары</span></th>
-                <th>
-                	<?=JTEXT::_('COM_UVELIR_COUNT')?>
-                	<span class="separator"></span>
-                </th>
-                <th>
-                	<?=JTEXT::_('COM_UVELIR_PRICE')?>
-                	<span class="separator"></span>
-                </th>
-                <th>
-            		<?=JTEXT::_('COM_UVELIR_SUM')?>
-                	<span class="separator">
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        	<tr class="separator">
-        		<td colpan="5"></td>
-        	</tr>
+    	<thead>
+    	    <tr>
+    	        <th colspan="2" class="left">Выбранные товары</span></th>
+    	        <th>
+    	        	<?=JTEXT::_('COM_UVELIR_COUNT')?>
+    	        	<span class="separator"></span>
+    	        </th>
+    	        <th>
+    	        	<?=JTEXT::_('COM_UVELIR_PRICE')?>
+    	        	<span class="separator"></span>
+    	        </th>
+    	        <th>
+    	    		<?=JTEXT::_('COM_UVELIR_SUM')?>
+    	        	<span class="separator">
+    	        </th>
+    	    </tr>
+    	</thead>
+    	<tbody>
+    		<tr class="separator">
+    			<td colpan="5"></td>
+    		</tr>
 	        <?php foreach($this->items as $item):?>
-	            <?php $id = $item['id']?>
+	            <?php $id = $item['zavod_id'].'_'.$item['id']?>
 	            <tr>
 	                <td>
 	                	<div class="image">
@@ -60,22 +87,22 @@ defined('_JEXEC') or die;
 		                		</a>
 	                		</div>
 
-                		<div class="manufacturer">
-                			Завод: <?=$item['zavod_name']?>
-                		</div>
+	            		<div class="manufacturer">
+	            			Завод: <?=$item['zavod_name']?>
+	            		</div>
 
-                		<?php if(isset($this->item->razmer) AND $this->item->razmer):?>
+	            		<?php if(isset($this->item->razmer) AND $this->item->razmer):?>
 	                		<div class="size">
 	                			Размер: <?=$item['razmer']?>
 	                		</div>
 	        			<?php endif;?>
 
-                		<div class="article">
-                			Артикул: <?=$item['artikul']?>
-                		</div>
+	            		<div class="article">
+	            			Артикул: <?=$item['artikul']?>
+	            		</div>
 	                </td>
-	                <td>
-	                    <input name="count[<?=$id?>]" size="1" class="caddy_item_count" type="text" rel="<?=$id?>" value="<?=$item['count']?>"/>
+	                <td class="price">
+	                    <?=$item['count']?>
 	                </td>
 	                <td class="price">
 	                	<span id="caddy_item_price_<?=$id?>"><?=$item['price']?></span>
@@ -106,27 +133,23 @@ defined('_JEXEC') or die;
         		<th colspan="3" class="left">
         			<a href="javascript:history.back()">
 	        			<button class="button">
-	        				Вернуться в каталог
+	        				Назад
 	        			</button>
         			</a>
         		</th>
         		<th colspan="2" class="right">
-        			<input class="button" type="submit" value="Далее" onclick="document.caddy_show.task.value = '';" />
+				    <input type="hidden" name="option" value="com_uvelir" />
+				    <input type="hidden" name="task" value="caddy.order_add" />
+				    <?php echo JHtml::_('form.token'); ?>
+        			<input class="button" type="submit" value="Подтвердить"/>
         		</th>
         	</tr>
         </tfoot>
+
     </table>
-
-    <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="view" value="checkout" />
-    <input type="hidden" name="task" value="caddy.correction" />
-    <?php echo JHtml::_('form.token'); ?>
-
 
 </form>
 <?php else: ?>
     <?=JTEXT::_('COM_UVELIR_CADDY_IS_EMPTY')?>
 <?php endif ?>
-<script type="text/javascript">
-</script>
 <div id="uvelir_debud"></div>

@@ -55,6 +55,7 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
     <!--[if lt IE 9]>
     	<script src="<?='templates/' . $app->getTemplate();?>/lib/css3-mediaqueries.js"></script>
     <![endif]-->
+    <script src="<?='templates/' . $app->getTemplate();?>/lib/slideUpText.js"></script>
 </head>
 <body <?php echo $gantry->displayBodyTag(); ?>>
     <?php /** Begin Top Surround **/ if ($gantry->countModules('top') or $gantry->countModules('header')) : ?>

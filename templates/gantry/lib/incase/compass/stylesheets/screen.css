@@ -3,7 +3,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* line 74, filter/*.png */
-.filter-sprite, .filter-arrow, .filter-bg, .filter-pink-satin, .filter-pink, .filter-separator, #caddy_show table tfoot th .back,
+.filter-sprite, .filter-arrow, .filter-bg, .filter-pink-satin, .filter-pink, .filter-separator, .button, #caddy_show table tfoot th .back,
 #caddy_show table tfoot th .next, .item_fields .fields_list .bottom tr .buttons .removeButton,
 .item_fields .fields_list .bottom tr .buttons .addButton, .items-wrapper .items .com_uvelir_item .show .removeButton,
 .items-wrapper .items .com_uvelir_item .show .addButton, .tabs li, .tabs li.separator, .tabs li a.active, #mod_caddy_uvelir .inner, #mod_caddy_uvelir .inner:before, #mod_usearch_uvelir, #mod_usearch_uvelir .separator, #mod_usearch_uvelir #mod_usearch_footer, #mod_usearch_uvelir #mod_usearch_footer:before, #mod_usearch_uvelir #mod_usearch_footer button:before,
@@ -199,11 +199,37 @@
   .bullet-menu li.separator:before, #rt-transition #rt-sidebar-a li.separator:before, #rt-bottom .rt-container li.separator:before {
     display: none; }
 
-/* line 101, ../sass/main/mixins.scss */
+/* line 86, ../sass/main/mixins.scss */
+.button {
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  background-position: 0 -177px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
+  border: none;
+  color: #FFF;
+  font-size: 12px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  padding: 3px 22px; }
+
+/* line 114, ../sass/main/mixins.scss */
 .strike {
   position: relative; }
 
-/* line 104, ../sass/main/mixins.scss */
+/* line 117, ../sass/main/mixins.scss */
 .strike::after {
   border-bottom: 2px solid #C02654;
   content: "";
@@ -692,10 +718,72 @@ body h3 {
       /* line 104, ../sass/main/com_uvelir_caddy.scss */
       #caddy_show table tfoot td .black-sum {
         color: #000;
-        font-size: 24px; }
-      /* line 108, ../sass/main/com_uvelir_caddy.scss */
+        font-size: 24px;
+        margin-left: 7px; }
+      /* line 109, ../sass/main/com_uvelir_caddy.scss */
       #caddy_show table tfoot td .ruble {
         font-size: 16px; }
+
+/* line 117, ../sass/main/com_uvelir_caddy.scss */
+.div_user_detail .title {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  border-bottom: 1px dashed #C6BA9F;
+  color: #9D9D9D;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 16px;
+  padding: 0; }
+
+/* line 127, ../sass/main/com_uvelir_caddy.scss */
+.step-wrapper {
+  margin-bottom: 31px; }
+  /* line 129, ../sass/main/com_uvelir_caddy.scss */
+  .step-wrapper .step {
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    *display: inline;
+    *vertical-align: auto;
+    color: #bebebe;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 24%; }
+    /* line 136, ../sass/main/com_uvelir_caddy.scss */
+    .step-wrapper .step span {
+      -moz-border-radius-bottomleft: 24px;
+      -webkit-border-bottom-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+      -moz-border-radius-bottomright: 24px;
+      -webkit-border-bottom-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+      -moz-border-radius-topleft: 24px;
+      -webkit-border-top-left-radius: 24px;
+      border-top-left-radius: 24px;
+      -moz-border-radius-topright: 24px;
+      -webkit-border-top-right-radius: 24px;
+      border-top-right-radius: 24px;
+      border: solid 4px #BEBEBE;
+      display: inline-block;
+      font-size: 30px;
+      margin: -6px 10px 0 0;
+      padding: 9px 12px;
+      vertical-align: top; }
+    /* line 146, ../sass/main/com_uvelir_caddy.scss */
+    .step-wrapper .step div {
+      display: inline-block;
+      line-height: 18px;
+      width: 80px; }
+    /* line 151, ../sass/main/com_uvelir_caddy.scss */
+    .step-wrapper .step.active {
+      color: #b80059; }
+      /* line 153, ../sass/main/com_uvelir_caddy.scss */
+      .step-wrapper .step.active span {
+        border-color: #b80059; }
 
 /* line 2, ../sass/main/com_uvelir_category.scss */
 .category .thumb {
