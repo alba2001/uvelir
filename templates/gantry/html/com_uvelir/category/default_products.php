@@ -47,7 +47,7 @@ defined('_JEXEC') or die;
 	                    <div>
 	                        <?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
 	                        <span><?=$item->cena_mag?></span>
-	                        <?=' '.JTEXT::_('COM_UVELIR_RUB')?>
+	                        <span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
 	                    <?php endif;?>
 
 	                    </div>
@@ -57,7 +57,7 @@ defined('_JEXEC') or die;
 	                    <div>
 	                        <?= JText::_('COM_UVELIR_CENA_TUT').': <br>' ?>
 	                        <span><?=$item->cena_tut?></span>
-	                        <?=' '.JTEXT::_('COM_UVELIR_RUB')?>
+	                        <span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
 	                    </div>
 	                    <?php endif;?>
 	                </div>
