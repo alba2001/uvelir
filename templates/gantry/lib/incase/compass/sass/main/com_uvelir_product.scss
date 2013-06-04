@@ -1,20 +1,28 @@
 .item_fields{
 	h2{
 		&:first-letter {
-		    text-transform: uppercase;
+		    // text-transform: uppercase;
 		}
 	}
 	.leftside{
-		margin-right: 20px;
-		margin-bottom: 46px;
-		overflow: hidden;
+		background: #FFF;
+		display: table;
 		float: left;
+		// height: 400px;
+		margin-bottom: 46px;
+		margin-right: 20px;
+		overflow: hidden;
+		text-align: center;
+		vertical-align: middle;
+		width: 400px;
+		@include border-bottom-radius(5px);
+		@include border-top-radius(5px);
 		a{
-			float: left;
+			display: table-cell;
+			vertical-align: middle;
 			img{
 				max-width: 400px;
-				@include border-bottom-radius(5px);
-				@include border-top-radius(5px);
+				max-height: 400px;
 			}
 		}
 	}

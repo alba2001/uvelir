@@ -22,13 +22,13 @@ defined('_JEXEC') or die;
     }
 ?>
 <?php if( $this->item ) : ?>
-	<div class="category">
+	<div class="category items-wrapper">
 
 		<!--Детали категории-->
-	    <h1>
-	        <img class="thumb" src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
-	        <?=$this->item->name?>
-	    </h1>
+	    <h2>
+	        <?/*<img class="thumb" src="<?=$img_src?>" atl="<?=$this->item->name?>"/>*/?>
+	        <?=ucfirst( mb_convert_case($this->item->name, MB_CASE_TITLE, 'UTF-8') );?>
+	    </h2>
 	    <div class="description">
 		    <?php if($this->item->note):?>
 		        <h6><?=$this->item->note?></h6>
@@ -41,7 +41,7 @@ defined('_JEXEC') or die;
 		<!--Список зависимых категорий-->
 	    <?php if($this->children):?>
 	        <div class="uvelir_subcategiries">
-	            <ul>
+	            <ul class="items">
 	            <?php foreach ($this->children as $child):?>
 	                <?php
 	                    if(isset($child->desc))
@@ -54,11 +54,15 @@ defined('_JEXEC') or die;
 	                        $img_src = $empty_img_src;
 	                    }
 	                ?>
-	                <li>
+	                <li class="com_uvelir_item">
 	                    <?php $href = JRoute::_('index.php?option=com_uvelir&alias='.$child->alias)?>
+	                    <div class="image">
+		                    <a href="<?=$href?>">
+		                        <img src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
+		                    </a>
+	                    </div>
 	                    <a href="<?=$href?>">
-	                        <img src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
-	                        <?=$child->name?>
+		                    <?=$child->name?>
 	                    </a>
 	                </li>
 	            <?php endforeach;?>

@@ -785,107 +785,124 @@ body h3 {
       .step-wrapper .step.active span {
         border-color: #b80059; }
 
-/* line 2, ../sass/main/com_uvelir_category.scss */
+/* line 7, ../sass/main/com_uvelir_category.scss */
 .category .thumb {
   max-width: 64px; }
-/* line 6, ../sass/main/com_uvelir_category.scss */
+/* line 11, ../sass/main/com_uvelir_category.scss */
 .category .description img {
   float: left;
   margin-right: 5px; }
+/* line 17, ../sass/main/com_uvelir_category.scss */
+.category .uvelir_subcategiries .items {
+  margin: 0; }
+  /* line 20, ../sass/main/com_uvelir_category.scss */
+  .category .uvelir_subcategiries .items .com_uvelir_item:hover {
+    -moz-border-radius-bottomleft: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding-bottom: 13px;
+    margin-bottom: 15px; }
 
-/* line 3, ../sass/main/com_uvelir_product.scss */
-.item_fields h2:first-letter {
-  text-transform: uppercase; }
 /* line 7, ../sass/main/com_uvelir_product.scss */
 .item_fields .leftside {
-  margin-right: 20px;
+  background: #FFF;
+  display: table;
+  float: left;
   margin-bottom: 46px;
+  margin-right: 20px;
   overflow: hidden;
-  float: left; }
-  /* line 12, ../sass/main/com_uvelir_product.scss */
+  text-align: center;
+  vertical-align: middle;
+  width: 400px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px; }
+  /* line 20, ../sass/main/com_uvelir_product.scss */
   .item_fields .leftside a {
-    float: left; }
-    /* line 14, ../sass/main/com_uvelir_product.scss */
+    display: table-cell;
+    vertical-align: middle; }
+    /* line 23, ../sass/main/com_uvelir_product.scss */
     .item_fields .leftside a img {
       max-width: 400px;
-      -moz-border-radius-bottomleft: 5px;
-      -webkit-border-bottom-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      -moz-border-radius-bottomright: 5px;
-      -webkit-border-bottom-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      -moz-border-radius-topleft: 5px;
-      -webkit-border-top-left-radius: 5px;
-      border-top-left-radius: 5px;
-      -moz-border-radius-topright: 5px;
-      -webkit-border-top-right-radius: 5px;
-      border-top-right-radius: 5px; }
-/* line 21, ../sass/main/com_uvelir_product.scss */
+      max-height: 400px; }
+/* line 29, ../sass/main/com_uvelir_product.scss */
 .item_fields .fields_list {
   font-size: 12px; }
   @media only screen and (max-width: 1400px) {
-    /* line 21, ../sass/main/com_uvelir_product.scss */
+    /* line 29, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 315px; } }
   @media only screen and (min-width: 1401px) and (max-width: 1599px) {
-    /* line 21, ../sass/main/com_uvelir_product.scss */
+    /* line 29, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 420px; } }
   @media only screen and (min-width: 1600px) {
-    /* line 21, ../sass/main/com_uvelir_product.scss */
+    /* line 29, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 640px; } }
-  /* line 26, ../sass/main/com_uvelir_product.scss */
+  /* line 34, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list tr {
     border-bottom: 1px solid #E4D8BE; }
-    /* line 32, ../sass/main/com_uvelir_product.scss */
+    /* line 40, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list tr td {
       padding: 0px 12px;
       height: 46px;
       width: 50%; }
-      /* line 37, ../sass/main/com_uvelir_product.scss */
+      /* line 45, ../sass/main/com_uvelir_product.scss */
       .item_fields .fields_list tr td .left,
       .item_fields .fields_list tr td .gold {
         color: #a89059; }
-      /* line 40, ../sass/main/com_uvelir_product.scss */
+      /* line 48, ../sass/main/com_uvelir_product.scss */
       .item_fields .fields_list tr td .small {
         font-size: 16px; }
-        /* line 42, ../sass/main/com_uvelir_product.scss */
+        /* line 50, ../sass/main/com_uvelir_product.scss */
         .item_fields .fields_list tr td .small .ruble {
           font-size: 14px; }
-      /* line 46, ../sass/main/com_uvelir_product.scss */
+      /* line 54, ../sass/main/com_uvelir_product.scss */
       .item_fields .fields_list tr td .big {
         font-size: 24px; }
-        /* line 48, ../sass/main/com_uvelir_product.scss */
+        /* line 56, ../sass/main/com_uvelir_product.scss */
         .item_fields .fields_list tr td .big .ruble {
           font-size: 16px; }
-      /* line 52, ../sass/main/com_uvelir_product.scss */
+      /* line 60, ../sass/main/com_uvelir_product.scss */
       .item_fields .fields_list tr td .black {
         color: #000; }
-  /* line 63, ../sass/main/com_uvelir_product.scss */
+  /* line 71, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list .bottom tr.size {
     background: #f6dd97;
     margin-bottom: 28px; }
-    /* line 66, ../sass/main/com_uvelir_product.scss */
+    /* line 74, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list .bottom tr.size span {
       text-transform: uppercase;
       color: #494949; }
-    /* line 71, ../sass/main/com_uvelir_product.scss */
+    /* line 79, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list .bottom tr.size select {
       width: 100%;
       margin-top: 4px;
       height: 25px;
       color: #98834F; }
-  /* line 79, ../sass/main/com_uvelir_product.scss */
+  /* line 87, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list .bottom tr.separatorBig td {
     height: 30px; }
-  /* line 84, ../sass/main/com_uvelir_product.scss */
+  /* line 92, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list .bottom tr.separatorSmall td {
     height: 20px; }
-  /* line 88, ../sass/main/com_uvelir_product.scss */
+  /* line 96, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list .bottom tr .buttons {
     text-align: center; }
-    /* line 92, ../sass/main/com_uvelir_product.scss */
+    /* line 100, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list .bottom tr .buttons .removeButton,
     .item_fields .fields_list .bottom tr .buttons .addButton {
       -moz-border-radius-bottomleft: 3px;
@@ -912,7 +929,7 @@ body h3 {
       position: relative;
       text-align: center;
       margin: 4px; }
-    /* line 107, ../sass/main/com_uvelir_product.scss */
+    /* line 115, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list .bottom tr .buttons .removeButton {
       display: none; }
 
@@ -991,18 +1008,19 @@ body h3 {
         vertical-align: middle; }
         /* line 46, ../sass/main/com_uvelir_products.scss */
         .items-wrapper .items .com_uvelir_item .image a img {
-          width: 120px; }
-    /* line 51, ../sass/main/com_uvelir_products.scss */
+          width: 120px;
+          max-height: 120px; }
+    /* line 52, ../sass/main/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .article {
       color: #8c8c8c; }
-    /* line 54, ../sass/main/com_uvelir_products.scss */
+    /* line 55, ../sass/main/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .price {
       font-weight: bold; }
-      /* line 56, ../sass/main/com_uvelir_products.scss */
+      /* line 57, ../sass/main/com_uvelir_products.scss */
       .items-wrapper .items .com_uvelir_item .price span {
         color: #C02654;
         font-size: 18px; }
-    /* line 61, ../sass/main/com_uvelir_products.scss */
+    /* line 62, ../sass/main/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .show {
       -moz-border-radius-bottomleft: 6px;
       -webkit-border-bottom-left-radius: 6px;
@@ -1023,14 +1041,14 @@ body h3 {
       top: 100%;
       width: 152px;
       z-index: 100; }
-      /* line 74, ../sass/main/com_uvelir_products.scss */
+      /* line 75, ../sass/main/com_uvelir_products.scss */
       .items-wrapper .items .com_uvelir_item .show .desc {
         color: #c02654; }
-      /* line 78, ../sass/main/com_uvelir_products.scss */
+      /* line 79, ../sass/main/com_uvelir_products.scss */
       .items-wrapper .items .com_uvelir_item .show .item_count span {
         color: #303030;
         font-weight: bold; }
-      /* line 84, ../sass/main/com_uvelir_products.scss */
+      /* line 85, ../sass/main/com_uvelir_products.scss */
       .items-wrapper .items .com_uvelir_item .show .removeButton,
       .items-wrapper .items .com_uvelir_item .show .addButton {
         -moz-border-radius-bottomleft: 3px;
@@ -1057,7 +1075,7 @@ body h3 {
         position: relative;
         text-align: center;
         width: 120px; }
-      /* line 106, ../sass/main/com_uvelir_products.scss */
+      /* line 107, ../sass/main/com_uvelir_products.scss */
       .items-wrapper .items .com_uvelir_item .show .removeButton {
         display: none; }
 
@@ -1152,6 +1170,12 @@ body h3 {
           text-indent: -999px;
           top: 98%;
           width: 16px; }
+
+/* line 2, ../sass/main/com_k2.scss */
+#k2Container .itemTitle {
+  padding: 0px;
+  margin-bottom: 15px;
+  font-size: 28px; }
 
 /* line 1, ../sass/main/mod_caddy.scss */
 #mod_caddy_uvelir {
@@ -1394,11 +1418,12 @@ body h3 {
 /* line 3, ../sass/main/mod_breadcrumbs.scss */
 .breadcrumbs span,
 .breadcrumbs a {
-  font-size: 12px; }
-/* line 6, ../sass/main/mod_breadcrumbs.scss */
+  font-size: 12px;
+  text-transform: capitalize; }
+/* line 7, ../sass/main/mod_breadcrumbs.scss */
 .breadcrumbs img {
   margin-top: -2px; }
-/* line 9, ../sass/main/mod_breadcrumbs.scss */
+/* line 10, ../sass/main/mod_breadcrumbs.scss */
 .breadcrumbs .separator {
   background-position: 0 -130px;
   display: inline-block;
@@ -1410,50 +1435,50 @@ body h3 {
   margin: 0 15px;
   width: 4px; }
 
-/* line 50, ../sass/screen.scss */
+/* line 51, ../sass/screen.scss */
 body {
   color: #494949; }
 
-/* line 64, ../sass/screen.scss */
+/* line 65, ../sass/screen.scss */
 #rt-top-surround #rt-top {
   background-position: 0 -73px;
   background-repeat: repeat-x;
   min-width: 990px;
   width: 100%;
   z-index: 100; }
-  /* line 70, ../sass/screen.scss */
+  /* line 71, ../sass/screen.scss */
   #rt-top-surround #rt-top .rt-block {
     margin: 0;
     padding: 0; }
-  /* line 74, ../sass/screen.scss */
+  /* line 75, ../sass/screen.scss */
   #rt-top-surround #rt-top .main.menu {
     margin-bottom: 20px;
     margin-top: 0; }
-    /* line 82, ../sass/screen.scss */
+    /* line 83, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li a {
       color: #f6df98;
       font-size: 13px;
       font-weight: normal;
       padding: 0 10px; }
-      /* line 87, ../sass/screen.scss */
+      /* line 88, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li a:hover {
         text-decoration: none;
         color: #fff; }
-      /* line 91, ../sass/screen.scss */
+      /* line 92, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li a:before {
         content: none; }
-    /* line 95, ../sass/screen.scss */
+    /* line 96, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li.separator {
       background-position: 0 -23px;
       display: block;
       height: 50px;
       margin: 0 auto;
       width: 3px; }
-    /* line 103, ../sass/screen.scss */
+    /* line 104, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li.parent ul {
       background: #262626;
       margin-left: -14px; }
-      /* line 107, ../sass/screen.scss */
+      /* line 108, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li.parent ul li a {
         border-bottom: 1px dotted #f6df98; }
     /* line 5, ../sass/main/mixins.scss */
@@ -1476,34 +1501,34 @@ body {
       /* line 11, ../sass/main/mixins.scss */
       #rt-top-surround #rt-top .main.menu > li > a:hover:hover a {
         color: #FFF; }
-/* line 122, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 #rt-top-surround .rt-block.slider {
   position: absolute;
   top: 0;
   right: 0;
   padding: 0;
   margin: 0; }
-/* line 134, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 #rt-top-surround #rt-header .djslider-loader .navigation-container {
   top: 40%;
   margin: 0; }
-  /* line 138, ../sass/screen.scss */
+  /* line 139, ../sass/screen.scss */
   #rt-top-surround #rt-header .djslider-loader .navigation-container .prev-button,
   #rt-top-surround #rt-header .djslider-loader .navigation-container .next-button {
     width: 35px;
     height: 35px; }
-  /* line 142, ../sass/screen.scss */
+  /* line 143, ../sass/screen.scss */
   #rt-top-surround #rt-header .djslider-loader .navigation-container .prev-button {
     background-position: 0 -35px; }
-  /* line 145, ../sass/screen.scss */
+  /* line 146, ../sass/screen.scss */
   #rt-top-surround #rt-header .djslider-loader .navigation-container .next-button {
     background-position: 0 0; }
-/* line 149, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 #rt-top-surround #rt-header .djslider-loader .navigation-container-custom {
   top: initial;
   bottom: 0px;
   right: 57%; }
-  /* line 153, ../sass/screen.scss */
+  /* line 154, ../sass/screen.scss */
   #rt-top-surround #rt-header .djslider-loader .navigation-container-custom .load-button {
     background-position: 0 -79px;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
@@ -1514,83 +1539,83 @@ body {
     width: 9px;
     height: 9px;
     border: none; }
-    /* line 160, ../sass/screen.scss */
+    /* line 161, ../sass/screen.scss */
     #rt-top-surround #rt-header .djslider-loader .navigation-container-custom .load-button.load-button-active {
       background-position: 0 -70px; }
-/* line 168, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-clock,
 #rt-top-surround #rt-header .workphone .icons-phone {
   float: left; }
-/* line 171, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-clock {
   margin: 13px 10px 0 0; }
-/* line 174, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-phone {
   margin: 7px 10px 0 0; }
-/* line 178, ../sass/screen.scss */
+/* line 179, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left,
 #rt-top-surround #rt-header .workphone .right {
   width: 210px; }
-/* line 183, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left .gold {
   font-size: 12px; }
-/* line 186, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left .black {
   font-size: 22px; }
-/* line 191, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .right .gold {
   font-size: 11px; }
-/* line 194, ../sass/screen.scss */
+/* line 195, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .right .black {
   font-size: 14px; }
-/* line 198, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .gold {
   display: block;
   color: #c5b07d; }
-/* line 202, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .black {
   color: #000; }
 
-/* line 209, ../sass/screen.scss */
+/* line 210, ../sass/screen.scss */
 #rt-transition #rt-content-top {
   position: absolute;
   top: -35px;
   left: 0;
   width: 100%; }
-/* line 222, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li .sub ul {
   margin: 0; }
-  /* line 225, ../sass/screen.scss */
+  /* line 226, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a ul.accordion li .sub ul li {
     margin-left: 13px; }
-    /* line 227, ../sass/screen.scss */
+    /* line 228, ../sass/screen.scss */
     #rt-transition #rt-sidebar-a ul.accordion li .sub ul li.separator {
       margin: 6px 0px;
       border-bottom: 1px solid #e4d8be; }
-/* line 239, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu a {
   font-size: 12px; }
-  /* line 241, ../sass/screen.scss */
+  /* line 242, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a .menu a:before {
     margin-right: 27px; }
-/* line 246, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu li.separator {
   margin: 6px 0px;
   border-bottom: 1px solid #e4d8be; }
-/* line 250, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu li:before {
   margin: 5px 0 0 10px; }
 
-/* line 258, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 #rt-bottom .rt-container {
   border-bottom: 3px solid #e4d8be;
   margin-bottom: 25px;
   padding-bottom: 14px; }
-  /* line 263, ../sass/screen.scss */
+  /* line 264, ../sass/screen.scss */
   #rt-bottom .rt-container .rt-grid-3,
   #rt-bottom .rt-container .rt-grid-2 {
     width: 20%; }
-  /* line 266, ../sass/screen.scss */
+  /* line 267, ../sass/screen.scss */
   #rt-bottom .rt-container h2 {
     color: #191919;
     font-size: 14px;
@@ -1598,49 +1623,49 @@ body {
     padding: 0;
     text-transform: uppercase;
     font-weight: bold; }
-  /* line 276, ../sass/screen.scss */
+  /* line 277, ../sass/screen.scss */
   #rt-bottom .rt-container .menu a {
     font-size: 11.03px; }
 
-/* line 283, ../sass/screen.scss */
+/* line 284, ../sass/screen.scss */
 #rt-footer-surround #rt-footer {
   color: #494949;
   font-size: 12px;
   padding-bottom: 36px; }
-  /* line 287, ../sass/screen.scss */
+  /* line 288, ../sass/screen.scss */
   #rt-footer-surround #rt-footer p {
     margin-bottom: 6px; }
-  /* line 290, ../sass/screen.scss */
+  /* line 291, ../sass/screen.scss */
   #rt-footer-surround #rt-footer ul {
     list-style: none;
     list-style-type: none;
     margin: 10px 0px; }
-    /* line 294, ../sass/screen.scss */
+    /* line 295, ../sass/screen.scss */
     #rt-footer-surround #rt-footer ul li {
       float: left;
       margin-right: 7px; }
-  /* line 299, ../sass/screen.scss */
+  /* line 300, ../sass/screen.scss */
   #rt-footer-surround #rt-footer span {
     color: #c5b07d; }
-  /* line 302, ../sass/screen.scss */
+  /* line 303, ../sass/screen.scss */
   #rt-footer-surround #rt-footer .phone {
     font-size: 22px; }
 
-/* line 311, ../sass/screen.scss */
+/* line 312, ../sass/screen.scss */
 .homepage #rt-header .workphone .left,
 .homepage #rt-header .workphone .right {
   margin-bottom: 6px; }
-/* line 315, ../sass/screen.scss */
+/* line 316, ../sass/screen.scss */
 .homepage #rt-header .workphone .right .black {
   text-transform: lowercase; }
 
-/* line 323, ../sass/screen.scss */
+/* line 324, ../sass/screen.scss */
 .page .logo-block {
   float: left; }
-/* line 327, ../sass/screen.scss */
+/* line 328, ../sass/screen.scss */
 .page #rt-header .workphone {
   float: right; }
-  /* line 330, ../sass/screen.scss */
+  /* line 331, ../sass/screen.scss */
   .page #rt-header .workphone .left,
   .page #rt-header .workphone .right {
     float: left; }

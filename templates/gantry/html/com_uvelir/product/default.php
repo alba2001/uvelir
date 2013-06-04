@@ -39,7 +39,7 @@ $desc = json_decode($this->item->desc);
 		<h2>
 	    	<?php if(isset($this->item->name) AND $this->item->name):?>
 	    		<? if ($this->item->name != $this->item->artikul){ ?>
-	    			<?=$this->item->name?>
+	    			<?=ucfirst( mb_convert_case($this->item->name, MB_CASE_TITLE, 'UTF-8') );?>
 	    		<?}else{?>
 	    		<?}?>
 	    	<?php endif;?>
