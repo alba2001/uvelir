@@ -15,23 +15,31 @@
 			background: #FFF;
 			@include inline-block;
 			font-size: 11px;
-			margin: 0 8px 16px 8px;
+			margin: 0 4px 16px;
 			max-width: 160px;
 			position: relative;
 			text-align: center;
 			vertical-align: top;
 			width: 100%;
-			padding: 16px 0;
+			border: solid 4px transparent;
 			&:hover{
 				@include border-bottom-radius(0px);
 				@include box-shadow(rgba(#000, 0.2) 4px 7px 10px);
 				border: solid 4px #d63a6f;
-				margin-bottom: 22px;
-				margin-top: -4px;
-				padding-bottom: 6px;
-				width: 152px;
 				.show{
 					display: block;
+				}
+			}
+			.new{
+				@include misc-sprite(new);
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 44px;
+				height: 44px;
+				top: -5px;
+				left: -6px;
+				&:hover{
 				}
 			}
 			.image{
@@ -64,13 +72,13 @@
 				@include box-shadow(rgba(#000, 0.2) 4px 7px 10px);
 				background: #FFF;
 				border: solid 4px #d63a6f;
-				border-width: 0 4px 4px 4px;
+				border-width: 0 4px 4px;
 				display: none;
 				left: -4px;
-				padding-bottom: 16px;
+				padding: 6px 0 16px 0px;
 				position: absolute;
 				top: 100%;
-				width: 152px;
+				width: 160px;
 				z-index: 100;
 				.desc{
 					color: #c02654;
