@@ -49,7 +49,7 @@ $error_msg = ''.
                 '</dl>'.
                 '';
 ?>
-
+<div id="html_show"></div>
 <form action="<?php echo JRoute::_('index.php?option=com_uvelir&view=zavods'); ?>" method="post" name="adminForm" id="adminForm">
 	<fieldset id="filter-bar">
 		<div class="filter-search fltlft">
@@ -244,17 +244,31 @@ $error_msg = ''.
             type: 'GET',
             url: url,
             success: function(html){
+                $('#html_show').html(html);
                 var data = $.parseJSON(html);
                 if(data[0] == 1)
                 {
                     $('#system-message-container').html('<?=$succes_msg?>');
                     $(form).show('slow');
+                    $('#html_show').hide();
                     $(div_txt).hide('slow');
                 }
                 else if(data[0] == 2)
                 {
                     $(div_txt).prepend('<br/>'+data[1]);
                     parse(0);
+                }
+                else if(data[0] == 3)
+                {
+                    $.ajax({
+                    type: 'GET',
+                    url: data[1],
+                    success: function(html){
+                        
+                        $('#html_show').html(html);
+                    }});
+
+//                    parse(0);
                 }
                 else
                 {

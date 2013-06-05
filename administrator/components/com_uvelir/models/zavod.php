@@ -17,6 +17,7 @@ jimport('joomla.application.component.modeladmin');
  */
 class UvelirModelZavod extends JModelAdmin
 {
+    
 	/**
 	 * @var		string	The prefix to use with controller messages.
 	 * @since	1.6
@@ -151,6 +152,19 @@ class UvelirModelZavod extends JModelAdmin
             $start = JRequest::getInt('start',0);
             if($start)
             {
+                // Удаляем файлы дампа данных
+                $file_data = JPATH_ROOT.DS.'tmp'.DS.'parse_'.$cid.'_data.txt';
+                $file_category = JPATH_ROOT.DS.'tmp'.DS.'parse_'.$cid.'_category.txt';
+                jimport('joomla.filesystem.file');
+                if(JFile::exists($file_category))
+                {
+                    JFile::delete($file_category);
+                }
+                if(JFile::exists($file_data))
+                {
+                    JFile::delete($file_data);
+                }
+                
                 $zavod =& $this->_get_zavod_url($cid);
                 if(!$zavod->base_url)
                 {

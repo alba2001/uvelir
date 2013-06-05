@@ -17,7 +17,7 @@ jimport('joomla.filesystem.file');
 
 /**
  * zavod parser class.
- * Ювелиры Урала
+ * Красцветмет, Красноярск.
  */
 class UvelirParseZavod_3
 {

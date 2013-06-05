@@ -16,7 +16,7 @@ require_once JPATH_ADMINISTRATOR.'/components/com_uvelir/models/product.php';
 
 /**
  * zavod parser class.
- * Ювелиры Урала
+ * Атолл, г. Новосибирск
  */
 class UvelirParseZavod_2
 {

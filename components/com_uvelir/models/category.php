@@ -51,6 +51,7 @@ class UvelirModelCategory extends JModelList
         }
         $this->setState('params', $params);
         
+        
         // List state information.
         parent::populateState($ordering, $direction);
     }
@@ -127,6 +128,7 @@ class UvelirModelCategory extends JModelList
      */
     protected function getListQuery() {
         
+        $category_id = $this->getState('category.id');
         // Create a new query object.
         $db = $this->getDbo();
         $query = $db->getQuery(true);
@@ -138,7 +140,8 @@ class UvelirModelCategory extends JModelList
         
         $query->from('`#__uvelir_products` AS a');
         $query->where('`a`.`state` = 1');
-        $query->where('`a`.`category_id` = '.$this->_item->id);
+//        $query->where('`a`.`category_id` = '.$this->_item->id);
+        $query->where('`a`.`category_id` = '.$category_id);
 
         // Filter by search in title
         $search = $this->getState('filter.search');
@@ -150,7 +153,7 @@ class UvelirModelCategory extends JModelList
         $query->where('( a.name LIKE '.$search.' )');
                 }
         }
-        
+//        var_dump((string)$query);
         return $query;
     }
 
