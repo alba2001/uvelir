@@ -122,3 +122,27 @@ $large: 1600px;
     right: 0;
     top: 50%;
 }
+@mixin line-through (){
+	position: relative;
+	white-space: nowrap;
+	text-decoration: line-through;
+	&:after {
+	    border-width: 1px;
+	    border-style: solid;
+	    position: absolute;
+	    content: "";
+	    right: 0;
+	    top:47%;
+	    left: 0;
+	    margin: 0 -2px;
+	}
+}
+// .line-through{
+// 	text-decoration: line-through;
+// 	font-weight: bold;
+// 	// color: $lineColor;
+// 	span{
+// 		font-weight: normal;
+// 		// color: $color;
+// 	}
+// }

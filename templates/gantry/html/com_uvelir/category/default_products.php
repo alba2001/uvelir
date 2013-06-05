@@ -46,7 +46,7 @@ defined('_JEXEC') or die;
 	                    <?php if(isset($item->cena_mag) AND $item->cena_mag):?>
 	                    <div>
 	                        <?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
-	                        <span><?=$item->cena_mag?></span>
+	                        <span class="line-through"><?=$item->cena_mag?></span>
 	                        <span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
 	                    <?php endif;?>
 
