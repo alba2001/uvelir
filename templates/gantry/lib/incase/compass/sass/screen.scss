@@ -218,6 +218,24 @@ body{
 			li{
 				h4{
 					@extend .pink-hover;
+					.icon.trigger{
+						width: 30px;
+						height: 34px;
+						position: absolute;
+						top: -6px;
+						left: 0px;
+					}
+					.link{
+						margin-left: 30px;
+					}
+					a{
+						display: inline-block;
+						&:before{
+							width: 0;
+							padding: 0;
+							margin: 0;
+						}
+					}
 				}
 				.sub{
 					ul{
