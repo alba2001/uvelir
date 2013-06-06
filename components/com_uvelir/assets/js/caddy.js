@@ -50,7 +50,7 @@
             url: params.action,
             data: params.data,
             success: function(html){
-                $('#uvelir_debud').html(html);
+//                $('#uvelir_debud').html(html);
                 var data = $.parseJSON(html);
                 $('#mod_caddy_product_count').text(data[1].count);
                 $('#mod_caddy_product_sum').text(data[1].sum);
@@ -60,6 +60,36 @@
 
 jQuery(function($){
     $(document).ready(function(){
+        // Удаление товара изкорзины
+        $('.com_uvelir-delete').click(function(){
+            var id = /^delete_(\d+)$/.exec($(this).attr('id'))[1];
+            $('#caddy_item_count_'+id).val('0');
+            $('#caddy_item_sum_'+id).text('0');
+            $('#item_row_'+id).hide('slow');
+            
+            // Изменяем корзину
+            change_caddy();
+        });
+        // Увеличение кол-ва товаров в форме корзины
+        $('.arow_right').click(function(){
+            var span_count = $(this).siblings('input');
+            var count = parseInt($(span_count).val());
+            count ++;
+            $(span_count).val(count);
+            $(span_count).change();
+        });
+        // Уменьшение кол-ва товаров в форме корзины
+        $('.arow_left').click(function(){
+            var span_count = $(this).siblings('input');
+            var count = parseInt($(span_count).val());
+            if(count > 1)
+            {
+                count --;
+                $(span_count).val(count);
+                $(span_count).change();
+            }
+            console.log(count);
+        });
         // Изменение кол-ва товаров в корзине
         $('.caddy_item_count').change(function(e){
             var item = this;
@@ -71,35 +101,45 @@ jQuery(function($){
             var id = $(this).attr('rel');
             var prise = $('#caddy_item_price_'+id).text();
             var sum = prise*count;
+            
             // Изменяем сумму товара
             $('#caddy_item_sum_'+id).text(sum);
             $(item).val(count);
             
-            // Меняем сумму корзины
-            var item_sums = $('.caddy_item_sum');
-            var total = 0;
-            $.each(item_sums, function(i,item_sum){
-                sum = parseInt($(item_sum).text());
-                total += sum;
-            });
-            // Всего стоимость товаров в корзине
-            $('#caddy_total_sum').text(total);
-            
-            // Отправляем изменения в корзине на серер
-            var form  = $('#step1_form');
-            $.ajax({
-                type: 'POST',
-                url: $(form).attr('action'),
-                data: $(form).serialize(),
-                success: function(html){
-//                    $('#uvelir_debud').html(html);
-                    var data = $.parseJSON(html);
-            console.log(data);
-                    $('#mod_caddy_product_count').text(data[1].count);
-                    $('#mod_caddy_product_sum').text(data[1].sum);
-                }
-            });
-            
+            // Изменяем корзину
+            change_caddy();
         });
     });
+
+    /**
+     *  Внесение изменений в корзину
+     */
+    function change_caddy()
+    {
+        // Меняем сумму корзины
+        var item_sums = $('.caddy_item_sum');
+        var total = 0;
+        $.each(item_sums, function(i,item_sum){
+            sum = parseInt($(item_sum).text());
+            total += sum;
+        });
+        // Всего стоимость товаров в корзине
+        $('#caddy_total_sum').text(total);
+            
+        // Отправляем изменения в корзине на серер
+        var form  = $('#step1_form');
+        $.ajax({
+            type: 'POST',
+            url: $(form).attr('action'),
+            data: $(form).serialize(),
+            success: function(html){
+//                    $('#uvelir_debud').html(html);
+                var data = $.parseJSON(html);
+        console.log(data);
+                $('#mod_caddy_product_count').text(data[1].count);
+                $('#mod_caddy_product_sum').text(data[1].sum);
+            }
+        });
+        
+    }
 });

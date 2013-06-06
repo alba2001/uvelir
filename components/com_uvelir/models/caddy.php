@@ -180,13 +180,31 @@ class UvelirModelCaddy extends ModelKModelform
                         'price'=>$product->cena_tut,
                         'count'=>$value['count'],
                         'sum'=>$value['sum'],
+                        'path'=>$this->_get_path($product->category_id),
                     );
                     $items[] = $item;
                 }
             }
             return $items;
         }
-    /**
+        
+        /**
+         *  Возвращаем путь к категории
+         * @param int - ID категории
+         * @return string Путь к категории
+         */
+        private function _get_path($id)
+        {
+            $result = '';
+            $category = JTable::getInstance('Category', 'UvelirTable', array());
+            if($category->load($id))
+            {
+                $result = $category->path;
+            }
+            return $result;
+        }
+
+        /**
      * Пересчет товара в корзине
      * @return type 
      */
@@ -203,11 +221,14 @@ class UvelirModelCaddy extends ModelKModelform
         $caddy = array();
         foreach($counts as $item_id=>$count)
         {
-            $product = $this->getTable('product');
-            if($product->load($item_id))
+            if($count)
             {
-                $caddy[$item_id]['count'] = $count;
-                $caddy[$item_id]['sum'] = $product->cena_tut*$count;
+                $product = $this->getTable('product');
+                if($product->load($item_id))
+                {
+                    $caddy[$item_id]['count'] = $count;
+                    $caddy[$item_id]['sum'] = $product->cena_tut*$count;
+                }
             }
         }
         JFactory::getApplication()->setUserState('com_uvelir.caddy', $caddy);

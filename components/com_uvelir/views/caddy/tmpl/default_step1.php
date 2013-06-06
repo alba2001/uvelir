@@ -9,8 +9,22 @@
 
 // no direct access
 defined('_JEXEC') or die;
-$href = '#';
 ?>
+<style type="text/css">
+    div.com_uvelir-delete{
+        height: 32px; 
+        overflow: hidden;
+        cursor: pointer;
+    }
+    span.com_uvelir-arow{
+        font-weight: bold;
+        font-size: 120%;
+        padding: 0 5px;
+        cursor: pointer;
+    }
+    input.caddy_item_count{width: 10px;}
+    
+</style>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="step1_form" id="step1_form">
     <table>
         <thead>
@@ -28,6 +42,8 @@ $href = '#';
             		<?=JTEXT::_('COM_UVELIR_SUM')?>
                 	<span class="separator">
                 </th>
+                <th>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -36,10 +52,10 @@ $href = '#';
         	</tr>
 	        <?php foreach($this->items as $item):?>
 	            <?php $id = $item['id']?>
-	            <tr>
+	            <tr id="item_row_<?=$id?>">
 	                <td>
 	                	<div class="image">
-	                		<a href="<?=$href;?>">
+                                    <a href="<?= $item['path'].'/'.$item['id'];?>">
 		                		<img src="<?=$item['src']?>" alt="<?=$item['artikul']?>">
 		                	</a>
 	                	</div>
@@ -48,7 +64,7 @@ $href = '#';
 	                	<?php if(isset($this->item->name) AND $this->item->name):?>
 	        			<?php endif;?>
 	                		<div class="item_title">
-	                			<a href="<?=$href;?>">
+	                			<a href="<?= $item['path'].'/'.$item['id'];?>">
 		                			<?=$item['name']?>
 		                		</a>
 	                		</div>
@@ -68,7 +84,9 @@ $href = '#';
                 		</div>
 	                </td>
 	                <td>
-	                    <input name="count[<?=$id?>]" size="1" class="caddy_item_count" type="text" rel="<?=$id?>" value="<?=$item['count']?>"/>
+                            <span class="com_uvelir-arow arow_left" id="arow_left_<?=$id?>"> < </span>
+	                    <input id="caddy_item_count_<?=$id?>" name="count[<?=$id?>]" size="1" class="caddy_item_count" type="text" rel="<?=$id?>" value="<?=$item['count']?>"/>
+                            <span class="com_uvelir-arow  arow_right" id="arow_right_<?=$id?>"> > </span>
 	                </td>
 	                <td class="price">
 	                	<span id="caddy_item_price_<?=$id?>"><?=$item['price']?></span>
@@ -77,6 +95,11 @@ $href = '#';
 	                <td class="caddy_item_sum">
 	                	<span id="caddy_item_sum_<?=$id?>"><?=(int)$item['sum']?></span>
 	                	<span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+	                </td>
+	                <td>
+                                <div class="com_uvelir-delete" id="delete_<?=$id?>">
+                                    <img src="<?=  JURI::base().'components/com_uvelir/assets/img/icon-32-delete.png'?>">
+                                </div>
 	                </td>
 	            </tr>
 	        <?php endforeach;?>
@@ -104,14 +127,15 @@ $href = '#';
         			</a>
         		</th>
         		<th colspan="2" class="right">
-        			<input class="button" type="submit" value="Далее" onclick="document.step1_form.task.value = '';" />
+        			<input id="to_step2" class="button" type="submit" value="Далее" />
         		</th>
         	</tr>
         </tfoot>
     </table>
 
     <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="view" value="checkout" />
+    <input type="hidden" name="view" value="caddy" />
+    <input type="hidden" name="action" value="" id="caddy_step_action" />
     <input type="hidden" id="caddy_task" name="task" value="caddy.correction" />
     <?php echo JHtml::_('form.token'); ?>
 </form>
@@ -121,6 +145,11 @@ $href = '#';
             e.preventDefault();
             $('#caddy_task').val('caddy.show_catalog');
             $('#step1_form').submit(); 
+        });
+        $('#to_step2').click(function(){
+           $('#caddy_step_action').val('step2'); 
+           $('#caddy_task').val(''); 
+           $('#step1_form').submit();
         });
     });
 </script>    

@@ -16,6 +16,7 @@ defined('_JEXEC') or die;
  */
 function UvelirBuildRoute(&$query)
 {
+    
 	$segments = array();
     
 	if (isset($query['task'])) {
@@ -51,16 +52,6 @@ function UvelirParseRoute($segments)
 	$count = count($segments);
         if($count)
         {
-//            $uris = explode('/',$_SERVER["REQUEST_URI"]);
-//            switch ($uris[1]) {
-//                case 'yuveliry-urala':
-//                    $vars['zavod'] = '1';
-//                    break;
-//                case 'atoll-g-novosibirsk':
-//                    $vars['zavod'] = '2';
-//                    break;
-//                default:
-//            }    
             $zavods = array(
                 '1'=>'yuveliry-urala',
                 '2'=>'atoll-g-novosibirsk',

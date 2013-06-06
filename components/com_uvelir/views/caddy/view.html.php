@@ -25,6 +25,7 @@ class UvelirViewCaddy extends JView {
      * Display the view
      */
     public function display($tpl = null) {
+        
         $this->items = $this->get('Items');
         $model = $this->getModel();
         $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
