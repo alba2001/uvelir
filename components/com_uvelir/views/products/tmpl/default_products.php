@@ -10,24 +10,16 @@
 defined('_JEXEC') or die;
 //var_dump($this->item);
 ?>
-<style type="text/css">
-    div.com_uvelir_item{
-        float: left;
-        width: 200px;
-        height: 230px;
-        border: 1px activecaption solid;
-        border-radius: 5px;
-        margin: 5px;
-        padding: 5px;
-    }
-</style>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm">
-<div class="items">
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm" class="items-wrapper">
+	<div class="items">
         <?php foreach ($this->items as $item) : ?>
-        <?php 
+        <?php
             $href = JRoute::_('index.php?option=com_uvelir&alias='.$item->id);
             $desc = json_decode($item->desc);
             $src = $desc->img_small;
+            $novinka = ($item->novinka_dt > date('d.m.Y'))?'new':'';
+            $spets_predl = $item->spets_predl?'spets_predl':'';
+            
             // Обработка корзины
             if(isset($this->caddy[$item->id]))
             {
@@ -40,69 +32,92 @@ defined('_JEXEC') or die;
                 $btn_del_style = $count_li_style = 'style="display:none"';
             }
         ?>
-            <div class="com_uvelir_item">
-                <a href="<?=$href;?>">
-                    <img src="<?=$src?>" atl="<?=$item->name?>"/>
-                    <?php echo JText::_('COM_UVELIR_ARTIKUL').': '.$item->artikul; ?>
-                </a>
-                <ul>
-                    <?php if(isset($item->cena_mag) AND $item->cena_mag):?>
-                    <li>
-                        <?= JText::_('COM_UVELIR_CENA_MAG').': ' ?>
-                        <?=$item->cena_mag.' '.JTEXT::_('COM_UVELIR_RUB')?>
-                    </li>
-                    <?php endif;?>
+	            <div class="com_uvelir_item <?=$novinka.' '.$spets_predl?>">
 
-                    <?php if(isset($item->cena_tut) AND $item->cena_tut):?>
-                    <li>
-                        <?= JText::_('COM_UVELIR_CENA_TUT').': ' ?>
-                        <?=$item->cena_tut.' '.JTEXT::_('COM_UVELIR_RUB')?>
-                    </li>
-                    <?php endif;?>
-                    
-                    <!--Показ кол-ва товаров в корзине-->
-                    <li id="count_li_<?php echo $item->id; ?>" <?php echo $count_li_style?> >
-                        <?= JText::_('COM_UVELIR_CADDY_COUNT').': ' ?>
-                        <span id="count_span_<?php echo $item->id; ?>"><?php echo $caddy_count; ?></span>
-                        <?= JText::_('COM_UVELIR_CADDY_ITEMS') ?>
-                    </li>
-                </ul>
+	                <div class="image">
+	                	<a href="<?=$href;?>">
+	                    	<img src="<?=$src?>" atl="<?=$item->name?>"/>
+	                    </a>
+	                </div>
 
-                <!--Кнопки покупки-->
-                <input id="del_<?php echo $item->id?>" type="button" <?=$btn_del_style?> value="<?php echo JText::_('COM_UVELIR_DEL_FROM_CART')?>"
-                       onclick="uvelir_caddy_del({
-                            action:'<?php echo JRoute::_('index.php'); ?>',
-                            data:{
-                                option:     'com_uvelir',
-                                task:       'caddy.del',
-                                item_id:    '<?php echo $item->id?>',
-                                '<?php echo JUtility::getToken()?>':'1'
-                            }
-                       })"
-                />
-                <input id="add_<?php echo $item->id?>" type="button" value="<?php echo JText::_('COM_UVELIR_ADD_TO_CART')?>" 
-                       onclick="uvelir_caddy_add({
-                            action:'<?php echo JRoute::_('index.php'); ?>',
-                            data:{
-                                option:     'com_uvelir',
-                                task:       'caddy.add',
-                                item_id:    '<?php echo $item->id?>',
-                                '<?php echo JUtility::getToken()?>':'1'
-                            }
-                       })"
-                />
-                
-            </div>
+
+	                <a href="<?=$href;?>" class="article">
+	                    <?php echo JText::_('COM_UVELIR_ARTIKUL').': '.$item->artikul; ?>
+	                </a>
+
+	                <div class="price">
+	                    <?php if(isset($item->cena_mag) AND $item->cena_mag):?>
+	                    <div>
+	                        <?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
+	                        <span class="line-through"><?=$item->cena_mag?></span>
+	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
+	                    <?php endif;?>
+
+	                    </div>
+
+
+	                    <?php if(isset($item->cena_tut) AND $item->cena_tut):?>
+	                    <div>
+	                        <?= JText::_('COM_UVELIR_CENA_TUT').': <br>' ?>
+	                        <span><?=$item->cena_tut?></span>
+	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
+	                    </div>
+	                    <?php endif;?>
+	                </div>
+
+					<div class="show">
+
+						<?php if(isset($item->opisanije)):?>
+			                <div class="desc">
+		                        <?//= JText::_('COM_UVELIR_OPISANIJE').': ' ?>
+		                        <?=$item->opisanije?>
+			                </div>
+	                    <?php endif;?>
+
+	                    <!--Показ кол-ва товаров в корзине-->
+	                    <div class="item_count" id="count_li_<?php echo $item->id; ?>" <?php echo $count_li_style?> >
+	                        <?= JText::_('COM_UVELIR_CADDY_COUNT').': ' ?>
+	                        <span id="count_span_<?php echo $item->id; ?>"><?php echo $caddy_count; ?></span>
+	                        <?= JText::_('COM_UVELIR_CADDY_ITEMS') ?>
+	                    </div>
+
+		                <!--Кнопки покупки-->
+
+		                <input class="addButton"  id="add_<?php echo $item->id?>" type="button" value="+ Добавить"
+		                       onclick="uvelir_caddy_add({
+		                            action:'<?php echo JRoute::_('index.php'); ?>',
+		                            data:{
+		                                option:     'com_uvelir',
+		                                task:       'caddy.add',
+		                                item_id:    '<?php echo $item->id?>',
+		                                '<?php echo JUtility::getToken()?>':'1'
+		                            }
+		                       })"
+		                />
+		                <input  class="removeButton" id="del_<?php echo $item->id?>" type="button" <?=$btn_del_style?> value="- Удалить"
+		                       onclick="uvelir_caddy_del({
+		                            action:'<?php echo JRoute::_('index.php'); ?>',
+		                            data:{
+		                                option:     'com_uvelir',
+		                                task:       'caddy.del',
+		                                item_id:    '<?php echo $item->id?>',
+		                                '<?php echo JUtility::getToken()?>':'1'
+		                            }
+		                       })"
+		                />
+
+
+					</div><!-- show -->
+	            </div><!-- com_uvelir_item -->
         <?php endforeach; ?>
-    
-</div>
-<div class="pagination">
-    <?php echo $this->pagination->getListFooter(); ?>
-</div>
-        <input type="hidden" name="option" value="com_uvelir" />
-        <input type="hidden" name="view" value="products" />
-        <input type="hidden" name="item_id" value="" />
-        <input type="hidden" name="products_group" value="<?=$this->products_group?>" />
-        <?php echo JHtml::_('form.token'); ?>
+	</div><!-- items -->
+	<div class="pagination">
+	    <?php echo $this->pagination->getListFooter(); ?>
+	</div>
+    <input type="hidden" name="option" value="com_uvelir" />
+    <input type="hidden" name="view" value="products" />
+    <input type="hidden" name="item_id" value="" />
+    <input type="hidden" name="products_group" value="<?=$this->products_group?>" />
+    <?php echo JHtml::_('form.token'); ?>
 </form>
 <div id="uvelir_debud"></div>

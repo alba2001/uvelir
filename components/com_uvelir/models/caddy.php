@@ -175,6 +175,7 @@ class UvelirModelCaddy extends ModelKModelform
                         'zavod_name'=>$zavod_name,
                         'zavod_id'=>$product->zavod_id,
                         'artikul'=>$product->artikul,
+                        'name'=>$product->name,
                         'src'=>$desc->img_small,
                         'price'=>$product->cena_tut,
                         'count'=>$value['count'],

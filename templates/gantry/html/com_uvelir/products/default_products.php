@@ -17,6 +17,9 @@ defined('_JEXEC') or die;
             $href = JRoute::_('index.php?option=com_uvelir&alias='.$item->id);
             $desc = json_decode($item->desc);
             $src = $desc->img_small;
+            $novinka = ($item->novinka_dt > date('d.m.Y'))?'new':'';
+            $spets_predl = $item->spets_predl?'spets_predl':'';
+
             // Обработка корзины
             if(isset($this->caddy[$item->id]))
             {
@@ -29,8 +32,10 @@ defined('_JEXEC') or die;
                 $btn_del_style = $count_li_style = 'style="display:none"';
             }
         ?>
-	            <div class="com_uvelir_item">
-
+	            <div class="com_uvelir_item <?=$spets_predl?>">
+					<? if ( !empty($novinka) ){ ?>
+						<span class="<?=$novinka?>"></span>
+					<?}?>
 	                <div class="image">
 	                	<a href="<?=$href;?>">
 	                    	<img src="<?=$src?>" atl="<?=$item->name?>"/>

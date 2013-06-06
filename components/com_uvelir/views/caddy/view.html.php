@@ -29,6 +29,7 @@ class UvelirViewCaddy extends JView {
         $model = $this->getModel();
         $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
         $this->caddy_data = $model->get_caddy_data($caddy);
+        $this->action = JRequest::getString('action', 'step1');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

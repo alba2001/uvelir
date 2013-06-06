@@ -71,6 +71,16 @@ class UvelirControllerCaddy extends UvelirController
         $result = json_encode($model->correction());
         echo $result;
         exit;
+    }
+    
+    public function show_catalog()
+    {
+        $app = JFactory::getApplication();
+//        $url = $app->getUserState('com_uvelir.catalog_uri',  JURI::base());
+//        $app->setUserState('com_uvelir.catalog_uri',NULL);
+        $url = JURI::base().'katalog-izdelij';
+//        var_dump($url);exit;
+        $app->redirect($url);
         
     }
 }

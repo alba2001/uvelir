@@ -19,7 +19,7 @@
     }
 
     /**
-     * Удаление товара из корзину
+     * Удаление товара из корзины
      */
     function uvelir_caddy_del(params)
     {
@@ -60,6 +60,7 @@
 
 jQuery(function($){
     $(document).ready(function(){
+        // Изменение кол-ва товаров в корзине
         $('.caddy_item_count').change(function(e){
             var item = this;
             var count = parseInt($(item).val());
@@ -85,7 +86,7 @@ jQuery(function($){
             $('#caddy_total_sum').text(total);
             
             // Отправляем изменения в корзине на серер
-            var form  = $('#caddy_show');
+            var form  = $('#step1_form');
             $.ajax({
                 type: 'POST',
                 url: $(form).attr('action'),
