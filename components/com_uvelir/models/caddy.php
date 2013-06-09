@@ -27,6 +27,7 @@ class UvelirModelCaddy extends ModelKModelform
     {
         $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
         $user = $this->getUser();
+        $caddy_zakaz = JFactory::getApplication()->getUserState('com_uvelir.zakaz', array());
         $caddy_data = $this->get_caddy_data($caddy);
         $data = array(
             'userid'=>$user->id,
@@ -35,9 +36,16 @@ class UvelirModelCaddy extends ModelKModelform
             'sum'=>$caddy_data['sum'],
             'caddy'=>  json_encode($caddy),
             'ch_status'=> date('d.m.Y H:i:s').' '.$user->fam.' '.$user->im.' '.$user->ot.' '.JText::_('COM_UVELIR_CHANGE_ORDER_STATUS_TO_INITIAL'),
+            'oplata_id' => $caddy_zakaz['oplata'],
+            'dostavka_id' => $caddy_zakaz['dostavka'],
         );
         $order = $this->getTable('order');
-        return $order->save($data);
+        if($order->save($data))
+        {
+            JFactory::getApplication()->setUserState('com_uvelir.caddy', array());
+            return TRUE;
+        }
+        return FALSE;
     }
     
     /**
@@ -236,5 +244,58 @@ class UvelirModelCaddy extends ModelKModelform
         return array(1, $this->get_caddy_data($caddy));
     }
     
-        
+    /**
+     * Записываем способ доставки 
+     */
+    public function dostavka_submit()
+    {
+        $dostavka = JRequest::getInt('dostavka','1');
+        $caddy_zakaz = JFactory::getApplication()->getUserState('com_uvelir.zakaz', array());
+        $caddy_zakaz['dostavka'] = $dostavka;
+        $caddy_zakaz = JFactory::getApplication()->setUserState('com_uvelir.zakaz', $caddy_zakaz);
+        return array(1,'');
+    }
+    /**
+     * Записываем способ оплаты 
+     */
+    public function oplata_submit()
+    {
+        $oplata = JRequest::getInt('oplata','1');
+        $caddy_zakaz = JFactory::getApplication()->getUserState('com_uvelir.zakaz', array());
+        $caddy_zakaz['oplata'] = $oplata;
+        $caddy_zakaz = JFactory::getApplication()->setUserState('com_uvelir.zakaz', $caddy_zakaz);
+        return array(1,'');
+    }
+    
+    /**
+     * Получение наименования способа доставки
+     * @param int $id
+     * @return string
+     */
+    public function get_dostavka($id)
+    {
+        $name = '';
+        $table = $this->getTable('dostavka');
+        if($table->load($id))
+        {
+            $name = $table->name;;
+        }
+        return $name;
+    }
+    
+    /**
+     * Получение наименования способа оплаты
+     * @param int $id
+     * @return string
+     */
+    public function get_oplata($id)
+    {
+        $name = '';
+        $table = $this->getTable('oplata');
+        if($table->load($id))
+        {
+            $name = $table->name;;
+        }
+        return $name;
+    }
 }

@@ -19,6 +19,7 @@ class UvelirViewCaddy extends JView {
 
     protected $items;
     protected $caddy_data;
+    protected $zakaz;
 
 
     /**
@@ -26,11 +27,28 @@ class UvelirViewCaddy extends JView {
      */
     public function display($tpl = null) {
         
+        $this->action = JRequest::getString('action', 'step1');
+        if($this->action == 'step4') // Checkout
+        {
+            $mainframe = JFactory::getApplication();
+            $mainframe->setUserState('com_uvelir.old_uri',JURI::base().'index.php?option=com_uvelir&view=caddy&action=step4');
+            // Проверяем пользователя
+            $this->user = $this->get('User');
+    //        var_dump($this->user);exit;
+            if(!$this->user->id)
+            {
+                // Redirect to login
+                $url = JURI::base().'/lichnye-dannye';
+                $mainframe->redirect($url, JText::_('You must login first'));
+
+            }
+            
+        }
         $this->items = $this->get('Items');
         $model = $this->getModel();
         $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
+        $this->zakaz = JFactory::getApplication()->getUserState('com_uvelir.zakaz', array());
         $this->caddy_data = $model->get_caddy_data($caddy);
-        $this->action = JRequest::getString('action', 'step1');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

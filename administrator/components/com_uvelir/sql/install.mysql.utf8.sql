@@ -17,6 +17,8 @@ CREATE TABLE `#__uvelir_users` (
 DROP TABLE IF EXISTS `#__uvelir_orders`;
 CREATE TABLE `#__uvelir_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `oplata_id` int(2) NOT NULL COMMENT 'Способ оплаты',
+  `dostavka_id` int(2) NOT NULL COMMENT 'Способ доставки',
   `userid` int(11) NOT NULL COMMENT 'ИД пользователя в системе',
   `order_status_id` int(2) NOT NULL COMMENT 'Статус заказа',
   `order_dt` datetime NOT NULL COMMENT 'Дата и время заказа',
@@ -152,4 +154,26 @@ PRIMARY KEY (`id`)
 INSERT INTO `#__uvelir_zavods` (`id`, `name`, `base_url`, `products`, `ordering`, `state`, `checked_out`, `checked_out_time`, `created_by`) VALUES
 (1, 'Ювелиры Урала', 'http://ju-ur.ru', 'Кольца', 1, 1, 0, '0000-00-00 00:00:00', 42),
 (2, 'Атолл, г. Новосибирск', 'http://www.atollnsk.ru/', 'Кольца^http://www.atollnsk.ru/rings.html;\r\nСерьги^http://www.atollnsk.ru/earrings.html', 2, 1, 0, '0000-00-00 00:00:00', 42);
+
+DROP TABLE IF EXISTS `#__uvelir_oplata`;
+CREATE TABLE IF NOT EXISTS `#__uvelir_oplata` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+INSERT INTO `#__uvelir_oplata` (`id`, `name`) VALUES
+(1, 'Наличными при получении'),
+(2, 'Банковскими картами, электронными деньгами');
+
+DROP TABLE IF EXISTS `#__uvelir_dostavka`;
+CREATE TABLE IF NOT EXISTS `#__uvelir_dostavka` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+INSERT INTO `#__uvelir_dostavka` (`id`, `name`) VALUES
+(1, 'Курьером (только для Тюмени)'),
+(2, 'Доставка СПСР (по всей России)');
 

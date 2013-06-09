@@ -39,12 +39,16 @@ class UvelirControllerCaddy extends UvelirController
         $model = $this->getModel('Caddy');
         if($model->order_add())
         {
-            echo JTEXT::_('COM_UVELIR_ORDER_SAVER');
+            $msg =  JTEXT::_('COM_UVELIR_ORDER_SAVER');
         }
         else
         {
-            echo JTEXT::_('COM_UVELIR_ERROR_SAVE_ORDER');
+            $msg =  JTEXT::_('COM_UVELIR_ERROR_SAVE_ORDER');
         }
+        $url = JURI::base().'katalog-izdelij';
+        
+        JFactory::getApplication()->redirect($url, $msg);
+        
         return true;
     }
     /**
@@ -82,5 +86,30 @@ class UvelirControllerCaddy extends UvelirController
 //        var_dump($url);exit;
         $app->redirect($url);
         
+    }
+
+    /**
+     * Записываем способ доставки 
+     */
+    public function dostavka_submit()
+    {
+        // Check for request forgeries.
+        JSession::checkToken('GET') or jexit(JText::_('JINVALID_TOKEN'));
+        $model = $this->getModel('Caddy');
+        $result = json_encode($model->dostavka_submit());
+        echo $result;
+        exit;
+    }
+    /**
+     * Записываем способ доставки 
+     */
+    public function oplata_submit()
+    {
+        // Check for request forgeries.
+        JSession::checkToken('GET') or jexit(JText::_('JINVALID_TOKEN'));
+        $model = $this->getModel('Caddy');
+        $result = json_encode($model->oplata_submit());
+        echo $result;
+        exit;
     }
 }
