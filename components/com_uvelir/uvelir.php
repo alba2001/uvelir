@@ -8,11 +8,11 @@
  */
 
 defined('_JEXEC') or die;
-
 // Include dependancies
 jimport('joomla.application.component.controller');
 // Execute the task.
 $controller	= JController::getInstance('Uvelir');
 //var_dump(JFactory::getApplication()->input->get('task'));
+
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

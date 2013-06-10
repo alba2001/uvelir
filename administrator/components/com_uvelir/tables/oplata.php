@@ -9,11 +9,11 @@
  */
 // No direct access
 defined('_JEXEC') or die;
-require_once dirname(__FILE__) . '/ktable.php'; 
+
 /**
  * city Table class
  */
-class UvelirTableOplata extends UvelirTableKtable {
+class UvelirTableOplata extends JTable {
 
     protected $asset_name;
 
@@ -24,6 +24,6 @@ class UvelirTableOplata extends UvelirTableKtable {
      */
     public function __construct(&$db) {
         $this->asset_name = 'oplata';
-        parent::__construct('#__uvelir_oplatas', 'id', $db);
+        parent::__construct('#__uvelir_oplata', 'id', $db);
     }
 }

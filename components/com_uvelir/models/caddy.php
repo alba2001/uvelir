@@ -40,14 +40,165 @@ class UvelirModelCaddy extends ModelKModelform
             'dostavka_id' => $caddy_zakaz['dostavka'],
         );
         $order = $this->getTable('order');
+        // Cохраняем заказ
         if($order->save($data))
         {
+            // Отправляем мыло
+            $mail_send =& $this->_send_email($order, $user);
             JFactory::getApplication()->setUserState('com_uvelir.caddy', array());
-            return TRUE;
+//            var_dump((string)$mail_send);exit;
+//            if ( $mail_send !== true ) {
+//               $msg = 'Error sending email: ' . (string)$mail_send;
+//            } else {
+                $msg =  JTEXT::_('COM_UVELIR_ORDER_SAVER');
+//            }
         }
-        return FALSE;
+        else
+        {
+            $msg =  JTEXT::_('COM_UVELIR_ERROR_SAVE_ORDER');
+        }
+        return  $msg;
     }
     
+    /**
+     * Отправка уведомлений о заказе
+     * @param object $data Детали заказа
+     * @param object $user Детали заказчика
+     */
+    private function _send_email($order, $user)
+    {
+        $mailer =& JFactory::getMailer();
+        // Отправитель
+        $config =& JFactory::getConfig();
+        $sender = array( 
+            $config->getValue( 'config.mailfrom' ),
+            $config->getValue( 'config.fromname' ) 
+        );
+        $sitename = $config->getValue( 'config.sitename' );
+        $mailer->setSender($sender);
+        
+        // Получатель
+        $recipient = $user->email;
+        $mailer->addRecipient($recipient);
+        
+        // Тело письма
+        $caddy = json_decode($order->caddy, TRUE);
+        $body   = '<h1>Заказ №'.$order->id.'</h1>';
+        $body .= '<table style="border: 1px solid">';
+        $body .= '<tr>';
+        $body .= '<th>Выбранные товары</th>';
+        $body .= '<th>Количество</th>';
+        $body .= '<th>Цена</th>';
+        $body .= '<th>Сумма</th>';
+        $body .= '</tr>';
+        
+        foreach ($caddy as $key=>$value)
+        {
+            $product_data = $this->_get_product_data($key);
+            $body .= '<tr>';
+            $body .= '<td><img src="'.$product_data['img_src'].'"/><b>'
+                    .$product_data['artikul'].'</b></td>';
+            $body .= '<td>'.$value['count'].'</td>';
+            $body .= '<td>'.$product_data['cena_tut'].'</td>';
+            $body .= '<td>'.$value['sum'].'</td>';
+            $body .= '</tr>';
+        }
+        $body .= '</tr>';
+        $body .= '<td colspan="4">Итого: '.$order->sum.'руб.</td>';
+        $body .= '<tr>';
+        $body .= '</table>';
+        $body .= '<b>Способ оплаты: </b>'.$this->_get_oplata_name($order->oplata_id);
+        $body .= '<br>';
+        $body .= '<b>Способ доставки: </b>'.$this->_get_dostavka_name($order->dostavka_id);
+        $mailer->setBody($body);        
+        
+        // Тема письма
+        $mailer->setSubject('Заказ №'.$order->id.' на сайте '.$sitename);
+        
+        $mailer->isHTML(true);
+        $mailer->Encoding = 'base64';
+//        $mailer->setBody($body);
+     
+        // Отправка письма заказчику
+//        $send = $mailer->Send();
+//        
+//        if(!$send == TRUE)
+//        {
+//            return $send;
+//        }
+        
+        // Отправляем второе письмо менеджеру
+        // Получатель
+        $mailer->addRecipient($sender);
+        $user_data = '<b>ФИО: </b>'.$user->fam.' '.$user->im.' '.$user->ot.'<br>';
+        $user_data .= '<b>Почтовый адрес: </b>'.$user->address.'<br>';
+        $user_data .= '<b>Телефон: </b>'.$user->phone.'<br>';
+        $user_data .= '<b>email: </b>'.$user->email.'<br>';
+        $body = $user_data.$body;
+        $mailer->setBody($body);
+        
+//        echo $body;exit;
+        return $mailer->Send();
+    }
+    
+    /**
+     * Наименование оплаты
+     * @param int $oplata_id
+     * @return string
+     */
+    private function _get_oplata_name($oplata_id)
+    {
+        $oplata_name = '';
+        $oplata = $this->getTable('Oplata');
+        
+        if($oplata->load(array('id'=>$oplata_id)))
+        {
+            $oplata_name = $oplata->name;
+        }
+        return $oplata_name;
+    }
+
+    /**
+     * Наименование доставки
+     * @param int $dostavka_id
+     * @return string
+     */
+    private function _get_dostavka_name($dostavka_id)
+    {
+        $dostavka_name = '';
+        $dostavka = $this->getTable('Dostavka');
+        if($dostavka->load($dostavka_id))
+        {
+            $dostavka_name = $dostavka->name;
+        }
+        return $dostavka_name;
+    }
+
+    /**
+     * Детали продукта
+     * @param type $id
+     * @return array Детали продукта
+     */
+    private function _get_product_data($id)
+    {
+        $result = array(
+               'artikul'=>'',
+               'img_src'=>'',
+               'cena_tut'=>''
+           );
+       $product = $this->getTable('Product');
+       if($product->load($id))
+       {
+           $desc = json_decode($product->desc);
+           $result = array(
+               'artikul'=>$product->artikul,
+               'img_src'=>$desc->img_small,
+               'cena_tut'=>$product->cena_tut
+           );
+       }
+       return $result;
+    }
+
     /**
      * Добавить товара в корзину
      * @return type 
@@ -252,7 +403,8 @@ class UvelirModelCaddy extends ModelKModelform
         $dostavka = JRequest::getInt('dostavka','1');
         $caddy_zakaz = JFactory::getApplication()->getUserState('com_uvelir.zakaz', array());
         $caddy_zakaz['dostavka'] = $dostavka;
-        $caddy_zakaz = JFactory::getApplication()->setUserState('com_uvelir.zakaz', $caddy_zakaz);
+        JFactory::getApplication()->setUserState('com_uvelir.zakaz', $caddy_zakaz);
+        
         return array(1,'');
     }
     /**
@@ -263,7 +415,7 @@ class UvelirModelCaddy extends ModelKModelform
         $oplata = JRequest::getInt('oplata','1');
         $caddy_zakaz = JFactory::getApplication()->getUserState('com_uvelir.zakaz', array());
         $caddy_zakaz['oplata'] = $oplata;
-        $caddy_zakaz = JFactory::getApplication()->setUserState('com_uvelir.zakaz', $caddy_zakaz);
+        JFactory::getApplication()->setUserState('com_uvelir.zakaz', $caddy_zakaz);
         return array(1,'');
     }
     

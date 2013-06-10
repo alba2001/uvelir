@@ -37,14 +37,7 @@ class UvelirControllerCaddy extends UvelirController
         // Check for request forgeries.
         JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         $model = $this->getModel('Caddy');
-        if($model->order_add())
-        {
-            $msg =  JTEXT::_('COM_UVELIR_ORDER_SAVER');
-        }
-        else
-        {
-            $msg =  JTEXT::_('COM_UVELIR_ERROR_SAVE_ORDER');
-        }
+        $msg = $model->order_add();
         $url = JURI::base().'katalog-izdelij';
         
         JFactory::getApplication()->redirect($url, $msg);

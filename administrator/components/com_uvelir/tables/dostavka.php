@@ -24,6 +24,6 @@ class UvelirTableDostavka extends UvelirTableKtable {
      */
     public function __construct(&$db) {
         $this->asset_name = 'dostavka';
-        parent::__construct('#__uvelir_dostavkas', 'id', $db);
+        parent::__construct('#__uvelir_dostavka', 'id', $db);
     }
 }

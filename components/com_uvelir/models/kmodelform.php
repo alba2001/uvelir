@@ -119,8 +119,8 @@ class ModelKModelform extends JModelForm
 	public function createItem($data)
 	{
             $table = $this->getTable($this->table_name);
-            $saved_row_id = $table->save($data);
-            if (!$saved_row_id) 
+            
+            if (!$table->save($data)) 
             {
                 JError::raiseError(500, $this->_db->getErrorMsg());
 //                var_dump($this->_db->getErrorMsg());exit;
@@ -128,7 +128,7 @@ class ModelKModelform extends JModelForm
             }
             else
             {
-                JFactory::getApplication()->setUserState('com_uvelir.'.$this->table_name.'_id',$saved_row_id);
+                JFactory::getApplication()->setUserState('com_uvelir.'.$this->table_name.'_id',$table->id);
                 return TRUE;
             }
         }
