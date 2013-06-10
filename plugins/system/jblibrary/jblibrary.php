@@ -105,7 +105,8 @@ class plgSystemJblibrary extends JPlugin
 			JLoader::import('zen.addon.scrolltop', ZEN_LIBRARY_PATH);
 			if (ZenAddonScrolltop::browserIsCompatible())
 			{
-				$text = $this->params->get('scrollText', '^ Back To Top');
+				// $text = $this->params->get('scrollText', '^ Back To Top');
+				$text = $this->params->get('scrollText', 'Наверх');
 
 				if ($this->params->get('scrollTextTranslate', 1))
 				{

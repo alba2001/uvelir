@@ -84,9 +84,11 @@ $menu-bg-repeat: repeat-x;
 	// top: 0%;
 }
 body{
-	background: #f7f2e1 url(../images/strips.png) 50% 0%;
+	background: #f7f2e1 url(../images/strips.png);
 	color: #494949;
-	&.test{
+	background-position: 50% -55px;
+	&.glavnaya{
+		background-position: 50% 0px;
 	}
 }
 #rt-top-surround{

@@ -4,9 +4,45 @@
 		print_r($what);
 		print "</pre>";
 	}
+
 	class incase {
-		public function __construct() {
+		public $test ='test!!';
+
+		protected static $incase;
+
+		public static function getInstance() {
+		    if (self::$incase === null) {
+		    	self::$incase = new self();
+		    }
+
+		   	return self::$incase;
 		}
+
+		private function __construct() {
+		}
+
+		/* 1 */
+		function getTemplate(){
+			$app = JFactory::getApplication();
+			return $app->getTemplate();
+		}
+		function getMenu(){
+			$app = JFactory::getApplication();
+			return $app->getMenu();
+		}
+		function getActive(){
+			$app = JFactory::getApplication();
+			return $app->getMenu()->getActive();
+		}
+		/* 1 */
+
+		/* 2 */
+		function noCache($what){
+			$change=md5(filemtime( ltrim($what, '/') ));
+			return $what . '?' . $change;
+		}
+		/* 2 */
+
 		function getAlias(){
 			$this->app = JFactory::getApplication();
 			$active = $this->app->getMenu()->getActive();

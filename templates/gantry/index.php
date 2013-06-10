@@ -13,8 +13,10 @@ defined( '_JEXEC' ) or die( 'Restricted index access' );
 
 // load and inititialize gantry class
 require_once(dirname(__FILE__) . '/lib/gantry/gantry.php');
-require_once ('lib/incase/index.php');
+// require_once ('lib/incase/index.php');
 $gantry->init();
+
+jimport('incase.init'); global $incase;
 
 // get the current preset
 $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
@@ -30,10 +32,11 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
 	<?php else : ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php endif; ?>
+
     <?php
         $gantry->displayHead();
 
-		$gantry->addStyle('templates/' . $app->getTemplate() . '/lib/incase/compass/stylesheets/screen.css" type="text/css', 100);
+		// $gantry->addStyle('templates/' . $app->getTemplate() . '/lib/incase/compass/stylesheets/screen.css" type="text/css', 100);
 		$gantry->addStyle('grid-responsive.css', 5);
 		$gantry->addLess('bootstrap.less', 'bootstrap.css', 6);
         $gantry->addLess('global.less', 'master.css', 8, array('headerstyle'=>$gantry->get('headerstyle','dark')));
@@ -53,13 +56,14 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
 
     ?>
     <!--[if lt IE 9]>
-    	<script src="<?='templates/' . $app->getTemplate();?>/lib/css3-mediaqueries.js"></script>
+    	<script src="<?='templates/' . $app->getTemplate();?>/js/css3-mediaqueries.js"></script>
     <![endif]-->
-    <script src="<?='templates/' . $app->getTemplate();?>/lib/slideUpText.js"></script>
+    <script src="<?='templates/' . $app->getTemplate();?>/js/slideUpText.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?=$incase->noCache('/templates/gantry/compass/stylesheets/screen.css')?>" />
 </head>
-<body <?php echo $gantry->displayBodyTag(); ?>>
+<body <?php// echo $gantry->displayBodyTag(); ?> class="<?php echo (($incase->getMenu()->getActive() == $incase->getMenu()->getDefault()) ? ('front') : ('page')).' '.$incase->getActive()->alias.' '.$pageclass; ?>">
+	<div class="strips"></div>
     <?php /** Begin Top Surround **/ if ($gantry->countModules('top') or $gantry->countModules('header')) : ?>
-    <div class="<?php echo (($menu->getActive() == $menu->getDefault()) ? ('front') : ('page')).' '.$active->alias.' '.$pageclass; ?>">
 	    <header id="rt-top-surround">
 			<?php /** Begin Top **/ if ($gantry->countModules('top')) : ?>
 			<div id="rt-top" <?php echo $gantry->displayClassesByTag('rt-top'); ?>>
@@ -199,7 +203,6 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
 		<?php /** Begin Analytics **/ if ($gantry->countModules('analytics')) : ?>
 		<?php echo $gantry->displayModules('analytics','basic','basic'); ?>
 		<?php /** End Analytics **/ endif; ?>
-	</div>
 	</body>
 </html>
 <?php
