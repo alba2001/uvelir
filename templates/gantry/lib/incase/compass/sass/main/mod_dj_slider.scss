@@ -1,0 +1,45 @@
+#rt-header{
+	.slider{
+		padding: 0;
+		margin: 0;
+	}
+	.djslider-loader{
+		.djslider{
+			min-width: 800px !important;
+			width: 100% !important;
+			max-width: 1285px !important;
+			height: 250px !important;
+			.navigation-container{
+				top: 40%;
+				margin: 0;
+				.prev-button,
+				.next-button{
+					width: 35px;
+					height: 35px;
+				}
+				.prev-button{
+					@include slider-sprite(prev);
+				}
+				.next-button{
+					@include slider-sprite(next);
+				}
+			}
+			.navigation-container-custom{
+				top: initial;
+				bottom: 20px;
+				right: 57%;
+				.load-button{
+					@include slider-sprite(bullet2);
+					@include opacity(1);
+					@include box-shadow(none);
+					width: 9px;
+					height: 9px;
+					border:none;
+					&.load-button-active{
+						@include slider-sprite(bullet);
+					}
+				}
+			}
+		}
+	}
+}

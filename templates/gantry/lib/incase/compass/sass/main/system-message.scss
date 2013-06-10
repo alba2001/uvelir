@@ -1,0 +1,29 @@
+#rt-drawer{
+	// position: absolute;
+	// left: 0px;
+	// z-index: 200;
+	// top: -46px;
+	// width: 100%;
+
+	position: fixed;
+	left: 0px;
+	z-index: 200;
+	bottom: -15px;
+	width: 100%;
+}
+#system-message-container{
+	dt.message{
+		display: none;
+	}
+	ul{
+		padding: 14px !important;
+		background: #E0E0E0 !important;
+		color: #C02654 !important;
+		// padding: 16px !important;
+		border: none !important;
+		border-top: 1px solid #BDBDBD !important;
+
+		padding: 6px 16px !important;
+		font-size: 13px;
+	}
+}

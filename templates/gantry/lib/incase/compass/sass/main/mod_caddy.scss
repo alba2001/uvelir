@@ -1,7 +1,8 @@
 #mod_caddy_uvelir{
 	line-height: 40px;
 	font-size: 12px;
-	margin-left: 17px;
+	// margin-left: 17px;
+	margin: 0 0 0 5px;
 	.inner{
 		@include border-bottom-radius(5px);
 		@include pinkButton;
@@ -11,6 +12,7 @@
 		height: 40px;
 		overflow: hidden;
 		padding: 0 20px;
+		// min-width: 170px;
 		div{
 			display: block;
 			float: left;

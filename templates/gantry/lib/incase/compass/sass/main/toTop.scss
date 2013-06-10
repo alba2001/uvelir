@@ -1,0 +1,9 @@
+#toTop{
+	// background: #EBE3C8;
+	background: #e4d8be;
+	color: #C02654;
+	border: none;
+	@include border-top-left-radius(14px);
+	text-transform: capitalize;
+	font-weight: bold;
+}

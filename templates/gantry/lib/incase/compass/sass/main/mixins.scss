@@ -97,8 +97,9 @@
 	padding: 3px 22px
 }
 
-$small: 1400px;
-$large: 1600px;
+$small: 1240px;
+$large: 1500px;
+$seven: 1800px;
 @mixin respond-to($media) {
   @if $media == handhelds {
     @media only screen and (max-width: $small) { @content; }
@@ -108,6 +109,9 @@ $large: 1600px;
   }
   @else if $media == wide-screens {
     @media only screen and (min-width: $large) { @content; }
+  }
+  @else if $media == seven {
+    @media only screen and (min-width: $seven) { @content; }
   }
 }
 

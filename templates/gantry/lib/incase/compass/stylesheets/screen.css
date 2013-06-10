@@ -11,16 +11,16 @@
   background: url('/templates/gantry/lib/incase/compass/images/filter-s0df33fbe23.png') no-repeat; }
 
 /* line 66, slider/*.png */
-.slider-sprite, .slider-bullet, .slider-bullet2, .slider-next, .slider-prev, #rt-top-surround #rt-header .djslider-loader .navigation-container .prev-button, #rt-top-surround #rt-header .djslider-loader .navigation-container .next-button, #rt-top-surround #rt-header .djslider-loader .navigation-container-custom .load-button, #rt-top-surround #rt-header .djslider-loader .navigation-container-custom .load-button.load-button-active {
+.slider-sprite, .slider-bullet, .slider-bullet2, .slider-next, .slider-prev, #rt-header .djslider-loader .djslider .navigation-container .prev-button, #rt-header .djslider-loader .djslider .navigation-container .next-button, #rt-header .djslider-loader .djslider .navigation-container-custom .load-button, #rt-header .djslider-loader .djslider .navigation-container-custom .load-button.load-button-active {
   background: url('/templates/gantry/lib/incase/compass/images/slider-s88929f1cca.png') no-repeat; }
 
 /* line 90, icons/*.png */
 .icons-sprite, .icons-bullet, .icons-bullet2, .icons-camera, .icons-cart, .icons-clock, .icons-file, .icons-phone, .bullet-menu li:before, #rt-transition #rt-sidebar-a li:before, #rt-bottom .rt-container li:before, #mod_caddy_uvelir .inner .cart span, .breadcrumbs .separator {
   background: url('/templates/gantry/lib/incase/compass/images/icons-s7f6f463152.png') no-repeat; }
 
-/* line 66, misc/*.png */
-.misc-sprite, .misc-light, .misc-new, .misc-separator, .misc-tab-a, #caddy_show table tr th .separator, .items-wrapper .items .com_uvelir_item .new, .tabs li a.active::after {
-  background: url('/templates/gantry/lib/incase/compass/images/misc-se23762d721.png') no-repeat; }
+/* line 90, misc/*.png */
+.misc-sprite, .misc-new, .misc-select-bg, .misc-select-btn, .misc-select-gt, .misc-select-lt, .misc-separator, .misc-tab-a, #caddy_show table tr th .separator, .items-wrapper .items .com_uvelir_item .new, .tabs li a.active::after, .select1, .select1::before, .select1::after {
+  background: url('/templates/gantry/lib/incase/compass/images/misc-s05e316f2aa.png') no-repeat; }
 
 /* line 58, menu/*.png */
 .menu-sprite, .menu-bg, .menu-hover, .menu-separator, #mod_caddy_uvelir .inner .separator, #rt-top-surround #rt-top, #rt-top-surround #rt-top .main.menu li.separator, #rt-top-surround #rt-top .main.menu > li > a:hover {
@@ -123,26 +123,44 @@
   width: 25px; }
 
 /* line 60, ../../../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.misc-light {
-  background-position: 0 0;
-  height: 559px;
-  width: 559px; }
-
-/* line 60, ../../../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .misc-new {
-  background-position: 0 -559px;
+  background-position: 0 0;
   height: 44px;
   width: 44px; }
 
 /* line 60, ../../../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.misc-select-bg {
+  background-position: 0 -101px;
+  height: 23px;
+  width: 1px; }
+
+/* line 60, ../../../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.misc-select-btn {
+  background-position: 0 -96px;
+  height: 5px;
+  width: 10px; }
+
+/* line 60, ../../../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.misc-select-gt {
+  background-position: 0 -73px;
+  height: 23px;
+  width: 5px; }
+
+/* line 60, ../../../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.misc-select-lt {
+  background-position: 0 -50px;
+  height: 23px;
+  width: 5px; }
+
+/* line 60, ../../../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .misc-separator {
-  background-position: 0 -609px;
+  background-position: 0 -124px;
   height: 26px;
   width: 1px; }
 
 /* line 60, ../../../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .misc-tab-a {
-  background-position: 0 -603px;
+  background-position: 0 -44px;
   height: 6px;
   width: 16px; }
 
@@ -231,11 +249,11 @@
   text-align: center;
   padding: 3px 22px; }
 
-/* line 114, ../sass/main/mixins.scss */
+/* line 118, ../sass/main/mixins.scss */
 .strike {
   position: relative; }
 
-/* line 117, ../sass/main/mixins.scss */
+/* line 121, ../sass/main/mixins.scss */
 .strike::after {
   border-bottom: 2px solid #C02654;
   content: "";
@@ -630,7 +648,7 @@ body h3 {
       position: relative; }
       /* line 21, ../sass/main/com_uvelir_caddy.scss */
       #caddy_show table tr th .separator {
-        background-position: 0 -609px;
+        background-position: 0 -124px;
         width: 1px;
         height: 26px;
         position: absolute;
@@ -845,15 +863,15 @@ body h3 {
 /* line 29, ../sass/main/com_uvelir_product.scss */
 .item_fields .fields_list {
   font-size: 12px; }
-  @media only screen and (max-width: 1400px) {
+  @media only screen and (max-width: 1240px) {
     /* line 29, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 315px; } }
-  @media only screen and (min-width: 1401px) and (max-width: 1599px) {
+  @media only screen and (min-width: 1241px) and (max-width: 1499px) {
     /* line 29, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 420px; } }
-  @media only screen and (min-width: 1600px) {
+  @media only screen and (min-width: 1500px) {
     /* line 29, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 640px; } }
@@ -938,173 +956,174 @@ body h3 {
     .item_fields .fields_list .bottom tr .buttons .removeButton {
       display: none; }
 
-/* line 4, ../sass/main/com_uvelir_products.scss */
-.items-wrapper .items {
-  margin: 0 auto; }
-  @media only screen and (max-width: 1400px) {
-    /* line 4, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items {
-      width: 716px; } }
-  @media only screen and (min-width: 1401px) and (max-width: 1599px) {
-    /* line 4, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items {
-      width: 896px; } }
-  @media only screen and (min-width: 1600px) {
-    /* line 4, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items {
-      width: 1076px; } }
-  /* line 12, ../sass/main/com_uvelir_products.scss */
-  .items-wrapper .items .com_uvelir_item {
+@media only screen and (max-width: 1240px) {
+  /* line 4, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items {
+    width: 716px; } }
+@media only screen and (min-width: 1241px) and (max-width: 1499px) {
+  /* line 4, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items {
+    width: 900px; } }
+@media only screen and (min-width: 1500px) {
+  /* line 4, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items {
+    width: 1076px; } }
+@media only screen and (min-width: 1800px) {
+  /* line 4, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items {
+    width: 1256px; } }
+/* line 13, ../sass/main/com_uvelir_products.scss */
+.items-wrapper .items .com_uvelir_item {
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  background: #FFF;
+  border: solid 4px transparent;
+  font-size: 11px;
+  margin: 0 4px 16px;
+  max-width: 160px;
+  padding: 20px 0 10px 0;
+  position: relative;
+  text-align: center;
+  vertical-align: top;
+  width: 100%; }
+  /* line 27, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items .com_uvelir_item:hover {
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
+    border: solid 4px #d63a6f; }
+    /* line 31, ../sass/main/com_uvelir_products.scss */
+    .items-wrapper .items .com_uvelir_item:hover .show {
+      display: block; }
+  /* line 35, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items .com_uvelir_item .new {
+    background-position: 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    top: -5px;
+    left: -6px; }
+  /* line 47, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items .com_uvelir_item .image {
+    display: table;
+    margin: 0 auto;
+    min-height: 120px;
+    padding-bottom: 10px;
+    vertical-align: middle; }
+    /* line 53, ../sass/main/com_uvelir_products.scss */
+    .items-wrapper .items .com_uvelir_item .image a {
+      display: table-cell;
+      vertical-align: middle; }
+      /* line 56, ../sass/main/com_uvelir_products.scss */
+      .items-wrapper .items .com_uvelir_item .image a img {
+        width: 120px;
+        max-height: 120px; }
+  /* line 62, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items .com_uvelir_item .article {
+    color: #8c8c8c; }
+  /* line 65, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items .com_uvelir_item .price {
+    font-weight: bold; }
+    /* line 67, ../sass/main/com_uvelir_products.scss */
+    .items-wrapper .items .com_uvelir_item .price span {
+      color: #C02654;
+      font-size: 18px; }
+    /* line 71, ../sass/main/com_uvelir_products.scss */
+    .items-wrapper .items .com_uvelir_item .price .line-through {
+      position: relative;
+      white-space: nowrap;
+      text-decoration: line-through; }
+      /* line 133, ../sass/main/mixins.scss */
+      .items-wrapper .items .com_uvelir_item .price .line-through:after {
+        border-width: 1px;
+        border-style: solid;
+        position: absolute;
+        content: "";
+        right: 0;
+        top: 47%;
+        left: 0;
+        margin: 0 -2px; }
+  /* line 75, ../sass/main/com_uvelir_products.scss */
+  .items-wrapper .items .com_uvelir_item .show {
     -moz-border-radius-bottomleft: 6px;
     -webkit-border-bottom-left-radius: 6px;
     border-bottom-left-radius: 6px;
     -moz-border-radius-bottomright: 6px;
     -webkit-border-bottom-right-radius: 6px;
     border-bottom-right-radius: 6px;
-    -moz-border-radius-topleft: 6px;
-    -webkit-border-top-left-radius: 6px;
-    border-top-left-radius: 6px;
-    -moz-border-radius-topright: 6px;
-    -webkit-border-top-right-radius: 6px;
-    border-top-right-radius: 6px;
-    display: inline-block;
-    vertical-align: baseline;
-    zoom: 1;
-    *display: inline;
-    *vertical-align: auto;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
     background: #FFF;
-    border: solid 4px transparent;
-    font-size: 11px;
-    margin: 0 4px 16px;
-    max-width: 160px;
-    padding: 20px 0 10px 0;
-    position: relative;
-    text-align: center;
-    vertical-align: top;
-    width: 100%; }
-    /* line 26, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items .com_uvelir_item:hover {
-      -moz-border-radius-bottomleft: 0px;
-      -webkit-border-bottom-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-      -moz-border-radius-bottomright: 0px;
-      -webkit-border-bottom-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-      -webkit-box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
-      -moz-box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
-      box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
-      border: solid 4px #d63a6f; }
-      /* line 30, ../sass/main/com_uvelir_products.scss */
-      .items-wrapper .items .com_uvelir_item:hover .show {
-        display: block; }
-    /* line 34, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items .com_uvelir_item .new {
-      background-position: 0 -559px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 44px;
-      height: 44px;
-      top: -5px;
-      left: -6px; }
-    /* line 46, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items .com_uvelir_item .image {
-      display: table;
-      margin: 0 auto;
-      min-height: 120px;
-      padding-bottom: 10px;
-      vertical-align: middle; }
-      /* line 52, ../sass/main/com_uvelir_products.scss */
-      .items-wrapper .items .com_uvelir_item .image a {
-        display: table-cell;
-        vertical-align: middle; }
-        /* line 55, ../sass/main/com_uvelir_products.scss */
-        .items-wrapper .items .com_uvelir_item .image a img {
-          width: 120px;
-          max-height: 120px; }
-    /* line 61, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items .com_uvelir_item .article {
-      color: #8c8c8c; }
-    /* line 64, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items .com_uvelir_item .price {
+    border: solid 4px #d63a6f;
+    border-width: 0 4px 4px;
+    display: none;
+    left: -4px;
+    padding: 6px 0 16px 0px;
+    position: absolute;
+    top: 100%;
+    width: 160px;
+    z-index: 100; }
+    /* line 88, ../sass/main/com_uvelir_products.scss */
+    .items-wrapper .items .com_uvelir_item .show .desc {
+      color: #c02654; }
+    /* line 92, ../sass/main/com_uvelir_products.scss */
+    .items-wrapper .items .com_uvelir_item .show .item_count span {
+      color: #303030;
       font-weight: bold; }
-      /* line 66, ../sass/main/com_uvelir_products.scss */
-      .items-wrapper .items .com_uvelir_item .price span {
-        color: #C02654;
-        font-size: 18px; }
-      /* line 70, ../sass/main/com_uvelir_products.scss */
-      .items-wrapper .items .com_uvelir_item .price .line-through {
-        position: relative;
-        white-space: nowrap;
-        text-decoration: line-through; }
-        /* line 129, ../sass/main/mixins.scss */
-        .items-wrapper .items .com_uvelir_item .price .line-through:after {
-          border-width: 1px;
-          border-style: solid;
-          position: absolute;
-          content: "";
-          right: 0;
-          top: 47%;
-          left: 0;
-          margin: 0 -2px; }
-    /* line 74, ../sass/main/com_uvelir_products.scss */
-    .items-wrapper .items .com_uvelir_item .show {
-      -moz-border-radius-bottomleft: 6px;
-      -webkit-border-bottom-left-radius: 6px;
-      border-bottom-left-radius: 6px;
-      -moz-border-radius-bottomright: 6px;
-      -webkit-border-bottom-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      -webkit-box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
-      -moz-box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
-      box-shadow: rgba(0, 0, 0, 0.2) 4px 7px 10px;
-      background: #FFF;
-      border: solid 4px #d63a6f;
-      border-width: 0 4px 4px;
-      display: none;
-      left: -4px;
-      padding: 6px 0 16px 0px;
-      position: absolute;
-      top: 100%;
-      width: 160px;
-      z-index: 100; }
-      /* line 87, ../sass/main/com_uvelir_products.scss */
-      .items-wrapper .items .com_uvelir_item .show .desc {
-        color: #c02654; }
-      /* line 91, ../sass/main/com_uvelir_products.scss */
-      .items-wrapper .items .com_uvelir_item .show .item_count span {
-        color: #303030;
-        font-weight: bold; }
-      /* line 97, ../sass/main/com_uvelir_products.scss */
-      .items-wrapper .items .com_uvelir_item .show .removeButton,
-      .items-wrapper .items .com_uvelir_item .show .addButton {
-        -moz-border-radius-bottomleft: 3px;
-        -webkit-border-bottom-left-radius: 3px;
-        border-bottom-left-radius: 3px;
-        -moz-border-radius-bottomright: 3px;
-        -webkit-border-bottom-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        -moz-border-radius-topleft: 3px;
-        -webkit-border-top-left-radius: 3px;
-        border-top-left-radius: 3px;
-        -moz-border-radius-topright: 3px;
-        -webkit-border-top-right-radius: 3px;
-        border-top-right-radius: 3px;
-        background-position: 0 -177px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
-        border: none;
-        color: #FFF;
-        font-size: 12px;
-        height: 22px;
-        overflow: hidden;
-        position: relative;
-        text-align: center;
-        width: 120px; }
-      /* line 119, ../sass/main/com_uvelir_products.scss */
-      .items-wrapper .items .com_uvelir_item .show .removeButton {
-        display: none; }
+    /* line 98, ../sass/main/com_uvelir_products.scss */
+    .items-wrapper .items .com_uvelir_item .show .removeButton,
+    .items-wrapper .items .com_uvelir_item .show .addButton {
+      -moz-border-radius-bottomleft: 3px;
+      -webkit-border-bottom-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      -moz-border-radius-bottomright: 3px;
+      -webkit-border-bottom-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      -moz-border-radius-topleft: 3px;
+      -webkit-border-top-left-radius: 3px;
+      border-top-left-radius: 3px;
+      -moz-border-radius-topright: 3px;
+      -webkit-border-top-right-radius: 3px;
+      border-top-right-radius: 3px;
+      background-position: 0 -177px;
+      -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
+      -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
+      border: none;
+      color: #FFF;
+      font-size: 12px;
+      height: 22px;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      width: 120px; }
+    /* line 120, ../sass/main/com_uvelir_products.scss */
+    .items-wrapper .items .com_uvelir_item .show .removeButton {
+      display: none; }
 
 /* line 1, ../sass/main/com_uvelir_tabs.scss */
 .tabs {
@@ -1188,7 +1207,7 @@ body h3 {
         padding: 0px 26px 0px 26px; }
         /* line 53, ../sass/main/com_uvelir_tabs.scss */
         .tabs li a.active::after {
-          background-position: 0 -603px;
+          background-position: 0 -44px;
           content: 'tab-a';
           height: 6px;
           left: 50%;
@@ -1211,8 +1230,8 @@ body h3 {
 #mod_caddy_uvelir {
   line-height: 40px;
   font-size: 12px;
-  margin-left: 17px; }
-  /* line 5, ../sass/main/mod_caddy.scss */
+  margin: 0 0 0 5px; }
+  /* line 6, ../sass/main/mod_caddy.scss */
   #mod_caddy_uvelir .inner {
     -moz-border-radius-bottomleft: 5px;
     -webkit-border-bottom-left-radius: 5px;
@@ -1249,11 +1268,11 @@ body h3 {
       top: 0;
       width: 100%;
       z-index: 0; }
-    /* line 14, ../sass/main/mod_caddy.scss */
+    /* line 16, ../sass/main/mod_caddy.scss */
     #mod_caddy_uvelir .inner div {
       display: block;
       float: left; }
-    /* line 18, ../sass/main/mod_caddy.scss */
+    /* line 20, ../sass/main/mod_caddy.scss */
     #mod_caddy_uvelir .inner .separator {
       background-position: 0 -23px;
       display: inline-block;
@@ -1264,13 +1283,13 @@ body h3 {
       height: 17px;
       width: 3px;
       margin: -3px 6px; }
-    /* line 26, ../sass/main/mod_caddy.scss */
+    /* line 28, ../sass/main/mod_caddy.scss */
     #mod_caddy_uvelir .inner .cart .submit {
       font-size: 11px;
       color: #FFF;
       border: none;
       background: none; }
-    /* line 32, ../sass/main/mod_caddy.scss */
+    /* line 34, ../sass/main/mod_caddy.scss */
     #mod_caddy_uvelir .inner .cart span {
       background-position: 0 -84px;
       display: inline-block;
@@ -1281,22 +1300,67 @@ body h3 {
       height: 15px;
       margin: -2px -3px;
       width: 16px; }
-    /* line 40, ../sass/main/mod_caddy.scss */
+    /* line 42, ../sass/main/mod_caddy.scss */
     #mod_caddy_uvelir .inner .sum {
       color: #F6DF98;
       margin-right: 7px; }
-      /* line 43, ../sass/main/mod_caddy.scss */
+      /* line 45, ../sass/main/mod_caddy.scss */
       #mod_caddy_uvelir .inner .sum .ruble {
         font-size: 11px; }
-    /* line 47, ../sass/main/mod_caddy.scss */
+    /* line 49, ../sass/main/mod_caddy.scss */
     #mod_caddy_uvelir .inner .count {
       color: #ff94b4; }
-    /* line 52, ../sass/main/mod_caddy.scss */
+    /* line 54, ../sass/main/mod_caddy.scss */
     #mod_caddy_uvelir .inner .cart,
     #mod_caddy_uvelir .inner .sum,
     #mod_caddy_uvelir .inner .count {
       position: relative;
       z-index: 10; }
+
+/* line 2, ../sass/main/mod_dj_slider.scss */
+#rt-header .slider {
+  padding: 0;
+  margin: 0; }
+/* line 7, ../sass/main/mod_dj_slider.scss */
+#rt-header .djslider-loader .djslider {
+  min-width: 800px !important;
+  width: 100% !important;
+  max-width: 1285px !important;
+  height: 250px !important; }
+  /* line 12, ../sass/main/mod_dj_slider.scss */
+  #rt-header .djslider-loader .djslider .navigation-container {
+    top: 40%;
+    margin: 0; }
+    /* line 16, ../sass/main/mod_dj_slider.scss */
+    #rt-header .djslider-loader .djslider .navigation-container .prev-button,
+    #rt-header .djslider-loader .djslider .navigation-container .next-button {
+      width: 35px;
+      height: 35px; }
+    /* line 20, ../sass/main/mod_dj_slider.scss */
+    #rt-header .djslider-loader .djslider .navigation-container .prev-button {
+      background-position: 0 -35px; }
+    /* line 23, ../sass/main/mod_dj_slider.scss */
+    #rt-header .djslider-loader .djslider .navigation-container .next-button {
+      background-position: 0 0; }
+  /* line 27, ../sass/main/mod_dj_slider.scss */
+  #rt-header .djslider-loader .djslider .navigation-container-custom {
+    top: initial;
+    bottom: 20px;
+    right: 57%; }
+    /* line 31, ../sass/main/mod_dj_slider.scss */
+    #rt-header .djslider-loader .djslider .navigation-container-custom .load-button {
+      background-position: 0 -79px;
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+      opacity: 1;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      width: 9px;
+      height: 9px;
+      border: none; }
+      /* line 38, ../sass/main/mod_dj_slider.scss */
+      #rt-header .djslider-loader .djslider .navigation-container-custom .load-button.load-button-active {
+        background-position: 0 -70px; }
 
 /* line 1, ../sass/main/mod_usearch_uvelir.scss */
 #mod_usearch_uvelir {
@@ -1465,50 +1529,107 @@ body h3 {
   margin: 0 15px;
   width: 4px; }
 
-/* line 51, ../sass/screen.scss */
+/* line 1, ../sass/main/system-message.scss */
+#rt-drawer {
+  position: fixed;
+  left: 0px;
+  z-index: 200;
+  bottom: -15px;
+  width: 100%; }
+
+/* line 15, ../sass/main/system-message.scss */
+#system-message-container dt.message {
+  display: none; }
+/* line 18, ../sass/main/system-message.scss */
+#system-message-container ul {
+  padding: 14px !important;
+  background: #E0E0E0 !important;
+  color: #C02654 !important;
+  border: none !important;
+  border-top: 1px solid #BDBDBD !important;
+  padding: 6px 16px !important;
+  font-size: 13px; }
+
+/* line 1, ../sass/main/toTop.scss */
+#toTop {
+  background: #e4d8be;
+  color: #C02654;
+  border: none;
+  -moz-border-radius-topleft: 14px;
+  -webkit-border-top-left-radius: 14px;
+  border-top-left-radius: 14px;
+  text-transform: capitalize;
+  font-weight: bold; }
+
+/* line 55, ../sass/screen.scss */
+.select1 {
+  background: #FFF;
+  position: relative;
+  background-position: 0 -101px; }
+  /* line 59, ../sass/screen.scss */
+  .select1::before {
+    background-position: 0 -50px;
+    position: absolute;
+    content: '';
+    width: 5px;
+    height: 23px;
+    top: 0px;
+    left: -5px; }
+  /* line 68, ../sass/screen.scss */
+  .select1::after {
+    background-position: 0 -73px;
+    position: absolute;
+    content: '';
+    width: 5px;
+    height: 23px;
+    top: 0px;
+    right: -5px; }
+
+/* line 86, ../sass/screen.scss */
 body {
+  background: #f7f2e1 url(../images/strips.png) 50% 0%;
   color: #494949; }
 
-/* line 65, ../sass/screen.scss */
+/* line 93, ../sass/screen.scss */
 #rt-top-surround #rt-top {
   background-position: 0 -73px;
   background-repeat: repeat-x;
   min-width: 990px;
   width: 100%;
   z-index: 100; }
-  /* line 71, ../sass/screen.scss */
+  /* line 99, ../sass/screen.scss */
   #rt-top-surround #rt-top .rt-block {
     margin: 0;
     padding: 0; }
-  /* line 75, ../sass/screen.scss */
+  /* line 103, ../sass/screen.scss */
   #rt-top-surround #rt-top .main.menu {
     margin-bottom: 20px;
     margin-top: 0; }
-    /* line 83, ../sass/screen.scss */
+    /* line 111, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li a {
       color: #f6df98;
       font-size: 13px;
       font-weight: normal;
       padding: 0 10px; }
-      /* line 88, ../sass/screen.scss */
+      /* line 116, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li a:hover {
         text-decoration: none;
         color: #fff; }
-      /* line 92, ../sass/screen.scss */
+      /* line 120, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li a:before {
         content: none; }
-    /* line 96, ../sass/screen.scss */
+    /* line 124, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li.separator {
       background-position: 0 -23px;
       display: block;
       height: 50px;
       margin: 0 auto;
       width: 3px; }
-    /* line 104, ../sass/screen.scss */
+    /* line 132, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li.parent ul {
       background: #262626;
       margin-left: -14px; }
-      /* line 108, ../sass/screen.scss */
+      /* line 136, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li.parent ul li a {
         border-bottom: 1px dotted #f6df98; }
     /* line 5, ../sass/main/mixins.scss */
@@ -1531,139 +1652,105 @@ body {
       /* line 11, ../sass/main/mixins.scss */
       #rt-top-surround #rt-top .main.menu > li > a:hover:hover a {
         color: #FFF; }
-/* line 123, ../sass/screen.scss */
-#rt-top-surround .rt-block.slider {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0;
-  margin: 0; }
-/* line 135, ../sass/screen.scss */
-#rt-top-surround #rt-header .djslider-loader .navigation-container {
-  top: 40%;
-  margin: 0; }
-  /* line 139, ../sass/screen.scss */
-  #rt-top-surround #rt-header .djslider-loader .navigation-container .prev-button,
-  #rt-top-surround #rt-header .djslider-loader .navigation-container .next-button {
-    width: 35px;
-    height: 35px; }
-  /* line 143, ../sass/screen.scss */
-  #rt-top-surround #rt-header .djslider-loader .navigation-container .prev-button {
-    background-position: 0 -35px; }
-  /* line 146, ../sass/screen.scss */
-  #rt-top-surround #rt-header .djslider-loader .navigation-container .next-button {
-    background-position: 0 0; }
-/* line 150, ../sass/screen.scss */
-#rt-top-surround #rt-header .djslider-loader .navigation-container-custom {
-  top: initial;
-  bottom: 0px;
-  right: 57%; }
-  /* line 154, ../sass/screen.scss */
-  #rt-top-surround #rt-header .djslider-loader .navigation-container-custom .load-button {
-    background-position: 0 -79px;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-    opacity: 1;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    width: 9px;
-    height: 9px;
-    border: none; }
-    /* line 161, ../sass/screen.scss */
-    #rt-top-surround #rt-header .djslider-loader .navigation-container-custom .load-button.load-button-active {
-      background-position: 0 -70px; }
-/* line 169, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
+#rt-top-surround #rt-header .logo-block {
+  margin-bottom: 22px; }
+/* line 157, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-clock,
 #rt-top-surround #rt-header .workphone .icons-phone {
   float: left; }
-/* line 172, ../sass/screen.scss */
+/* line 160, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-clock {
   margin: 13px 10px 0 0; }
-/* line 175, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-phone {
   margin: 7px 10px 0 0; }
-/* line 179, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left,
 #rt-top-surround #rt-header .workphone .right {
   width: 210px; }
-/* line 184, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left .gold {
   font-size: 12px; }
-/* line 187, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left .black {
   font-size: 22px; }
-/* line 192, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .right .gold {
   font-size: 11px; }
-/* line 195, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .right .black {
   font-size: 14px; }
-/* line 199, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .gold {
   display: block;
   color: #c5b07d; }
-/* line 203, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .black {
   color: #000; }
 
-/* line 210, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
+#rt-showcase .rt-block {
+  padding-top: 0; }
+
+/* line 203, ../sass/screen.scss */
 #rt-transition #rt-content-top {
   position: absolute;
   top: -35px;
   left: 0;
   width: 100%; }
-/* line 221, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 .icon.trigger {
   width: 30px;
   height: 34px;
   position: absolute;
   top: -6px;
   left: 0px; }
-/* line 228, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 .link {
   margin-left: 30px; }
-/* line 231, ../sass/screen.scss */
+/* line 224, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 a {
   display: inline-block; }
-  /* line 233, ../sass/screen.scss */
+  /* line 226, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a ul.accordion li h4 a:before {
     width: 0;
     padding: 0;
     margin: 0; }
-/* line 241, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li .sub ul {
   margin: 0; }
-  /* line 244, ../sass/screen.scss */
+  /* line 237, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a ul.accordion li .sub ul li {
     margin-left: 13px; }
-    /* line 246, ../sass/screen.scss */
+    /* line 239, ../sass/screen.scss */
     #rt-transition #rt-sidebar-a ul.accordion li .sub ul li.separator {
       margin: 6px 0px;
       border-bottom: 1px solid #e4d8be; }
-/* line 258, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu a {
   font-size: 12px; }
-  /* line 260, ../sass/screen.scss */
+  /* line 253, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a .menu a:before {
     margin-right: 27px; }
-/* line 265, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu li.separator {
   margin: 6px 0px;
   border-bottom: 1px solid #e4d8be; }
-/* line 269, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu li:before {
   margin: 5px 0 0 10px; }
 
-/* line 277, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 #rt-bottom .rt-container {
   border-bottom: 3px solid #e4d8be;
   margin-bottom: 25px;
   padding-bottom: 14px; }
-  /* line 282, ../sass/screen.scss */
+  /* line 275, ../sass/screen.scss */
   #rt-bottom .rt-container .rt-grid-3,
   #rt-bottom .rt-container .rt-grid-2 {
     width: 20%; }
-  /* line 285, ../sass/screen.scss */
+  /* line 278, ../sass/screen.scss */
   #rt-bottom .rt-container h2 {
     color: #191919;
     font-size: 14px;
@@ -1671,49 +1758,49 @@ body {
     padding: 0;
     text-transform: uppercase;
     font-weight: bold; }
-  /* line 295, ../sass/screen.scss */
+  /* line 288, ../sass/screen.scss */
   #rt-bottom .rt-container .menu a {
     font-size: 11.03px; }
 
-/* line 302, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 #rt-footer-surround #rt-footer {
   color: #494949;
   font-size: 12px;
   padding-bottom: 36px; }
-  /* line 306, ../sass/screen.scss */
+  /* line 299, ../sass/screen.scss */
   #rt-footer-surround #rt-footer p {
     margin-bottom: 6px; }
-  /* line 309, ../sass/screen.scss */
+  /* line 302, ../sass/screen.scss */
   #rt-footer-surround #rt-footer ul {
     list-style: none;
     list-style-type: none;
     margin: 10px 0px; }
-    /* line 313, ../sass/screen.scss */
+    /* line 306, ../sass/screen.scss */
     #rt-footer-surround #rt-footer ul li {
       float: left;
       margin-right: 7px; }
-  /* line 318, ../sass/screen.scss */
+  /* line 311, ../sass/screen.scss */
   #rt-footer-surround #rt-footer span {
     color: #c5b07d; }
-  /* line 321, ../sass/screen.scss */
+  /* line 314, ../sass/screen.scss */
   #rt-footer-surround #rt-footer .phone {
     font-size: 22px; }
 
-/* line 330, ../sass/screen.scss */
+/* line 323, ../sass/screen.scss */
 .homepage #rt-header .workphone .left,
 .homepage #rt-header .workphone .right {
   margin-bottom: 6px; }
-/* line 334, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 .homepage #rt-header .workphone .right .black {
   text-transform: lowercase; }
 
-/* line 342, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 .page .logo-block {
   float: left; }
-/* line 346, ../sass/screen.scss */
+/* line 339, ../sass/screen.scss */
 .page #rt-header .workphone {
   float: right; }
-  /* line 349, ../sass/screen.scss */
+  /* line 342, ../sass/screen.scss */
   .page #rt-header .workphone .left,
   .page #rt-header .workphone .right {
     float: left; }

@@ -45,18 +45,46 @@ $menu-bg-repeat: repeat-x;
 @import "main/com_uvelir_tabs";
 @import "main/com_k2";
 @import "main/mod_caddy";
+@import "main/mod_dj_slider";
 @import "main/mod_usearch_uvelir";
 @import "main/mod_breadcrumbs";
+@import "main/system-message";
+@import "main/toTop";
 
+
+.select1{
+	background: #FFF;
+	position: relative;
+	@include misc-sprite(select-bg);
+	&::before{
+		@include misc-sprite(select-lt);
+		position: absolute;
+		content:'';
+		width: 5px;
+		height: 23px;
+		top: 0px;
+		left: -5px;
+	}
+	&::after{
+		@include misc-sprite(select-gt);
+		position: absolute;
+		content:'';
+		width: 5px;
+		height: 23px;
+		top: 0px;
+		right: -5px;
+	}
+}
+.strips{
+	// height: 100%;
+	// width: 2560px;
+	// position: absolute;
+	// left: 50%;
+	// margin-left: -1280px;
+	// top: 0%;
+}
 body{
-	// background: #F7F2E1;
-	// @include misc-sprite(light);
-	// background-image:
-	// 	url('/templates/gantry/lib/incase/compass/images/misc-s33cdf18309.png'),
-	// 	url('/templates/gantry/lib/incase/compass/images/misc-s33cdf18309.png'),
-	// 	url('/templates/gantry/lib/incase/compass/images/misc-s33cdf18309.png');
-	// background-repeat: no-repeat;
-	// background-position: -7% -230px, 105% 6%, 128% -350px;
+	background: #f7f2e1 url(../images/strips.png) 50% 0%;
 	color: #494949;
 	&.test{
 	}
@@ -120,49 +148,9 @@ body{
 			}
 		}
 	}
-	.rt-block.slider{
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 0;
-		margin: 0;
-	}
 	#rt-header{
 		.logo-block{
-			// margin-left: -30px;
-		}
-		.djslider-loader{
-			.navigation-container{
-				top: 40%;
-				margin: 0;
-				.prev-button,
-				.next-button{
-					width: 35px;
-					height: 35px;
-				}
-				.prev-button{
-					@include slider-sprite(prev);
-				}
-				.next-button{
-					@include slider-sprite(next);
-				}
-			}
-			.navigation-container-custom{
-				top: initial;
-				bottom: 0px;
-				right: 57%;
-				.load-button{
-					@include slider-sprite(bullet2);
-					@include opacity(1);
-					@include box-shadow(none);
-					width: 9px;
-					height: 9px;
-					border:none;
-					&.load-button-active{
-						@include slider-sprite(bullet);
-					}
-				}
-			}
+			margin-bottom: 22px;
 		}
 		.workphone{
 			.icons-clock,
@@ -204,6 +192,11 @@ body{
 				color: #000;
 			}
 		}
+	}
+}
+#rt-showcase{
+	.rt-block{
+		padding-top: 0;
 	}
 }
 #rt-transition{
