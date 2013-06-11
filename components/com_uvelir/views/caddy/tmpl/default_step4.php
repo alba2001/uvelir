@@ -119,7 +119,7 @@ defined('_JEXEC') or die;
 <!--Кнопки-->       
         	<tr>
         		<th colspan="3" class="left">
-                            <input id="to_step3" type="submit" class="button" value="Вернуться к способу оплаты"> 
+                            <a href="<?php echo JUri::base().'sposob-oplaty'; ?>" class="button" />Вернуться к способу оплаты</a>
         		</th>
         		<th colspan="2" class="right">
         			<input id="to_step_end" class="button" type="submit" value="Подтвердить" />
@@ -131,18 +131,10 @@ defined('_JEXEC') or die;
     <input type="hidden" name="option" value="com_uvelir" />
     <input type="hidden" name="view" value="caddy" />
     <input id="caddy_task" type="hidden" name="task" value="caddy.order_add" />
-    <input type="hidden" name="action" value="step3" />
     <?php echo JHtml::_('form.token'); ?>
 
 </form>
 <?php else: ?>
     <?=JTEXT::_('COM_UVELIR_CADDY_IS_EMPTY')?>
 <?php endif ?>
-<script type="text/javascript">
-    jQuery(document).ready(function($){
-        $('#to_step3').click(function(){
-           $('#caddy_task').val(''); 
-        });
-    });
-</script>    
 

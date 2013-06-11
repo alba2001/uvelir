@@ -27,6 +27,5 @@ Disallow: /modules/
 Disallow: /plugins/
 Disallow: /templates/
 Disallow: /tmp/
-Disallow: /
 
 Host: http://zoloto-online.net

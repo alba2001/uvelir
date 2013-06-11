@@ -45,21 +45,22 @@
      */
     function to_caddy_send_data(params)
     {
-        $.ajax({
+        jQuery.ajax({
             type: 'POST',
             url: params.action,
             data: params.data,
             success: function(html){
 //                $('#uvelir_debud').html(html);
-                var data = $.parseJSON(html);
-                $('#mod_caddy_product_count').text(data[1].count);
-                $('#mod_caddy_product_sum').text(data[1].sum);
+                var data = jQuery.parseJSON(html);
+                jQuery('#mod_caddy_product_count').text(data[1].count);
+                jQuery('#mod_caddy_product_sum').text(data[1].sum);
             }
         });
     }
 
 jQuery(function($){
     $(document).ready(function(){
+        
         // Удаление товара изкорзины
         $('.com_uvelir-delete').click(function(){
             var id = /^delete_(\d+)$/.exec($(this).attr('id'))[1];
@@ -70,6 +71,7 @@ jQuery(function($){
             // Изменяем корзину
             change_caddy();
         });
+        
         // Увеличение кол-ва товаров в форме корзины
         $('.arow_right').click(function(){
             var span_count = $(this).siblings('input');
@@ -90,6 +92,7 @@ jQuery(function($){
             }
             console.log(count);
         });
+        
         // Изменение кол-ва товаров в корзине
         $('.caddy_item_count').change(function(e){
             var item = this;
@@ -119,23 +122,36 @@ jQuery(function($){
         // Меняем сумму корзины
         var item_sums = $('.caddy_item_sum');
         var total = 0;
+        var sum = 0;
+        
         $.each(item_sums, function(i,item_sum){
             sum = parseInt($(item_sum).text());
             total += sum;
         });
         // Всего стоимость товаров в корзине
         $('#caddy_total_sum').text(total);
-            
+
+        // Пересчитваем корзину
+        var item_counts = $('.caddy_item_count');
+        var count = new Array();
+        $.each(item_counts, function(i,item_count){
+            count[$(item_count).attr('rel')] = $(item_count).val();
+        });
+
         // Отправляем изменения в корзине на серер
         var form  = $('#step1_form');
         $.ajax({
             type: 'POST',
             url: $(form).attr('action'),
-            data: $(form).serialize(),
+            data: {
+                count: count,
+                option: 'com_uvelir',
+                task: 'caddy.correction'
+            },
             success: function(html){
 //                    $('#uvelir_debud').html(html);
+console.log(html);
                 var data = $.parseJSON(html);
-        console.log(data);
                 $('#mod_caddy_product_count').text(data[1].count);
                 $('#mod_caddy_product_sum').text(data[1].sum);
             }

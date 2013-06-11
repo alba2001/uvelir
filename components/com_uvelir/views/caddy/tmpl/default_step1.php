@@ -25,7 +25,8 @@ defined('_JEXEC') or die;
     input.caddy_item_count{width: 10px;}
     
 </style>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="step1_form" id="step1_form">
+
+<form action="<?=JURI::base()?>index.php?<?=JSession::getFormToken()?>=1" method="post" name="step1_form" id="step1_form">
     <table>
         <thead>
             <tr>
@@ -120,37 +121,12 @@ defined('_JEXEC') or die;
         	</tr>
         	<tr>
         		<th colspan="3" class="left">
-        			<a href="#" id="show_catalog">
-	        			<button class="button">
-	        				Вернуться в каталог
-	        			</button>
-        			</a>
+                            <a href="<?php echo JUri::base().'katalog-izdelij'?>" class="button">Вернуться в каталог</a>
         		</th>
         		<th colspan="2" class="right">
-        			<input id="to_step2" class="button" type="submit" value="Далее" />
+                                <a href="<?php echo JUri::base().'sposob-dostavki'?>" class="button" />Далее</a>
         		</th>
         	</tr>
         </tfoot>
     </table>
-
-    <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="view" value="caddy" />
-    <input type="hidden" name="action" value="" id="caddy_step_action" />
-    <input type="hidden" id="caddy_task" name="task" value="caddy.correction" />
-    <?php echo JHtml::_('form.token'); ?>
 </form>
-<script type="text/javascript">
-    jQuery(document).ready(function($){
-        $('#show_catalog').click(function(e){
-            e.preventDefault();
-            $('#caddy_task').val('caddy.show_catalog');
-            $('#step1_form').submit(); 
-        });
-        $('#to_step2').click(function(){
-           $('#caddy_step_action').val('step2'); 
-           $('#caddy_task').val(''); 
-           $('#step1_form').submit();
-        });
-    });
-</script>    
-

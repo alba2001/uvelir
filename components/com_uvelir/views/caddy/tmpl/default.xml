@@ -2,4 +2,15 @@
 <metadata>
 	<layout title="Корзина" option="View">
 	</layout>
+        <fields name="request" >
+            <fieldset name="request" label="Параметры корзины">
+                <field name="action" type="list" default="1" label="Выберите шаг корзины" description="">
+                    <option value="step1">Список покупок</option>
+                    <option value="step2">Способ доставки</option>
+                    <option value="step3">Способ оплаты</option>
+                    <option value="step4">Завершение заказа</option>
+                </field>		
+            </fieldset>
+	</fields>
+        
 </metadata>

@@ -12,9 +12,12 @@ defined('_JEXEC') or die;
 <div id="mod_caddy_uvelir">
 	<div class="inner">
 		<div class="cart">
-			<form action="<?php echo JUri::base().'spisok-pokupok'; ?>" method="post" name="adminForm" id="adminForm">
+			<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm">
 			    <span class="icon"></span>
 			    <input class="submit" type="submit" value="КОРЗИНА">
+			    <input type="hidden" name="option" value="com_uvelir" />
+			    <input type="hidden" name="view" value="caddy" />
+			    <?//php echo JHtml::_('form.token'); ?>
 			</form>
 		</div>
 	    <div class="sum">

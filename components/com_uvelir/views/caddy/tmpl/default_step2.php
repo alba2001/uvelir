@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 $dostavka = isset($this->zakaz['dostavka'])?$this->zakaz['dostavka']:'1';
 ?>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="step1_form" id="step2_form">
+<form action="<?php echo JUri::base().'sposob-oplaty'; ?>" method="post" name="step1_form" id="step2_form">
 <table>    
     <tr>
         <th>
@@ -33,28 +33,18 @@ $dostavka = isset($this->zakaz['dostavka'])?$this->zakaz['dostavka']:'1';
 <!--Кнопки-->    
     <tr>
         <th colspan="3" class="left">
-                <input id="to_step1"  type="submit" class="button" value="Вернуться к списку покупок" />
+                <a href="<?php echo JUri::base().'spisok-pokupok'?>" class="button" />Вернуться к списку покупок</a>
         </th>
         <th colspan="2" class="right">
                 <input id="to_step3" class="button" type="submit" value="Далее" />
         </th>
     </tr>
 </table>    
-    
-
-    <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="view" value="caddy" />
-    <input type="hidden" name="action" value="step1" id="caddy_step_action" />
-    <?php echo JHtml::_('form.token'); ?>
 </form>
 <script type="text/javascript">
     jQuery(document).ready(function($){
-        $('#to_step1').click(function(){
-           $('#caddy_step_action').val('step1'); 
-        });
         $('#to_step3').click(function(e){
-            e.preventDefault();
-           $('#caddy_step_action').val('step3');
+           e.preventDefault();
            var dostavka = $('input[name=dostavka]:checked', '#step2_form').val();
             $.ajax({
                 type: 'GET',
@@ -65,6 +55,7 @@ $dostavka = isset($this->zakaz['dostavka'])?$this->zakaz['dostavka']:'1';
                 },
                 url: '<?=JURI::base()?>index.php?<?=JSession::getFormToken()?>=1',
                 success: function(html){
+                    console.log(html);
                     $('#step2_form').submit();
                 }
             });

@@ -31,7 +31,7 @@ class UvelirViewCaddy extends JView {
         if($this->action == 'step4') // Checkout
         {
             $mainframe = JFactory::getApplication();
-            $mainframe->setUserState('com_uvelir.old_uri',JURI::base().'index.php?option=com_uvelir&view=caddy&action=step4');
+            $mainframe->setUserState('com_uvelir.old_uri',JUri::base().'zavershenie-zakaza');
             // Проверяем пользователя
             $this->user = $this->get('User');
     //        var_dump($this->user);exit;

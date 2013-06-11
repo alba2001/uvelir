@@ -22,7 +22,7 @@ defined('_JEXEC') or die;
     }
 
 ?>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="step1_form" id="step3_form">
+<form action="<?php echo JUri::base().'zavershenie-zakaza'?>" method="post" name="step1_form" id="step3_form">
 <table>    
     
         <?php if($dostavka == '1'):?>
@@ -47,7 +47,7 @@ defined('_JEXEC') or die;
     
         	<tr>
         		<th colspan="3" class="left">
-                            <input id="to_step2" type="submit" class="button" value="Вернуться к способу доставки"> 
+                            <a href="<?php echo JUri::base().'sposob-dostavki'?>" class="button" />Вернуться к способу доставки</a>
         		</th>
         		<th colspan="2" class="right">
         			<input id="to_step4" class="button" type="submit" value="Далее" />
@@ -55,20 +55,11 @@ defined('_JEXEC') or die;
         	</tr>
 </table>    
     
-
-    <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="view" value="caddy" />
-    <input type="hidden" name="action" value="step2" id="caddy_step_action" />
-    <?php echo JHtml::_('form.token'); ?>
 </form>
 <script type="text/javascript">
     jQuery(document).ready(function($){
-        $('#to_step2').click(function(){
-           $('#caddy_step_action').val('step2'); 
-        });
         $('#to_step4').click(function(e){
             e.preventDefault();
-           $('#caddy_step_action').val('step4'); 
            var oplata = $('input[name=oplata]:checked', '#step3_form').val();
             $.ajax({
                 type: 'GET',
@@ -79,6 +70,7 @@ defined('_JEXEC') or die;
                 },
                 url: '<?=JURI::base()?>index.php?<?=JSession::getFormToken()?>=1',
                 success: function(html){
+                   console.log(html);
                    $('#step3_form').submit();
                 }
             });

@@ -57,7 +57,7 @@ class UvelirModelCaddy extends ModelKModelform
         {
             $msg =  JTEXT::_('COM_UVELIR_ERROR_SAVE_ORDER');
         }
-        return  $msg;
+        return  array($order,$msg);
     }
     
     /**
@@ -363,7 +363,7 @@ class UvelirModelCaddy extends ModelKModelform
             return $result;
         }
 
-        /**
+    /**
      * Пересчет товара в корзине
      * @return type 
      */
@@ -404,7 +404,6 @@ class UvelirModelCaddy extends ModelKModelform
         $caddy_zakaz = JFactory::getApplication()->getUserState('com_uvelir.zakaz', array());
         $caddy_zakaz['dostavka'] = $dostavka;
         JFactory::getApplication()->setUserState('com_uvelir.zakaz', $caddy_zakaz);
-        
         return array(1,'');
     }
     /**
