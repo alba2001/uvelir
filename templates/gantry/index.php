@@ -190,6 +190,9 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
 				</div>
 			</div>
 			<?php /** End Copyright **/ endif; ?>
+			<div class="metrika">
+				<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter21491290=new Ya.Metrika({id:21491290,webvisor:true,clickmap:true,trackLinks:true,accurateTrackBounce:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src=(g.location.protocol=="https:"?"https:":"http:")+"//mc.yandex.ru/metrika/watch.js";if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/21491290" style="position:absolute; left:-9999px;" alt="" /></div></noscript>;
+			</div>
 		</footer>
 		<?php /** End Footer Surround **/ endif; ?>
 		<?php /** Begin Debug **/ if ($gantry->countModules('debug')) : ?>

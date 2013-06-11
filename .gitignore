@@ -1,6 +1,6 @@
 #.htaccess
-*codekit-config.json
 *.DS_Store
+*codekit-config.json
 .sass-cache/
 /cache/
 /cgi-bin/
@@ -8,6 +8,7 @@
 /images/
 /joomla.xml
 /logs/
+/media/com_djimageslider/cache/
 /media/k2/
 /tmp/
 /web.config.txt
