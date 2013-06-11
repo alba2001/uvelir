@@ -46,18 +46,14 @@ class UvelirModelCaddy extends ModelKModelform
             // Отправляем мыло
             $mail_send =& $this->_send_email($order, $user);
             JFactory::getApplication()->setUserState('com_uvelir.caddy', array());
-//            var_dump((string)$mail_send);exit;
-//            if ( $mail_send !== true ) {
-//               $msg = 'Error sending email: ' . (string)$mail_send;
-//            } else {
                 $msg =  JTEXT::_('COM_UVELIR_ORDER_SAVER');
-//            }
         }
         else
         {
+            $order->id = 0;
             $msg =  JTEXT::_('COM_UVELIR_ERROR_SAVE_ORDER');
         }
-        return  array($order,$msg);
+        return  array($order->id,$msg);
     }
     
     /**

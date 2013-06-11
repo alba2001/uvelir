@@ -6,13 +6,14 @@ defined('_JEXEC') or die('Restricted access');
 /**
  * Userform Model
  */
+
 class ModelHelper
 {
         /**
 	 * Get the user
 	 * @return object The message to be displayed to the user
 	 */
-	function getUser() 
+	static public function getUser() 
 	{
                 $id = JFactory::getApplication()->getUserState('com_uvelir.users_id',0,0);
 //                var_dump($id);exit;
@@ -43,7 +44,7 @@ class ModelHelper
 	 * @return	JTable	A database object
 	 * @since	1.6
 	 */
-	public function getTable($type = '', $prefix = 'UvelirTable', $config = array()) 
+	static public function getTable($type = '', $prefix = 'UvelirTable', $config = array()) 
 	{
             return JTable::getInstance($type, $prefix, $config);
 	}
@@ -53,10 +54,38 @@ class ModelHelper
          * @param type MySQL date
          * @return string
          */
-        public function mysql_to_german($dt)
+        static public function mysql_to_german($dt)
         {
             preg_match("/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/", $dt, $regs);
             return $regs[3].'.'.$regs[2].'.'.$regs[1];
+        }
+        
+        /**
+         * Возвращаем дату и время заказа в формате
+         *  dd.dd.YYY H:m
+         * @param string $order_dt
+         * @return string 
+         */
+        static public function getOrderDt($order_dt)
+        {
+            preg_match("/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/", $order_dt, $regs);
+            return $regs[3].'.'.$regs[2].'.'.$regs[1].' '.$regs[4].':'.$regs[5];
+        }
+
+        /**
+         * Возвращаем статус заказа
+         * @param integer $status_id
+         * @return string 
+         */
+        static public function getOrderStatus($status_id)
+        {
+            $status_name = '';
+            $table = self::getTable('Order_statuses');
+            if($table->load($status_id))
+            {
+                $status_name = $table->name;
+            }
+            return $status_name;
         }
         
 }

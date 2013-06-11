@@ -38,7 +38,7 @@ class UvelirControllerCaddy extends UvelirController
         JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         $model = $this->getModel('Caddy');
         list($id, $msg) = $model->order_add();
-        $url = JURI::base().'zakaz/?id='.$id;
+        $url = JURI::base().'index.php?option=com_uvelir&view=order&id='.$id;
         
         JFactory::getApplication()->redirect($url, $msg);
         
