@@ -108,4 +108,73 @@ class UvelirModelOrder extends JModel
             return $this->_user;
 	}
 
+        /**
+         * Оплата заказа
+         */
+        public function pay()
+        {
+            $msg = JText::_('COM_UVELIR_PAYS_ACCEPT');
+            $error_msg = '';
+            
+            // Принимаем параметры запроса
+            $sum = JRequest::getFloat('OutSum');
+            $id = JRequest::getInt('InvId');
+            $crc = JRequest::getString('SignatureValue');
+            $shp_item = JRequest::getString('Shp_item');
+            
+            //Находим заказ по его номеру
+            $order = $this->get_row('Order',$id);
+            if(!$order)
+            {
+                $error_msg .= JText::_('COM_UVELIR_ORDER_DO_NOT_FIND').' \n ';
+            }
+            
+            // Проверяем сумму заказа
+            if($order->sum != $sum)
+            {
+                $error_msg .JText::_('COM_UVELIR_ORDER_SUM_NOT_VALID').' \n ';
+            }
+            
+            // Подключаем компонент Робокассы
+            require_once 'components/com_uvelir/helpers/robokassa.php';
+            $params = JFactory::getApplication()->getParams('com_uvelir');
+            $r_config = array(
+                '_mrh_pass2'=>  $params->get('RobokassaMrchPassw2'),
+                '_inv_id'=>     $id,
+                '_out_summ'=>   $sum
+            );
+            $robokassa = new Robokassa($r_config);
+            
+            // Проверяем тип товара
+            if($shp_item != $robokassa->__get('_shp_item'))
+            {
+                $error_msg .JText::_('COM_UVELIR_ORDER_SHP_ITEM_NOT_VALID').' \n ';
+            }
+            
+            // Проверяем подпись
+            if($robokassa->get_crc() !== strtoupper($crc))
+            {
+                $error_msg .JText::_('COM_UVELIR_ORDER_CRC_NOT_VALID').' \n ';
+            }
+            
+            // Если нет ошибок меняем статус документа на оплачен
+            if(!$error_msg)
+            {
+                $order->order_status_id = '2';
+            }
+            else
+            {
+                $msg = $error_msg;
+            }
+            $date = date('d.m.Y H:i:s');
+            $order->ch_status .= ' \n '.$date.' '.JText::_('COM_UVELIR_ROBOKASSA_PAY').' '.$msg;
+            if(!$order->store())
+            {
+                $msg = JText::_('COM_UVELIR_ROBOKASSA_NOT_PAY').' \n ';
+            }
+            echo $msg;
+            exit;
+        }
+        
+       
 }

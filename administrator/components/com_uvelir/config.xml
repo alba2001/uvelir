@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
+	<fieldset name="robokassa"
+		label="COM_UVELIR_ROBOKASSA"
+		description="COM_UVELIR_ROBOKASSA_DESC"
+	>
+            <field name="RobokassaMrchLogin"
+                 type="text"
+                 default=""
+                 label="COM_UVELIR_ROBOKASSA_LOGIN"
+                 description="COM_UVELIR_ROBOKASSA_LOGIN_DESC">
+             </field>
+            <field name="RobokassaMrchPassw1"
+                 type="text"
+                 default=""
+                 label="COM_UVELIR_ROBOKASSA_PASSWORD1"
+                 description="COM_UVELIR_ROBOKASSA_PASSWORD1_DESC">
+             </field>
+            <field name="RobokassaMrchPassw2"
+                 type="text"
+                 default=""
+                 label="COM_UVELIR_ROBOKASSA_PASSWORD2"
+                 description="COM_UVELIR_ROBOKASSA_PASSWORD2_DESC">
+             </field>
+            <field name="RobokassaTestMode"
+                 type="radio"
+                 default="1"
+                 label="COM_UVELIR_ROBOKASSA_TEST_MODE"
+                 description="COM_UVELIR_TEST_DESC">
+                     <option value="0">Нет</option>
+                     <option value="1">Да</option>
+             </field>
+        </fieldset>
 	<fieldset name="component"
 		label="COM_UVELIR_COMPONENT_LABEL"
 		description="COM_UVELIR_COMPONENT_DESC"

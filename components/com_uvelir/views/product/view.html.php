@@ -19,7 +19,6 @@ class UvelirViewProduct extends JView {
 
     protected $state;
     protected $item;
-    protected $params;
     protected $_model;
 
 

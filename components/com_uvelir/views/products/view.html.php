@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
+
 /**
  * View to edit
  */
@@ -27,7 +28,7 @@ class UvelirViewProducts extends JView {
      * Display the view
      */
     public function display($tpl = null) {
-        $usearch_data = JRequest::getVar('usearch_data', 'array');
+//        $usearch_data = JRequest::getVar('usearch_data', 'array');
         $this->_model = $this->getModel();
         $this->items = $this->get('Items');
         $this->title = $this->get('Title');

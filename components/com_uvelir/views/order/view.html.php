@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
+require_once 'components/com_uvelir/helpers/robokassa.php'; 
 
 /**
  * View to edit
@@ -74,6 +75,24 @@ class UvelirViewOrder extends JView {
             $this->total_sum += $value['sum'];
         }
 
+        // Если статус заказа начальный, получаем URL для кнопки оплаты
+        if($this->item->order_status_id == '1')
+        {
+            // Робокасса
+            $params = JFactory::getApplication()->getParams('com_uvelir');
+            $r_config = array(
+                '_mrh_login'=>  $params->get('RobokassaMrchLogin'),
+                '_mrh_pass1'=>  $params->get('RobokassaMrchPassw1'),
+                '_src'=>        $params->get('RobokassaTestMode'),
+                '_inv_id'=>     $this->item->id,
+                '_inv_desc'=>   JText::_('COM_UVELIR_INV_DESC').$this->item->id,
+                '_out_summ'=>   $this->total_sum
+            );
+            $robokassa = new Robokassa($r_config);
+            $this->robokassa_href = $robokassa->get_url();
+        }
+        
+        
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {
             throw new Exception(implode("\n", $errors));

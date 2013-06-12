@@ -120,4 +120,3 @@ defined('_JEXEC') or die;
     <input type="hidden" name="products_group" value="<?=$this->products_group?>" />
     <?php echo JHtml::_('form.token'); ?>
 </form>
-<div id="uvelir_debud"></div>

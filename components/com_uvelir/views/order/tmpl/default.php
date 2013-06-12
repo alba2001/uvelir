@@ -112,6 +112,11 @@ defined('_JEXEC') or die;
         		<th colspan="5" class="left">
                             <a href="<?php echo JUri::base().'spisok-zakazov'?>" class="button"><?=JTEXT::_('COM_UVELIR_ORDERS_LIST')?></a>
         		</th>
+                        <?php if($this->item->order_status_id == '1'): ?>
+                        <th colspan="5" class="left">
+                            <a href="<?php echo $this->robokassa_href?>" class="button"><?=JTEXT::_('COM_UVELIR_ORDER_PAY')?></a>
+                        </th>
+                        <?php endif; ?>
         	</tr>
         </tfoot>
         
