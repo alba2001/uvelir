@@ -126,7 +126,8 @@ class UvelirModelOrder extends JModel
             $order = $this->get_row('Order',$id);
             if(!$order)
             {
-                $error_msg .= JText::_('COM_UVELIR_ORDER_DO_NOT_FIND').' \n ';
+                echo JText::_('COM_UVELIR_ORDER_DO_NOT_FIND').' \n ';
+                exit;
             }
             
             // Проверяем сумму заказа

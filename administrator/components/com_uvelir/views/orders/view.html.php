@@ -13,6 +13,11 @@ require_once JPATH_COMPONENT.'/helpers/component.php';
  */
 class UvelirViewOrders extends JView
 {
+	protected $items;
+	protected $pagination;
+	protected $state;
+	protected $model;
+    
 	/**
 	 * Orders view display method
 	 * @return void
@@ -30,8 +35,10 @@ class UvelirViewOrders extends JView
 			return false;
 		}
 		// Assign data to the view
+                $this->state = $this->get('State');
 		$this->items = $items;
 		$this->pagination = $pagination;
+		$this->model = $this->getModel();
  
 		// Set the toolbar
 		$this->addToolBar();
