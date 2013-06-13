@@ -12,6 +12,7 @@ JHtml::_('behavior.tooltip');
 	</table>
 	<div>
 		<input type="hidden" name="option" value="com_uvelir" />
+		<input type="hidden" name="view" value="orders" />
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />
 		<?php echo JHtml::_('form.token'); ?>

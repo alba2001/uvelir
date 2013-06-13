@@ -31,7 +31,6 @@ class UvelirViewProducts extends JView {
 //        $usearch_data = JRequest::getVar('usearch_data', 'array');
         $this->_model = $this->getModel();
         $this->items = $this->get('Items');
-        $this->title = $this->get('Title');
         $this->products_group = (int) $this->_model->getState('products_group');
         $this->pagination	= $this->get('Pagination');
         $this->caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
@@ -53,7 +52,6 @@ class UvelirViewProducts extends JView {
 	protected function _prepareDocument()
 	{
                 $doc = JFactory::getDocument();
-		$doc->setTitle($this->title);
                 $doc->addScript(JURI::root()."components/com_uvelir/assets/js/caddy.js");
 	}
    
