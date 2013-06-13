@@ -9,16 +9,8 @@
 
 // no direct access
 defined('_JEXEC') or die;
-//    var_dump($this->caddy);
 ?>
-<?php if( $this->items ) : ?>
-<ul class="step-wrapper">
-	<li class="step active"><span>1</span><div>Список покупок</div></li>
-	<li class="step"><span>2</span><div>Способ доставки</div></li>
-	<li class="step"><span>3</span><div>Способ оплаты</div></li>
-	<li class="step"><span>4</span><div>Завершение заказа</div></li>
-</ul>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="caddy_show" id="caddy_show">
+<form action="<?=JURI::base()?>index.php?<?=JSession::getFormToken()?>=1" method="post" name="step1_form" id="step1_form">
     <table>
         <thead>
             <tr>
@@ -35,18 +27,22 @@ defined('_JEXEC') or die;
             		<?=JTEXT::_('COM_UVELIR_SUM')?>
                 	<span class="separator">
                 </th>
+                <th>
+            		<?=JTEXT::_('COM_UVELIR_REMOVE')?>
+                	<span class="separator">
+                </th>
             </tr>
         </thead>
         <tbody>
         	<tr class="separator">
-        		<td colpan="5"></td>
+        		<td colpan="6"></td>
         	</tr>
 	        <?php foreach($this->items as $item):?>
 	            <?php $id = $item['id']?>
-	            <tr>
+	            <tr id="item_row_<?=$id?>">
 	                <td>
 	                	<div class="image">
-	                		<a href="<?=$href;?>">
+                                    <a href="<?= $item['path'].'/'.$item['id'];?>">
 		                		<img src="<?=$item['src']?>" alt="<?=$item['artikul']?>">
 		                	</a>
 	                	</div>
@@ -55,7 +51,7 @@ defined('_JEXEC') or die;
 	                	<?php if(isset($this->item->name) AND $this->item->name):?>
 	        			<?php endif;?>
 	                		<div class="item_title">
-	                			<a href="<?=$href;?>">
+	                			<a href="<?= $item['path'].'/'.$item['id'];?>">
 		                			<?=$item['name']?>
 		                		</a>
 	                		</div>
@@ -75,7 +71,9 @@ defined('_JEXEC') or die;
                 		</div>
 	                </td>
 	                <td>
-	                    <input name="count[<?=$id?>]" size="1" class="caddy_item_count" type="text" rel="<?=$id?>" value="<?=$item['count']?>"/>
+                            <span class="com_uvelir-arow arow_left" id="arow_left_<?=$id?>"></span>
+	                    <input id="caddy_item_count_<?=$id?>" name="count[<?=$id?>]" size="1" class="caddy_item_count" type="text" rel="<?=$id?>" value="<?=$item['count']?>"/>
+                            <span class="com_uvelir-arow  arow_right" id="arow_right_<?=$id?>"></span>
 	                </td>
 	                <td class="price">
 	                	<span id="caddy_item_price_<?=$id?>"><?=$item['price']?></span>
@@ -85,12 +83,17 @@ defined('_JEXEC') or die;
 	                	<span id="caddy_item_sum_<?=$id?>"><?=(int)$item['sum']?></span>
 	                	<span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
 	                </td>
+	                <td>
+                        <div class="com_uvelir-delete" id="delete_<?=$id?>">
+                        	<span class="remove"></span>
+                        </div>
+	                </td>
 	            </tr>
 	        <?php endforeach;?>
         </tbody>
         <tfoot>
         	<tr>
-        		<td colspan="5" class="right">
+        		<td colspan="6" class="right">
         			<span class="gray-sum">
         				<?=JTEXT::_('COM_UVELIR_ITOGO')?>:
         			</span>
@@ -103,30 +106,13 @@ defined('_JEXEC') or die;
         		</td>
         	</tr>
         	<tr>
-        		<th colspan="3" class="left">
-        			<a href="javascript:history.back()">
-	        			<button class="button">
-	        				Вернуться в каталог
-	        			</button>
-        			</a>
+        		<th colspan="4" class="left">
+                            <a href="<?php echo JUri::base().'katalog-izdelij'?>" class="button">Вернуться в каталог</a>
         		</th>
         		<th colspan="2" class="right">
-        			<input class="button" type="submit" value="Далее" onclick="document.caddy_show.task.value = '';" />
+                                <a href="<?php echo JUri::base().'sposob-dostavki'?>" class="button" />Далее</a>
         		</th>
         	</tr>
         </tfoot>
     </table>
-
-    <input type="hidden" name="option" value="com_uvelir" />
-    <input type="hidden" name="view" value="checkout" />
-    <input type="hidden" name="task" value="caddy.correction" />
-    <?php echo JHtml::_('form.token'); ?>
-
-
 </form>
-<?php else: ?>
-    <?=JTEXT::_('COM_UVELIR_CADDY_IS_EMPTY')?>
-<?php endif ?>
-<script type="text/javascript">
-</script>
-<div id="uvelir_debud"></div>

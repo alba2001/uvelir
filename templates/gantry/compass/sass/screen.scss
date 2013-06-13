@@ -40,9 +40,12 @@ $menu-bg-repeat: repeat-x;
 // main
 @import "main/com_uvelir_caddy";
 @import "main/com_uvelir_category";
+@import "main/com_uvelir_order";
+@import "main/com_uvelir_orders";
 @import "main/com_uvelir_product";
 @import "main/com_uvelir_products";
 @import "main/com_uvelir_tabs";
+@import "main/com_uvelir_userfrom";
 @import "main/com_k2";
 @import "main/mod_caddy";
 @import "main/mod_dj_slider";
@@ -84,7 +87,7 @@ $menu-bg-repeat: repeat-x;
 	// top: 0%;
 }
 body{
-	background: #f7f2e1 url(../images/strips.png);
+	background: #f7f2e1 url(../images/strips.png) no-repeat;
 	color: #494949;
 	background-position: 50% -55px;
 	&.glavnaya{
@@ -224,7 +227,7 @@ body{
 						margin-left: 30px;
 					}
 					a{
-						display: inline-block;
+						@include inline-block;
 						&:before{
 							width: 0;
 							padding: 0;

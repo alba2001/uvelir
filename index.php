@@ -5,6 +5,10 @@
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
+if( !ini_get('zlib.output_compression') ){
+    ini_set('zlib.output_compression', 'on');
+}
+
 // Set flag that this is a parent file.
 define('_JEXEC', 1);
 define('DS', DIRECTORY_SEPARATOR);

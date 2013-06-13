@@ -3,7 +3,9 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* line 74, filter/*.png */
-.filter-sprite, .filter-arrow, .filter-bg, .filter-pink-satin, .filter-pink, .filter-separator, .button, #caddy_show table tfoot th .back,
+.filter-sprite, .filter-arrow, .filter-bg, .filter-pink-satin, .filter-pink, .filter-separator, .button, #step1_form table tfoot th .back,
+#step1_form table tfoot th .next,
+#caddy_show table tfoot th .back,
 #caddy_show table tfoot th .next, .item_fields .fields_list .bottom tr .buttons .removeButton,
 .item_fields .fields_list .bottom tr .buttons .addButton, .items-wrapper .items .com_uvelir_item .show .removeButton,
 .items-wrapper .items .com_uvelir_item .show .addButton, .tabs li, .tabs li.separator, .tabs li a.active, #mod_caddy_uvelir .inner, #mod_caddy_uvelir .inner:before, #mod_usearch_uvelir, #mod_usearch_uvelir .separator, #mod_usearch_uvelir #mod_usearch_footer, #mod_usearch_uvelir #mod_usearch_footer:before, #mod_usearch_uvelir #mod_usearch_footer button:before,
@@ -14,12 +16,18 @@
 .slider-sprite, .slider-bullet, .slider-bullet2, .slider-next, .slider-prev, #rt-header .djslider-loader .djslider .navigation-container .prev-button, #rt-header .djslider-loader .djslider .navigation-container .next-button, #rt-header .djslider-loader .djslider .navigation-container-custom .load-button, #rt-header .djslider-loader .djslider .navigation-container-custom .load-button.load-button-active {
   background: url('../../compass/images/slider-s88929f1cca.png') no-repeat; }
 
-/* line 90, icons/*.png */
-.icons-sprite, .icons-bullet, .icons-bullet2, .icons-camera, .icons-cart, .icons-clock, .icons-file, .icons-phone, .bullet-menu li:before, #rt-transition #rt-sidebar-a li:before, #rt-bottom .rt-container li:before, #mod_caddy_uvelir .inner .cart span, .breadcrumbs .separator {
-  background: url('../../compass/images/icons-s7f6f463152.png') no-repeat; }
+/* line 114, icons/*.png */
+.icons-sprite, .icons-bullet, .icons-bullet2, .icons-camera, .icons-cart, .icons-clock, .icons-file, .icons-item-gt, .icons-item-lt, .icons-phone, .icons-remove, .bullet-menu li:before, #rt-transition #rt-sidebar-a li:before, #rt-bottom .rt-container li:before, #step1_form table tr td .arow_left,
+#caddy_show table tr td .arow_left, #step1_form table tr td .arow_right,
+#caddy_show table tr td .arow_right, #step1_form table tr td .remove,
+#caddy_show table tr td .remove, #mod_caddy_uvelir .inner .cart span, .breadcrumbs .separator {
+  background: url('../../compass/images/icons-s67b1f0c29c.png') no-repeat; }
 
 /* line 90, misc/*.png */
-.misc-sprite, .misc-new, .misc-select-bg, .misc-select-btn, .misc-select-gt, .misc-select-lt, .misc-separator, .misc-tab-a, #caddy_show table tr th .separator, .items-wrapper .items .com_uvelir_item .new, .tabs li a.active::after, .select1, .select1::before, .select1::after {
+.misc-sprite, .misc-new, .misc-select-bg, .misc-select-btn, .misc-select-gt, .misc-select-lt, .misc-separator, .misc-tab-a, #step1_form table tr th .separator,
+#caddy_show table tr th .separator, #step4_form table tr th .separator,
+#step3_form table tr th .separator,
+#step2_form table tr th .separator, #order table tr th .separator, #orders table tr th .separator, .items-wrapper .items .com_uvelir_item .new, .tabs li a.active::after, .select1, .select1::before, .select1::after {
   background: url('../../compass/images/misc-s05e316f2aa.png') no-repeat; }
 
 /* line 58, menu/*.png */
@@ -82,25 +90,25 @@
 
 /* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-bullet {
-  background-position: 0 -130px;
+  background-position: 0 -176px;
   height: 8px;
   width: 4px; }
 
 /* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-bullet2 {
-  background-position: 0 -99px;
+  background-position: 0 -115px;
   height: 16px;
   width: 16px; }
 
 /* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-camera {
-  background-position: 0 -115px;
+  background-position: 0 -131px;
   height: 15px;
   width: 16px; }
 
 /* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-cart {
-  background-position: 0 -84px;
+  background-position: 0 -100px;
   height: 15px;
   width: 16px; }
 
@@ -117,10 +125,28 @@
   width: 20px; }
 
 /* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-item-gt {
+  background-position: 0 -161px;
+  height: 15px;
+  width: 7px; }
+
+/* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-item-lt {
+  background-position: 0 -146px;
+  height: 15px;
+  width: 7px; }
+
+/* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-phone {
   background-position: 0 -49px;
   height: 35px;
   width: 25px; }
+
+/* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-remove {
+  background-position: 0 -84px;
+  height: 16px;
+  width: 16px; }
 
 /* line 60, ../../../../../../../../Applications/work/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .misc-new {
@@ -211,7 +237,7 @@
     display: block; }
   /* line 38, ../sass/main/mixins.scss */
   .bullet-menu li:before, #rt-transition #rt-sidebar-a li:before, #rt-bottom .rt-container li:before {
-    background-position: 0 -130px;
+    background-position: 0 -176px;
     width: 4px;
     height: 8px;
     position: absolute;
@@ -624,20 +650,25 @@ body h3 {
   src: url("ruble/rouble.eot");
   src: local("ALS Rubl"), local("ALSRubl"), url("ruble/rouble.woff") format("woff"), url("ruble/rouble.ttf") format("truetype"), url("ruble/rouble.otf") format("opentype"), url("ruble/rouble.svg#ALSRubl") format("svg"); }
 
-/* line 1, ../sass/main/com_uvelir_caddy.scss */
+/* line 2, ../sass/main/com_uvelir_caddy.scss */
+#step1_form,
 #caddy_show {
   font-size: 11px; }
-  /* line 3, ../sass/main/com_uvelir_caddy.scss */
+  /* line 4, ../sass/main/com_uvelir_caddy.scss */
+  #step1_form .right,
   #caddy_show .right {
     text-align: right; }
-  /* line 6, ../sass/main/com_uvelir_caddy.scss */
+  /* line 7, ../sass/main/com_uvelir_caddy.scss */
+  #step1_form .left,
   #caddy_show .left {
     text-align: left; }
-  /* line 9, ../sass/main/com_uvelir_caddy.scss */
+  /* line 10, ../sass/main/com_uvelir_caddy.scss */
+  #step1_form table,
   #caddy_show table {
     width: 100%;
     text-align: center; }
-    /* line 13, ../sass/main/com_uvelir_caddy.scss */
+    /* line 14, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table tr th,
     #caddy_show table tr th {
       text-align: center;
       font-size: 12px;
@@ -646,7 +677,8 @@ body h3 {
       background-color: #e4d8be;
       font-weight: normal;
       position: relative; }
-      /* line 21, ../sass/main/com_uvelir_caddy.scss */
+      /* line 22, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr th .separator,
       #caddy_show table tr th .separator {
         background-position: 0 -124px;
         width: 1px;
@@ -654,49 +686,96 @@ body h3 {
         position: absolute;
         top: 10px;
         left: 0px; }
-    /* line 30, ../sass/main/com_uvelir_caddy.scss */
+    /* line 31, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table tr td,
     #caddy_show table tr td {
       padding: 19px;
       border-top: 1px dashed #c6ba9f; }
-      /* line 33, ../sass/main/com_uvelir_caddy.scss */
+      /* line 34, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr td input,
       #caddy_show table tr td input {
         width: 30px;
         text-align: center;
-        border-color: #D6BB7D; }
-      /* line 38, ../sass/main/com_uvelir_caddy.scss */
+        border-color: #D6BB7D;
+        height: 14px; }
+      /* line 40, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr td.info,
       #caddy_show table tr td.info {
         text-align: left;
         color: #494949; }
-        /* line 41, ../sass/main/com_uvelir_caddy.scss */
+        /* line 43, ../sass/main/com_uvelir_caddy.scss */
+        #step1_form table tr td.info .item_title,
         #caddy_show table tr td.info .item_title {
           color: #c02654; }
-        /* line 44, ../sass/main/com_uvelir_caddy.scss */
+        /* line 46, ../sass/main/com_uvelir_caddy.scss */
+        #step1_form table tr td.info .article,
         #caddy_show table tr td.info .article {
           color: #9d9d9d; }
-      /* line 48, ../sass/main/com_uvelir_caddy.scss */
+      /* line 50, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr td.price,
       #caddy_show table tr td.price {
         font-size: 16px; }
-      /* line 51, ../sass/main/com_uvelir_caddy.scss */
+      /* line 53, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr td.caddy_item_sum,
       #caddy_show table tr td.caddy_item_sum {
         color: #000;
         font-size: 16px;
         font-weight: bold; }
-    /* line 58, ../sass/main/com_uvelir_caddy.scss */
+      /* line 59, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr td .arow_left,
+      #step1_form table tr td .arow_right,
+      #caddy_show table tr td .arow_left,
+      #caddy_show table tr td .arow_right {
+        display: inline-block;
+        vertical-align: baseline;
+        zoom: 1;
+        *display: inline;
+        *vertical-align: auto;
+        cursor: pointer;
+        height: 15px;
+        margin: 0 5px;
+        width: 7px; }
+      /* line 66, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr td .arow_left,
+      #caddy_show table tr td .arow_left {
+        background-position: 0 -146px; }
+      /* line 69, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr td .arow_right,
+      #caddy_show table tr td .arow_right {
+        background-position: 0 -161px; }
+      /* line 72, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tr td .remove,
+      #caddy_show table tr td .remove {
+        background-position: 0 -84px;
+        display: inline-block;
+        vertical-align: baseline;
+        zoom: 1;
+        *display: inline;
+        *vertical-align: auto;
+        cursor: pointer;
+        height: 16px;
+        width: 16px; }
+    /* line 81, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table tr.separator td,
     #caddy_show table tr.separator td {
       border: none;
       height: 28px;
       padding: 0; }
-    /* line 67, ../sass/main/com_uvelir_caddy.scss */
+    /* line 90, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table thead th:first-child,
     #caddy_show table thead th:first-child {
       -moz-border-radius-topleft: 5px;
       -webkit-border-top-left-radius: 5px;
       border-top-left-radius: 5px; }
-    /* line 70, ../sass/main/com_uvelir_caddy.scss */
+    /* line 93, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table thead th:last-child,
     #caddy_show table thead th:last-child {
       -moz-border-radius-topright: 5px;
       -webkit-border-top-right-radius: 5px;
       border-top-right-radius: 5px; }
-    /* line 78, ../sass/main/com_uvelir_caddy.scss */
+    /* line 101, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table tfoot th .back,
+    #step1_form table tfoot th .next,
     #caddy_show table tfoot th .back,
     #caddy_show table tfoot th .next {
       -moz-border-radius-bottomleft: 3px;
@@ -722,33 +801,39 @@ body h3 {
       position: relative;
       text-align: center;
       padding: 3px 22px; }
-    /* line 91, ../sass/main/com_uvelir_caddy.scss */
+    /* line 114, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table tfoot th:first-child,
     #caddy_show table tfoot th:first-child {
       -moz-border-radius-bottomleft: 5px;
       -webkit-border-bottom-left-radius: 5px;
       border-bottom-left-radius: 5px; }
-    /* line 94, ../sass/main/com_uvelir_caddy.scss */
+    /* line 117, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table tfoot th:last-child,
     #caddy_show table tfoot th:last-child {
       -moz-border-radius-bottomright: 5px;
       -webkit-border-bottom-right-radius: 5px;
       border-bottom-right-radius: 5px; }
-    /* line 98, ../sass/main/com_uvelir_caddy.scss */
+    /* line 121, ../sass/main/com_uvelir_caddy.scss */
+    #step1_form table tfoot td,
     #caddy_show table tfoot td {
       border: none; }
-      /* line 100, ../sass/main/com_uvelir_caddy.scss */
+      /* line 123, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tfoot td .gray-sum,
       #caddy_show table tfoot td .gray-sum {
         color: #494949;
         font-size: 16px; }
-      /* line 104, ../sass/main/com_uvelir_caddy.scss */
+      /* line 127, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tfoot td .black-sum,
       #caddy_show table tfoot td .black-sum {
         color: #000;
         font-size: 24px;
         margin-left: 7px; }
-      /* line 109, ../sass/main/com_uvelir_caddy.scss */
+      /* line 132, ../sass/main/com_uvelir_caddy.scss */
+      #step1_form table tfoot td .ruble,
       #caddy_show table tfoot td .ruble {
         font-size: 16px; }
 
-/* line 117, ../sass/main/com_uvelir_caddy.scss */
+/* line 140, ../sass/main/com_uvelir_caddy.scss */
 .div_user_detail .title {
   display: inline-block;
   vertical-align: baseline;
@@ -762,10 +847,10 @@ body h3 {
   line-height: 16px;
   padding: 0; }
 
-/* line 127, ../sass/main/com_uvelir_caddy.scss */
+/* line 150, ../sass/main/com_uvelir_caddy.scss */
 .step-wrapper {
   margin-bottom: 31px; }
-  /* line 129, ../sass/main/com_uvelir_caddy.scss */
+  /* line 152, ../sass/main/com_uvelir_caddy.scss */
   .step-wrapper .step {
     display: inline-block;
     vertical-align: baseline;
@@ -777,7 +862,7 @@ body h3 {
     font-weight: bold;
     text-transform: uppercase;
     width: 24%; }
-    /* line 136, ../sass/main/com_uvelir_caddy.scss */
+    /* line 159, ../sass/main/com_uvelir_caddy.scss */
     .step-wrapper .step span {
       -moz-border-radius-bottomleft: 24px;
       -webkit-border-bottom-left-radius: 24px;
@@ -795,19 +880,135 @@ body h3 {
       display: inline-block;
       font-size: 30px;
       margin: -6px 10px 0 0;
-      padding: 9px 12px;
+      padding: 10px 12px 9px;
       vertical-align: top; }
-    /* line 146, ../sass/main/com_uvelir_caddy.scss */
+    /* line 170, ../sass/main/com_uvelir_caddy.scss */
     .step-wrapper .step div {
       display: inline-block;
+      vertical-align: baseline;
+      zoom: 1;
+      *display: inline;
+      *vertical-align: auto;
       line-height: 18px;
       width: 80px; }
-    /* line 151, ../sass/main/com_uvelir_caddy.scss */
+    /* line 175, ../sass/main/com_uvelir_caddy.scss */
     .step-wrapper .step.active {
       color: #b80059; }
-      /* line 153, ../sass/main/com_uvelir_caddy.scss */
+      /* line 177, ../sass/main/com_uvelir_caddy.scss */
       .step-wrapper .step.active span {
         border-color: #b80059; }
+
+/* line 186, ../sass/main/com_uvelir_caddy.scss */
+#step4_form,
+#step3_form,
+#step2_form {
+  font-size: 11px; }
+  /* line 146, ../sass/main/mixins.scss */
+  #step4_form .right,
+  #step3_form .right,
+  #step2_form .right {
+    text-align: right; }
+  /* line 149, ../sass/main/mixins.scss */
+  #step4_form .left,
+  #step3_form .left,
+  #step2_form .left {
+    text-align: left; }
+  /* line 152, ../sass/main/mixins.scss */
+  #step4_form table,
+  #step3_form table,
+  #step2_form table {
+    width: 100%;
+    text-align: center; }
+    /* line 156, ../sass/main/mixins.scss */
+    #step4_form table tr th,
+    #step3_form table tr th,
+    #step2_form table tr th {
+      text-align: center;
+      font-size: 12px;
+      color: #494949;
+      padding: 11px 29px;
+      background-color: #e4d8be;
+      font-weight: normal;
+      position: relative; }
+      /* line 164, ../sass/main/mixins.scss */
+      #step4_form table tr th .separator,
+      #step3_form table tr th .separator,
+      #step2_form table tr th .separator {
+        background-position: 0 -124px;
+        width: 1px;
+        height: 26px;
+        position: absolute;
+        top: 10px;
+        left: 0px; }
+    /* line 173, ../sass/main/mixins.scss */
+    #step4_form table tr td,
+    #step3_form table tr td,
+    #step2_form table tr td {
+      padding: 19px;
+      border-top: 1px dashed #c6ba9f; }
+    /* line 177, ../sass/main/mixins.scss */
+    #step4_form table tr td.info,
+    #step3_form table tr td.info,
+    #step2_form table tr td.info {
+      text-align: left;
+      color: #494949; }
+      /* line 180, ../sass/main/mixins.scss */
+      #step4_form table tr td.info .item_title,
+      #step3_form table tr td.info .item_title,
+      #step2_form table tr td.info .item_title {
+        color: #c02654; }
+      /* line 183, ../sass/main/mixins.scss */
+      #step4_form table tr td.info .article,
+      #step3_form table tr td.info .article,
+      #step2_form table tr td.info .article {
+        color: #9d9d9d; }
+    /* line 189, ../sass/main/mixins.scss */
+    #step4_form table tr.separator td,
+    #step3_form table tr.separator td,
+    #step2_form table tr.separator td {
+      border: none;
+      height: 28px;
+      padding: 0; }
+    /* line 197, ../sass/main/mixins.scss */
+    #step4_form table thead th:first-child,
+    #step3_form table thead th:first-child,
+    #step2_form table thead th:first-child {
+      -moz-border-radius-topleft: 5px;
+      -webkit-border-top-left-radius: 5px;
+      border-top-left-radius: 5px; }
+    /* line 200, ../sass/main/mixins.scss */
+    #step4_form table thead th:last-child,
+    #step3_form table thead th:last-child,
+    #step2_form table thead th:last-child {
+      -moz-border-radius-topright: 5px;
+      -webkit-border-top-right-radius: 5px;
+      border-top-right-radius: 5px; }
+    /* line 207, ../sass/main/mixins.scss */
+    #step4_form table tfoot th:first-child,
+    #step3_form table tfoot th:first-child,
+    #step2_form table tfoot th:first-child {
+      -moz-border-radius-bottomleft: 5px;
+      -webkit-border-bottom-left-radius: 5px;
+      border-bottom-left-radius: 5px; }
+    /* line 210, ../sass/main/mixins.scss */
+    #step4_form table tfoot th:last-child,
+    #step3_form table tfoot th:last-child,
+    #step2_form table tfoot th:last-child {
+      -moz-border-radius-bottomright: 5px;
+      -webkit-border-bottom-right-radius: 5px;
+      border-bottom-right-radius: 5px; }
+  /* line 189, ../sass/main/com_uvelir_caddy.scss */
+  #step4_form label,
+  #step4_form input,
+  #step3_form label,
+  #step3_form input,
+  #step2_form label,
+  #step2_form input {
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    *display: inline;
+    *vertical-align: auto; }
 
 /* line 7, ../sass/main/com_uvelir_category.scss */
 .category .thumb {
@@ -827,6 +1028,164 @@ body h3 {
     -moz-border-radius-bottomright: 6px;
     -webkit-border-bottom-right-radius: 6px;
     border-bottom-right-radius: 6px; }
+
+/* line 1, ../sass/main/com_uvelir_order.scss */
+#order {
+  font-size: 11px; }
+  /* line 3, ../sass/main/com_uvelir_order.scss */
+  #order .expand-source p {
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    *display: inline;
+    *vertical-align: auto;
+    border-bottom: 1px dashed #c02654;
+    color: #C02654;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 15px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-transform: lowercase; }
+    /* line 13, ../sass/main/com_uvelir_order.scss */
+    #order .expand-source p:hover {
+      border-bottom: 1px dashed transparent; }
+  /* line 146, ../sass/main/mixins.scss */
+  #order .right {
+    text-align: right; }
+  /* line 149, ../sass/main/mixins.scss */
+  #order .left {
+    text-align: left; }
+  /* line 152, ../sass/main/mixins.scss */
+  #order table {
+    width: 100%;
+    text-align: center; }
+    /* line 156, ../sass/main/mixins.scss */
+    #order table tr th {
+      text-align: center;
+      font-size: 12px;
+      color: #494949;
+      padding: 11px 29px;
+      background-color: #e4d8be;
+      font-weight: normal;
+      position: relative; }
+      /* line 164, ../sass/main/mixins.scss */
+      #order table tr th .separator {
+        background-position: 0 -124px;
+        width: 1px;
+        height: 26px;
+        position: absolute;
+        top: 10px;
+        left: 0px; }
+    /* line 173, ../sass/main/mixins.scss */
+    #order table tr td {
+      padding: 19px;
+      border-top: 1px dashed #c6ba9f; }
+    /* line 177, ../sass/main/mixins.scss */
+    #order table tr td.info {
+      text-align: left;
+      color: #494949; }
+      /* line 180, ../sass/main/mixins.scss */
+      #order table tr td.info .item_title {
+        color: #c02654; }
+      /* line 183, ../sass/main/mixins.scss */
+      #order table tr td.info .article {
+        color: #9d9d9d; }
+    /* line 189, ../sass/main/mixins.scss */
+    #order table tr.separator td {
+      border: none;
+      height: 28px;
+      padding: 0; }
+    /* line 197, ../sass/main/mixins.scss */
+    #order table thead th:first-child {
+      -moz-border-radius-topleft: 5px;
+      -webkit-border-top-left-radius: 5px;
+      border-top-left-radius: 5px; }
+    /* line 200, ../sass/main/mixins.scss */
+    #order table thead th:last-child {
+      -moz-border-radius-topright: 5px;
+      -webkit-border-top-right-radius: 5px;
+      border-top-right-radius: 5px; }
+    /* line 207, ../sass/main/mixins.scss */
+    #order table tfoot th:first-child {
+      -moz-border-radius-bottomleft: 5px;
+      -webkit-border-bottom-left-radius: 5px;
+      border-bottom-left-radius: 5px; }
+    /* line 210, ../sass/main/mixins.scss */
+    #order table tfoot th:last-child {
+      -moz-border-radius-bottomright: 5px;
+      -webkit-border-bottom-right-radius: 5px;
+      border-bottom-right-radius: 5px; }
+
+/* line 1, ../sass/main/com_uvelir_orders.scss */
+#orders {
+  font-size: 11px; }
+  /* line 146, ../sass/main/mixins.scss */
+  #orders .right {
+    text-align: right; }
+  /* line 149, ../sass/main/mixins.scss */
+  #orders .left {
+    text-align: left; }
+  /* line 152, ../sass/main/mixins.scss */
+  #orders table {
+    width: 100%;
+    text-align: center; }
+    /* line 156, ../sass/main/mixins.scss */
+    #orders table tr th {
+      text-align: center;
+      font-size: 12px;
+      color: #494949;
+      padding: 11px 29px;
+      background-color: #e4d8be;
+      font-weight: normal;
+      position: relative; }
+      /* line 164, ../sass/main/mixins.scss */
+      #orders table tr th .separator {
+        background-position: 0 -124px;
+        width: 1px;
+        height: 26px;
+        position: absolute;
+        top: 10px;
+        left: 0px; }
+    /* line 173, ../sass/main/mixins.scss */
+    #orders table tr td {
+      padding: 19px;
+      border-top: 1px dashed #c6ba9f; }
+    /* line 177, ../sass/main/mixins.scss */
+    #orders table tr td.info {
+      text-align: left;
+      color: #494949; }
+      /* line 180, ../sass/main/mixins.scss */
+      #orders table tr td.info .item_title {
+        color: #c02654; }
+      /* line 183, ../sass/main/mixins.scss */
+      #orders table tr td.info .article {
+        color: #9d9d9d; }
+    /* line 189, ../sass/main/mixins.scss */
+    #orders table tr.separator td {
+      border: none;
+      height: 28px;
+      padding: 0; }
+    /* line 197, ../sass/main/mixins.scss */
+    #orders table thead th:first-child {
+      -moz-border-radius-topleft: 5px;
+      -webkit-border-top-left-radius: 5px;
+      border-top-left-radius: 5px; }
+    /* line 200, ../sass/main/mixins.scss */
+    #orders table thead th:last-child {
+      -moz-border-radius-topright: 5px;
+      -webkit-border-top-right-radius: 5px;
+      border-top-right-radius: 5px; }
+    /* line 207, ../sass/main/mixins.scss */
+    #orders table tfoot th:first-child {
+      -moz-border-radius-bottomleft: 5px;
+      -webkit-border-bottom-left-radius: 5px;
+      border-bottom-left-radius: 5px; }
+    /* line 210, ../sass/main/mixins.scss */
+    #orders table tfoot th:last-child {
+      -moz-border-radius-bottomright: 5px;
+      -webkit-border-bottom-right-radius: 5px;
+      border-bottom-right-radius: 5px; }
 
 /* line 7, ../sass/main/com_uvelir_product.scss */
 .item_fields .leftside {
@@ -1120,8 +1479,9 @@ body h3 {
       overflow: hidden;
       position: relative;
       text-align: center;
-      width: 120px; }
-    /* line 120, ../sass/main/com_uvelir_products.scss */
+      width: 120px;
+      margin-bottom: 3px; }
+    /* line 121, ../sass/main/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .show .removeButton {
       display: none; }
 
@@ -1217,6 +1577,18 @@ body h3 {
           top: 98%;
           width: 16px; }
 
+/* line 2, ../sass/main/com_uvelir_userfrom.scss */
+#userfrom #com_uvelir_user_registration_div {
+  margin-bottom: 10px; }
+  /* line 5, ../sass/main/com_uvelir_userfrom.scss */
+  #userfrom #com_uvelir_user_registration_div label,
+  #userfrom #com_uvelir_user_registration_div input {
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    *display: inline;
+    *vertical-align: auto; }
+
 /* line 2, ../sass/main/com_k2.scss */
 #k2Container .itemTitle {
   padding: 0px;
@@ -1291,7 +1663,7 @@ body h3 {
       background: none; }
     /* line 34, ../sass/main/mod_caddy.scss */
     #mod_caddy_uvelir .inner .cart span {
-      background-position: 0 -84px;
+      background-position: 0 -100px;
       display: inline-block;
       vertical-align: baseline;
       zoom: 1;
@@ -1519,7 +1891,7 @@ body h3 {
   margin-top: -2px; }
 /* line 10, ../sass/main/mod_breadcrumbs.scss */
 .breadcrumbs .separator {
-  background-position: 0 -130px;
+  background-position: 0 -176px;
   display: inline-block;
   vertical-align: baseline;
   zoom: 1;
@@ -1561,12 +1933,12 @@ body h3 {
   text-transform: capitalize;
   font-weight: bold; }
 
-/* line 55, ../sass/screen.scss */
+/* line 58, ../sass/screen.scss */
 .select1 {
   background: #FFF;
   position: relative;
   background-position: 0 -101px; }
-  /* line 59, ../sass/screen.scss */
+  /* line 62, ../sass/screen.scss */
   .select1::before {
     background-position: 0 -50px;
     position: absolute;
@@ -1575,7 +1947,7 @@ body h3 {
     height: 23px;
     top: 0px;
     left: -5px; }
-  /* line 68, ../sass/screen.scss */
+  /* line 71, ../sass/screen.scss */
   .select1::after {
     background-position: 0 -73px;
     position: absolute;
@@ -1585,55 +1957,55 @@ body h3 {
     top: 0px;
     right: -5px; }
 
-/* line 86, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 body {
-  background: #f7f2e1 url(../images/strips.png);
+  background: #f7f2e1 url(../images/strips.png) no-repeat;
   color: #494949;
   background-position: 50% -55px; }
-  /* line 90, ../sass/screen.scss */
+  /* line 93, ../sass/screen.scss */
   body.glavnaya {
     background-position: 50% 0px; }
 
-/* line 95, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 #rt-top-surround #rt-top {
   background-position: 0 -73px;
   background-repeat: repeat-x;
   min-width: 990px;
   width: 100%;
   z-index: 100; }
-  /* line 101, ../sass/screen.scss */
+  /* line 104, ../sass/screen.scss */
   #rt-top-surround #rt-top .rt-block {
     margin: 0;
     padding: 0; }
-  /* line 105, ../sass/screen.scss */
+  /* line 108, ../sass/screen.scss */
   #rt-top-surround #rt-top .main.menu {
     margin-bottom: 20px;
     margin-top: 0; }
-    /* line 113, ../sass/screen.scss */
+    /* line 116, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li a {
       color: #f6df98;
       font-size: 13px;
       font-weight: normal;
       padding: 0 10px; }
-      /* line 118, ../sass/screen.scss */
+      /* line 121, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li a:hover {
         text-decoration: none;
         color: #fff; }
-      /* line 122, ../sass/screen.scss */
+      /* line 125, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li a:before {
         content: none; }
-    /* line 126, ../sass/screen.scss */
+    /* line 129, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li.separator {
       background-position: 0 -23px;
       display: block;
       height: 50px;
       margin: 0 auto;
       width: 3px; }
-    /* line 134, ../sass/screen.scss */
+    /* line 137, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li.parent ul {
       background: #262626;
       margin-left: -14px; }
-      /* line 138, ../sass/screen.scss */
+      /* line 141, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li.parent ul li a {
         border-bottom: 1px dotted #f6df98; }
     /* line 5, ../sass/main/mixins.scss */
@@ -1656,105 +2028,109 @@ body {
       /* line 11, ../sass/main/mixins.scss */
       #rt-top-surround #rt-top .main.menu > li > a:hover:hover a {
         color: #FFF; }
-/* line 154, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 #rt-top-surround #rt-header .logo-block {
   margin-bottom: 22px; }
-/* line 159, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-clock,
 #rt-top-surround #rt-header .workphone .icons-phone {
   float: left; }
-/* line 162, ../sass/screen.scss */
+/* line 165, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-clock {
   margin: 13px 10px 0 0; }
-/* line 165, ../sass/screen.scss */
+/* line 168, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-phone {
   margin: 7px 10px 0 0; }
-/* line 169, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left,
 #rt-top-surround #rt-header .workphone .right {
   width: 210px; }
-/* line 174, ../sass/screen.scss */
+/* line 177, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left .gold {
   font-size: 12px; }
-/* line 177, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left .black {
   font-size: 22px; }
-/* line 182, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .right .gold {
   font-size: 11px; }
-/* line 185, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .right .black {
   font-size: 14px; }
-/* line 189, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .gold {
   display: block;
   color: #c5b07d; }
-/* line 193, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .black {
   color: #000; }
 
-/* line 200, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 #rt-showcase .rt-block {
   padding-top: 0; }
 
-/* line 205, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 #rt-transition #rt-content-top {
   position: absolute;
   top: -35px;
   left: 0;
   width: 100%; }
-/* line 216, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 .icon.trigger {
   width: 30px;
   height: 34px;
   position: absolute;
   top: -6px;
   left: 0px; }
-/* line 223, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 .link {
   margin-left: 30px; }
-/* line 226, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 a {
-  display: inline-block; }
-  /* line 228, ../sass/screen.scss */
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto; }
+  /* line 231, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a ul.accordion li h4 a:before {
     width: 0;
     padding: 0;
     margin: 0; }
-/* line 236, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li .sub ul {
   margin: 0; }
-  /* line 239, ../sass/screen.scss */
+  /* line 242, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a ul.accordion li .sub ul li {
     margin-left: 13px; }
-    /* line 241, ../sass/screen.scss */
+    /* line 244, ../sass/screen.scss */
     #rt-transition #rt-sidebar-a ul.accordion li .sub ul li.separator {
       margin: 6px 0px;
       border-bottom: 1px solid #e4d8be; }
-/* line 253, ../sass/screen.scss */
+/* line 256, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu a {
   font-size: 12px; }
-  /* line 255, ../sass/screen.scss */
+  /* line 258, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a .menu a:before {
     margin-right: 27px; }
-/* line 260, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu li.separator {
   margin: 6px 0px;
   border-bottom: 1px solid #e4d8be; }
-/* line 264, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu li:before {
   margin: 5px 0 0 10px; }
 
-/* line 272, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 #rt-bottom .rt-container {
   border-bottom: 3px solid #e4d8be;
   margin-bottom: 25px;
   padding-bottom: 14px; }
-  /* line 277, ../sass/screen.scss */
+  /* line 280, ../sass/screen.scss */
   #rt-bottom .rt-container .rt-grid-3,
   #rt-bottom .rt-container .rt-grid-2 {
     width: 20%; }
-  /* line 280, ../sass/screen.scss */
+  /* line 283, ../sass/screen.scss */
   #rt-bottom .rt-container h2 {
     color: #191919;
     font-size: 14px;
@@ -1762,49 +2138,49 @@ body {
     padding: 0;
     text-transform: uppercase;
     font-weight: bold; }
-  /* line 290, ../sass/screen.scss */
+  /* line 293, ../sass/screen.scss */
   #rt-bottom .rt-container .menu a {
     font-size: 11.03px; }
 
-/* line 297, ../sass/screen.scss */
+/* line 300, ../sass/screen.scss */
 #rt-footer-surround #rt-footer {
   color: #494949;
   font-size: 12px;
   padding-bottom: 36px; }
-  /* line 301, ../sass/screen.scss */
+  /* line 304, ../sass/screen.scss */
   #rt-footer-surround #rt-footer p {
     margin-bottom: 6px; }
-  /* line 304, ../sass/screen.scss */
+  /* line 307, ../sass/screen.scss */
   #rt-footer-surround #rt-footer ul {
     list-style: none;
     list-style-type: none;
     margin: 10px 0px; }
-    /* line 308, ../sass/screen.scss */
+    /* line 311, ../sass/screen.scss */
     #rt-footer-surround #rt-footer ul li {
       float: left;
       margin-right: 7px; }
-  /* line 313, ../sass/screen.scss */
+  /* line 316, ../sass/screen.scss */
   #rt-footer-surround #rt-footer span {
     color: #c5b07d; }
-  /* line 316, ../sass/screen.scss */
+  /* line 319, ../sass/screen.scss */
   #rt-footer-surround #rt-footer .phone {
     font-size: 22px; }
 
-/* line 325, ../sass/screen.scss */
+/* line 328, ../sass/screen.scss */
 .homepage #rt-header .workphone .left,
 .homepage #rt-header .workphone .right {
   margin-bottom: 6px; }
-/* line 329, ../sass/screen.scss */
+/* line 332, ../sass/screen.scss */
 .homepage #rt-header .workphone .right .black {
   text-transform: lowercase; }
 
-/* line 337, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 .page .logo-block {
   float: left; }
-/* line 341, ../sass/screen.scss */
+/* line 344, ../sass/screen.scss */
 .page #rt-header .workphone {
   float: right; }
-  /* line 344, ../sass/screen.scss */
+  /* line 347, ../sass/screen.scss */
   .page #rt-header .workphone .left,
   .page #rt-header .workphone .right {
     float: left; }
