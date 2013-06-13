@@ -1,0 +1,19 @@
+#order{
+	.expand-source{
+		p{
+			@include inline-block;
+			border-bottom: 1px dashed #c02654;
+			color: #C02654;
+			cursor: pointer;
+			font-size: 14px;
+			line-height: 15px;
+			margin: 0 0 10px 0;
+			padding: 0;
+			text-transform: lowercase;
+			&:hover{
+				border-bottom: 1px dashed transparent;
+			}
+		}
+	}
+	@include table1();
+}

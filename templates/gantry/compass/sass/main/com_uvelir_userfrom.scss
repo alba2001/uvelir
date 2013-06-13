@@ -1,0 +1,17 @@
+#userfrom{
+	#com_uvelir_user_registration_div{
+		margin-bottom: 10px;
+		label,
+		input{
+			@include inline-block;
+		}
+	}
+	div.invalid{
+		// border: 1px solid #c02654;
+		// border-radius: 5px;
+		// display: none;
+	}
+	label.invalid{
+		// color: #C02654;
+	}
+}
