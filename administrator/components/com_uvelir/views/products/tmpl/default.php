@@ -62,6 +62,9 @@ $href = 'index.php?option=com_uvelir&view=product';
                 <th class='left'>
                     <?php echo JText::_('COM_UVELIR_PRODUCTS_CATEGORY_PATH'); ?>
                 </th>
+                <th width="5%">
+                    <?php echo JText::_('COM_UVELIR_PRODUCTS_AVIALABLE'); ?>
+                </th>
                     <?php if (isset($this->items[0]->state)) { ?>
                 <th width="5%">
                     <?php echo JText::_('JPUBLISHED'); ?>
@@ -111,6 +114,9 @@ foreach ($this->items as $i => $item) :
                         <?php echo $this->get_category_path($item->category_id); ?>
                     </td>
 
+                    <td class="center">
+                        <?php echo JHtml::_('jgrid.published', $item->available, $i, 'products.', 1, 'cb'); ?>
+                    </td>
 
                         <?php if (isset($this->items[0]->state)) { ?>
                     <td class="center">
