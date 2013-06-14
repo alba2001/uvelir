@@ -111,4 +111,42 @@ class UvelirModelKModelList extends JModelList
 
             return $query;
 	}
+        
+        /**
+         * Публикация товара
+         * @param int $cid
+         * @param int $value
+         * @return bolean
+         */
+        public function publish($cids, $value)
+        {
+            $result = 1;
+            foreach($cids as $cid)
+            {
+                $result = (int)$this->_published($cid, $value) * $result;
+            }
+            return $result;
+        }
+        
+       
+        /**
+         * Установка публикации товара
+         * @param int $cid
+         * @param int $value
+         * @return bolean
+         */
+        private function _published($cid, $value)
+        {
+            $table = $this->getTable('Product','UvelirTable');
+            if($table->load($cid))
+            {
+                $table->state = $value;
+                if($table->store())
+                {
+                    return TRUE;
+                }
+            }
+            return FALSE;
+        }
+        
 }

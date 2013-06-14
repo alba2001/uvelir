@@ -52,6 +52,9 @@ $href = 'index.php?option=com_uvelir&view=product';
                 <th width="1%">
                     <input type="checkbox" name="checkall-toggle" value="" onclick="checkAll(this)" />
                 </th>
+                <th width="5%">
+                    <?php echo JText::_('COM_UVELIR_PRODUCTS_AVIALABLE'); ?>
+                </th>
 
                 <th class='left'>
                     <?php echo JText::_('COM_UVELIR_PRODUCTS_NAME'); ?>
@@ -63,12 +66,9 @@ $href = 'index.php?option=com_uvelir&view=product';
                     <?php echo JText::_('COM_UVELIR_PRODUCTS_CATEGORY_PATH'); ?>
                 </th>
                 <th width="5%">
-                    <?php echo JText::_('COM_UVELIR_PRODUCTS_AVIALABLE'); ?>
-                </th>
-                    <?php if (isset($this->items[0]->state)) { ?>
-                <th width="5%">
                     <?php echo JText::_('JPUBLISHED'); ?>
                 </th>
+                    <?php if (isset($this->items[0]->state)) { ?>
                     <?php } ?>
                 <?php if (isset($this->items[0]->id)) { ?>
                     <th width="1%" class="nowrap">
@@ -99,6 +99,20 @@ foreach ($this->items as $i => $item) :
                     <td class="center">
     <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                     </td>
+                    
+                    <td class="center">
+                        <?php
+                            $available_text_set = $item->available?JText::_('COM_UVELIR_PRODUCT_SET_NOT_AVAILABLE'):JText::_('COM_UVELIR_PRODUCT_SET_AVAILABLE');
+                            $available_text = $item->available?JText::_('COM_UVELIR_PRODUCT_AVAILABLE'):JText::_('COM_UVELIR_PRODUCT_NOT_AVAILABLE');
+                            $available_task = $item->available?'products.unset_available':'products.set_available';
+                            $available_class = $item->available?'publish':'unpublish';
+                        ?>
+                        <a class="jgrid" href="javascript:void(0);" rel="<?=$i?>" task="<?=$available_task?>" title="<?=$available_text_set?>">
+                                <span class="state <?=$available_class?>">
+                                        <span class="text"><?=$available_text?></span>
+                                </span>
+                        </a>
+                    </td>
 
                     <td>
                         <?php if (isset($item->checked_out) && $item->checked_out) : ?>
@@ -112,10 +126,6 @@ foreach ($this->items as $i => $item) :
                     </td>
                     <td>
                         <?php echo $this->get_category_path($item->category_id); ?>
-                    </td>
-
-                    <td class="center">
-                        <?php echo JHtml::_('jgrid.published', $item->available, $i, 'products.', 1, 'cb'); ?>
                     </td>
 
                         <?php if (isset($this->items[0]->state)) { ?>
@@ -143,3 +153,43 @@ foreach ($this->items as $i => $item) :
 <?php echo JHtml::_('form.token'); ?>
     </div>
 </form>
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        $('.jgrid').click(function(){
+            var i = $(this).attr('rel');
+            var task = $(this).attr('task');
+            var span = $(this).children().first();
+            var _this = $(this);
+            $('input[type=checkbox]').attr('checked',false)
+            $('#cb'+i).attr('checked',true)
+            $("form [name=task]").val(task);
+            var form = $('#adminForm');
+            $.ajax({
+                type: 'POST',
+                url: $(form).attr('action'),
+                data: $(form).serialize(),
+                success: function(data){
+                    if(data)
+                    {
+                        $('#cb'+i).attr('checked',false)
+                        if($(span).hasClass('publish'))
+                        {
+                            $(span).removeClass('publish');
+                            $(span).addClass('unpublish');
+                            _this.attr('task','products.set_available');
+                        }
+                        else
+                        {
+                            $(span).removeClass('unpublish');
+                            $(span).addClass('publish');
+                            _this.attr('task','products.unset_available');
+                        }
+                    }
+
+                }
+            });
+        });
+    });
+
+</script>    
+    

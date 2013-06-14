@@ -50,6 +50,7 @@ class UvelirModelProducts extends JModelList {
             $this->setState('usearch_data.proba', $usearch_data['proba']);
             $this->setState('usearch_data.cost_1', $usearch_data['cost_1']);
             $this->setState('usearch_data.cost_2', $usearch_data['cost_2']);
+            $this->setState('usearch_data.available', $usearch_data['available']);
         }
         // Вычисляем группу продуктов
         $menu = JSite::getMenu();
@@ -131,6 +132,11 @@ class UvelirModelProducts extends JModelList {
                         $query->where('category_id IN ('.  implode(', ', $category_ids).')');
                     }
                 }
+            }
+            // Фильтр по наличию
+            if($metal = $this->getState('usearch_data.available', ''))
+            {
+                $query->where('available = 1');
             }
             // Фильтр по металлу
             if($metal = $this->getState('usearch_data.metal', ''))

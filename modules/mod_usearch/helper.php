@@ -207,5 +207,11 @@ class modUsearchHelper
                             , 'mod_usearch_razmer'
                             , false );
          }
-    
+ 
+         function getCheckboxAvailable($checked)
+         {
+             $checked = $checked?'checked="checked"':'';
+             $html = '<input type="checkbox" name="usearch_data[available]" value="1" '.$checked.' />';
+             return $html;
+         }
 }

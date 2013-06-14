@@ -9,83 +9,50 @@
 // no direct access
 defined('_JEXEC') or die;
 ?>
-<style type="text/css">
-    #mod_usearch_uvelir{
-        width: 100%;
-        height: 100px;
-        overflow: hidden;
-        border: 1px solid activeborder;
-        border-radius: 10px;
-    }
-    #mod_usearch_uvelir h1{
-        font-size: 120%;
-    }
-    #mod_usearch_header{
-        float: left;
-        width: 15%;
-    }
-    #mod_usearch_body{
-        float: left;
-        width: 65%;
-    }
-    #mod_usearch_body table tbody tr td select{
-        width: 100px
-    }
-    #mod_usearch_body table input{
-        width: 20px
-    }
-    #mod_usearch_footer{
-        width: 20%;
-        float: left;
-        overflow: hidden;
-    }
-</style>
 <div id="mod_usearch_uvelir">
     <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="usearchForm" id="usearchForm">
     <div id="mod_usearch_header">
-        <h1><?php echo JText::_('MOD_USEARCH_PODBOR_UZDELI')?></h1>
+        <h1>ПОДБОР<br><span>ИЗДЕЛИЙ</span></h1>
     </div>
-    
+	<div class="separator"></div>
     <div id="mod_usearch_body">
     <table>
         <tr>
-            <td><?php echo JText::_('MOD_USEARCH_IZDELIE')?></td>
-<!--            <td><input size="2" type="text" id="mod_usearch_izdelie" name="usearch_data[izdelie]" /></td>-->
+            <td><label for="mod_usearch_izdelie"><?php echo JText::_('MOD_USEARCH_IZDELIE')?></label></td>
             <td><?=$izdelie?></td>
-            
-            <td><?php echo JText::_('MOD_USEARCH_METAL')?></td>
+            <td><label for="mod_usearch_metal"><?php echo JText::_('MOD_USEARCH_METAL')?></label></td>
             <td><?=$metal?></td>
-<!--            <td><input type="text" id="mod_usearch_metal" name="usearch_data[metal]" /></td>-->
-            
-            <td><?php echo JText::_('MOD_USEARCH_VSTAVKI')?></td>
+            <td><label for="mod_usearch_vstavki"><?php echo JText::_('MOD_USEARCH_VSTAVKI')?></label></td>
             <td><?=$vstavki?></td>
-<!--            <td colspan="2"><input type="text" id="mod_usearch_vstavki" name="usearch_data[vstavki]" /></td>-->
+            <!--В наличии-->
+            <td rowspan="2"><label for="mod_usearch_available"><?php echo JText::_('MOD_USEARCH_AVAILABLE')?></label></td>
+            <td rowspan="2"><?=$available?></td>
         </tr>
         <tr>
-            <td><?php echo JText::_('MOD_USEARCH_RAZMER')?></td>
+            <td><label for="mod_usearch_razmer"><?php echo JText::_('MOD_USEARCH_RAZMER')?></label></td>
             <td><?=$razmer?></td>
-<!--            <td><input type="text" id="mod_usearch_razmer" name="usearch_data[razmer]" /></td>-->
-            
-            <td><?php echo JText::_('MOD_USEARCH_PROBA')?></td>
+            <td><label for="mod_usearch_proba"><?php echo JText::_('MOD_USEARCH_PROBA')?></label></td>
             <td><?=$proba?></td>
-<!--            <td><input type="text" id="mod_usearch_proba" name="usearch_data[proba]" /></td>-->
-            
-            <td><?php echo JText::_('MOD_USEARCH_COST')?></td>
-            <td><input size="2" type="text" id="mod_usearch_cost_1" name="usearch_data[cost_1]" value="<?=$usearch_data['cost_1']?>"/></td>
-            <td><input size="2" type="text" id="mod_usearch_cost_2" name="usearch_data[cost_2]" value="<?=$usearch_data['cost_2']?>" /></td>
+            <td><label for="mod_usearch_cost_1"><?php echo JText::_('MOD_USEARCH_COST')?></label></td>
+            <td>
+            	<input placeholder="От" size="2" type="text" id="mod_usearch_cost_1" name="usearch_data[cost_1]" value="<?=$usearch_data['cost_1']?>"/>
+            	<input placeholder="До" size="2" type="text" id="mod_usearch_cost_2" name="usearch_data[cost_2]" value="<?=$usearch_data['cost_2']?>" />
+            </td>
         </tr>
     </table>
-    
+
     </div>
-    
+
     <div id="mod_usearch_footer">
-        <input type="submit" value="<?=JText::_('MOD_USEARCH_SUBMIT')?>">
+        <button onclick="document.submit();">ПОДОБРАТЬ <br> УКРАШЕНИЕ</button>
+       <?/* <input type="submit" value="ПОДОБРАТЬ &#10; УКРАШЕНИЕ">
+         */?>
     </div>
 
         <input type="hidden" name="option" value="com_uvelir" />
         <input type="hidden" name="view" value="products" />
         <?php echo JHtml::_('form.token'); ?>
-    </form>    
+    </form>
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function($){
@@ -109,5 +76,4 @@ defined('_JEXEC') or die;
         });
     });
 
-</script>    
-    
+</script>

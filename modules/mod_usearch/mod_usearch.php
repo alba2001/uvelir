@@ -20,6 +20,7 @@ if(!$usearch_data)
         'proba' => '',
         'cost_1' => '',
         'cost_2' => '',
+        'available' => '',
     );
 }
 require_once dirname(__FILE__).'/helper.php';
@@ -29,6 +30,7 @@ $metal = modUsearchHelper::getListMetal($usearch_data['metal']);
 $vstavki = modUsearchHelper::getListVstavki($usearch_data['vstavki']);
 $razmer = modUsearchHelper::getListRazmer($usearch_data['razmer'], $usearch_data['izdelie']);
 $proba = modUsearchHelper::getListProba($usearch_data['proba']);
+$available = modUsearchHelper::getCheckboxAvailable($usearch_data['available']);
 
 //echo '111';exit;
 require JModuleHelper::getLayoutPath('mod_usearch', $params->get('layout', 'default'));

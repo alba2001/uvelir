@@ -24,6 +24,9 @@ defined('_JEXEC') or die;
             <td><?=$metal?></td>
             <td><label for="mod_usearch_vstavki"><?php echo JText::_('MOD_USEARCH_VSTAVKI')?></label></td>
             <td><?=$vstavki?></td>
+            <!--В наличии-->
+            <td rowspan="2"><label for="mod_usearch_available"><?php echo JText::_('MOD_USEARCH_AVAILABLE')?></label></td>
+            <td rowspan="2"><?=$available?></td>
         </tr>
         <tr>
             <td><label for="mod_usearch_razmer"><?php echo JText::_('MOD_USEARCH_RAZMER')?></label></td>

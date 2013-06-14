@@ -94,4 +94,42 @@ class UvelirModelProducts extends UvelirModelKModelList
             }
             return $query;
         }
+        
+        /**
+         * Меняем статус наличия товара
+         * @param array $cids
+         * @param int $value
+         * @return array
+         */
+        public function set_available($cids, $value)
+        {
+            $result = 1;
+            foreach($cids as $cid)
+            {
+                $result = (int)$this->_availabled($cid, $value) * $result;
+            }
+            return $result;
+        }
+        
+       
+        /**
+         * Установка наличия товара
+         * @param int $cid
+         * @param int $value
+         * @return bolean
+         */
+        private function _availabled($cid, $value)
+        {
+            $table = $this->getTable('Product','UvelirTable');
+            if($table->load($cid))
+            {
+                $table->available = $value;
+                if($table->store())
+                {
+                    return TRUE;
+                }
+            }
+            return FALSE;
+        }
+        
 }
