@@ -127,6 +127,18 @@ $desc = json_decode($this->item->desc);
 		        	</tr>
 	        	<?php endif;?>
 
+		        	<tr>
+		        		<td>
+		        			<span class="left">
+		        				<?= JText::_('COM_UVELIR_PRODUCTS_AVIALABLE').': ' ?></span>
+		        		</td>
+		        		<td>
+		        			<span class="right">
+			        			<?=$this->item->vstavki?JText::_('COM_UVELIR_PRODUCTS_AVIALABLED'):JText::_('COM_UVELIR_PRODUCTS_NOT_AVIALABLED')?>
+			        		</span>
+		        		</td>
+		        	</tr>
+
 	        	<?php if(isset($this->item->opisanije) AND $this->item->opisanije):?>
 		        	<tr class="last">
 		        		<td>

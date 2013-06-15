@@ -89,6 +89,10 @@
             label="COM_UVELIR_PRODUCT_SPETS_PREDL" 
             description="" value="1" default="0" 
         />
+        <field name="available" type="checkbox" 
+            label="COM_UVELIR_PRODUCTS_AVIALABLE" 
+            description="" value="1" default="0" 
+        />
 
         <field name="checked_out" type="hidden" filter="unset" />
         <field name="checked_out_time" type="hidden" filter="unset" /> 
