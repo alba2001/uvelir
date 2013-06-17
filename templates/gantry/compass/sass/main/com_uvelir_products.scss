@@ -8,7 +8,7 @@
 		@include respond-to(handhelds) { width: 716px;}
 		@include respond-to(medium-screens) { width: 900px; }
 		@include respond-to(wide-screens) { width: 1076px; }
-		@include respond-to(seven) { width: 1256px; }
+		// @include respond-to(seven) { width: 1256px; }
 		// margin: 0 auto;
 		.com_uvelir_item{
 			@include border-bottom-radius(6px);
@@ -54,7 +54,7 @@
 					display: table-cell;
 					vertical-align: middle;
 					img{
-						width: 120px;
+						max-width: 150px;
 						max-height: 120px;
 					}
 				}

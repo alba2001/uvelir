@@ -37,7 +37,10 @@
 	}
 	#mod_usearch_body{
 		float: left;
-		width: 70%;
+		@include respond-to(handhelds) { width: 70% ;}
+		@include respond-to(medium-screens) { width: 73%; }
+		@include respond-to(wide-screens) { width: 78%; }
+		// @include respond-to(seven) { width: 80%; }
 		input{
 			height: 15px;
 			width: 30%;
@@ -52,7 +55,7 @@
 		select{
 			height: 25px;
 			width: 100%;
-			min-width: 140px;
+			min-width: 100px;
 		}
 		table{
 			tr{
@@ -62,10 +65,26 @@
 						color: #3d3d3d;
 						font-size: 12px;
 						text-align: right;
-						margin: 0 16px;
+						margin: 0 10px;
 						line-height: 25px;
 					}
-					width: 10%;
+					width: 14%;
+					&.checkbox{
+						vertical-align: middle;
+						width: 10%;
+						input{
+							float: right;
+							width: 13px;
+						}
+					}
+					&.label{
+						vertical-align: middle;
+						background: none;
+						label{
+							float: left;
+							margin: 3px 0 0 0;
+						}
+					}
 				}
 			}
 		}
@@ -79,6 +98,7 @@
 		overflow: hidden;
 		position: relative;
 		width: 140px;
+		margin-top: 4px;
 		&:before{
 			background-position-x: -108px;
 		}

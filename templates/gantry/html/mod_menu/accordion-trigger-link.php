@@ -102,8 +102,8 @@ endforeach;
 	      head: "h4",
 	      next: "div",
 	      showMethod: "slideFadeDown",
-	      hideMethod: "slideFadeUp",
-	      initShow : "li:eq(1)"
+	      hideMethod: "slideFadeUp"
+	      // initShow : "li:eq(1)"
 	  });
 	  jQuery("html").removeClass("js");
 	});
