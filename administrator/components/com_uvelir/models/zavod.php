@@ -216,7 +216,8 @@ class UvelirModelZavod extends JModelAdmin
             }
             else 
             {
-                $data = JFactory::getApplication()->getUserState('com_uvelir.parse', array());
+//                $data = JFactory::getApplication()->getUserState('com_uvelir.parse', array());
+                $data = $this->_get_data($cid);
                 if(!$data)
                 {
                     return array(1,  JText::_('COM_UVELIR_PARSE_END'));
@@ -249,4 +250,21 @@ class UvelirModelZavod extends JModelAdmin
             }
             return $zavod;
         }
+        
+    /**
+     * Берем сохраненные данные
+     * @param array $data 
+     */
+    private function _get_data($cid)
+    {
+        $data = JFactory::getApplication()->getUserState('com_uvelir.parse', array());
+        $file_data = JPATH_ROOT.DS.'tmp'.DS.'parse_'.$cid.'_data.txt';
+        if(JFile::exists($file_data))
+        {
+            $data = json_decode(JFile::read($file_data),TRUE);
+        }
+        return $data;
+    }
+    
+        
 }

@@ -10,4 +10,9 @@ jimport('joomla.application.component.controllerform');
  */
 class UvelirControllerCategory extends JControllerForm
 {
+    function __construct() {
+        $this->view_list = 'categories';
+        parent::__construct();
+    }
+        
 }

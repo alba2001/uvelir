@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="file" version="3.0" method="upgrade">
+	<name>SIGE ru-RU</name>
+	<version>3-1</version>
+	<creationDate>11 October 2012</creationDate>
+	<author>S_K</author>
+	<authorEmail>@@email@@</authorEmail>
+	<authorUrl>http://joomlaforum.ru/index.php/topic,209006.0.html</authorUrl>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>Russian translation for SIGE version 3.x</description>
+	<fileset>
+		<files target="administrator/language/ru-RU">
+			<file>ru-RU.plg_content_sige.ini</file>
+			<file>ru-RU.plg_content_sige.sys.ini</file>
+		</files>
+	</fileset>
+</extension>

@@ -18,7 +18,7 @@ $document = JFactory::getDocument();
 $document->addStyleSheet('components/com_uvelir/assets/css/uvelir.css');
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_uvelir&layout=edit&id='.(int) $this->item->id); ?>" method="post" enctype="multipart/form-data" name="adminForm" id="category-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" enctype="multipart/form-data" name="adminForm" id="category-form" class="form-validate">
 	<div class="width-60 fltlft left">
 		<fieldset class="adminform">
 			<legend><?php echo JText::_('COM_UVELIR_LEGEND_CATEGORY'); ?></legend>
@@ -45,6 +45,9 @@ $document->addStyleSheet('components/com_uvelir/assets/css/uvelir.css');
             </ul>
 		</fieldset>
 	</div>
+	<input type="hidden" name="option" value="com_uvelir" />
+	<input type="hidden" name="layout" value="edit" />
+	<input type="hidden" name="id" value="<?=(int) $this->item->id?>" />
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
 	<div class="clr"></div>
