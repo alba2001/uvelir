@@ -212,6 +212,9 @@ class UvelirModelProducts extends JModelList {
             case 2: // Спецпредложения
                 $where = '`spets_predl` = "1"';
                 break;
+            case 3: // В наличии
+                $where = '`available` = "1"';
+                break;
             default : // Все изделия
                 $where = '';
         }

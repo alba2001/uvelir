@@ -15,6 +15,7 @@
                 <option value="0">COM_UVELIR_ALL_PRODUCTS</option>
                 <option value="1">COM_UVELIR_NEW_PRODUCTS</option>
                 <option value="2">COM_UVELIR_SPETS_PRODUCTS</option>
+                <option value="3">COM_UVELIR_PRODUCTS_AVIALABLE</option>
             </field>
 		</fieldset>
 	</fields>

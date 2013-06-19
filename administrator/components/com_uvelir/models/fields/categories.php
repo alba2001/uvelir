@@ -65,11 +65,13 @@ class JFormFieldCategories extends JFormFieldList
          */
         private function _get_categories()
         {
-            $zavod = JRequest::getInt('zavod', '2');
+            $category_id = $user_id = $this->value;
+//            $zavod = JRequest::getInt('zavod', '2');
             $result = array();
             // Get the database object.
             $db = JFactory::getDBO();
-            $query = 'SELECT `id`, `name`, `parent_id` FROM `#__uvelir_categories` WHERE `zavod`='.$zavod;
+//            $query = 'SELECT `id`, `name`, `parent_id` FROM `#__uvelir_categories` WHERE `zavod`='.$zavod;
+            $query = 'SELECT `id`, `name`, `parent_id` FROM `#__uvelir_categories` WHERE `id` = '.$category_id;
             // Set the query and get the result list.
             $db->setQuery($query);
             $items = $db->loadObjectlist();

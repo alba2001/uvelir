@@ -33,6 +33,7 @@ class UvelirModelProducts extends UvelirModelKModelList
                 'ordering', 'a.ordering',
                 'state', 'a.state',
                 'created_by', 'a.created_by',
+                'artikul', 'a.artikul',
 
             );
         }
@@ -51,6 +52,21 @@ class UvelirModelProducts extends UvelirModelKModelList
         $app = JFactory::getApplication();
         $zavod = $app->getUserStateFromRequest($this->context.'.filter.zavod', 'filter_zavod', '2', 'string');
         $this->setState('filter.zavod', $zavod);        
+
+        // Поиск по артикулу
+        $search = $app->getUserStateFromRequest($this->context.'.filter.search_artikul', 'filter_search_artikul');
+        $this->setState('filter.search_artikul', $search);
+
+//        // Поле сортировки
+//        $order_field = $app->getUserStateFromRequest($this->context . '.ordercol', 'filter_order', $ordering);
+////        $ordering = $this->getState('list.ordering');
+//        var_dump($order_field);
+//        
+//        // Направление сортировки
+//        $sort_dir = $app->getUserStateFromRequest($this->context . '.orderdirn', 'filter_order_Dir', 'ASC');
+//        var_dump($sort_dir);
+        
+        
         parent::populateState($ordering, $direction);
     }
 
@@ -80,6 +96,12 @@ class UvelirModelProducts extends UvelirModelKModelList
 
             // Filter by search in title
             $search = $this->getState('filter.search');
+            $search_artikul = $this->getState('filter.search_artikul');
+            if (!empty($search_artikul)) 
+            {
+                $search_artikul = $this->_db->Quote('%'.$this->_db->escape($search_artikul, true).'%');
+                $query->where('( a.artikul LIKE '.$search_artikul.' )');
+            }
             if (!empty($search)) 
             {
                 if (stripos($search, 'id:') === 0) 
@@ -92,6 +114,7 @@ class UvelirModelProducts extends UvelirModelKModelList
                     $query->where('( a.name LIKE '.$search.' )');
                 }
             }
+//            var_dump((string)$query);
             return $query;
         }
         

@@ -31,6 +31,13 @@ $href = 'index.php?option=com_uvelir&view=product';
             <button type="button" onclick="document.id('filter_search').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
         </div>
 
+        <div class="filter-search fltlft">
+            <label class="filter-search-lbl" for="filter_search_artikul"><?php echo JText::_('COM_UVELIR_ARTIKUL_SEARCH'); ?></label>
+            <input type="text" name="filter_search_artikul" id="filter_search_artikul" value="<?php echo $this->escape($this->state->get('filter.search_artikul')); ?>" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" />
+            <button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+            <button type="button" onclick="document.id('filter_search_artikul').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
+        </div>
+
 
         <div class='filter-select fltrt'>
             <select name="filter_zavod" class="inputbox" onchange="this.form.submit()">
@@ -58,6 +65,9 @@ $href = 'index.php?option=com_uvelir&view=product';
 
                 <th class='left'>
                     <?php echo JText::_('COM_UVELIR_PRODUCTS_NAME'); ?>
+                </th>
+                <th class='left'>
+                    <?php echo JHtml::_('grid.sort',  'COM_UVELIR_ARTIKUL', 'a.artikul', $listDirn, $listOrder); ?>
                 </th>
                 <th class='left'>
                     <?php echo JText::_('COM_UVELIR_PRODUCTS_CREATED_BY'); ?>
@@ -120,6 +130,9 @@ foreach ($this->items as $i => $item) :
                          <?php endif; ?>
                         <a href="<?php echo JRoute::_($href.'&id=' . (int) $item->id); ?>">
                         <?php echo $this->escape($item->name); ?></a>
+                    </td>
+                    <td>
+                        <?php echo $item->artikul; ?>
                     </td>
                     <td>
                         <?php echo $item->created_by; ?>
