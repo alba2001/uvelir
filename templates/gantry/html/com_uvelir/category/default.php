@@ -12,6 +12,8 @@ defined('_JEXEC') or die;
 
 //var_dump($this->children);
     $empty_img_src = JURI::base().'components/com_uvelir/assets/img/empty_64.png';
+
+
     if($this->item->img)
     {
         $img_src = JURI::base().$this->item->img;
@@ -21,6 +23,7 @@ defined('_JEXEC') or die;
         $img_src = $empty_img_src;
     }
 ?>
+
 <?php if( $this->item ) : ?>
 	<div class="category items-wrapper">
 
@@ -44,10 +47,12 @@ defined('_JEXEC') or die;
 	            <ul class="items">
 	            <?php foreach ($this->children as $child):?>
 	                <?php
-	                    if(isset($child->desc))
+	                    if(!empty($child->img))
+	                    // if(isset($child->desc))
 	                    {
-	                        $desc = json_decode($child->desc);
-	                        $img_src = isset($desc->img_small)?$desc->img_small:$empty_img_src;
+	                        // $desc = json_decode($child->desc);
+	                        // $img_src = isset($desc->img_small)?$desc->img_small:$empty_img_src;
+	                        $img_src = $child->img;
 	                    }
 	                    else
 	                    {

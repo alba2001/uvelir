@@ -1013,14 +1013,17 @@ body h3 {
 /* line 7, ../sass/main/com_uvelir_category.scss */
 .category .thumb {
   max-width: 64px; }
-/* line 11, ../sass/main/com_uvelir_category.scss */
-.category .description img {
-  float: left;
-  margin-right: 5px; }
-/* line 17, ../sass/main/com_uvelir_category.scss */
+/* line 10, ../sass/main/com_uvelir_category.scss */
+.category .description {
+  margin-bottom: 30px; }
+  /* line 12, ../sass/main/com_uvelir_category.scss */
+  .category .description img {
+    float: left;
+    margin-right: 5px; }
+/* line 18, ../sass/main/com_uvelir_category.scss */
 .category .uvelir_subcategiries .items {
   margin: 0; }
-  /* line 20, ../sass/main/com_uvelir_category.scss */
+  /* line 21, ../sass/main/com_uvelir_category.scss */
   .category .uvelir_subcategiries .items .com_uvelir_item:hover {
     -moz-border-radius-bottomleft: 6px;
     -webkit-border-bottom-left-radius: 6px;
