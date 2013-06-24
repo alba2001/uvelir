@@ -52,6 +52,9 @@ $listDirn = $this->state->get('list.direction');
                     <?php echo JText::_('COM_UVELIR_CATEGORIES_NAME'); ?>
                 </th>
                 <th class='left'>
+                    <?php echo JText::_('COM_UVELIR_PRODUCTTYPE'); ?>
+                </th>
+                <th class='left'>
                     <?php echo JText::_('COM_UVELIR_CATEGORIES_CREATED_BY'); ?>
                 </th>
                 <th class='left'>
@@ -99,6 +102,9 @@ foreach ($this->items as $i => $item) :
                          <?php endif; ?>
                         <a href="<?php echo JRoute::_('index.php?option=com_uvelir&task=category.edit&id=' . (int) $item->id); ?>">
                         <?php echo str_repeat('|-----', ($item->level-1)).$this->escape($item->name); ?></a>
+                    </td>
+                    <td>
+                        <?php echo $this->model->get_producttype_id($item->producttype_id); ?>
                     </td>
                     <td>
                         <?php echo $item->created_by; ?>

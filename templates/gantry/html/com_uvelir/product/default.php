@@ -166,7 +166,7 @@ $desc = json_decode($this->item->desc);
 					<td>
 						<select name="size" id="id">
 							<?php if(isset($this->item->razmer) AND $this->item->razmer):?>
-								<?$sizes = explode(';', $this->item->razmer)?>
+								<?$sizes = explode(',', $this->item->razmer)?>
 								<?php foreach ($sizes as $key => $value): ?>
 									<option value="<?=$value?>"><?=$value?></option>
 								<?php endforeach ?>
@@ -218,30 +218,25 @@ $desc = json_decode($this->item->desc);
 	        			</div>
 	        		</td>
 	        		<td>
+                                        <?php $prises = ComponentHelper::getPrices($this->item->id); ?>
+                                        <span class="black">
+                                            <?= JText::_('COM_UVELIR_CENA').': ' ?>
+                                        </span>
+                                        <br>
+                                        <span 	class="black big">
+                                            <?=number_format($prises['cena_tut'], 0, '.', ' ') . ' '?>
+                                        <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                        </span>
 
-	        			<?php if(isset($this->item->cena_tut) AND $this->item->cena_tut):?>
-							<span class="black">
-		        				<?= JText::_('COM_UVELIR_CENA').': ' ?>
-		        			</span>
-							<br>
-							<span 	class="black big">
-	        					<?=number_format($this->item->cena_tut, 0, '.', ' ') . ' '?>
-		        				<span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
-							</span>
-	        			<?php endif;?>
-
-	        			<?php if(isset($this->item->cena_mag) AND $this->item->cena_mag):?>
-							<br>
-							<span class="gold">
-	        					<?= JText::_('COM_UVELIR_CENA_MAG').': ' ?>
-	        				</span>
-							<br>
-							<span class="gold small">
-								<?=number_format($this->item->cena_mag, 0, '.', ' ') . ' '?>
-	        					<span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
-							</span>
-	        			<?php endif;?>
-
+                                        <br>
+                                        <span class="gold">
+                                            <?= JText::_('COM_UVELIR_CENA_MAG').': ' ?>
+                                        </span>
+                                        <br>
+                                        <span class="gold small">
+                                                <?=number_format($prises['cena_mag'], 0, '.', ' ') . ' '?>
+                                        <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                        </span>
 
 
 	        		</td>

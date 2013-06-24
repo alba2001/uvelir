@@ -68,6 +68,23 @@ class UvelirModelCategories extends UvelirModelKModelList
                     $query->where('( a.name LIKE '.$search.' )');
                 }
             }
+//            var_dump((string)$query);
             return $query;
+        }
+        
+        /**
+         * Возвращаем наименование типа продукта
+         * @param int $producttype_id 
+         * @return string 
+         */
+        public function get_producttype_id($producttype_id) 
+        {
+            $name = '';
+            $table = $this->getTable('Producttype', 'UvelirTable');
+            if($table->load($producttype_id))
+            {
+                $name = $table->name;
+            }
+            return $name;
         }
 }

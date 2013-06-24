@@ -129,7 +129,10 @@ foreach ($this->items as $i => $item) :
                             <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'products.', 1); ?>
                          <?php endif; ?>
                         <a href="<?php echo JRoute::_($href.'&id=' . (int) $item->id); ?>">
-                        <?php echo $this->escape($item->name); ?></a>
+                            <?php $img = json_decode($item->desc)->img_small; ?>
+                            <img src="<?=$img?>" height="50" width="50" />
+                            <?php echo $this->escape($item->name); ?>
+                        </a>
                     </td>
                     <td>
                         <?php echo $item->artikul; ?>

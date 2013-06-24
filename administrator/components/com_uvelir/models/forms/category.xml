@@ -17,6 +17,16 @@
 		readonly="true"
         />
 
+        <field 
+                name="producttype_id" 
+                type="sql" 
+                default="0" 
+                label="COM_UVELIR_PRODUCTTYPE" 
+                query="SELECT id, name FROM #__uvelir_producttypes" 
+                key_field="id" 
+                value_field="name" >        
+                <option value="0">COM_UVELIR_SELECT_PRODUCTTYPE</option>
+	</field>
 	<field
 		name="path"
 		type="text"
