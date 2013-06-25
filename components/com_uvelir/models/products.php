@@ -234,6 +234,12 @@ class UvelirModelProducts extends JModelList {
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
+        /**
+         * Находим категории и их подкатегории
+         * с наименованием совпадающим с псевдонимом вида изделия
+         * @param string $alias
+         * @return array
+         */
         private function _get_categiry_ids($alias)
         {
             $_query = &$this->_db->getQuery(true);
@@ -241,8 +247,27 @@ class UvelirModelProducts extends JModelList {
             $_query->from('#__uvelir_categories');
             $_query->where('`alias` LIKE "%'.$alias.'%"');
             $this->_db->setQuery($_query);
+            $ar_parents = $this->_db->loadResultArray();
+            $ar_childrens = $this->_get_childrens($ar_parents);
+            
 //            var_dump((string)$_query);
-            return $this->_db->loadResultArray();
-
+            return array_merge($ar_parents, $ar_childrens);
+        }
+        
+        /**
+         * Находим подкатегории списка категорий
+         * @param array $ar_parents
+         * @return array
+         */
+        private function _get_childrens($ar_parents)
+        {
+            $_query = &$this->_db->getQuery(true);
+            $_query->select('id');
+            $_query->from('#__uvelir_categories');
+            $_query->where('`parent_id` IN ('.  implode(',', $ar_parents).')');
+            $this->_db->setQuery($_query);
+            $ar_children = $this->_db->loadResultArray();
+            return $ar_children;
+            
         }
 }

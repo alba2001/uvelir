@@ -50,6 +50,11 @@ class UvelirHelper
 			'index.php?option=com_uvelir&view=productvids',
 			$vName == 'productvids'
 		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_UVELIR_PRODUCTTYPES'),
+			'index.php?option=com_uvelir&view=producttypes',
+			$vName == 'producttypes'
+		);
 
 	}
 

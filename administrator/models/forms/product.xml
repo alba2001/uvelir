@@ -19,6 +19,11 @@
                 filter="raw"
                 size="80"
                 maxlength="255" /> 
+        <field name="path" type="text" default="" 
+                label="COM_UVELIR_PRODUCT_PATH"
+                readonly="true" class="readonly"
+                size="90"
+                description="COM_UVELIR_PRODUCT_PATH_DESC" /> 
         <field name="artikul" type="text" default="" 
                 label="COM_UVELIR_ARTIKUL"
                 readonly="true" class="readonly"

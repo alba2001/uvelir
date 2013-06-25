@@ -8,6 +8,7 @@
  */
 // no direct access
 defined('_JEXEC') or die;
+
 //var_dump($this->item);
 ?>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm" class="items-wrapper">
@@ -19,7 +20,7 @@ defined('_JEXEC') or die;
             $src = $desc->img_small;
             $novinka = ($item->novinka_dt > date('d.m.Y'))?'new':'';
             $spets_predl = $item->spets_predl?'spets_predl':'';
-
+            
             // Обработка корзины
             if(isset($this->caddy[$item->id]))
             {
@@ -32,10 +33,8 @@ defined('_JEXEC') or die;
                 $btn_del_style = $count_li_style = 'style="display:none"';
             }
         ?>
-	            <div class="com_uvelir_item <?=$spets_predl?>">
-					<? if ( !empty($novinka) ){ ?>
-						<span class="<?=$novinka?>"></span>
-					<?}?>
+	            <div class="com_uvelir_item <?=$novinka.' '.$spets_predl?>">
+
 	                <div class="image">
 	                	<a href="<?=$href;?>">
 	                    	<img src="<?=$src?>" atl="<?=$item->name?>"/>
@@ -48,23 +47,18 @@ defined('_JEXEC') or die;
 	                </a>
 
 	                <div class="price">
-	                    <?php if(isset($item->cena_mag) AND $item->cena_mag):?>
+                            <?php $prises = ComponentHelper::getPrices($item->id); ?>
 	                    <div>
 	                        <?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
-	                        <span class="line-through"><?=$item->cena_mag?></span>
+	                        <span class="line-through"><?=$prises['cena_mag']?></span>
 	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
-	                    <?php endif;?>
-
 	                    </div>
 
-
-	                    <?php if(isset($item->cena_tut) AND $item->cena_tut):?>
 	                    <div>
 	                        <?= JText::_('COM_UVELIR_CENA_TUT').': <br>' ?>
-	                        <span><?=$item->cena_tut?></span>
+	                        <span><?=$prises['cena_tut']?></span>
 	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
 	                    </div>
-	                    <?php endif;?>
 	                </div>
 
 					<div class="show">
@@ -122,4 +116,3 @@ defined('_JEXEC') or die;
     <input type="hidden" name="products_group" value="<?=$this->products_group?>" />
     <?php echo JHtml::_('form.token'); ?>
 </form>
-<div id="uvelir_debud"></div>

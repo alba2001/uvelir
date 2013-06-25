@@ -26,20 +26,31 @@ $document->addStyleSheet('components/com_uvelir/assets/css/uvelir.css');
                 
 				<li><?php echo $this->form->getLabel('id'); ?>
 				<?php echo $this->form->getInput('id'); ?></li>
+                                
 				<li><?php echo $this->form->getLabel('parent_id'); ?>
 				<?php echo $this->form->getInput('parent_id'); ?></li>
+                                
+				<li><?php echo $this->form->getLabel('producttype_id'); ?>
+				<?php echo $this->form->getInput('producttype_id'); ?></li>
+                                
 				<li><?php echo $this->form->getLabel('name'); ?>
 				<?php echo $this->form->getInput('name'); ?></li>
+                                
 				<li><?php echo $this->form->getLabel('alias'); ?>
 				<?php echo $this->form->getInput('alias'); ?></li>
+                                
 				<li><?php echo $this->form->getLabel('path'); ?>
 				<?php echo $this->form->getInput('path'); ?></li>
+                                
 				<li><?php echo $this->form->getLabel('source_url'); ?>
 				<?php echo $this->form->getInput('source_url'); ?></li>
+                                
 				<li><?php echo $this->form->getLabel('img'); ?>
 				<?php echo $this->form->getInput('img'); ?></li>
+                                
 				<li><?php echo $this->form->getLabel('note'); ?>
 				<?php echo $this->form->getInput('note'); ?></li>
+                                
 				<li><?php echo $this->form->getLabel('description'); ?>
 				<?php echo $this->form->getInput('description'); ?></li>
             </ul>

@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS `#__uvelir_products_1`;
 DROP TABLE IF EXISTS `#__uvelir_products_2`;
 DROP TABLE IF EXISTS `#__uvelir_categories`;
 DROP TABLE IF EXISTS `#__uvelir_productvids`;
+DROP TABLE IF EXISTS `#__uvelir_producttypes`;
 DROP TABLE IF EXISTS `#__uvelir_oplata`;
 DROP TABLE IF EXISTS `#__uvelir_dostavka`;
 DROP TABLE IF EXISTS `#__uvelir_zavods`;

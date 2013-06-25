@@ -20,12 +20,14 @@ class UvelirViewCategories extends JView
 	protected $items;
 	protected $pagination;
 	protected $state;
+	protected $model;
 
 	/**
 	 * Display the view
 	 */
 	public function display($tpl = null)
 	{
+		$this->model		= $this->getModel();
 		$this->state		= $this->get('State');
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');

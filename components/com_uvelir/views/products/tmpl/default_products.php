@@ -8,6 +8,7 @@
  */
 // no direct access
 defined('_JEXEC') or die;
+
 //var_dump($this->item);
 ?>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm" class="items-wrapper">
@@ -46,23 +47,19 @@ defined('_JEXEC') or die;
 	                </a>
 
 	                <div class="price">
-	                    <?php if(isset($item->cena_mag) AND $item->cena_mag):?>
+                            <?php $prises = ComponentHelper::getPrices($item->id); ?>
+                            <?php var_dump($prises);?>
 	                    <div>
 	                        <?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
-	                        <span class="line-through"><?=$item->cena_mag?></span>
+	                        <span class="line-through"><?=$prises['cena_mag']?></span>
 	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
-	                    <?php endif;?>
-
 	                    </div>
 
-
-	                    <?php if(isset($item->cena_tut) AND $item->cena_tut):?>
 	                    <div>
 	                        <?= JText::_('COM_UVELIR_CENA_TUT').': <br>' ?>
-	                        <span><?=$item->cena_tut?></span>
+	                        <span><?=$prises['cena_tut']?></span>
 	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
 	                    </div>
-	                    <?php endif;?>
 	                </div>
 
 					<div class="show">

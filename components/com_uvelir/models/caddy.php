@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 //jimport('joomla.application.component.model');
 require_once dirname(__FILE__) . '/kmodelform.php'; 
+require_once JPATH_COMPONENT_ADMINISTRATOR.'/helpers/component.php';
 /**
  * Uvelir model.
  */
@@ -91,11 +92,12 @@ class UvelirModelCaddy extends ModelKModelform
         foreach ($caddy as $key=>$value)
         {
             $product_data = $this->_get_product_data($key);
+            $prises = ComponentHelper::getPrices($key);
             $body .= '<tr>';
             $body .= '<td><img src="'.$product_data['img_src'].'"/><b>'
                     .$product_data['artikul'].'</b></td>';
             $body .= '<td>'.$value['count'].'</td>';
-            $body .= '<td>'.$product_data['cena_tut'].'</td>';
+            $body .= '<td>'.$prises['cena_tut'].'</td>';
             $body .= '<td>'.$value['sum'].'</td>';
             $body .= '</tr>';
         }
@@ -177,6 +179,7 @@ class UvelirModelCaddy extends ModelKModelform
      */
     private function _get_product_data($id)
     {
+        $prises = ComponentHelper::getPrices($id);
         $result = array(
                'artikul'=>'',
                'img_src'=>'',
@@ -189,7 +192,7 @@ class UvelirModelCaddy extends ModelKModelform
            $result = array(
                'artikul'=>$product->artikul,
                'img_src'=>$desc->img_small,
-               'cena_tut'=>$product->cena_tut
+               'cena_tut'=>$prises['cena_tut']
            );
        }
        return $result;
@@ -202,6 +205,7 @@ class UvelirModelCaddy extends ModelKModelform
     public function add()
     {
         $item_id = JRequest::getInt('item_id');
+        $prises = ComponentHelper::getPrices($item_id);
         
         // Проверк на наличие ИД завода и ИД товара
         if(!$item_id)
@@ -221,12 +225,12 @@ class UvelirModelCaddy extends ModelKModelform
         if(!isset($caddy[$product->id]))
         {
             $caddy[$product->id]['count'] = 1;
-            $caddy[$product->id]['sum'] = $product->cena_tut;
+            $caddy[$product->id]['sum'] = $prises['cena_tut'];
         }
         else
         {
             $caddy[$product->id]['count']++;
-            $caddy[$product->id]['sum'] += $product->cena_tut;
+            $caddy[$product->id]['sum'] += $prises['cena_tut'];
         }
         JFactory::getApplication()->setUserState('com_uvelir.caddy', $caddy);
 //        var_dump($_SESSION);
@@ -243,6 +247,7 @@ class UvelirModelCaddy extends ModelKModelform
     public function del()
     {
         $item_id = JRequest::getInt('item_id');
+        $prises = ComponentHelper::getPrices($item_id);
         
         // Проверк на наличие ИД завода и ИД товара
         if(!$item_id)
@@ -262,7 +267,7 @@ class UvelirModelCaddy extends ModelKModelform
         if(isset($caddy[$product->id]))
         {
             $caddy[$product->id]['count']--;
-            $caddy[$product->id]['sum'] -= $product->cena_tut;
+            $caddy[$product->id]['sum'] -= $prises['cena_tut'];
             if($caddy[$product->id]['count'] < 1)
             {
                 unset($caddy[$product->id]);
@@ -322,6 +327,7 @@ class UvelirModelCaddy extends ModelKModelform
                 $product = $this->getTable('product');
                 if($product->load($id))
                 {
+                    $prises = ComponentHelper::getPrices($id);
                     $zavod = $this->getTable('zavod');
                     $zavod_name = $zavod->load($product->zavod_id)?$zavod->name:'';
                     $desc = json_decode($product->desc);
@@ -332,7 +338,7 @@ class UvelirModelCaddy extends ModelKModelform
                         'artikul'=>$product->artikul,
                         'name'=>$product->name,
                         'src'=>$desc->img_small,
-                        'price'=>$product->cena_tut,
+                        'price'=>$prises['cena_tut'],
                         'count'=>$value['count'],
                         'sum'=>$value['sum'],
                         'path'=>$this->_get_path($product->category_id),
@@ -381,8 +387,9 @@ class UvelirModelCaddy extends ModelKModelform
                 $product = $this->getTable('product');
                 if($product->load($item_id))
                 {
+                    $prises = ComponentHelper::getPrices($item_id);
                     $caddy[$item_id]['count'] = $count;
-                    $caddy[$item_id]['sum'] = $product->cena_tut*$count;
+                    $caddy[$item_id]['sum'] = $prises['cena_tut']*$count;
                 }
             }
         }

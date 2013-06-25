@@ -26,8 +26,48 @@ JHtml::_('behavior.keepalive');
 		}
 	}
 </script>
-
+<style type="text/css">
+    fieldset.adminform dt{
+        min-width: 30%;
+        max-width: 50%;
+        width: 50%;
+        padding: 0 5px 0 0;
+        float: left;
+        clear: left;
+        display: block;
+        margin: 5px 0;        
+    }
+    fieldset.adminform dd{
+        float: left;
+        width: auto;
+        margin: 5px 5px 5px 0;
+        font-weight: bold;
+    }
+</style>
+<?php if($this->prises):?>
+<?php endif;?>
 <form action="<?php echo JRoute::_('index.php?option=com_uvelir&layout=edit&id='.(int) $this->item->id); ?>" method="post" enctype="multipart/form-data" name="adminForm" id="product-form" class="form-validate">
+	<div class="width-40 fltlft left">
+            <fieldset class="adminform">
+                <legend><?php echo JText::_('COM_UVELIR_CENA_PRICE'); ?></legend>
+                <dl>
+                    <dt><?php echo JText::_('COM_UVELIR_PRODUCT_TYPE_NUME'); ?></dt>
+                    <dd><?=$this->prises['producttype_name']?></dd>
+
+                    <dt><?php echo JText::_('COM_UVELIR_PRODUCT_PRICE_MAG'); ?></dt>
+                    <dd><?=$this->prises['price_mag']?></dd>
+
+                    <dt><?php echo JText::_('COM_UVELIR_PRODUCT_PRICE_TUT'); ?></dt>
+                    <dd><?=$this->prises['price_tut']?></dd>
+
+                    <dt><?php echo JText::_('COM_UVELIR_PRODUCT_CENA_MAG'); ?></dt>
+                    <dd><?=$this->prises['cena_mag']?></dd>
+
+                    <dt><?php echo JText::_('COM_UVELIR_PRODUCT_CENA_TUT'); ?></dt>
+                    <dd><?=$this->prises['cena_tut']?></dd>
+                </dl>
+            </fieldset>
+        </div>
 	<div class="width-60 fltlft left">
 	<?php $fields = $this->form->getFieldset('product');?>
 	<?php if (count($fields)):?>

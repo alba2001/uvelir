@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
+require_once JPATH_COMPONENT.'/helpers/component.php';
 
 /**
  * View to edit
@@ -20,6 +21,7 @@ class UvelirViewProduct extends JView
 	protected $state;
 	protected $item;
 	protected $form;
+        protected $prises;
 
 	/**
 	 * Display the view
@@ -28,9 +30,11 @@ class UvelirViewProduct extends JView
 	{
 		$this->state = $this->get('State');
 		$this->item = $this->get('Item');
+                $this->prises = array();
                 if($this->item->id)
                 {
                     JFactory::getApplication()->setUserState('com_uvelir.product_id',$this->item->id);
+                    $this->prises = ComponentHelper::getPrices($this->item->id);
                 }
 		$this->form = $this->get('Form');
 
@@ -65,7 +69,7 @@ class UvelirViewProduct extends JView
                 $checkedOut = false;
             }
             $img = json_decode($this->item->desc)->img_small;
-            JToolBarHelper::title('<img src="'.$img.'"/> '.$this->item->artikul, $img) ;
+            JToolBarHelper::title('<img height="100" width="100" src="'.$img.'"/> '.$this->item->artikul, $img) ;
             JToolBarHelper::apply('product.apply', 'JTOOLBAR_APPLY');
             JToolBarHelper::save('product.save', 'JTOOLBAR_SAVE');
             JToolBarHelper::custom('product.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);

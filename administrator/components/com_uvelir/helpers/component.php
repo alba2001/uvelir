@@ -93,6 +93,58 @@ class ComponentHelper
 	}
         
         /**
+         * Стоимость изделия с учетом его среднего веса и типа товара
+         * @param int $product_id
+         * @param int $category_id
+         * @return array 
+         */
+	public static function getPrices($product_id)
+	{
+            $result = array(
+                'cena_mag'=>'0',
+                'cena_tut'=>'0',
+                'price_mag'=>'',
+                'price_tut'=>'',
+                'producttype_name'=>'',
+            );
+            $product = self::getTable('Product');
+            $category = self::getTable('Category');
+            $producttype = self::getTable('Producttype');
+            if($product->load($product_id))
+            {
+                if((int)$product->cena_mag OR (int)$product->cena_tut)
+                {
+                    $result['cena_mag'] = $product->cena_mag;
+                    $result['cena_tut'] = $product->cena_tut;
+                }
+                else
+                {
+                    if($category->load($product->category_id))
+                    {
+                        if($category->producttype_id AND $product->average_weight AND $producttype->load($category->producttype_id))
+                        {
+                            $cena_mag_per_g = $producttype->cena_mag;
+                            $cena_tut_per_g = $producttype->cena_tut;
+                            $average_weights = explode(',', $product->average_weight);
+                            for ($i = 0; $i < count ($average_weights); $i++)
+                            {
+                                $average_weight = $average_weights[$i];
+                                $cena_mag[$i] = round($average_weight*$cena_mag_per_g,2);
+                                $cena_tut[$i] = round($average_weight*$cena_tut_per_g,2);
+                            }
+                            $result['cena_mag'] = implode(',', $cena_mag);
+                            $result['cena_tut'] = implode(',', $cena_tut);
+                            $result['price_mag'] = $producttype->cena_mag;
+                            $result['price_tut'] = $producttype->cena_tut;
+                            $result['producttype_name'] = $producttype->name;
+                        }
+                    }
+                }
+            }
+            return $result;
+	}
+        
+        /**
          * Наименование категории с путем
          * @param int $category_id
          * @return string
