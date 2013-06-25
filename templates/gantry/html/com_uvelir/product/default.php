@@ -51,7 +51,17 @@ $desc = json_decode($this->item->desc);
 	        rel="{handler: 'iframe'}">
 	        <img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>
 	        </a>
-	        <!-- social block-->
+        </div>
+
+        <div class="social-block">
+        	<?
+	        	jimport('joomla.application.module.helper');
+	        	// this is where you want to load your module position
+	        	$modules = JModuleHelper::getModules('product-special');
+	        	foreach($modules as $module){
+		        	echo JModuleHelper::renderModule($module);
+	        	}
+        	?>
         </div>
 
 	    <table class="fields_list">

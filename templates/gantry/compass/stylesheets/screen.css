@@ -1196,7 +1196,7 @@ body h3 {
   display: table;
   float: left;
   height: 400px;
-  margin-bottom: 46px;
+  margin-bottom: 20px;
   margin-right: 20px;
   overflow: hidden;
   text-align: center;
@@ -1223,71 +1223,75 @@ body h3 {
       max-width: 400px;
       min-height: 400px; }
 /* line 29, ../sass/main/com_uvelir_product.scss */
+.item_fields .social-block {
+  clear: both;
+  float: left; }
+/* line 33, ../sass/main/com_uvelir_product.scss */
 .item_fields .fields_list {
   font-size: 12px; }
   @media only screen and (max-width: 1240px) {
-    /* line 29, ../sass/main/com_uvelir_product.scss */
+    /* line 33, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 315px; } }
   @media only screen and (min-width: 1241px) and (max-width: 1499px) {
-    /* line 29, ../sass/main/com_uvelir_product.scss */
+    /* line 33, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 420px; } }
   @media only screen and (min-width: 1500px) {
-    /* line 29, ../sass/main/com_uvelir_product.scss */
+    /* line 33, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list {
       width: 640px; } }
-  /* line 34, ../sass/main/com_uvelir_product.scss */
+  /* line 38, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list tr {
     border-bottom: 1px solid #E4D8BE; }
-    /* line 40, ../sass/main/com_uvelir_product.scss */
+    /* line 44, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list tr td {
       padding: 0px 12px;
       height: 46px;
       width: 50%; }
-      /* line 45, ../sass/main/com_uvelir_product.scss */
+      /* line 49, ../sass/main/com_uvelir_product.scss */
       .item_fields .fields_list tr td .left,
       .item_fields .fields_list tr td .gold {
         color: #a89059; }
-      /* line 48, ../sass/main/com_uvelir_product.scss */
+      /* line 52, ../sass/main/com_uvelir_product.scss */
       .item_fields .fields_list tr td .small {
         font-size: 16px; }
-        /* line 50, ../sass/main/com_uvelir_product.scss */
+        /* line 54, ../sass/main/com_uvelir_product.scss */
         .item_fields .fields_list tr td .small .ruble {
           font-size: 14px; }
-      /* line 54, ../sass/main/com_uvelir_product.scss */
+      /* line 58, ../sass/main/com_uvelir_product.scss */
       .item_fields .fields_list tr td .big {
         font-size: 24px; }
-        /* line 56, ../sass/main/com_uvelir_product.scss */
+        /* line 60, ../sass/main/com_uvelir_product.scss */
         .item_fields .fields_list tr td .big .ruble {
           font-size: 16px; }
-      /* line 60, ../sass/main/com_uvelir_product.scss */
+      /* line 64, ../sass/main/com_uvelir_product.scss */
       .item_fields .fields_list tr td .black {
         color: #000; }
-  /* line 71, ../sass/main/com_uvelir_product.scss */
+  /* line 75, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list .bottom tr.size {
     background: #f6dd97;
     margin-bottom: 28px; }
-    /* line 74, ../sass/main/com_uvelir_product.scss */
+    /* line 78, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list .bottom tr.size span {
       text-transform: uppercase;
       color: #494949; }
-    /* line 79, ../sass/main/com_uvelir_product.scss */
+    /* line 83, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list .bottom tr.size select {
       width: 100%;
       margin-top: 4px;
       height: 25px;
       color: #98834F; }
-  /* line 87, ../sass/main/com_uvelir_product.scss */
+  /* line 91, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list .bottom tr.separatorBig td {
     height: 30px; }
-  /* line 92, ../sass/main/com_uvelir_product.scss */
+  /* line 96, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list .bottom tr.separatorSmall td {
     height: 20px; }
-  /* line 96, ../sass/main/com_uvelir_product.scss */
+  /* line 100, ../sass/main/com_uvelir_product.scss */
   .item_fields .fields_list .bottom tr .buttons {
     text-align: center; }
-    /* line 100, ../sass/main/com_uvelir_product.scss */
+    /* line 104, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list .bottom tr .buttons .removeButton,
     .item_fields .fields_list .bottom tr .buttons .addButton {
       -moz-border-radius-bottomleft: 3px;
@@ -1314,7 +1318,7 @@ body h3 {
       position: relative;
       text-align: center;
       margin: 4px; }
-    /* line 115, ../sass/main/com_uvelir_product.scss */
+    /* line 119, ../sass/main/com_uvelir_product.scss */
     .item_fields .fields_list .bottom tr .buttons .removeButton {
       display: none; }
 
@@ -1986,53 +1990,54 @@ body h3 {
 
 /* line 89, ../sass/screen.scss */
 body {
+  min-width: 1082px;
   background: #f7f2e1 url(../images/strips.png) no-repeat;
   color: #494949;
   background-position: 50% -55px; }
-  /* line 93, ../sass/screen.scss */
+  /* line 94, ../sass/screen.scss */
   body.glavnaya {
     background-position: 50% 0px; }
 
-/* line 98, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 #rt-top-surround #rt-top {
   background-position: 0 -73px;
   background-repeat: repeat-x;
   min-width: 990px;
   width: 100%;
   z-index: 100; }
-  /* line 104, ../sass/screen.scss */
+  /* line 105, ../sass/screen.scss */
   #rt-top-surround #rt-top .rt-block {
     margin: 0;
     padding: 0; }
-  /* line 108, ../sass/screen.scss */
+  /* line 109, ../sass/screen.scss */
   #rt-top-surround #rt-top .main.menu {
     margin-bottom: 20px;
     margin-top: 0; }
-    /* line 116, ../sass/screen.scss */
+    /* line 117, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li a {
       color: #f6df98;
       font-size: 13px;
       font-weight: normal;
       padding: 0 10px; }
-      /* line 121, ../sass/screen.scss */
+      /* line 122, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li a:hover {
         text-decoration: none;
         color: #fff; }
-      /* line 125, ../sass/screen.scss */
+      /* line 126, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li a:before {
         content: none; }
-    /* line 129, ../sass/screen.scss */
+    /* line 130, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li.separator {
       background-position: 0 -23px;
       display: block;
       height: 50px;
       margin: 0 auto;
       width: 3px; }
-    /* line 137, ../sass/screen.scss */
+    /* line 138, ../sass/screen.scss */
     #rt-top-surround #rt-top .main.menu li.parent ul {
       background: #262626;
       margin-left: -14px; }
-      /* line 141, ../sass/screen.scss */
+      /* line 142, ../sass/screen.scss */
       #rt-top-surround #rt-top .main.menu li.parent ul li a {
         border-bottom: 1px dotted #f6df98; }
     /* line 5, ../sass/main/mixins.scss */
@@ -2055,109 +2060,109 @@ body {
       /* line 11, ../sass/main/mixins.scss */
       #rt-top-surround #rt-top .main.menu > li > a:hover:hover a {
         color: #FFF; }
-/* line 157, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 #rt-top-surround #rt-header .logo-block {
   margin-bottom: 22px; }
-/* line 162, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-clock,
 #rt-top-surround #rt-header .workphone .icons-phone {
   float: left; }
-/* line 165, ../sass/screen.scss */
+/* line 166, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-clock {
   margin: 13px 10px 0 0; }
-/* line 168, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .icons-phone {
   margin: 7px 10px 0 0; }
-/* line 172, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left,
 #rt-top-surround #rt-header .workphone .right {
   width: 210px; }
-/* line 177, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left .gold {
   font-size: 12px; }
-/* line 180, ../sass/screen.scss */
+/* line 181, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .left .black {
   font-size: 22px; }
-/* line 185, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .right .gold {
   font-size: 11px; }
-/* line 188, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .right .black {
   font-size: 14px; }
-/* line 192, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .gold {
   display: block;
   color: #c5b07d; }
-/* line 196, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 #rt-top-surround #rt-header .workphone .black {
   color: #000; }
 
-/* line 203, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 #rt-showcase .rt-block {
   padding-top: 0; }
 
-/* line 208, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
 #rt-transition #rt-content-top {
   position: absolute;
   top: -35px;
   left: 0;
   width: 100%; }
-/* line 219, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 .icon.trigger {
   width: 30px;
   height: 34px;
   position: absolute;
   top: -6px;
   left: 0px; }
-/* line 226, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 .link {
   margin-left: 30px; }
-/* line 229, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li h4 a {
   display: inline-block;
   vertical-align: baseline;
   zoom: 1;
   *display: inline;
   *vertical-align: auto; }
-  /* line 231, ../sass/screen.scss */
+  /* line 232, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a ul.accordion li h4 a:before {
     width: 0;
     padding: 0;
     margin: 0; }
-/* line 239, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a ul.accordion li .sub ul {
   margin: 0; }
-  /* line 242, ../sass/screen.scss */
+  /* line 243, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a ul.accordion li .sub ul li {
     margin-left: 13px; }
-    /* line 244, ../sass/screen.scss */
+    /* line 245, ../sass/screen.scss */
     #rt-transition #rt-sidebar-a ul.accordion li .sub ul li.separator {
       margin: 6px 0px;
       border-bottom: 1px solid #e4d8be; }
-/* line 256, ../sass/screen.scss */
+/* line 257, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu a {
   font-size: 12px; }
-  /* line 258, ../sass/screen.scss */
+  /* line 259, ../sass/screen.scss */
   #rt-transition #rt-sidebar-a .menu a:before {
     margin-right: 27px; }
-/* line 263, ../sass/screen.scss */
+/* line 264, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu li.separator {
   margin: 6px 0px;
   border-bottom: 1px solid #e4d8be; }
-/* line 267, ../sass/screen.scss */
+/* line 268, ../sass/screen.scss */
 #rt-transition #rt-sidebar-a .menu li:before {
   margin: 5px 0 0 10px; }
 
-/* line 275, ../sass/screen.scss */
+/* line 276, ../sass/screen.scss */
 #rt-bottom .rt-container {
   border-bottom: 3px solid #e4d8be;
   margin-bottom: 25px;
   padding-bottom: 14px; }
-  /* line 280, ../sass/screen.scss */
+  /* line 281, ../sass/screen.scss */
   #rt-bottom .rt-container .rt-grid-3,
   #rt-bottom .rt-container .rt-grid-2 {
     width: 20%; }
-  /* line 283, ../sass/screen.scss */
+  /* line 284, ../sass/screen.scss */
   #rt-bottom .rt-container h2 {
     color: #191919;
     font-size: 14px;
@@ -2165,49 +2170,49 @@ body {
     padding: 0;
     text-transform: uppercase;
     font-weight: bold; }
-  /* line 293, ../sass/screen.scss */
+  /* line 294, ../sass/screen.scss */
   #rt-bottom .rt-container .menu a {
     font-size: 11.03px; }
 
-/* line 300, ../sass/screen.scss */
+/* line 301, ../sass/screen.scss */
 #rt-footer-surround #rt-footer {
   color: #494949;
   font-size: 12px;
   padding-bottom: 36px; }
-  /* line 304, ../sass/screen.scss */
+  /* line 305, ../sass/screen.scss */
   #rt-footer-surround #rt-footer p {
     margin-bottom: 6px; }
-  /* line 307, ../sass/screen.scss */
+  /* line 308, ../sass/screen.scss */
   #rt-footer-surround #rt-footer ul {
     list-style: none;
     list-style-type: none;
     margin: 10px 0px; }
-    /* line 311, ../sass/screen.scss */
+    /* line 312, ../sass/screen.scss */
     #rt-footer-surround #rt-footer ul li {
       float: left;
       margin-right: 7px; }
-  /* line 316, ../sass/screen.scss */
+  /* line 317, ../sass/screen.scss */
   #rt-footer-surround #rt-footer span {
     color: #c5b07d; }
-  /* line 319, ../sass/screen.scss */
+  /* line 320, ../sass/screen.scss */
   #rt-footer-surround #rt-footer .phone {
     font-size: 22px; }
 
-/* line 328, ../sass/screen.scss */
+/* line 329, ../sass/screen.scss */
 .homepage #rt-header .workphone .left,
 .homepage #rt-header .workphone .right {
   margin-bottom: 6px; }
-/* line 332, ../sass/screen.scss */
+/* line 333, ../sass/screen.scss */
 .homepage #rt-header .workphone .right .black {
   text-transform: lowercase; }
 
-/* line 340, ../sass/screen.scss */
+/* line 341, ../sass/screen.scss */
 .page .logo-block {
   float: left; }
-/* line 344, ../sass/screen.scss */
+/* line 345, ../sass/screen.scss */
 .page #rt-header .workphone {
   float: right; }
-  /* line 347, ../sass/screen.scss */
+  /* line 348, ../sass/screen.scss */
   .page #rt-header .workphone .left,
   .page #rt-header .workphone .right {
     float: left; }

@@ -9,7 +9,7 @@
 		display: table;
 		float: left;
 		height: 400px;
-		margin-bottom: 46px;
+		margin-bottom: 20px;
 		margin-right: 20px;
 		overflow: hidden;
 		text-align: center;
@@ -25,6 +25,10 @@
 				min-height: 400px;
 			}
 		}
+	}
+	.social-block{
+		clear: both;
+		float: left;
 	}
 	.fields_list{
 		font-size: 12px;

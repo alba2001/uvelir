@@ -40,6 +40,7 @@
         <folder>js</folder>
     </files>
     <positions>
+        <position>product-special</position>
         <position>analytics</position>
         <position>drawer</position>
         <position>top-a</position>
