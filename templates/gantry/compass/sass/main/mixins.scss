@@ -50,6 +50,20 @@
 		}
 	}
 }
+@mixin pinkButton2{
+	@include border-bottom-radius(3px);
+	@include border-top-radius(3px);
+	@include filter-sprite(pink);
+	@include box-shadow(rgba(#000, 0.2) 0px 4px 16px);
+	border:none;
+	color: #FFF;
+	font-size: 12px;
+	height: 32px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	margin: 4px;
+}
 @mixin pinkButton{
 	@include filter-sprite(pink);
 	@include box-shadow(rgba(#000, 0.2) 0px 4px 16px);

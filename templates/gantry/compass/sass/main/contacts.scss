@@ -1,0 +1,13 @@
+.Chronoform{
+	.ccms_form_element{
+		textarea,
+		input[type="text"]{
+			width: 280px;
+		}
+	}
+	.cfdiv_submit{
+		input{
+			@include pinkButton2;
+		}
+	}
+}
