@@ -53,8 +53,11 @@ $menu-bg-repeat: repeat-x;
 @import "main/mod_breadcrumbs";
 @import "main/system-message";
 @import "main/toTop";
+@import "main/contacts";
 @import "helpers/pagination";
+@import "helpers/chronoform";
 
+input[type="submit"],
 input[type="button"],
 button{
 	@include pressed();
