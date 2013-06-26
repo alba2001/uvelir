@@ -1,0 +1,20 @@
+.component-content{
+	.pagination{
+		.limit{
+			select{
+				vertical-align: baseline;
+				margin: 8px 8px 14px;
+			}
+		}
+		ul{
+			li{
+				span,
+				a{
+					line-height: 1.1em;
+				}
+			}
+		}
+		.counter{
+		}
+	}
+}
