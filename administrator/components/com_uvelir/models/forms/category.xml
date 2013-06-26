@@ -11,11 +11,13 @@
 
 	<field
 		name="parent_id"
-		type="text"
+		type="categories"
 		label="COM_CATEGORIES_FIELD_PARENT_LABEL"
-		class="readonly"
-		readonly="true"
         />
+        <field name="category_id" type="categories" default="0" 
+                label="COM_UVELIR_PRODUCT_CATEGORY"
+                
+                description="COM_UVELIR_PRODUCT_CATEGORY_DESC" /> 
 
         <field 
                 name="producttype_id" 

@@ -20,6 +20,28 @@ class KhtmlHelper
         * @param noting
         * @return object list
         */
+	public static function categories($zavod = 0)
+	{
+            $db = JFactory::getDbo();
+            $query	= $db->getQuery(true);
+
+            // Select the required fields from the table.
+            $query->select('`id` AS value, `name` AS text')
+                    ->from('`#__uvelir_categories`');
+            if($zavod)
+            {
+                $query->where('`zavod` = '.$zavod);
+            }
+                    
+            $db->setQuery($query);
+            return $db->loadObjectList();
+	}
+
+        /**
+        * Список категорий с учетом завода
+        * @param noting
+        * @return object list
+        */
 	public static function zavods()
 	{
             $db = JFactory::getDbo();

@@ -42,8 +42,12 @@ class UvelirModelCategories extends UvelirModelKModelList
     
     protected function populateState($ordering = null, $direction = null) {
         
-        // Load the filter state.
         $app = JFactory::getApplication();
+        
+        // Устанавливаем наименование контекста
+        $app->setUserState('com_uvelir.this_context', $this->context);
+        
+        // Load the filter state.
         $zavod = $app->getUserStateFromRequest($this->context.'.filter.zavod', 'filter_zavod', '2', 'string');
         $this->setState('filter.zavod', $zavod);        
 
@@ -76,7 +80,7 @@ class UvelirModelCategories extends UvelirModelKModelList
                 } 
                 else 
                 {
-                    $search = $db->Quote('%'.$db->escape($search, true).'%');
+                    $search = $this->_db->Quote('%'.$this->_db->escape($search, true).'%');
                     $query->where('( a.name LIKE '.$search.' )');
                 }
             }

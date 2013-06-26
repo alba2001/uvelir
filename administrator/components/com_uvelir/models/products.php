@@ -40,6 +40,7 @@ class UvelirModelProducts extends UvelirModelKModelList
 
         parent::__construct($config);
     }
+    
 
     /**
      * Overload parent populateState function
@@ -50,8 +51,17 @@ class UvelirModelProducts extends UvelirModelKModelList
 
         // Load the filter state.
         $app = JFactory::getApplication();
+
+        // Устанавливаем наименование контекста
+        $app->setUserState('com_uvelir.this_context', $this->context);
+        
+        // Фильтр по заводу
         $zavod = $app->getUserStateFromRequest($this->context.'.filter.zavod', 'filter_zavod', '2', 'string');
         $this->setState('filter.zavod', $zavod);        
+        
+        // Фильтр по категории
+        $category = $app->getUserStateFromRequest($this->context.'.filter.category', 'filter_category', '0', 'string');
+        $this->setState('filter.category', $category);        
 
         // Поиск по артикулу
         $search = $app->getUserStateFromRequest($this->context.'.filter.search_artikul', 'filter_search_artikul');
@@ -90,9 +100,19 @@ class UvelirModelProducts extends UvelirModelKModelList
 	protected function getListQuery()
 	{
             $query = parent::getListQuery();
-            $zavod = $this->getState('filter.zavod', '2');
+            
             $query->from('`#__uvelir_products` AS a');
+            
+            // Фильтр по заводу
+            $zavod = $this->getState('filter.zavod', '2');
             $query->where('zavod_id = '.$zavod);
+
+            // Фильтр по категории
+            $category = $this->getState('filter.category', '0');
+            if($category)
+            {
+                $query->where('category_id = '.$category);
+            }
 
             // Filter by search in title
             $search = $this->getState('filter.search');

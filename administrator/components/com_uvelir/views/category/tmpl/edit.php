@@ -16,6 +16,7 @@ JHtml::_('behavior.keepalive');
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet('components/com_uvelir/assets/css/uvelir.css');
+
 ?>
 
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" enctype="multipart/form-data" name="adminForm" id="category-form" class="form-validate">

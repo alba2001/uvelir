@@ -75,6 +75,9 @@ class UvelirViewProducts extends JView
 		if ($canDo->get('core.edit.state')) {
 
             if (isset($this->items[0]->state)) {
+			    JToolBarHelper::addNew('product.add','JTOOLBAR_NEW');
+			    JToolBarHelper::editList('product.edit','JTOOLBAR_EDIT');
+                
 			    JToolBarHelper::divider();
 			    JToolBarHelper::custom('products.publish', 'publish.png', 'publish_f2.png','JTOOLBAR_PUBLISH', true);
 			    JToolBarHelper::custom('products.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);

@@ -120,102 +120,44 @@ class UvelirModelCategory extends JModelAdmin
 
 		}
 	}
-	/**
-	 * Method to override parent save the form data.
-	 *
-	 * @param   array  $data  The form data.
-	 *
-	 * @return  boolean  True on success, False on error.
-	 *
-	 * @since   11.1
-	 */
-	public function save($data)
-	{
-		// Initialise variables;
-		$dispatcher = JDispatcher::getInstance();
-		$table = $this->getTable();
-                
-                /**
-                 *  По сравнению с родителем добавлен только этот кусочек
-                 */
-                if(isset($data['parent_id']) AND $data['parent_id'])
+
+        public function save($data) {
+            
+            // Если это только создаваемая категория
+            if(!$data['alias'] AND $data['parent_id'])
+            {
+                $data['alias'] = JApplication::stringURLSafe($data['name']);
+                $parent_category_data = $this->get_parent_category_data($data['parent_id']);
+                if($parent_category_data['level'])
                 {
-                    $table->setLocation( $data['parent_id'], 'last-child' );            
+                    $data['level'] = (int)$parent_category_data['level']+1;
+                    $data['path'] = $parent_category_data['path'].'/'.$data['alias'];
+                    $data['zavod'] = $parent_category_data['zavod'];
                 }
-                //---------------------
-                
-		$key = $table->getKeyName();
-		$pk = (!empty($data[$key])) ? $data[$key] : (int) $this->getState($this->getName() . '.id');
-		$isNew = true;
-
-		// Include the content plugins for the on save events.
-		JPluginHelper::importPlugin('content');
-
-		// Allow an exception to be thrown.
-		try
-		{
-			// Load the row if saving an existing record.
-			if ($pk > 0)
-			{
-				$table->load($pk);
-				$isNew = false;
-			}
-
-			// Bind the data.
-			if (!$table->bind($data))
-			{
-				$this->setError($table->getError());
-				return false;
-			}
-
-			// Prepare the row for saving
-			$this->prepareTable($table);
-
-			// Check the data.
-			if (!$table->check())
-			{
-				$this->setError($table->getError());
-				return false;
-			}
-
-			// Trigger the onContentBeforeSave event.
-			$result = $dispatcher->trigger($this->event_before_save, array($this->option . '.' . $this->name, &$table, $isNew));
-			if (in_array(false, $result, true))
-			{
-				$this->setError($table->getError());
-				return false;
-			}
-
-			// Store the data.
-			if (!$table->store())
-			{
-				$this->setError($table->getError());
-				return false;
-			}
-
-			// Clean the cache.
-			$this->cleanCache();
-
-			// Trigger the onContentAfterSave event.
-			$dispatcher->trigger($this->event_after_save, array($this->option . '.' . $this->name, &$table, $isNew));
-		}
-		catch (Exception $e)
-		{
-			$this->setError($e->getMessage());
-
-			return false;
-		}
-
-		$pkName = $table->getKeyName();
-
-		if (isset($table->$pkName))
-		{
-			$this->setState($this->getName() . '.id', $table->$pkName);
-		}
-		$this->setState($this->getName() . '.new', $isNew);
-
-		return true;
-	}
+                $id = $this->_save($data);
+                $this->setState($this->getName() . '.id', $id);
+                return $id;
+            }
+            return parent::save($data);
+        }
+        
+        private function get_parent_category_data($id)
+        {
+            $table = $this->getTable('Category');
+            if($table->load($id))
+            {
+                return array(
+                    'level'=>$table->level,
+                    'path'=>$table->path,
+                    'zavod'=>$table->zavod,
+                );
+            }
+                return array(
+                    'level'=>0,
+                    'path'=>'',
+                    'zavod'=>0,
+                );
+        }
 
         /**
          * Сохраняем категорию, которая создается в автоматическом виде

@@ -65,13 +65,31 @@ class JFormFieldCategories extends JFormFieldList
          */
         private function _get_categories()
         {
-            $category_id = $user_id = $this->value;
-//            $zavod = JRequest::getInt('zavod', '2');
+            $app = JFactory::getApplication();
+
+            $this_context = $app->getUserState('com_uvelir.this_context', 'com_uvelir.products');            
+            
+            $category = $app->getUserStateFromRequest($this_context.'.filter.category', 'filter_category', '0', 'string');
+            $category_id = $this->value?$this->value:$category;
             $result = array();
             // Get the database object.
             $db = JFactory::getDBO();
-//            $query = 'SELECT `id`, `name`, `parent_id` FROM `#__uvelir_categories` WHERE `zavod`='.$zavod;
-            $query = 'SELECT `id`, `name`, `parent_id` FROM `#__uvelir_categories` WHERE `id` = '.$category_id;
+            $query = 'SELECT `id`, `name`, `parent_id` FROM `#__uvelir_categories`';
+            $where = '';
+            if($category_id)
+            {
+                $where = ' WHERE `id` = '.$category_id;
+            }
+            else
+            {
+                $zavod = $app->getUserStateFromRequest($this_context.'.filter.zavod', 'filter_zavod', '0', 'string');
+                if($zavod)
+                {
+                    $where = ' WHERE `zavod` = '.$zavod;
+                }
+            }
+            $query .= $where;
+            $query .= ' ORDER BY `lft`';
             // Set the query and get the result list.
             $db->setQuery($query);
             $items = $db->loadObjectlist();

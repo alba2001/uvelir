@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.keepalive');
+
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
@@ -44,9 +45,8 @@ JHtml::_('behavior.keepalive');
         font-weight: bold;
     }
 </style>
-<?php if($this->prises):?>
-<?php endif;?>
 <form action="<?php echo JRoute::_('index.php?option=com_uvelir&layout=edit&id='.(int) $this->item->id); ?>" method="post" enctype="multipart/form-data" name="adminForm" id="product-form" class="form-validate">
+<?php if($this->prises):?>
 	<div class="width-40 fltlft left">
             <fieldset class="adminform">
                 <legend><?php echo JText::_('COM_UVELIR_CENA_PRICE'); ?></legend>
@@ -68,6 +68,7 @@ JHtml::_('behavior.keepalive');
                 </dl>
             </fieldset>
         </div>
+<?php endif;?>
 	<div class="width-60 fltlft left">
 	<?php $fields = $this->form->getFieldset('product');?>
 	<?php if (count($fields)):?>
@@ -84,6 +85,7 @@ JHtml::_('behavior.keepalive');
 				</li>
 			<?php endif;?>
 		<?php endforeach;?>
+                                    
                     </ul>
 		</fieldset>
 	<?php endif;?>

@@ -86,8 +86,56 @@ class UvelirModelProduct extends JModelAdmin
         public function save_product($data)
         {
             $table = $this->getTable('Product');
-            $table->load(array('alias'=>$data['alias']));
+            $table->load(array('artikul'=>$data['artikul']));
             return $table->save($data);
         }
         
+        /**
+         * Overload parent save method
+         * @param type $data 
+         */
+        public function save($data) 
+        {
+            // Вставляем ИД завода
+            if($data['category_id'] AND !isset($data['zavod_id']))
+            {
+                $data['zavod_id'] = $this->_find_zavod_id($data['category_id']);
+            }
+            
+            // Вставляем дату создания
+            if(!$data['created_dt'])
+            {
+                $data['created_dt'] = date('Y-m-d');
+            }
+            
+            // Вставляем рисунки
+            if(isset($data['product_image']) AND $data['product_image'])
+            {
+                $uri_base = str_replace('administrator/', '',  JURI::base());
+                $img_src = $uri_base.$data['product_image'];
+                $desc = array(
+                        'img_medium'=>$img_src,
+                        'img_large'=>$img_src,
+                        'img_small'=>$img_src,
+                    );
+                $data['desc'] = json_encode($desc);
+                unset($data['product_image']);
+            }
+            return parent::save($data);
+        }
+        
+        /**
+         * Находим ИД завода по ИД категории
+         * @param type $category_id
+         * @return int 
+         */
+        private function _find_zavod_id($category_id)
+        {
+            $table = $this->getTable('category');
+            if($table->load($category_id))
+            {
+                return $table->zavod;
+            }
+            return 0;
+        }
 }

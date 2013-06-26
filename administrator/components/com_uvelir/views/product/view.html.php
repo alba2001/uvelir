@@ -68,7 +68,16 @@ class UvelirViewProduct extends JView
             } else {
                 $checkedOut = false;
             }
-            $img = json_decode($this->item->desc)->img_small;
+            if(isset($this->item->desc))
+            {
+                $img = json_decode($this->item->desc)->img_small;
+                $artikul = $this->item->artikul;
+            }
+            else
+            {
+                $img = JURI::base().'components/com_uvelir/assets/images/l_products.png';
+                $artikul = '';
+            }
             JToolBarHelper::title('<img height="100" width="100" src="'.$img.'"/> '.$this->item->artikul, $img) ;
             JToolBarHelper::apply('product.apply', 'JTOOLBAR_APPLY');
             JToolBarHelper::save('product.save', 'JTOOLBAR_SAVE');

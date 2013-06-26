@@ -40,9 +40,15 @@ $href = 'index.php?option=com_uvelir&view=product';
 
 
         <div class='filter-select fltrt'>
-            <select name="filter_zavod" class="inputbox" onchange="this.form.submit()">
+            <select name="filter_zavod" class="inputbox" onchange="document.getElementById('filter_category').value='0';this.form.submit()">
                 <?php echo JHtml::_('select.options', KhtmlHelper::zavods(), "value", "text", $this->state->get('filter.zavod'), true); ?>
             </select>
+            
+            <select id="filter_category" name="filter_category" class="inputbox" onchange="this.form.submit()">
+                <option value="0"><?php echo JText::_('JOPTION_SELECT_CATEGORIES'); ?></option>
+                <?php echo JHtml::_('select.options', KhtmlHelper::categories($this->state->get('filter.zavod')), "value", "text", $this->state->get('filter.category'), true); ?>
+            </select>
+            
             <select name="filter_published" class="inputbox" onchange="this.form.submit()">
                 <option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED'); ?></option>
 <?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), "value", "text", $this->state->get('filter.state'), true); ?>
