@@ -8,6 +8,7 @@
  */
 // no direct access
 defined('_JEXEC') or die;
+require_once JPATH_COMPONENT.'/helpers/khtml.php';
 
 JHtml::_('behavior.tooltip');
 JHTML::_('script', 'system/multiselect.js', false, true);
@@ -31,6 +32,10 @@ $listDirn = $this->state->get('list.direction');
 
 
         <div class='filter-select fltrt'>
+            <select name="filter_zavod" class="inputbox" onchange="this.form.submit()">
+                <?php echo JHtml::_('select.options', KhtmlHelper::zavods(), "value", "text", $this->state->get('filter.zavod'), true); ?>
+            </select>
+            
             <select name="filter_published" class="inputbox" onchange="this.form.submit()">
                 <option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED'); ?></option>
 <?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), "value", "text", $this->state->get('filter.state'), true); ?>

@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 //jimport('joomla.application.component.model');
 require_once dirname(__FILE__) . '/kmodelform.php'; 
-require_once JPATH_COMPONENT_ADMINISTRATOR.'/helpers/component.php';
+require_once JPATH_ROOT.'/administrator/components/com_uvelir/helpers/component.php';
 /**
  * Uvelir model.
  */

@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 require_once JPATH_COMPONENT.'/helpers/component.php';
+
 /**
  * View class for a list of Uvelir.
  */

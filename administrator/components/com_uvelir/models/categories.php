@@ -41,6 +41,13 @@ class UvelirModelCategories extends UvelirModelKModelList
     }
     
     protected function populateState($ordering = null, $direction = null) {
+        
+        // Load the filter state.
+        $app = JFactory::getApplication();
+        $zavod = $app->getUserStateFromRequest($this->context.'.filter.zavod', 'filter_zavod', '2', 'string');
+        $this->setState('filter.zavod', $zavod);        
+
+        
         parent::populateState('lft', 'asc');
     }
 	/**
@@ -52,8 +59,13 @@ class UvelirModelCategories extends UvelirModelKModelList
 	protected function getListQuery()
 	{
             $query = parent::getListQuery();
+            
             $query->from('`#__uvelir_categories` AS a');
-
+            
+            // Фильтр по заводу
+            $zavod = $this->getState('filter.zavod', '2');
+            $query->where('zavod = '.$zavod);
+            
             // Filter by search in title
             $search = $this->getState('filter.search');
             if (!empty($search)) 
