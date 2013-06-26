@@ -131,6 +131,10 @@ body{
 					&:before{
 						content: none;
 					}
+					@include respond-to(handhelds) {
+						font-size: 11px;
+						padding: 0 4px;
+					}
 				}
 				&.separator{
 					@include menu-sprite(separator);
