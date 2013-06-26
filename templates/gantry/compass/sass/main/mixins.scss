@@ -214,6 +214,14 @@ $seven: 1800px;
 		}
 	}
 }
+@mixin pressed ($p:0.98){
+	&:active{
+		@include box-shadow(none);
+		@include transform(scale($p));
+		position: relative;
+		top: 1px;
+	}
+}
 // .line-through{
 // 	text-decoration: line-through;
 // 	font-weight: bold;
