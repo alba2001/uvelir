@@ -303,7 +303,8 @@ body{
 			@include inline-block;
 			float: none;
 			vertical-align: top;
-			width: initial;
+			width: auto;
+			// width: initial;
 		}
 		.clear{
 			display: none;
