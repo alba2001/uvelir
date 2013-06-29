@@ -51,17 +51,7 @@ $desc = json_decode($this->item->desc);
 	        rel="{handler: 'iframe'}">
 	        <img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>
 	        </a>
-        </div>
-
-        <div class="social-block">
-        	<?
-	        	jimport('joomla.application.module.helper');
-	        	// this is where you want to load your module position
-	        	$modules = JModuleHelper::getModules('product-special');
-	        	foreach($modules as $module){
-		        	echo JModuleHelper::renderModule($module);
-	        	}
-        	?>
+	        <!-- social block-->
         </div>
 
 	    <table class="fields_list">
@@ -144,7 +134,7 @@ $desc = json_decode($this->item->desc);
 		        		</td>
 		        		<td>
 		        			<span class="right">
-			        			<?=$this->item->vstavki?JText::_('COM_UVELIR_PRODUCTS_AVIALABLED'):JText::_('COM_UVELIR_PRODUCTS_NOT_AVIALABLED')?>
+			        			<?=$this->item->available?JText::_('COM_UVELIR_PRODUCTS_AVIALABLED'):JText::_('COM_UVELIR_PRODUCTS_NOT_AVIALABLED')?>
 			        		</span>
 		        		</td>
 		        	</tr>

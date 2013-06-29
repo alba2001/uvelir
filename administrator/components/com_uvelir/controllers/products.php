@@ -21,7 +21,7 @@ class UvelirControllerProducts extends JControllerAdmin
 	 * Proxy for getModel.
 	 * @since	1.6
 	 */
-	public function getModel($name = 'products', $prefix = 'UvelirModel')
+	public function getModel($name = 'product', $prefix = 'UvelirModel')
 	{
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;
@@ -37,7 +37,7 @@ class UvelirControllerProducts extends JControllerAdmin
             
             $cid = JRequest::getVar('cid', array(), '', 'array');
             // Get the model.
-            $model = $this->getModel();
+            $model = $this->getModel('Products');
 
             // Make sure the item ids are integers
             JArrayHelper::toInteger($cid);
@@ -56,7 +56,7 @@ class UvelirControllerProducts extends JControllerAdmin
             
             $cid = JRequest::getVar('cid', array(), '', 'array');
             // Get the model.
-            $model = $this->getModel();
+            $model = $this->getModel('Products');
 
             // Make sure the item ids are integers
             JArrayHelper::toInteger($cid);

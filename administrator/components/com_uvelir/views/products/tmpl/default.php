@@ -191,6 +191,7 @@ foreach ($this->items as $i => $item) :
                 url: $(form).attr('action'),
                 data: $(form).serialize(),
                 success: function(data){
+                    $("form [name=task]").val('');
                     if(data)
                     {
                         $('#cb'+i).attr('checked',false)

@@ -134,7 +134,7 @@ $desc = json_decode($this->item->desc);
 		        		</td>
 		        		<td>
 		        			<span class="right">
-			        			<?=$this->item->vstavki?JText::_('COM_UVELIR_PRODUCTS_AVIALABLED'):JText::_('COM_UVELIR_PRODUCTS_NOT_AVIALABLED')?>
+			        			<?=$this->item->available?JText::_('COM_UVELIR_PRODUCTS_AVIALABLED'):JText::_('COM_UVELIR_PRODUCTS_NOT_AVIALABLED')?>
 			        		</span>
 		        		</td>
 		        	</tr>
