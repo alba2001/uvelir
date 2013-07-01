@@ -122,7 +122,6 @@ class UvelirModelCategory extends JModelAdmin
 	}
 
         public function save($data) {
-            
             // Если это только создаваемая категория
             if(!$data['alias'] AND $data['parent_id'])
             {
@@ -134,6 +133,8 @@ class UvelirModelCategory extends JModelAdmin
                     $data['path'] = $parent_category_data['path'].'/'.$data['alias'];
                     $data['zavod'] = $parent_category_data['zavod'];
                 }
+                $menu_parent_id = $this->menu_find_parent_id($parent_category_data['path']); 
+                JFactory::getApplication()->setUserState('com_uvelir.menu_parent_id', $menu_parent_id);
                 $id = $this->_save($data);
                 $this->setState($this->getName() . '.id', $id);
                 return $id;
@@ -195,10 +196,7 @@ class UvelirModelCategory extends JModelAdmin
                 $keys['zavod'] = $zavod;
             }
             
-//            var_dump($keys);
-//            echo '<hr>';
-//            var_dump($table->load($keys));
-       
+      
             if($table->load($keys))
             {
                 return $table->$field;
@@ -271,8 +269,16 @@ class UvelirModelCategory extends JModelAdmin
         public function create_category($category)
         {
             // ищем родителя пункта меню
-            $parent_menu_path = $category['parent_path']?$category['parent_path']:'com-uvelir';
-            $menu_parent_id = $this->menu_find_parent_id($parent_menu_path); 
+            if($category['parent_path'])
+            {
+                $parent_menu_path = $category['parent_path'];
+                $menu_parent_id = $this->menu_find_parent_id($parent_menu_path); 
+            }
+            else  // Если это категория завода
+            {
+                $parent_menu_path = 'com-uvelir';
+                $menu_parent_id = 1; 
+            }
             JFactory::getApplication()->setUserState('com_uvelir.menu_parent_id', $menu_parent_id);
             
             // Готовим данные категории

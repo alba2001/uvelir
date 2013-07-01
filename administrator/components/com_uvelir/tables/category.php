@@ -57,7 +57,6 @@ class UvelirTableCategory extends UvelirTableNtable {
             // Если это парсинг
             if(isset($src['level']))
             {
-                
                 // Создаем пункт меню с этой категорией
                 $menu = &$this->getTable('menu');
                 // Если еще не создан пункт меню - создаем, если создан - переписываем алиас и путь
@@ -95,11 +94,6 @@ class UvelirTableCategory extends UvelirTableNtable {
                             ->enqueueMessage(JText::_('COM_UVELIR_ERROR_EDIT_MENU_RECORD'), 'error');
                     return FALSE;
                 }
-//            var_dump($data);
-//            echo '<hr>';
-//            var_dump($menu);
-                
-    //            var_dump($data);exit;
                 // Обновляем путь, т.к. он подставляется не правильно
 //                $query = 'UPDATE  `#__menu` SET  `path` =  "'.$this->path.'" , `level` =  "'.$src['level'].'" , `parent_id` =  "'.$menu_parent_id.'" WHERE  `id` ='.$menu->id;
 //                $this->_db->setQuery($query);

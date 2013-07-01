@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modeladmin');
-
+require_once dirname(__FILE__) . '/category.php'; 
 /**
  * Uvelir model.
  */
@@ -58,8 +58,41 @@ class UvelirModelZavod extends JModelAdmin
 
             return $form;
 	}
+        
+        /**
+         * Override parent save method
+         * Добавили возможность создания категории 
+         * при ручном создании завода
+         * @param array $data
+         * @return bolean 
+         */
+        public function save($data) 
+        {
+            if($data['id'])
+            {
+                return parent::save($data);
+            }
+            // Создание нового завода
+            $result = FALSE;
+            if( parent::save($data))
+            {
+                $zavod_id = $this->getState($this->getName() . '.id', 'id');
+                // Создаем категорию для завода
+                $category = array(
+                    'name'=>  $data['name'],
+                    'parent_path'=>'',
+                    'level'=>1,
+                    'zavod'=>$zavod_id,
+                    'parent_id'=>'1',
+                );
+                $category_model = new UvelirModelCategory;
+                // Сохраняем категорию для завода
+                list($result, $category_created) = $category_model->create_category($category);
+            }
+            return $result;
+        }
 
-	/**
+        /**
 	 * Method to get the data that should be injected in the form.
 	 *
 	 * @return	mixed	The data for the form.
@@ -126,12 +159,7 @@ class UvelirModelZavod extends JModelAdmin
         public function parse()
         {
 
-            require_once dirname(__FILE__) . '/category.php'; 
 
-//            $data_2 = JFactory::getApplication()->getUserState('com_uvelir.parse', array());
-//                var_dump($data);
-//                echo '<hr/>';
-//                var_dump($data_2);exit;
             // Определяем ИД завода
             $cids = JRequest::getVar('cid',array(),'','array');
             if(!$cids)
