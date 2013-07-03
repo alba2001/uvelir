@@ -599,7 +599,7 @@ class UvelirParseZavod_6
                     $attr = array();
                     foreach ($tds as $td)
                     {
-                        $attr[] = $td->innertext;
+                        $attr[] = str_replace(',', '.', $td->innertext);
                     }
                     $average_weight = implode(',', $attr);
                 }

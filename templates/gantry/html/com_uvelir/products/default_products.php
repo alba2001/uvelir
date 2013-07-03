@@ -21,13 +21,18 @@ defined('_JEXEC') or die;
             $novinka = ($item->novinka_dt > date('d.m.Y'))?'new':'';
             $spets_predl = $item->spets_predl?'spets_predl':'';
             
-            // Обработка корзины
-            if(isset($this->caddy[$item->id]))
+            // Вычисляем кол-во товаров в корзине без учета размеров
+            $caddy_count = 0;
+            $btn_del_style = $count_li_style = '';
+            foreach($this->caddy as $key=>$value)
             {
-                $btn_del_style = $count_li_style = '';
-                $caddy_count = $this->caddy[$item->id]['count'];
+                /* @var $key string */
+                if(preg_match('/^'.$item->id.'_\d+$/', $key))
+                {
+                    $caddy_count += $value['count'];
+                }
             }
-            else
+            if(!$caddy_count)
             {
                 $caddy_count = 0;
                 $btn_del_style = $count_li_style = 'style="display:none"';
@@ -48,6 +53,7 @@ defined('_JEXEC') or die;
 
 	                <div class="price">
                             <?php $prises = ComponentHelper::getPrices($item->id); ?>
+                            
 	                    <div>
 	                        <?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
 	                        <span class="line-through"><?=$prises['cena_mag']?></span>

@@ -15,16 +15,17 @@ defined('_JEXEC') or die;
 //JHTML::_('behavior.modal', 'a.mymodal', $params);
 
 
-//var_dump($this->item);
+//var_dump($this->item->razmer);
+//var_dump($this->caddy);
 //echo '<hr/>';
 $desc = json_decode($this->item->desc);
 //echo '<hr/>';
 //exit;
     // Обработка корзины
-    if(isset($this->caddy[$this->item->id]))
+    if(isset($this->caddy[$this->item->id.'_0']))
     {
-        $btn_del_style = $count_li_style = '';
-        $caddy_count = $this->caddy[$this->item->id]['count'];
+        $btn_del_style = $count_li_style = 'style="display:inline-block;"';
+        $caddy_count = $this->caddy[$this->item->id.'_0']['count'];
     }
     else
     {
@@ -106,8 +107,9 @@ $desc = json_decode($this->item->desc);
 		        				<?= JText::_('COM_UVELIR_AVERAGE_WEIGHT').': ' ?></span>
 		        		</td>
 		        		<td>
-		        			<span class="right">
-			        			<?=$this->item->average_weight?>
+		        			<span class="right" id="item_average_weight">
+                                                    <?php $average_weights = explode(',', $this->item->average_weight);?>
+			        			<?=$average_weights[0]?>
 			        		</span>
 		        		</td>
 		        	</tr>
@@ -164,11 +166,11 @@ $desc = json_decode($this->item->desc);
 						<span>РАЗМЕР:</span>
 					</td>
 					<td>
-						<select name="size" id="id">
+						<select name="size" id="item_razmer">
 							<?php if(isset($this->item->razmer) AND $this->item->razmer):?>
 								<?$sizes = explode(',', $this->item->razmer)?>
 								<?php foreach ($sizes as $key => $value): ?>
-									<option value="<?=$value?>"><?=$value?></option>
+									<option value="<?=$key?>"><?=$value?></option>
 								<?php endforeach ?>
 		        			<?php else: ?>
 									<option value="0">-</option>
@@ -191,6 +193,7 @@ $desc = json_decode($this->item->desc);
 		        			                option:     'com_uvelir',
 		        			                task:       'caddy.add',
 		        			                item_id:    '<?php echo $this->item->id?>',
+		        			                razmer_key:    $('#item_razmer').val(),
 		        			                '<?php echo JUtility::getToken()?>':'1'
 		        			            }
 		        			       })"
@@ -203,6 +206,7 @@ $desc = json_decode($this->item->desc);
 		        			                option:     'com_uvelir',
 		        			                task:       'caddy.del',
 		        			                item_id:    '<?php echo $this->item->id?>',
+                                                                razmer_key:    $('#item_razmer').val(),
 		        			                '<?php echo JUtility::getToken()?>':'1'
 		        			            }
 		        			       })"
@@ -224,8 +228,10 @@ $desc = json_decode($this->item->desc);
                                         </span>
                                         <br>
                                         <span 	class="black big">
-                                            <?=number_format($prises['cena_tut'], 0, '.', ' ') . ' '?>
-                                        <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                            <span id="item_cena_tut">
+                                                <?=number_format($prises['cena_tut'], 0, '.', ' ') . ' '?>
+                                            </span>
+                                            <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
                                         </span>
 
                                         <br>
@@ -234,8 +240,10 @@ $desc = json_decode($this->item->desc);
                                         </span>
                                         <br>
                                         <span class="gold small">
-                                                <?=number_format($prises['cena_mag'], 0, '.', ' ') . ' '?>
-                                        <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                                <span id="item_cena_mag">
+                                                    <?=number_format($prises['cena_mag'], 0, '.', ' ') . ' '?>
+                                                </span>
+                                                <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
                                         </span>
 
 
@@ -245,9 +253,48 @@ $desc = json_decode($this->item->desc);
 		</table>
 
     </div>
-<?php endif ?>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$(".fancybox").fancybox();
+	jQuery(document).ready(function($) {
+            $(".fancybox").fancybox();
+                
+            // Изменение размера изделия
+            $('#item_razmer').change(function(){
+                var url = '<?=JURI::base()?>index.php';
+                var razmer_key = $(this).val();
+                var cid = '<?=$this->item->id?>'
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        cid: cid,
+                        razmer_key: razmer_key,
+                        option: 'com_uvelir',
+                        task: 'product.change_size',
+                        '<?php echo JUtility::getToken()?>':'1'
+                    },
+                    success: function(html){
+                        console.log(html);
+                        var data = $.parseJSON(html);
+                        $('#item_average_weight').text(data.average_weight);
+                        $('#item_cena_mag').number(data.cena_mag, 0, ',', ' ');
+                        $('#item_cena_tut').number(data.cena_tut, 0, ',', ' ');
+                        if(data.count)
+                        {
+                            $('#count_li_<?php echo $this->item->id; ?>').show();
+                            $('.removeButton').show('slow');
+                            $('#count_span_<?php echo $this->item->id; ?>').text(data.count);
+                        }
+                        else
+                        {
+                            $('#count_li_<?php echo $this->item->id; ?>').hide();
+                            $('.removeButton').hide('slow');
+                            $('#count_span_<?php echo $this->item->id; ?>').text(data.count);
+                        }
+                    }
+                
+                });
+            });
+                
 	});
 </script>
+<?php endif ?>

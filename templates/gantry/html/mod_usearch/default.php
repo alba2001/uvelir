@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 ?>
 <div id="mod_usearch_uvelir">
-    <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="usearchForm" id="usearchForm">
+    <form action="<?php echo JRoute::_('index.php'); ?>" method="get" name="usearchForm" id="usearchForm">
     <div id="mod_usearch_header">
         <h1>ПОДБОР<br><span>ИЗДЕЛИЙ</span></h1>
     </div>
@@ -24,8 +24,9 @@ defined('_JEXEC') or die;
             <td><?=$metal?></td>
             <td><label for="mod_usearch_vstavki"><?php echo JText::_('MOD_USEARCH_VSTAVKI')?></label></td>
             <td><?=$vstavki?></td>
-            <td rowspan="2" class="checkbox"><?=$available?></td>
-            <td rowspan="2" class="label"><label for="mod_usearch_available"><?php echo JText::_('MOD_USEARCH_AVAILABLE')?></label></td>
+            <!--В наличии-->
+            <td rowspan="2"><label for="mod_usearch_available"><?php echo JText::_('MOD_USEARCH_AVAILABLE')?></label></td>
+            <td rowspan="2"><?=$available?></td>
         </tr>
         <tr>
             <td><label for="mod_usearch_razmer"><?php echo JText::_('MOD_USEARCH_RAZMER')?></label></td>

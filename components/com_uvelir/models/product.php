@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.model');
+require_once JPATH_ROOT.'/administrator/components/com_uvelir/helpers/component.php';
 
 /**
  * Uvelir model.
@@ -116,4 +117,41 @@ class UvelirModelProduct extends JModel
         return JTable::getInstance($type, $prefix, $config);
 	}     
  
+        /**
+         * Возвращаем пересчитанные средний вес и сумму изделия
+         * @return array Средний вес и сумма
+         */
+        public function change_size()
+        {
+            $result = array(
+                'average_weight' => 0,
+                'cena_tut' => 0,
+                'cena_mag' => 0,
+                'count' => 0,
+            );
+            $cid = JRequest::getInt('cid', 0);
+            if($cid)
+            {
+                $razmer_key = JRequest::getInt('razmer_key', 0);
+                $table = $this->getTable('Product');
+                if($table->load($cid))
+                {
+                    $average_weights = explode(',', $table->average_weight);
+                    if(isset($average_weights[$razmer_key]))
+                    {
+                        $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
+                        if(isset($caddy[$cid.'_'.$razmer_key]))
+                        {
+                            $result['count'] = $caddy[$cid.'_'.$razmer_key]['count'];
+                        }
+                        $result['average_weight'] = $average_weights[$razmer_key];
+                        $prises = ComponentHelper::getPrices($cid, $razmer_key);
+                        $result['cena_tut'] = $prises['cena_tut'];
+                        $result['cena_mag'] = $prises['cena_mag'];
+                    }
+                }
+            }
+            
+            return $result;
+        }
 }
