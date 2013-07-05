@@ -1861,48 +1861,65 @@ body h3 {
       width: 30%;
       margin-right: 4%;
       padding: 5px 6px 3px 6px; }
-    /* line 50, ../sass/frontend/mod_usearch_uvelir.scss */
-    #mod_usearch_uvelir #mod_usearch_body input[type="checkbox"] {
-      width: auto;
-      vertical-align: top; }
-    /* line 55, ../sass/frontend/mod_usearch_uvelir.scss */
+    /* line 51, ../sass/frontend/mod_usearch_uvelir.scss */
     #mod_usearch_uvelir #mod_usearch_body input,
     #mod_usearch_uvelir #mod_usearch_body select {
       color: #98834F;
       font-size: 12px; }
-    /* line 59, ../sass/frontend/mod_usearch_uvelir.scss */
+    /* line 55, ../sass/frontend/mod_usearch_uvelir.scss */
     #mod_usearch_uvelir #mod_usearch_body select {
       height: 25px;
       width: 100%;
       min-width: 100px; }
-    /* line 66, ../sass/frontend/mod_usearch_uvelir.scss */
+    /* line 62, ../sass/frontend/mod_usearch_uvelir.scss */
     #mod_usearch_uvelir #mod_usearch_body table tr td {
       vertical-align: middle;
       width: 14%; }
-      /* line 69, ../sass/frontend/mod_usearch_uvelir.scss */
+      /* line 65, ../sass/frontend/mod_usearch_uvelir.scss */
       #mod_usearch_uvelir #mod_usearch_body table tr td label {
         color: #3d3d3d;
         font-size: 12px;
         text-align: right;
         margin: 0 10px;
         line-height: 25px; }
-      /* line 77, ../sass/frontend/mod_usearch_uvelir.scss */
+      /* line 73, ../sass/frontend/mod_usearch_uvelir.scss */
       #mod_usearch_uvelir #mod_usearch_body table tr td.checkbox {
         vertical-align: middle;
         width: 10%; }
-        /* line 80, ../sass/frontend/mod_usearch_uvelir.scss */
+        /* line 76, ../sass/frontend/mod_usearch_uvelir.scss */
         #mod_usearch_uvelir #mod_usearch_body table tr td.checkbox input {
           float: right;
           width: 13px; }
-      /* line 85, ../sass/frontend/mod_usearch_uvelir.scss */
+      /* line 81, ../sass/frontend/mod_usearch_uvelir.scss */
       #mod_usearch_uvelir #mod_usearch_body table tr td.label {
         vertical-align: middle;
         background: none; }
-        /* line 88, ../sass/frontend/mod_usearch_uvelir.scss */
+        /* line 84, ../sass/frontend/mod_usearch_uvelir.scss */
         #mod_usearch_uvelir #mod_usearch_body table tr td.label label {
           float: left;
           margin: 3px 0 0 0; }
-  /* line 97, ../sass/frontend/mod_usearch_uvelir.scss */
+    /* line 92, ../sass/frontend/mod_usearch_uvelir.scss */
+    #mod_usearch_uvelir #mod_usearch_body .available {
+      text-align: right; }
+      /* line 94, ../sass/frontend/mod_usearch_uvelir.scss */
+      #mod_usearch_uvelir #mod_usearch_body .available #mod_usearch_available {
+        display: inline-block;
+        vertical-align: baseline;
+        zoom: 1;
+        *display: inline;
+        *vertical-align: auto;
+        height: auto;
+        padding: 0;
+        width: auto; }
+      /* line 100, ../sass/frontend/mod_usearch_uvelir.scss */
+      #mod_usearch_uvelir #mod_usearch_body .available label {
+        display: inline-block;
+        vertical-align: baseline;
+        zoom: 1;
+        *display: inline;
+        *vertical-align: auto;
+        margin: 0 3px; }
+  /* line 106, ../sass/frontend/mod_usearch_uvelir.scss */
   #mod_usearch_uvelir #mod_usearch_footer {
     -moz-border-radius-bottomleft: 3px;
     -webkit-border-bottom-left-radius: 3px;
@@ -1941,10 +1958,10 @@ body h3 {
       top: 0;
       width: 100%;
       z-index: 0; }
-    /* line 107, ../sass/frontend/mod_usearch_uvelir.scss */
+    /* line 116, ../sass/frontend/mod_usearch_uvelir.scss */
     #mod_usearch_uvelir #mod_usearch_footer:before {
       background-position-x: -108px; }
-    /* line 111, ../sass/frontend/mod_usearch_uvelir.scss */
+    /* line 120, ../sass/frontend/mod_usearch_uvelir.scss */
     #mod_usearch_uvelir #mod_usearch_footer button,
     #mod_usearch_uvelir #mod_usearch_footer input {
       background: none;
@@ -1957,7 +1974,7 @@ body h3 {
       position: relative;
       text-align: left;
       width: 100%; }
-      /* line 126, ../sass/frontend/mod_usearch_uvelir.scss */
+      /* line 135, ../sass/frontend/mod_usearch_uvelir.scss */
       #mod_usearch_uvelir #mod_usearch_footer button:before,
       #mod_usearch_uvelir #mod_usearch_footer input:before {
         background-position: 0 -151px;
