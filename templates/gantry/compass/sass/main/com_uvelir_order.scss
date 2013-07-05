@@ -15,5 +15,12 @@
 			}
 		}
 	}
+	tr{
+		td{
+			.image{
+				max-width: 100px;
+			}
+		}
+	}
 	@include table1();
 }

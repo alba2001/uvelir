@@ -355,6 +355,10 @@ body{
 			cursor: default;
 		}
 	}
+	#rt-copyright{
+		border: none;
+		@include box-shadow(none);
+	}
 }
 .homepage{
 	#rt-header{

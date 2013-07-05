@@ -47,11 +47,10 @@ ob_start();
 		<div class="component-content">
 			<div class="rt-grid-12">
 				<div class="rt-block">
-					<div class="rt-error-rocket"></div>
-					<div class="rt-error-content">
-						<h1 class="error-title title">Error: <span><?php echo $this->error->getCode(); ?></span> - <?php echo $this->error->getMessage(); ?></h1>
+					<div>
+						<h1>Ошибка: <span><?php echo $this->error->getCode(); ?></span> - <?php echo $this->error->getMessage(); ?></h1>
 						<div class="error-content">
-						<p><strong>You may not be able to visit this page because of:</strong></p>
+						<?/*<p><strong>You may not be able to visit this page because of:</strong></p>
 						<ol>
 							<li>an out-of-date bookmark/favourite</li>
 							<li>a search engine that has an out-of-date listing for this site</li>
@@ -59,8 +58,8 @@ ob_start();
 							<li>you have no access to this page</li>
 							<li>The requested resource was not found.</li>
 							<li>An error has occurred while processing your request.</li>
-						</ol>
-						<p><a href="<?php echo $gantry->baseUrl; ?>" class="readon"><span>&larr; Home</span></a></p>
+						</ol>*/?>
+						<p><a href="<?php echo $gantry->baseUrl; ?>" class="readon"><span>&larr; Вернуться на главную</span></a></p>
 					</div>
 				</div>
 			</div>
