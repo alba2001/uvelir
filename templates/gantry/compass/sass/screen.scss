@@ -27,7 +27,7 @@ $menu-bg-repeat: repeat-x;
 @import "compass/css3/opacity";
 @import "compass/css3/border-radius";
 @import "compass/css3/text-shadow";
-@import "main/mixins";
+@import "frontend/mixins";
 
 // misc
 @import "misc/990fluid";
@@ -38,24 +38,24 @@ $menu-bg-repeat: repeat-x;
 // @import "misc/sticky";
 
 // main
-@import "main/com_uvelir_caddy";
-@import "main/com_uvelir_category";
-@import "main/com_uvelir_order";
-@import "main/com_uvelir_orders";
-@import "main/com_uvelir_product";
-@import "main/com_uvelir_products";
-@import "main/com_uvelir_tabs";
-@import "main/com_uvelir_userfrom";
-@import "main/com_k2";
-@import "main/mod_caddy";
-@import "main/mod_dj_slider";
-@import "main/mod_usearch_uvelir";
-@import "main/mod_breadcrumbs";
-@import "main/system-message";
-@import "main/toTop";
-@import "main/contacts";
-@import "helpers/pagination";
+@import "frontend/com_k2";
+@import "frontend/com_uvelir_caddy";
+@import "frontend/com_uvelir_category";
+@import "frontend/com_uvelir_order";
+@import "frontend/com_uvelir_orders";
+@import "frontend/com_uvelir_product";
+@import "frontend/com_uvelir_products";
+@import "frontend/com_uvelir_tabs";
+@import "frontend/com_uvelir_userfrom";
+@import "frontend/contacts";
+@import "frontend/mod_breadcrumbs";
+@import "frontend/mod_caddy";
+@import "frontend/mod_dj_slider";
+@import "frontend/mod_usearch_uvelir";
+@import "frontend/system-message";
+@import "frontend/toTop";
 @import "helpers/chronoform";
+@import "helpers/pagination";
 
 input[type="submit"],
 input[type="button"],
