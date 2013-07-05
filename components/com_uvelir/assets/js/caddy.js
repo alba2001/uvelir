@@ -61,9 +61,10 @@
 jQuery(function($){
     $(document).ready(function(){
         
+        
         // Удаление товара изкорзины
         $('.com_uvelir-delete').click(function(){
-            var id = /^delete_(\d+)$/.exec($(this).attr('id'))[1];
+            var id = /^delete_(\d+_\d+)$/.exec($(this).attr('id'))[1];
             $('#caddy_item_count_'+id).val('0');
             $('#caddy_item_sum_'+id).text('0');
             $('#item_row_'+id).hide('slow');
@@ -132,16 +133,18 @@ jQuery(function($){
         $('#caddy_total_sum').text(total);
 
         // Пересчитваем корзину
+        var item_id = 0;
         var item_counts = $('.caddy_item_count');
-        var count = new Array();
+        var count = '';
         $.each(item_counts, function(i,item_count){
-            count[$(item_count).attr('rel')] = $(item_count).val();
+            item_id = $(item_count).attr('rel');
+            count += item_id+':'+$(item_count).val()+' ';
         });
-
+console.log(count);
         // Отправляем изменения в корзине на серер
         var form  = $('#step1_form');
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: $(form).attr('action'),
             data: {
                 count: count,
@@ -152,6 +155,7 @@ jQuery(function($){
 //                    $('#uvelir_debud').html(html);
 console.log(html);
                 var data = $.parseJSON(html);
+console.log(data);
                 $('#mod_caddy_product_count').text(data[1].count);
                 $('#mod_caddy_product_sum').text(data[1].sum);
             }

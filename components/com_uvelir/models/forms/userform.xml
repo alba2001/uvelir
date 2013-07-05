@@ -104,7 +104,7 @@
 
 		<field name="username" type="text"
 			class="validate-username registration"
-			description="COM_USERS_DESIRED_USERNAME"
+			description=""
 			filter="username"
 			label="COM_USERS_REGISTER_USERNAME_LABEL"
 			message="COM_USERS_REGISTER_USERNAME_MESSAGE"
@@ -115,7 +115,7 @@
 		<field name="password1" type="password"
 			autocomplete="off"
 			class="validate-password registration"
-			description="COM_USERS_DESIRED_PASSWORD"
+			description=""
 			field="password2"
 			filter="raw"
 			label="COM_USERS_REGISTER_PASSWORD1_LABEL"

@@ -101,7 +101,7 @@ defined('_JEXEC') or die;
 	                    <?=$item['count']?>
 	                </td>
 	                <td class="price">
-	                	<span id="caddy_item_price_<?=$id?>"><?=$item['price']?></span>
+	                	<span id="caddy_item_price_<?=$id?>"><?=(int)($item['sum']/(int)$item['count'])?></span>
 	                	<span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
 	                </td>
 	                <td class="caddy_item_sum">

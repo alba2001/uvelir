@@ -9,6 +9,7 @@
 
 // no direct access
 defined('_JEXEC') or die;
+$caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy');
 ?>
 <form action="<?=JURI::base()?>index.php?<?=JSession::getFormToken()?>=1" method="post" name="step1_form" id="step1_form">
     <table>
@@ -38,9 +39,9 @@ defined('_JEXEC') or die;
         		<td colpan="6"></td>
         	</tr>
 	        <?php foreach($this->items as $item):?>
-	            <?php $id = $item['id']?>
+	            <?php $id = $item['id'].'_'.$item['razmer_key']?>
 	            <tr id="item_row_<?=$id?>">
-	                <td>
+                        <td> 
 	                	<div class="image">
                                     <a href="<?= $item['path'].'/'.$item['id'];?>">
 		                		<img src="<?=$item['src']?>" alt="<?=$item['artikul']?>">
@@ -48,23 +49,26 @@ defined('_JEXEC') or die;
 	                	</div>
 	                </td>
 	                <td class="info">
-	                	<?php if(isset($this->item->name) AND $this->item->name):?>
-	        			<?php endif;?>
+	                	<?php if(isset($item['name']) AND $item['name']):?>
 	                		<div class="item_title">
 	                			<a href="<?= $item['path'].'/'.$item['id'];?>">
 		                			<?=$item['name']?>
 		                		</a>
 	                		</div>
+                                <?php endif;?>
 
                 		<div class="manufacturer">
                 			Завод: <?=$item['zavod_name']?>
                 		</div>
 
-                		<?php if(isset($this->item->razmer) AND $this->item->razmer):?>
+                		<?php if(isset($item['razmer']) AND $item['razmer']):?>
+<!--Ключ размера-->                 <input type="hidden" id="caddy_item_razmer_key_<?=$id?>" value="<?=$item['razmer_key']?>"/>
 	                		<div class="size">
 	                			Размер: <?=$item['razmer']?>
 	                		</div>
-	        			<?php endif;?>
+                                <?php else:?>
+                                    <input type="hidden" id="caddy_item_razmer_key_<?=$id?>" value="0"/>
+                                <?php endif;?>
 
                 		<div class="article">
                 			Артикул: <?=$item['artikul']?>

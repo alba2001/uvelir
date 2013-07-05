@@ -17,4 +17,14 @@ require_once JPATH_COMPONENT.'/controller.php';
  */
 class UvelirControllerProduct extends UvelirController
 {
+    public function change_size()
+    {
+        // Check for request forgeries.
+        JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('Product');
+        $result = json_encode($model->change_size());
+        echo $result;
+        exit;
+    }
 }

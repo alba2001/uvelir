@@ -85,18 +85,24 @@ class UvelirModelCaddy extends ModelKModelform
         $body .= '<tr>';
         $body .= '<th>Выбранные товары</th>';
         $body .= '<th>Количество</th>';
+        $body .= '<th>Размер</th>';
         $body .= '<th>Цена</th>';
         $body .= '<th>Сумма</th>';
         $body .= '</tr>';
         
         foreach ($caddy as $key=>$value)
         {
-            $product_data = $this->_get_product_data($key);
-            $prises = ComponentHelper::getPrices($key);
+            $cids = explode('_', $key);
+            $id = $cids[0];
+            $razmer_key = $cids[1];
+            
+            $product_data = $this->_get_product_data($id, $razmer_key);
+            $prises = ComponentHelper::getPrices($id, $razmer_key);
             $body .= '<tr>';
             $body .= '<td><img src="'.$product_data['img_src'].'"/><b>'
                     .$product_data['artikul'].'</b></td>';
             $body .= '<td>'.$value['count'].'</td>';
+            $body .= '<td>'.$product_data['razmer'].'</td>';
             $body .= '<td>'.$prises['cena_tut'].'</td>';
             $body .= '<td>'.$value['sum'].'</td>';
             $body .= '</tr>';
@@ -174,25 +180,29 @@ class UvelirModelCaddy extends ModelKModelform
 
     /**
      * Детали продукта
-     * @param type $id
+     * @param int $id ИД продукта
+     * @param int $razmer_key ключ размера продукта
      * @return array Детали продукта
      */
-    private function _get_product_data($id)
+    private function _get_product_data($id, $razmer_key=0)
     {
-        $prises = ComponentHelper::getPrices($id);
+        $prises = ComponentHelper::getPrices($id, $razmer_key);
         $result = array(
                'artikul'=>'',
                'img_src'=>'',
-               'cena_tut'=>''
+               'cena_tut'=>'',
+               'razmer'=>''
            );
        $product = $this->getTable('Product');
        if($product->load($id))
        {
            $desc = json_decode($product->desc);
+           $razmers = explode(',', $product->razmer);
            $result = array(
                'artikul'=>$product->artikul,
                'img_src'=>$desc->img_small,
-               'cena_tut'=>$prises['cena_tut']
+               'cena_tut'=>$prises['cena_tut'],
+               'razmer'=>$razmers[$razmer_key],
            );
        }
        return $result;
@@ -205,13 +215,16 @@ class UvelirModelCaddy extends ModelKModelform
     public function add()
     {
         $item_id = JRequest::getInt('item_id');
-        $prises = ComponentHelper::getPrices($item_id);
+        $razmer_key = JRequest::getInt('razmer_key', 0);
         
-        // Проверк на наличие ИД завода и ИД товара
+        $prises = ComponentHelper::getPrices($item_id, $razmer_key);
+        
+        // Проверк на наличие ИД товара
         if(!$item_id)
         {
             return array(0,  JText::_('COM_UVELIR_DATA_NOT_MATCH'));
         }
+        
         $product = $this->getTable('product');
         
         // Если товар не найден, возвращаем ошибку
@@ -219,18 +232,19 @@ class UvelirModelCaddy extends ModelKModelform
         {
             return array(0,  JText::_('COM_UVELIR_ITEM_NOT_EXIST'));
         }
+        
         $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
-//        unset($caddy);
+        
         // Добавляем товар в корзину
-        if(!isset($caddy[$product->id]))
+        if(!$this->_check_product_in_caddy($caddy, $item_id, $razmer_key))
         {
-            $caddy[$product->id]['count'] = 1;
-            $caddy[$product->id]['sum'] = $prises['cena_tut'];
+            $caddy[$product->id.'_'.$razmer_key]['count'] = 1;
+            $caddy[$product->id.'_'.$razmer_key]['sum'] = $prises['cena_tut'];
         }
         else
         {
-            $caddy[$product->id]['count']++;
-            $caddy[$product->id]['sum'] += $prises['cena_tut'];
+            $caddy[$product->id.'_'.$razmer_key]['count']++;
+            $caddy[$product->id.'_'.$razmer_key]['sum'] += $prises['cena_tut'];
         }
         JFactory::getApplication()->setUserState('com_uvelir.caddy', $caddy);
 //        var_dump($_SESSION);
@@ -241,13 +255,31 @@ class UvelirModelCaddy extends ModelKModelform
     }
 
     /**
+     * Проверяем наличие товара с заданным размером в корзине
+     * @param caddy $caddy
+     * @param int $item_id
+     * @param int $razmer_key 
+     * @return bolean
+     */
+    private function _check_product_in_caddy($caddy, $item_id, $razmer_key)
+    {
+        if(isset($caddy[$item_id.'_'.$razmer_key]))
+        {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    /**
      * Удалить товара из корзины
      * @return type 
      */
     public function del()
     {
         $item_id = JRequest::getInt('item_id');
-        $prises = ComponentHelper::getPrices($item_id);
+        $razmer_key = JRequest::getInt('razmer_key', 0);
+        
+        $prises = ComponentHelper::getPrices($item_id, $razmer_key);
         
         // Проверк на наличие ИД завода и ИД товара
         if(!$item_id)
@@ -264,13 +296,13 @@ class UvelirModelCaddy extends ModelKModelform
         $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
 //        unset($caddy);
         // Удаляем товар из корзины
-        if(isset($caddy[$product->id]))
+        if($this->_check_product_in_caddy($caddy, $item_id, $razmer_key))
         {
-            $caddy[$product->id]['count']--;
-            $caddy[$product->id]['sum'] -= $prises['cena_tut'];
-            if($caddy[$product->id]['count'] < 1)
+            $caddy[$product->id.'_'.$razmer_key]['count']--;
+            $caddy[$product->id.'_'.$razmer_key]['sum'] -= $prises['cena_tut'];
+            if((int)$caddy[$product->id.'_'.$razmer_key]['count'] < 1)
             {
-                unset($caddy[$product->id]);
+                unset($caddy[$product->id.'_'.$razmer_key]);
             }
         }
         JFactory::getApplication()->setUserState('com_uvelir.caddy', $caddy);
@@ -322,20 +354,26 @@ class UvelirModelCaddy extends ModelKModelform
                 $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
             }
             $items = array();
-            foreach ($caddy as $id=>$value)
+            foreach ($caddy as $cid=>$value)
             {
+                $cids = explode('_', $cid);
+                $id = $cids[0];
+                $razmer_key = $cids[1];
                 $product = $this->getTable('product');
                 if($product->load($id))
                 {
-                    $prises = ComponentHelper::getPrices($id);
+                    $prises = ComponentHelper::getPrices($id, $razmer_key);
                     $zavod = $this->getTable('zavod');
                     $zavod_name = $zavod->load($product->zavod_id)?$zavod->name:'';
                     $desc = json_decode($product->desc);
+                    $razmers = explode(',', $product->razmer);
                     $item = array(
                         'id'=>$id,
                         'zavod_name'=>$zavod_name,
                         'zavod_id'=>$product->zavod_id,
                         'artikul'=>$product->artikul,
+                        'razmer_key'=>$razmer_key,
+                        'razmer'=>$razmers[$razmer_key],
                         'name'=>$product->name,
                         'src'=>$desc->img_small,
                         'price'=>$prises['cena_tut'],
@@ -371,25 +409,33 @@ class UvelirModelCaddy extends ModelKModelform
      */
     public function correction()
     {
-        $counts = JRequest::getVar('count', array());
+        $get_counts = JRequest::getVar('count', array());
         
-        // Проверк на наличие ИД завода и ИД товара
-        if(!($counts))
+        // Проверк на наличие количества товаров и их размеров
+        if(!($get_counts))
         {
             return array(0,  JText::_('COM_UVELIR_DATA_NOT_MATCH'));
         }
-        
+        $counts = explode(' ', $get_counts);
         $caddy = array();
-        foreach($counts as $item_id=>$count)
+        foreach($counts as $count_item)
         {
-            if($count)
+            $parts = explode(':', $count_item);
+            $cids = explode('_', $parts[0]);
+            $item_id = $cids[0];
+            $razmer_key = $cids[1];
+            $count = $parts[1];
+//            var_dump($parts, $cids, $item_id, $razmer_key, $count);
+//            exit;
+            $product = $this->getTable('product');
+            if($product->load($item_id))
             {
-                $product = $this->getTable('product');
-                if($product->load($item_id))
+                $prises = ComponentHelper::getPrices($item_id, $razmer_key);
+                $caddy[$item_id.'_'.$razmer_key]['count'] = $count;
+                $caddy[$item_id.'_'.$razmer_key]['sum'] = $prises['cena_tut']*$count;
+                if((int)$caddy[$item_id.'_'.$razmer_key]['count'] < 1)
                 {
-                    $prises = ComponentHelper::getPrices($item_id);
-                    $caddy[$item_id]['count'] = $count;
-                    $caddy[$item_id]['sum'] = $prises['cena_tut']*$count;
+                    unset($caddy[$item_id.'_'.$razmer_key]);
                 }
             }
         }

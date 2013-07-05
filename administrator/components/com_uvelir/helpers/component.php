@@ -98,7 +98,7 @@ class ComponentHelper
          * @param int $category_id
          * @return array 
          */
-	public static function getPrices($product_id)
+	public static function getPrices($product_id, $key=0)
 	{
             $result = array(
                 'cena_mag'=>'0',
@@ -123,17 +123,11 @@ class ComponentHelper
                     {
                         if($category->producttype_id AND $product->average_weight AND $producttype->load($category->producttype_id))
                         {
+                            $average_weights = explode(',', $product->average_weight);
                             $cena_mag_per_g = $producttype->cena_mag;
                             $cena_tut_per_g = $producttype->cena_tut;
-                            $average_weights = explode(',', $product->average_weight);
-                            for ($i = 0; $i < count ($average_weights); $i++)
-                            {
-                                $average_weight = $average_weights[$i];
-                                $cena_mag[$i] = round($average_weight*$cena_mag_per_g,2);
-                                $cena_tut[$i] = round($average_weight*$cena_tut_per_g,2);
-                            }
-                            $result['cena_mag'] = implode(',', $cena_mag);
-                            $result['cena_tut'] = implode(',', $cena_tut);
+                            $result['cena_mag'] = round($average_weights[$key]*$cena_mag_per_g,2);
+                            $result['cena_tut'] = round($average_weights[$key]*$cena_tut_per_g,2);
                             $result['price_mag'] = $producttype->cena_mag;
                             $result['price_tut'] = $producttype->cena_tut;
                             $result['producttype_name'] = $producttype->name;
@@ -141,6 +135,12 @@ class ComponentHelper
                     }
                 }
             }
+//            echo json_encode(array(
+//                'cid'=>$product_id,
+//                'key'=>$key,
+//            ));
+//            echo json_encode($result);
+//            exit;
             return $result;
 	}
         
