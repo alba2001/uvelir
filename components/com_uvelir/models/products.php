@@ -56,8 +56,11 @@ class UvelirModelProducts extends JModelList {
         $menu = JSite::getMenu();
         $active = $menu->getActive();
         $params = isset($active)?$active->params:NULL;
-        $product_group = isset($params)?$params->get('product_group'):0;
-//        var_dump(JRequest::getInt('product_group'));
+        $product_group = '100';
+        if(isset($params))
+        {
+            $product_group = $params->get('product_group');
+        }
         $group = JRequest::getInt('product_group',
                 $product_group);
         $this->setState('products_group', $group);
