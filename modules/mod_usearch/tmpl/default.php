@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 ?>
 <div id="mod_usearch_uvelir">
-    <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="usearchForm" id="usearchForm">
+    <form action="<?php echo JRoute::_('index.php'); ?>" method="get" name="usearchForm" id="usearchForm">
     <div id="mod_usearch_header">
         <h1>ПОДБОР<br><span>ИЗДЕЛИЙ</span></h1>
     </div>
@@ -51,6 +51,7 @@ defined('_JEXEC') or die;
 
         <input type="hidden" name="option" value="com_uvelir" />
         <input type="hidden" name="view" value="products" />
+        <input type="hidden" name="show_menu_groups" value="0" />
         <?php echo JHtml::_('form.token'); ?>
     </form>
 </div>

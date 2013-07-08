@@ -9,11 +9,11 @@
 // no direct access
 defined('_JEXEC') or die;
 //var_dump($this->item);
-$show_product_groups = array('','1','2');
+
 //var_dump($this->products_group);exit;
 ?>
 <!--Если не подходит группа, то не показываем список групп-->
-<?php if(in_array($this->products_group, $show_product_groups)):?>
+<?php if($this->show_menu_groups):?>
 <ul class="tabs">
 	<li class="first">
 		<a class="<?=$this->products_group=='1'?'active':''?>" href="<?php echo JRoute::_('novinki')?>" class="trigger"><?=  JText::_('COM_UVELIR_PRODUCT_NEW')?></a>

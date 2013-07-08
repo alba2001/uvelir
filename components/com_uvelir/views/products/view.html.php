@@ -31,7 +31,8 @@ class UvelirViewProducts extends JView {
 //        $usearch_data = JRequest::getVar('usearch_data', 'array');
         $this->_model = $this->getModel();
         $this->items = $this->get('Items');
-        $this->products_group = (int) $this->_model->getState('products_group', 100);
+        $this->products_group = (int) $this->_model->getState('products_group');
+        $this->show_menu_groups = (bool) $this->_model->getState('show_menu_groups', TRUE);
         $this->pagination	= $this->get('Pagination');
         $this->caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy', array());
 

@@ -8,6 +8,7 @@
 
 // no direct access
 defined('_JEXEC') or die;
+
 $usearch_data = JFactory::getApplication()->getUserState('com_uvelir.usearch', array());
 
 if(!$usearch_data)

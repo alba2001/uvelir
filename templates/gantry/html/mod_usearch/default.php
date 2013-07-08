@@ -24,10 +24,9 @@ defined('_JEXEC') or die;
             <td><?=$metal?></td>
             <td><label for="mod_usearch_vstavki"><?php echo JText::_('MOD_USEARCH_VSTAVKI')?></label></td>
             <td><?=$vstavki?></td>
-            <td rowspan="2" class="available">
-            	<?=$available?>
-            	<label for="mod_usearch_available"><?php echo JText::_('MOD_USEARCH_AVAILABLE')?></label>
-            </td>
+            <!--В наличии-->
+            <td rowspan="2"><label for="mod_usearch_available"><?php echo JText::_('MOD_USEARCH_AVAILABLE')?></label></td>
+            <td rowspan="2"><?=$available?></td>
         </tr>
         <tr>
             <td><label for="mod_usearch_razmer"><?php echo JText::_('MOD_USEARCH_RAZMER')?></label></td>
@@ -52,6 +51,7 @@ defined('_JEXEC') or die;
 
         <input type="hidden" name="option" value="com_uvelir" />
         <input type="hidden" name="view" value="products" />
+        <input type="hidden" name="show_menu_groups" value="0" />
         <?php echo JHtml::_('form.token'); ?>
     </form>
 </div>

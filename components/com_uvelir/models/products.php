@@ -17,6 +17,12 @@ jimport('joomla.application.component.modellist');
 class UvelirModelProducts extends JModelList {
 
     /**
+     * Массив групп изделий при которых показывается меню групп изделий
+     * @var array 
+     */
+    private $_ar_groups_shown;
+
+    /**
      * Constructor.
      *
      * @param    array    An optional associative array of configuration settings.
@@ -24,6 +30,8 @@ class UvelirModelProducts extends JModelList {
      * @since    1.6
      */
     public function __construct($config = array()) {
+        // 
+        $this->_ar_groups_shown = array('','0','1','2');
         parent::__construct($config);
     }
 
@@ -42,7 +50,10 @@ class UvelirModelProducts extends JModelList {
                 '','array');
         if($usearch_data)
         {
-            JFactory::getApplication()->setUserState('com_uvelir.usearch', $usearch_data);
+            if(!isset($usearch_data['available']))
+            {
+                $usearch_data['available'] = 0;
+            }
             $this->setState('usearch_data.izdelie', $usearch_data['izdelie']);
             $this->setState('usearch_data.metal', $usearch_data['metal']);
             $this->setState('usearch_data.vstavki', $usearch_data['vstavki']);
@@ -51,19 +62,31 @@ class UvelirModelProducts extends JModelList {
             $this->setState('usearch_data.cost_1', $usearch_data['cost_1']);
             $this->setState('usearch_data.cost_2', $usearch_data['cost_2']);
             $this->setState('usearch_data.available', $usearch_data['available']);
+            $group = 0;
         }
-        // Вычисляем группу продуктов
-        $menu = JSite::getMenu();
-        $active = $menu->getActive();
-        $params = isset($active)?$active->params:NULL;
-        $product_group = '100';
-        if(isset($params))
+        else
         {
-            $product_group = $params->get('product_group');
+            
         }
-        $group = JRequest::getInt('product_group',
-                $product_group);
+        JFactory::getApplication()->setUserState('com_uvelir.usearch', $usearch_data);
+        
+        
+        // Показываем меню продуктов или нет
+        $show_menu_groups = JRequest::getInt('show_menu_groups', TRUE);
+        $group = 0;
+        if($show_menu_groups)
+        {
+            // Вычисляем группу продуктов
+            $menu = JSite::getMenu();
+            $active = $menu->getActive();
+            $params = isset($active)?$active->params:NULL;
+            $product_group = isset($params)?$params->get('product_group'):0;
+            $group = JRequest::getInt('product_group',
+                    $product_group);
+            
+        }
         $this->setState('products_group', $group);
+        $this->setState('show_menu_groups', $show_menu_groups);
         
         // Initialise variables.
         $app = JFactory::getApplication();
