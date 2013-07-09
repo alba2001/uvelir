@@ -11,3 +11,5 @@ DROP TABLE IF EXISTS `#__uvelir_producttypes`;
 DROP TABLE IF EXISTS `#__uvelir_oplata`;
 DROP TABLE IF EXISTS `#__uvelir_dostavka`;
 DROP TABLE IF EXISTS `#__uvelir_zavods`;
+DROP TABLE IF EXISTS `#__uvelir_vstavkis`;
+DROP TABLE IF EXISTS `#__uvelir_vstavkilist`;

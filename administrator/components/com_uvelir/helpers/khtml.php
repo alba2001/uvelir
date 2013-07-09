@@ -54,6 +54,25 @@ class KhtmlHelper
             return $db->loadObjectList();
 	}
 
+
+        /**
+        * Список категорий с учетом завода
+        * @param noting
+        * @return object list
+        */
+	public static function vstavkis()
+	{
+            $db = JFactory::getDbo();
+            $query	= $db->getQuery(true);
+
+            // Select the required fields from the table.
+            $query->select('`id` AS value, `name` AS text')
+                    ->from('`#__uvelir_vstavkis`');
+            $db->setQuery($query);
+            var_dump($db->loadObjectList());
+            return $db->loadObjectList();
+	}
+
         /**
         * Статус заказа
         * @param int $order_status_id

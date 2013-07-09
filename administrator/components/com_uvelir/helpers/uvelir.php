@@ -55,6 +55,16 @@ class UvelirHelper
 			'index.php?option=com_uvelir&view=producttypes',
 			$vName == 'producttypes'
 		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_UVELIR_TITLE_VSTAVKIS'),
+			'index.php?option=com_uvelir&view=vstavkis',
+			$vName == 'vstavkis'
+		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_UVELIR_TITLE_VSTAVKILISTS'),
+			'index.php?option=com_uvelir&view=vstavkilists',
+			$vName == 'vstavkis'
+		);
 
 	}
 

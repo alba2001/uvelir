@@ -19,7 +19,6 @@ $document->addStyleSheet('components/com_uvelir/assets/css/uvelir.css');
 $listOrder = $this->state->get('list.ordering');
 $listDirn = $this->state->get('list.direction');
 $href = 'index.php?option=com_uvelir&view=product';
-//exit;
 ?>
 
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm">

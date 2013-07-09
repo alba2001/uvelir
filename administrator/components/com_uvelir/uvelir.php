@@ -24,8 +24,6 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_uvelir'))
 jimport('joomla.application.component.controller');
 $controller	= JController::getInstance('Uvelir');
 
-//var_dump(JFactory::getApplication()->input->get('task'));
-//var_dump($controller);exit;
 
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();
