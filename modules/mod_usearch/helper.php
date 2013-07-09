@@ -23,7 +23,7 @@ class modUsearchHelper
             $fields[] = $db->NameQuote('title');
             $query = 'SELECT '.implode(',',$fields);
             $query .= ' FROM '.$table;
-
+            
             $db->setQuery($query);
             $state = array();
             $state[] = JHTML::_('select.option'
@@ -50,7 +50,7 @@ class modUsearchHelper
                             , 'mod_usearch_izdelie'
                             , false );
          }
-
+         
         function getListMetal($selected)
         {
             $attribs = array();
@@ -59,7 +59,7 @@ class modUsearchHelper
             $fields[] = $db->NameQuote('material');
             $query = 'SELECT DISTINCT '.implode(',',$fields);
             $query .= ' FROM '.$table;
-
+            
             $db->setQuery($query);
             $state = array();
             $state[] = JHTML::_('select.option'
@@ -89,17 +89,18 @@ class modUsearchHelper
                             , 'mod_usearch_metal'
                             , false );
          }
-
-
+         
+         
         function getListVstavki($selected)
         {
             $attribs = array();
             $db =& JFactory::getDBO();
-            $table = $db->NameQuote('#__uvelir_products');
-            $fields[] = $db->NameQuote('vstavki');
-            $query = 'SELECT DISTINCT '.implode(',',$fields);
+            $table = $db->NameQuote('#__uvelir_vstavkis');
+            $fields[] = $db->NameQuote('id');
+            $fields[] = $db->NameQuote('name');
+            $query = 'SELECT '.implode(',',$fields);
             $query .= ' FROM '.$table;
-
+            
             $db->setQuery($query);
             $state = array();
             $state[] = JHTML::_('select.option'
@@ -110,11 +111,11 @@ class modUsearchHelper
             {
                 foreach ($list as $row)
                 {
-                    if($row->vstavki)
+                    if($row->id)
                     {
                         $state[] = JHTML::_('select.option'
-                                , $row->vstavki
-                                , JText::_($row->vstavki)
+                                , $row->id
+                                , JText::_($row->name)
                         );
                     }
                 }
@@ -129,7 +130,7 @@ class modUsearchHelper
                             , 'mod_usearch_vstavki'
                             , false );
          }
-
+         
         function getListProba($selected)
         {
             $attribs = array();
@@ -138,7 +139,7 @@ class modUsearchHelper
             $fields[] = $db->NameQuote('proba');
             $query = 'SELECT DISTINCT '.implode(',',$fields);
             $query .= ' FROM '.$table;
-
+            
             $db->setQuery($query);
             $state = array();
             $state[] = JHTML::_('select.option'
@@ -168,7 +169,7 @@ class modUsearchHelper
                             , 'mod_usearch_proba'
                             , false );
          }
-
+         
         function getListRazmer($selected, $productvid_id = 0)
         {
             $attribs = array();
@@ -179,7 +180,7 @@ class modUsearchHelper
             $query = 'SELECT '.implode(',',$fields);
             $query .= ' FROM '.$table;
             $query .= ' WHERE '.implode(' AND ',$where);
-
+            
             $db->setQuery($query);
             $state = array();
             $state[] = JHTML::_('select.option'
@@ -207,11 +208,11 @@ class modUsearchHelper
                             , 'mod_usearch_razmer'
                             , false );
          }
-
+ 
          function getCheckboxAvailable($checked)
          {
              $checked = $checked?'checked="checked"':'';
-             $html = '<input type="checkbox" id="mod_usearch_available" name="usearch_data[available]" value="1" '.$checked.' />';
+             $html = '<input type="checkbox" name="usearch_data[available]" value="1" '.$checked.' />';
              return $html;
          }
 }

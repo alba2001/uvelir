@@ -172,7 +172,7 @@ class UvelirModelProducts extends JModelList {
             // Фильтр по вставкам
             if($vstavki = $this->getState('usearch_data.vstavki', ''))
             {
-                $query->where('vstavki = "'.$vstavki.'"');
+                $query->where('vstavki_id = "'.$vstavki.'"');
             }
             // Фильтр по размеру
             if($razmer = $this->getState('usearch_data.razmer', ''))
