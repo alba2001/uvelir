@@ -1,0 +1,43 @@
+@mixin shadow-box (){
+	@include box-shadow(rgba(#000, 0.3) 0px 1px 1px);
+}
+@mixin no-shadow (){
+	@include box-shadow(none);
+}
+@mixin shadow-drop (){
+	@include filter(drop-shadow(0px 1px 1px rgba(#222, 0.3)));
+}
+@mixin underline (){
+	text-decoration: underline;
+	&:hover{
+		text-decoration: none;
+	}
+}
+@mixin pressed ($p:0.98){
+	&:active{
+		@include box-shadow(none);
+		@include transform(scale($p));
+		position: relative;
+		top: 1px;
+	}
+}
+@mixin no-pressed ($p:0.98){
+	&:active{
+		@include transform(scale(1));
+		position: static;
+	}
+}
+
+$base-font-size: 14px;
+@function em($px, $context: $base-font-size) {
+	@if $px == 0 { @return 0 }
+	@return ($px / $context) * 1em;
+}
+@function rem($px, $base: $base-font-size) {
+    // @return @include fontsize ($px, $base);
+    @return ($px / $base) * 0.9rem;
+}
+@mixin font-size( $px, $base:$base-font-size ) {
+	font-size: $px;
+	font-size: ($px / $base) * 0.9rem;
+}

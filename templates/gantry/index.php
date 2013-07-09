@@ -59,7 +59,7 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
     	<script src="<?='templates/' . $app->getTemplate();?>/js/css3-mediaqueries.js"></script>
     <![endif]-->
     <script src="<?='templates/' . $app->getTemplate();?>/js/slideUpText.js"></script>
-    <link rel="stylesheet" type="text/css" href="<?=$incase->noCache('/templates/gantry/compass/stylesheets/screen.css')?>" />
+    <link rel="stylesheet" type="text/css" href="<?=$incase->noCache('/templates/gantry/css-compiled/screen.css')?>" />
 </head>
 <body <?php// echo $gantry->displayBodyTag(); ?> class="<?php echo (($incase->getMenu()->getActive() == $incase->getMenu()->getDefault()) ? ('front') : ('page')).' '.$incase->getActive()->alias.' '.$pageclass; ?>">
 	<div class="strips"></div>
