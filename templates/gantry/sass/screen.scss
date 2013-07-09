@@ -10,11 +10,11 @@ $filter-bg-repeat: repeat-x;
 $filter-pink-repeat: repeat-x;
 $menu-hover-repeat: repeat-x;
 $menu-bg-repeat: repeat-x;
-@import "filter/*.png";
-@import "slider/*.png";
-@import "icons/*.png";
-@import "misc/*.png";
-@import "menu/*.png";
+@import "sprites/filter/*.png";
+@import "sprites/slider/*.png";
+@import "sprites/icons/*.png";
+@import "sprites/misc/*.png";
+@import "sprites/menu/*.png";
 @include all-filter-sprites(true);
 @include all-slider-sprites(true);
 @include all-icons-sprites(true);
@@ -38,6 +38,9 @@ $menu-bg-repeat: repeat-x;
 // @import "misc/sticky";
 
 // main
+@import "helpers/chronoform";
+@import "helpers/mixins";
+@import "helpers/pagination";
 @import "frontend/com_k2";
 @import "frontend/com_uvelir_caddy";
 @import "frontend/com_uvelir_category";
@@ -54,8 +57,6 @@ $menu-bg-repeat: repeat-x;
 @import "frontend/mod_usearch_uvelir";
 @import "frontend/system-message";
 @import "frontend/toTop";
-@import "helpers/chronoform";
-@import "helpers/pagination";
 
 input[type="submit"],
 input[type="button"],
@@ -352,6 +353,13 @@ body{
 			@include pressed();
 		}
 		.payment a{
+			@include pressed();
+			@include shadow-box();
+			display: block;
+		}
+		.payment .dummy a{
+			@include no-pressed();
+			@include no-shadow();
 			cursor: default;
 		}
 	}
