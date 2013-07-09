@@ -128,15 +128,7 @@ $canChange	= TRUE;
 				</td>
 
 				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'vstavkis.', $canCheckin); ?>
-				<?php endif; ?>
-				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_uvelir&task=vstavki.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->name); ?></a>
-				<?php else : ?>
 					<?php echo $this->escape($item->name); ?>
-				<?php endif; ?>
 				</td>
 				<td>
 					<?php echo isset($this->vstavkis[$item->vstavki_id])?$this->vstavkis[$item->vstavki_id]:''; ?>
