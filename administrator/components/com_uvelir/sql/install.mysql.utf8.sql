@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `#__uvelir_products` (
 `artikul` VARCHAR(255)  NOT NULL ,
 `material` VARCHAR(255)  NOT NULL ,
 `proba` VARCHAR(20)  NOT NULL ,
-`average_weight` DECIMAL(10,2)  NOT NULL ,
+`average_weight` VARCHAR(255)  NOT NULL ,
 `vstavki` VARCHAR(255)  NOT NULL ,
 `opisanije` VARCHAR(255)  NOT NULL ,
 `razmer` VARCHAR(255)  NOT NULL ,
@@ -165,7 +165,6 @@ CREATE TABLE IF NOT EXISTS `#__uvelir_zavods` (
 `base_url` VARCHAR(255)  NOT NULL ,
 `products` TEXT  NOT NULL ,
 `ordering` INT(11)  NOT NULL ,
-`state` TINYINT(1)  NOT NULL DEFAULT '1',
 `checked_out` INT(11)  NOT NULL ,
 `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 `created_by` INT(11)  NOT NULL ,
@@ -199,4 +198,33 @@ CREATE TABLE IF NOT EXISTS `#__uvelir_dostavka` (
 INSERT INTO `#__uvelir_dostavka` (`id`, `name`) VALUES
 (1, 'Курьером (только для Тюмени)'),
 (2, 'Доставка СПСР (по всей России)');
+
+DROP TABLE IF EXISTS `#__uvelir_vstavkis`;
+CREATE TABLE IF NOT EXISTS `#__uvelir_vstavkis` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(255)  NOT NULL ,
+`vstavki_list` TEXT  NOT NULL ,
+`ordering` INT(11)  NOT NULL ,
+`state` TINYINT(1)  NOT NULL DEFAULT '1',
+`checked_out` INT(11)  NOT NULL ,
+`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+`created_by` INT(11)  NOT NULL ,
+KEY `name` (`name`),
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+DROP TABLE IF EXISTS `#__uvelir_vstavkilist`;
+CREATE TABLE IF NOT EXISTS `#__uvelir_vstavkilist` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`vstavki_id` int(11)  NOT NULL DEFAULT '0',
+`name` VARCHAR(255)  NOT NULL ,
+`ordering` INT(11)  NOT NULL ,
+`state` TINYINT(1)  NOT NULL DEFAULT '1',
+`checked_out` INT(11)  NOT NULL ,
+`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+`created_by` INT(11)  NOT NULL ,
+KEY `name` (`name`),
+KEY `vstavki_id` (`vstavki_id`),
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
 
