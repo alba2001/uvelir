@@ -63,7 +63,8 @@ class Robokassa extends JModel
     private $_encoding = "utf-8";
 
     // HTML-страница с кассой
-    private $_src = 'https://merchant.roboxchange.com/Handler/MrchSumPreview.ashx?';
+//    private $_src = 'https://merchant.roboxchange.com/Handler/MrchSumPreview.ashx?';
+    private $_src = 'https://auth.robokassa.ru/Merchant/Index.aspx?';
     
     // Подпись при отправке оплаты
     private $_crc;
