@@ -120,5 +120,9 @@ defined('_JEXEC') or die;
     <input type="hidden" name="view" value="products" />
     <input type="hidden" name="item_id" value="" />
     <input type="hidden" name="products_group" value="<?=$this->products_group?>" />
+    <?php if(!$this->show_menu_groups):?>
+        <input type="hidden" name="show_menu_groups" value="0" />
+    <?php endif;?>
+    
     <?php echo JHtml::_('form.token'); ?>
 </form>

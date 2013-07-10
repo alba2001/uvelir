@@ -113,15 +113,16 @@ defined('_JEXEC') or die;
 	            </div><!-- com_uvelir_item -->
         <?php endforeach; ?>
 	</div><!-- items -->
-    <div class="pagination">
-        <?php echo $this->pagination->getListFooter(); ?>
-    </div>
-    <?php if(!$this->show_menu_groups):?>
-        <input type="hidden" name="show_menu_groups" value="0" />
-    <?php endif;?>
+	<div class="pagination">
+	    <?php echo $this->pagination->getListFooter(); ?>
+	</div>
     <input type="hidden" name="option" value="com_uvelir" />
     <input type="hidden" name="view" value="products" />
     <input type="hidden" name="item_id" value="" />
     <input type="hidden" name="products_group" value="<?=$this->products_group?>" />
+    <?php if(!$this->show_menu_groups):?>
+        <input type="hidden" name="show_menu_groups" value="0" />
+    <?php endif;?>
+    
     <?php echo JHtml::_('form.token'); ?>
 </form>

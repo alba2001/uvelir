@@ -62,7 +62,6 @@ class UvelirModelProducts extends JModelList {
         $this->setState('show_menu_groups', $show_menu_groups);
         
         // Если это не показ пунктов главного меню, то включаем фильтр
-        var_dump($show_menu_groups);
         if(!$show_menu_groups)
         {
             // Обработка данных модуля фильтрации 
