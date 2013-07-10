@@ -44,33 +44,6 @@ class UvelirModelProducts extends JModelList {
      */
     protected function populateState($ordering = null, $direction = null) {
         
-        // Обработка данных модуля фильтрации 
-        $usearch_data = JRequest::getVar('usearch_data', 
-                JFactory::getApplication()->getUserState('com_uvelir.usearch', array()),
-                '','array');
-        if($usearch_data)
-        {
-            if(!isset($usearch_data['available']))
-            {
-                $usearch_data['available'] = 0;
-            }
-            $this->setState('usearch_data.izdelie', $usearch_data['izdelie']);
-            $this->setState('usearch_data.metal', $usearch_data['metal']);
-            $this->setState('usearch_data.vstavki', $usearch_data['vstavki']);
-            $this->setState('usearch_data.razmer', $usearch_data['razmer']);
-            $this->setState('usearch_data.proba', $usearch_data['proba']);
-            $this->setState('usearch_data.cost_1', $usearch_data['cost_1']);
-            $this->setState('usearch_data.cost_2', $usearch_data['cost_2']);
-            $this->setState('usearch_data.available', $usearch_data['available']);
-            $group = 0;
-        }
-        else
-        {
-            
-        }
-        JFactory::getApplication()->setUserState('com_uvelir.usearch', $usearch_data);
-        
-        
         // Показываем меню продуктов или нет
         $show_menu_groups = JRequest::getInt('show_menu_groups', TRUE);
         $group = 0;
@@ -87,6 +60,35 @@ class UvelirModelProducts extends JModelList {
         }
         $this->setState('products_group', $group);
         $this->setState('show_menu_groups', $show_menu_groups);
+        
+        // Если это не показ пунктов главного меню, то включаем фильтр
+        var_dump($show_menu_groups);
+        if(!$show_menu_groups)
+        {
+            // Обработка данных модуля фильтрации 
+            $usearch_data = JRequest::getVar('usearch_data', 
+                    JFactory::getApplication()->getUserState('com_uvelir.usearch', array()),
+                    '','array');
+            if($usearch_data)
+            {
+                if(!isset($usearch_data['available']))
+                {
+                    $usearch_data['available'] = 0;
+                }
+                $this->setState('usearch_data.izdelie', $usearch_data['izdelie']);
+                $this->setState('usearch_data.metal', $usearch_data['metal']);
+                $this->setState('usearch_data.vstavki', $usearch_data['vstavki']);
+                $this->setState('usearch_data.razmer', $usearch_data['razmer']);
+                $this->setState('usearch_data.proba', $usearch_data['proba']);
+                $this->setState('usearch_data.cost_1', $usearch_data['cost_1']);
+                $this->setState('usearch_data.cost_2', $usearch_data['cost_2']);
+                $this->setState('usearch_data.available', $usearch_data['available']);
+                $group = 0;
+            }
+            JFactory::getApplication()->setUserState('com_uvelir.usearch', $usearch_data);
+        }
+        
+        
         
         // Initialise variables.
         $app = JFactory::getApplication();

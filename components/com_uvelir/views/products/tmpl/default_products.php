@@ -113,9 +113,12 @@ defined('_JEXEC') or die;
 	            </div><!-- com_uvelir_item -->
         <?php endforeach; ?>
 	</div><!-- items -->
-	<div class="pagination">
-	    <?php echo $this->pagination->getListFooter(); ?>
-	</div>
+    <div class="pagination">
+        <?php echo $this->pagination->getListFooter(); ?>
+    </div>
+    <?php if(!$this->show_menu_groups):?>
+        <input type="hidden" name="show_menu_groups" value="0" />
+    <?php endif;?>
     <input type="hidden" name="option" value="com_uvelir" />
     <input type="hidden" name="view" value="products" />
     <input type="hidden" name="item_id" value="" />
