@@ -62,9 +62,11 @@ CREATE TABLE IF NOT EXISTS `#__uvelir_products` (
 `desc` text  NOT NULL ,
 `artikul` VARCHAR(255)  NOT NULL ,
 `material` VARCHAR(255)  NOT NULL ,
+`material_id` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 `proba` VARCHAR(20)  NOT NULL ,
 `average_weight` VARCHAR(255)  NOT NULL ,
 `vstavki` VARCHAR(255)  NOT NULL ,
+`vstavki_id` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 `opisanije` VARCHAR(255)  NOT NULL ,
 `razmer` VARCHAR(255)  NOT NULL ,
 `cena_mag` DECIMAL(15,2)  NOT NULL ,
@@ -203,7 +205,6 @@ DROP TABLE IF EXISTS `#__uvelir_vstavkis`;
 CREATE TABLE IF NOT EXISTS `#__uvelir_vstavkis` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 `name` VARCHAR(255)  NOT NULL ,
-`vstavki_list` TEXT  NOT NULL ,
 `ordering` INT(11)  NOT NULL ,
 `state` TINYINT(1)  NOT NULL DEFAULT '1',
 `checked_out` INT(11)  NOT NULL ,
@@ -213,8 +214,8 @@ KEY `name` (`name`),
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
 
-DROP TABLE IF EXISTS `#__uvelir_vstavkilist`;
-CREATE TABLE IF NOT EXISTS `#__uvelir_vstavkilist` (
+DROP TABLE IF EXISTS `#__uvelir_vstavkilists`;
+CREATE TABLE IF NOT EXISTS `#__uvelir_vstavkilists` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 `vstavki_id` int(11)  NOT NULL DEFAULT '0',
 `name` VARCHAR(255)  NOT NULL ,
@@ -225,6 +226,34 @@ CREATE TABLE IF NOT EXISTS `#__uvelir_vstavkilist` (
 `created_by` INT(11)  NOT NULL ,
 KEY `name` (`name`),
 KEY `vstavki_id` (`vstavki_id`),
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+DROP TABLE IF EXISTS `#__uvelir_metals`;
+CREATE TABLE IF NOT EXISTS `#__uvelir_metals` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(255)  NOT NULL ,
+`ordering` INT(11)  NOT NULL ,
+`state` TINYINT(1)  NOT NULL DEFAULT '1',
+`checked_out` INT(11)  NOT NULL ,
+`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+`created_by` INT(11)  NOT NULL ,
+KEY `name` (`name`),
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+DROP TABLE IF EXISTS `#__uvelir_metallists`;
+CREATE TABLE IF NOT EXISTS `#__uvelir_metallists` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`metal_id` int(11)  NOT NULL DEFAULT '0',
+`name` VARCHAR(255)  NOT NULL ,
+`ordering` INT(11)  NOT NULL ,
+`state` TINYINT(1)  NOT NULL DEFAULT '1',
+`checked_out` INT(11)  NOT NULL ,
+`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+`created_by` INT(11)  NOT NULL ,
+KEY `name` (`name`),
+KEY `metal_id` (`metal_id`),
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
 

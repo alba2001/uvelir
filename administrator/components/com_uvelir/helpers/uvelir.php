@@ -65,6 +65,16 @@ class UvelirHelper
 			'index.php?option=com_uvelir&view=vstavkilists',
 			$vName == 'vstavkis'
 		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_UVELIR_TITLE_METALS'),
+			'index.php?option=com_uvelir&view=metals',
+			$vName == 'vstavkis'
+		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_UVELIR_TITLE_METALLISTS'),
+			'index.php?option=com_uvelir&view=metallists',
+			$vName == 'vstavkis'
+		);
 
 	}
 

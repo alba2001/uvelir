@@ -168,7 +168,7 @@ class UvelirModelProducts extends JModelList {
             // Фильтр по металлу
             if($metal = $this->getState('usearch_data.metal', ''))
             {
-                $query->where('material = "'.$metal.'"');
+                $query->where('material_id = "'.$metal.'"');
             }
             // Фильтр по вставкам
             if($vstavki = $this->getState('usearch_data.vstavki', ''))

@@ -55,9 +55,10 @@ class modUsearchHelper
         {
             $attribs = array();
             $db =& JFactory::getDBO();
-            $table = $db->NameQuote('#__uvelir_products');
-            $fields[] = $db->NameQuote('material');
-            $query = 'SELECT DISTINCT '.implode(',',$fields);
+            $table = $db->NameQuote('#__uvelir_metals');
+            $fields[] = $db->NameQuote('id');
+            $fields[] = $db->NameQuote('name');
+            $query = 'SELECT  '.implode(',',$fields);
             $query .= ' FROM '.$table;
             
             $db->setQuery($query);
@@ -70,11 +71,11 @@ class modUsearchHelper
             {
                 foreach ($list as $row)
                 {
-                    if($row->material)
+                    if($row->name)
                     {
                         $state[] = JHTML::_('select.option'
-                                , $row->material
-                                , JText::_($row->material)
+                                , $row->id
+                                , JText::_($row->name)
                         );
                     }
                 }

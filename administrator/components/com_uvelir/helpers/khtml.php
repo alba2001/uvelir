@@ -56,7 +56,7 @@ class KhtmlHelper
 
 
         /**
-        * Список категорий с учетом завода
+        * Список вставок
         * @param noting
         * @return object list
         */
@@ -69,7 +69,23 @@ class KhtmlHelper
             $query->select('`id` AS value, `name` AS text')
                     ->from('`#__uvelir_vstavkis`');
             $db->setQuery($query);
-            var_dump($db->loadObjectList());
+            return $db->loadObjectList();
+	}
+
+        /**
+        * Список металлов
+        * @param noting
+        * @return object list
+        */
+	public static function metals()
+	{
+            $db = JFactory::getDbo();
+            $query	= $db->getQuery(true);
+
+            // Select the required fields from the table.
+            $query->select('`id` AS value, `name` AS text')
+                    ->from('`#__uvelir_metals`');
+            $db->setQuery($query);
             return $db->loadObjectList();
 	}
 
