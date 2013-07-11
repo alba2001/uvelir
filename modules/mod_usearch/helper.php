@@ -213,7 +213,7 @@ class modUsearchHelper
          function getCheckboxAvailable($checked)
          {
              $checked = $checked?'checked="checked"':'';
-             $html = '<input type="checkbox" name="usearch_data[available]" value="1" '.$checked.' />';
+             $html = '<input type="checkbox" id="mod_usearch_available" name="usearch_data[available]" value="1" '.$checked.' />';
              return $html;
          }
 }
