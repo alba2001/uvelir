@@ -11,8 +11,8 @@ defined('_JEXEC') or die;
 define( 'FILEPATH', dirname(__FILE__) . DS . 'accordion_files' );
 // Note. It is important to remove spaces between elements.
 ?>
-
-<ul id="accordion" class="accordion menu<?php echo $class_sfx;?>"<?php
+<?$rand=md5(microtime());?>
+<ul id="accordion<?=$rand?>" class="accordion menu<?php echo $class_sfx;?>"<?php
 	$tag = '';
 	if ($params->get('tag_id')!=NULL) {
 		$tag = $params->get('tag_id').'';
@@ -96,7 +96,7 @@ endforeach;
 	jQuery("html").addClass("js");
 	jQuery.fn.accordion.defaults.container = false;
 	jQuery(function() {
-	  jQuery("#accordion").accordion({
+	  jQuery("#accordion<?=$rand?>").accordion({
 	      el: ".h",
 	      head: "h4",
 	      next: "div",
