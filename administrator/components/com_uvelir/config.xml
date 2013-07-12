@@ -36,11 +36,11 @@
 		description="COM_UVELIR_COMPONENT_DESC"
 	>
 
-        <field name="test"
-             type="radio"
-             default="1"
-             label="COM_UVELIR_TEST_LABEL"
-             description="COM_UVELIR_TEST_DESC">
+        <field name="max_shown_sum"
+             type="text"
+             default="200 000"
+             label="COM_UVELIR_MAX_SHOWN_SUM"
+             description="COM_UVELIR_MAX_SHOWN_SUM_DESC">
                  <option value="0">JHIDE</option>
                  <option value="1">JSHOW</option>
          </field>

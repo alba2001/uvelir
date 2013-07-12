@@ -65,4 +65,11 @@ class UvelirControllerProducts extends JControllerAdmin
             exit;
         }
         
+        public function fill_cenas()
+        {
+            $model = $this->getModel('Products');
+            $model->fill_cenas();
+            
+            $this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_list, false));
+        }
 }

@@ -82,6 +82,8 @@ class UvelirViewProducts extends JView
 			    JToolBarHelper::custom('products.publish', 'publish.png', 'publish_f2.png','JTOOLBAR_PUBLISH', true);
 			    JToolBarHelper::custom('products.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);
                             JToolBarHelper::deleteList('', 'products.delete','JTOOLBAR_DELETE');
+			    JToolBarHelper::divider();
+                            JToolBarHelper::custom( 'products.fill_cenas', 'unpublish.png', '', 'FILL_CENAS', FALSE, false );
             } else if (isset($this->items[0])) {
                 //If this component does not use state then show a direct delete button as we can not trash
                 JToolBarHelper::deleteList('', 'products.delete','JTOOLBAR_DELETE');

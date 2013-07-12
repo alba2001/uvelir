@@ -55,15 +55,22 @@ defined('_JEXEC') or die;
                             <?php $prises = ComponentHelper::getPrices($item->id); ?>
                             
 	                    <div>
+                                <?php if((int)$prises['cena_mag']):?>
 	                        <?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
 	                        <span class="line-through"><?=$prises['cena_mag']?></span>
 	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
+                                <?php endif?>
 	                    </div>
-
+                            
 	                    <div>
+                            
+                            <?php if((int)$prises['cena_tut']):?>
 	                        <?= JText::_('COM_UVELIR_CENA_TUT').': <br>' ?>
 	                        <span><?=$prises['cena_tut']?></span>
 	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
+                            <?php else:?>
+                                <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
+                            <?php endif?>
 	                    </div>
 	                </div>
 
@@ -120,7 +127,7 @@ defined('_JEXEC') or die;
     <input type="hidden" name="view" value="products" />
     <input type="hidden" name="item_id" value="" />
     <input type="hidden" name="products_group" value="<?=$this->products_group?>" />
-    <?php if(!$this->show_menu_groups):?>
+    <?php if(!isset($this->show_menu_groups) OR !$this->show_menu_groups):?>
         <input type="hidden" name="show_menu_groups" value="0" />
     <?php endif;?>
     

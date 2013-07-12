@@ -135,12 +135,16 @@ class ComponentHelper
                     }
                 }
             }
-//            echo json_encode(array(
-//                'cid'=>$product_id,
-//                'key'=>$key,
-//            ));
-//            echo json_encode($result);
-//            exit;
+            
+            // Корректировка цены с учетом максимальной показываемой на сайте суммы
+            $params = JComponentHelper::getParams('com_uvelir');
+            $max_shown_sum = $params->get('max_shown_sum');
+            
+            if($result['cena_tut'] > $max_shown_sum)
+            {
+                $result['cena_tut'] = 0;
+            }
+
             return $result;
 	}
         

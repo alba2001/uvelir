@@ -175,4 +175,30 @@ class UvelirModelProducts extends UvelirModelKModelList
             return FALSE;
         }
         
+        public function fill_cenas()
+        {
+            require_once JPATH_ROOT.'/administrator/components/com_uvelir/helpers/component.php';
+            $query = $this->_db->getQuery(TRUE);
+            $query->select('id');
+            $query->from('#__uvelir_products');
+            $this->_db->setQuery($query);
+            $keys = $this->_db->loadResultArray();
+            foreach($keys as $key)
+            {
+                $prises = ComponentHelper::getPrices($key);
+                //Временная заглушка не переписывать цену, если она уже прописана
+                $query = 'SELECT cena_tut from #__uvelir_products WHERE id='.$key;
+                $this->_db->setQuery($query);
+                $sum_in_table = $this->_db->loadResult();
+                if(!(int)$sum_in_table)
+                {
+                    $query = 'UPDATE  `#__uvelir_products` SET  `cena_mag` =  '.$prises['cena_mag'].
+                            ', `cena_tut` ='.$prises['cena_tut'].
+                            ' WHERE  `id` ='.$key;
+                    $this->_db->setQuery($query);
+                    $this->_db->query();
+                }
+            }
+            return TRUE;
+        }
 }
