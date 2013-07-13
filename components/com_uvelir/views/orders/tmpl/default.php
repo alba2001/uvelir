@@ -27,7 +27,7 @@ $src = JURI::base().'components/com_uvelir/assets/img/info_16.png';
         <tr>
             <td><?= $item->id?></td>
             <td><?= $this->model->get_order_dt($item->order_dt)?></td>
-            <td><?= $item->sum?></td>
+            <td><?= (int)$item->sum?$item->sum:JTEXT::_('COM_UVELIR_MANAGER_CENA')?></td>
             <td><?= $this->model->get_order_status($item->order_status_id)?></td>
             <td><a href="<?=$href.$item->id?>" title="<?=JText::_('COM_UVELIR_ORDER_INFO')?>">
                     <img src="<?=$src?>" alt="<?=JText::_('COM_UVELIR_ORDER_INFO')?>"/>

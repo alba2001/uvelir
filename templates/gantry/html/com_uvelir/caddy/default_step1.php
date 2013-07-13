@@ -80,8 +80,12 @@ $caddy = JFactory::getApplication()->getUserState('com_uvelir.caddy');
                             <span class="com_uvelir-arow  arow_right" id="arow_right_<?=$id?>"></span>
 	                </td>
 	                <td class="price">
+                                <?php if((int)$item['price']):?>
 	                	<span id="caddy_item_price_<?=$id?>"><?=$item['price']?></span>
 	                	<span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                <?php else:?>
+                                <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
+                                <?php endif;?>
 	                </td>
 	                <td class="caddy_item_sum">
 	                	<span id="caddy_item_sum_<?=$id?>"><?=(int)$item['sum']?></span>

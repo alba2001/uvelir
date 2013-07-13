@@ -20,7 +20,7 @@ defined('_JEXEC') or die;
         width: 200px;
     }
 </style>
-<!-- <div class="div_user_detail expand-source">
+<div class="div_user_detail expand-source">
 	<p>Личные данные</p>
 	<form action="<?php echo JURI::base().'/lichnye-dannye'; ?>" method="post" name="user_detail_show" id="user_detail_show">
 	    <dl class="dl_user_detail">
@@ -35,7 +35,7 @@ defined('_JEXEC') or die;
 	    </dl>
 	    <input class="button" type="submit" value="<?=JTEXT::_('COM_UVELIR_EDIT_USERDATA')?>" />
 	</form>
-</div> -->
+</div>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="caddy_show" id="caddy_show">
     <table>
     	<thead>
@@ -57,7 +57,7 @@ defined('_JEXEC') or die;
     	</thead>
     	<tbody>
     		<tr class="separator">
-    			<td colpan="6"></td>
+    			<td colpan="5"></td>
     		</tr>
 	        <?php foreach($this->items as $item):?>
 	            <?php $id = $item['zavod_id'].'_'.$item['id']?>
@@ -92,8 +92,12 @@ defined('_JEXEC') or die;
 	                    <?=$item['count']?>
 	                </td>
 	                <td class="price">
+                                <?php if((int)$item['price']):?>
 	                	<span id="caddy_item_price_<?=$id?>"><?=$item['price']?></span>
 	                	<span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                <?php else:?>
+                                <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
+                                <?php endif;?>
 	                </td>
 	                <td class="caddy_item_sum">
 	                	<span id="caddy_item_sum_<?=$id?>"><?=(int)$item['sum']?></span>
@@ -116,9 +120,9 @@ defined('_JEXEC') or die;
 	    			</span>
         		</td>
         	</tr>
-<!--Кнопки-->
+<!--Кнопки-->       
         	<tr>
-        		<th colspan="4" class="left">
+        		<th colspan="3" class="left">
                             <a href="<?php echo JUri::base().'sposob-oplaty'; ?>" class="button" />Вернуться к способу оплаты</a>
         		</th>
         		<th colspan="2" class="right">

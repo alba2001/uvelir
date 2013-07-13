@@ -12,31 +12,28 @@ $href = JUri::base().'index.php?option=com_uvelir&view=order&id=';
 $src = JURI::base().'components/com_uvelir/assets/img/info_16.png';
 
 ?>
-<div id="orders">
-	<table>
-	    <thead>
-	        <tr>
-	            <th><?=JText::_('COM_UVELIR_ORDER_ID')?></th>
-	            <th><?=JText::_('COM_UVELIR_ORDER_DT')?></th>
-	            <th><?=JText::_('COM_UVELIR_ORDER_SUM')?></th>
-	            <th><?=JText::_('COM_UVELIR_ORDER_STATUS')?></th>
-	            <th><?=JText::_('COM_UVELIR_ORDER_INFO')?></th>
-	        </tr>
-	    </thead>
-	    <tbody>
-	    	<tr class="separator"><td colpan="5"></td></tr>
-	        <?php foreach ($this->items as $item):?>
-	        <tr>
-	            <td><?= $item->id?></td>
-	            <td><?= $this->model->get_order_dt($item->order_dt)?></td>
-	            <td><?= $item->sum?></td>
-	            <td><?= $this->model->get_order_status($item->order_status_id)?></td>
-	            <td><a href="<?=$href.$item->id?>" title="<?=JText::_('COM_UVELIR_ORDER_INFO')?>">
-	                    <img src="<?=$src?>" alt="<?=JText::_('COM_UVELIR_ORDER_INFO')?>"/>
-	                </a>
-	            </td>
-	        </tr>
-	        <?php endforeach;?>
-	    </tbody>
-	</table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th><?=JText::_('COM_UVELIR_ORDER_ID')?></th>
+            <th><?=JText::_('COM_UVELIR_ORDER_DT')?></th>
+            <th><?=JText::_('COM_UVELIR_ORDER_SUM')?></th>
+            <th><?=JText::_('COM_UVELIR_ORDER_STATUS')?></th>
+            <th><?=JText::_('COM_UVELIR_ORDER_INFO')?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->items as $item):?>
+        <tr>
+            <td><?= $item->id?></td>
+            <td><?= $this->model->get_order_dt($item->order_dt)?></td>
+            <td><?= (int)$item->sum?$item->sum:JTEXT::_('COM_UVELIR_MANAGER_CENA')?></td>
+            <td><?= $this->model->get_order_status($item->order_status_id)?></td>
+            <td><a href="<?=$href.$item->id?>" title="<?=JText::_('COM_UVELIR_ORDER_INFO')?>">
+                    <img src="<?=$src?>" alt="<?=JText::_('COM_UVELIR_ORDER_INFO')?>"/>
+                </a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>

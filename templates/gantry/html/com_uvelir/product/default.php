@@ -46,23 +46,13 @@ $desc = json_decode($this->item->desc);
 	    	<?php endif;?>
 		</h2>
 
-		<div class="leftside">
+    	<div class="leftside">
 	        <a class="fancybox"
 	        href="<?=$desc->img_large?>"
 	        rel="{handler: 'iframe'}">
 	        <img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>
 	        </a>
-        </div>
-
-        <div class="social-block">
-        	<?
-	        	jimport('joomla.application.module.helper');
-	        	// this is where you want to load your module position
-	        	$modules = JModuleHelper::getModules('product-special');
-	        	foreach($modules as $module){
-		        	echo JModuleHelper::renderModule($module);
-	        	}
-        	?>
+	        <!-- social block-->
         </div>
 
 	    <table class="fields_list">
@@ -238,10 +228,14 @@ $desc = json_decode($this->item->desc);
                                         </span>
                                         <br>
                                         <span 	class="black big">
+                                            <?php if((int)$prises['cena_tut']):?>
                                             <span id="item_cena_tut">
                                                 <?=number_format($prises['cena_tut'], 0, '.', ' ') . ' '?>
                                             </span>
                                             <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                            <?php else:?>
+                                            <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
+                                            <?php endif?>
                                         </span>
 
                                         <br>
@@ -266,7 +260,7 @@ $desc = json_decode($this->item->desc);
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
             $(".fancybox").fancybox();
-
+                
             // Изменение размера изделия
             $('#item_razmer').change(function(){
                 var url = '<?=JURI::base()?>index.php';
@@ -301,10 +295,10 @@ $desc = json_decode($this->item->desc);
                             $('#count_span_<?php echo $this->item->id; ?>').text(data.count);
                         }
                     }
-
+                
                 });
             });
-
+                
 	});
 </script>
 <?php endif ?>

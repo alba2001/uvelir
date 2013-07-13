@@ -19,11 +19,8 @@ defined('_JEXEC') or die;
         width: 200px;
     }
 </style>
-<div id="order">
-	<h1><?=JTEXT::_('COM_UVELIR_ORDER')?> № <?=$this->item->id?></h1>
+<h1><?=JTEXT::_('COM_UVELIR_ORDER')?> № <?=$this->item->id?></h1>
 
-	<div class="expand-source">
-		<p>Личные данные</p>
 	    <dl class="dl_user_detail">
 	        <dt><?=JTEXT::_('COM_UVELIR_FIO').': '?></dt>
 	        <dd><?=$this->user->fam.' '.$this->user->im.' '.$this->user->ot?></dd>
@@ -39,11 +36,10 @@ defined('_JEXEC') or die;
 	        <dd><?=$this->sposob_dostavki?></dd>
 	        <dt><?=JTEXT::_('COM_UVELIR_ITOGO').': '?></dt>
 	        <dd>
-                <?=$this->total_sum?>
-                <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
-            </dd>
+                    <?=$this->total_sum?>
+                    <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                </dd>
 	    </dl>
-	</div>
 
     <table>
     	<thead>
@@ -69,7 +65,7 @@ defined('_JEXEC') or die;
     		</tr>
 	        <?php foreach($this->products as $item):?>
 	            <?php $id = $item['zavod_id'].'_'.$item['id']?>
-
+	            
 	            <tr>
 	                <td>
 	                	<div class="image">
@@ -101,8 +97,12 @@ defined('_JEXEC') or die;
 	                    <?=$item['count']?>
 	                </td>
 	                <td class="price">
-	                	<span id="caddy_item_price_<?=$id?>"><?=(int)($item['sum']/(int)$item['count'])?></span>
+                                <?php if((int)$item['price']):?>
+	                	<span id="caddy_item_price_<?=$id?>"><?=$item['price']?></span>
 	                	<span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                <?php else:?>
+                                <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
+                                <?php endif;?>
 	                </td>
 	                <td class="caddy_item_sum">
 	                	<span id="caddy_item_sum_<?=$id?>"><?=(int)$item['sum']?></span>
@@ -113,18 +113,16 @@ defined('_JEXEC') or die;
         </tbody>
         <tfoot>
         	<tr>
-        		<th colspan="4" class="left">
+        		<th colspan="5" class="left">
                             <a href="<?php echo JUri::base().'spisok-zakazov'?>" class="button"><?=JTEXT::_('COM_UVELIR_ORDERS_LIST')?></a>
         		</th>
-
-	           	<th colspan="5" class="right">
-		            <?php if($this->item->order_status_id == '1'): ?>
-		                <a href="<?php echo $this->robokassa_href?>" class="button"><?=JTEXT::_('COM_UVELIR_ORDER_PAY')?></a>
-		            <?php endif; ?>
-	            </th>
-
+                        <?php if($this->item->order_status_id == '1'): ?>
+                        <th colspan="5" class="left">
+                            <a href="<?php echo $this->robokassa_href?>" class="button"><?=JTEXT::_('COM_UVELIR_ORDER_PAY')?></a>
+                        </th>
+                        <?php endif; ?>
         	</tr>
         </tfoot>
-
+        
     </table>
-</div>
+

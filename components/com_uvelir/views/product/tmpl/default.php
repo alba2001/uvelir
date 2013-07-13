@@ -228,10 +228,14 @@ $desc = json_decode($this->item->desc);
                                         </span>
                                         <br>
                                         <span 	class="black big">
+                                            <?php if((int)$prises['cena_tut']):?>
                                             <span id="item_cena_tut">
                                                 <?=number_format($prises['cena_tut'], 0, '.', ' ') . ' '?>
                                             </span>
                                             <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                                            <?php else:?>
+                                            <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
+                                            <?php endif?>
                                         </span>
 
                                         <br>
