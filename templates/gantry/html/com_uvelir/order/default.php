@@ -39,6 +39,12 @@ defined('_JEXEC') or die;
                     <?=$this->total_sum?>
                     <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
                 </dd>
+	        <dt><?=JTEXT::_('COM_UVELIR_CAN_PAY').': '?></dt>
+	        <dd>
+                    <?=ComponentHelper::getCheckoutSum($this->total_sum)?>
+                    <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                    <span><?=JText::_('COM_UVELIR_CAN_PAY_MSG')?></span>
+                </dd>
 	    </dl>
 
     <table>

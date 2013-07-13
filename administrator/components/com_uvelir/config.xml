@@ -38,11 +38,23 @@
 
         <field name="max_shown_sum"
              type="text"
-             default="200 000"
+             default="200000"
              label="COM_UVELIR_MAX_SHOWN_SUM"
              description="COM_UVELIR_MAX_SHOWN_SUM_DESC">
-                 <option value="0">JHIDE</option>
-                 <option value="1">JSHOW</option>
+         </field>
+
+        <field name="max_robokassa_sum"
+             type="text"
+             default="15000"
+             label="COM_UVELIR_MAX_ROBOKASSA_SUM"
+             description="COM_UVELIR_MAX_ROBOKASSA_SUM_DESC">
+         </field>
+
+        <field name="proc_robokassa_sum"
+             type="text"
+             default="50"
+             label="COM_UVELIR_PROC_ROBOKASSA_SUM"
+             description="COM_UVELIR_PROC_ROBOKASSA_SUM_DESC">
          </field>
 
 	</fieldset>

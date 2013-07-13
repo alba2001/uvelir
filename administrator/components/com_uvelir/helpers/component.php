@@ -77,6 +77,25 @@ class ComponentHelper
 	}
         
         /**
+         * Сумма к оплате ч-з Робокассу
+         * К оплате ч-з Робокассу подлежит 50%($proc_robokassa_sum)
+         * от суммы заказа, но не более 15т.р.($max_robokassa_sum)
+         * @param type $sum
+         * @return string 
+         */
+	public static function getCheckoutSum($sum)
+	{
+            
+            $params = JComponentHelper::getParams('com_uvelir');
+            $max_robokassa_sum = $params->get('max_robokassa_sum');
+            $proc_robokassa_sum = $params->get('proc_robokassa_sum');
+            $checkout_sum = ($sum * $proc_robokassa_sum)/100;
+            $checkout_sum = $checkout_sum>$max_robokassa_sum?$max_robokassa_sum:$checkout_sum;
+            
+            return self::getSum($checkout_sum);
+	}
+        
+        /**
          * Наименование завода
          * @param int $zavod
          * @return string 
@@ -103,6 +122,7 @@ class ComponentHelper
             $result = array(
                 'cena_mag'=>'0',
                 'cena_tut'=>'0',
+                'cena_manager'=>'0',
                 'price_mag'=>'',
                 'price_tut'=>'',
                 'producttype_name'=>'',
@@ -112,35 +132,40 @@ class ComponentHelper
             $producttype = self::getTable('Producttype');
             if($product->load($product_id))
             {
-                if((int)$product->cena_mag OR (int)$product->cena_tut)
+                if($category->load($product->category_id))
                 {
-                    $result['cena_mag'] = $product->cena_mag;
-                    $result['cena_tut'] = $product->cena_tut;
+                    if($category->producttype_id AND $product->average_weight AND $producttype->load($category->producttype_id))
+                    {
+                        $average_weights = explode(',', $product->average_weight);
+                        $cena_mag_per_g = $producttype->cena_mag;
+                        $cena_tut_per_g = $producttype->cena_tut;
+                        $cena_mag = round($average_weights[$key]*$cena_mag_per_g,2);
+                        $result['cena_mag'] = $cena_mag?$cena_mag:$product->cena_mag;
+                        $cena_tut = round($average_weights[$key]*$cena_tut_per_g,2);
+                        $result['cena_tut'] = $cena_tut?$cena_tut:$product->cena_tut;
+                        $result['price_mag'] = $producttype->cena_mag;
+                        $result['price_tut'] = $producttype->cena_tut;
+                        $result['producttype_name'] = $producttype->name;
+                    }
+                    else
+                    {
+                        $result['cena_mag'] = $product->cena_mag;
+                        $result['cena_tut'] = $product->cena_tut;
+                    }
                 }
                 else
                 {
-                    if($category->load($product->category_id))
-                    {
-                        if($category->producttype_id AND $product->average_weight AND $producttype->load($category->producttype_id))
-                        {
-                            $average_weights = explode(',', $product->average_weight);
-                            $cena_mag_per_g = $producttype->cena_mag;
-                            $cena_tut_per_g = $producttype->cena_tut;
-                            $result['cena_mag'] = round($average_weights[$key]*$cena_mag_per_g,2);
-                            $result['cena_tut'] = round($average_weights[$key]*$cena_tut_per_g,2);
-                            $result['price_mag'] = $producttype->cena_mag;
-                            $result['price_tut'] = $producttype->cena_tut;
-                            $result['producttype_name'] = $producttype->name;
-                        }
-                    }
+                        $result['cena_mag'] = $product->cena_mag;
+                        $result['cena_tut'] = $product->cena_tut;
                 }
             }
             
             // Корректировка цены с учетом максимальной показываемой на сайте суммы
+            $result['cena_manager'] = $result['cena_tut'];
             $params = JComponentHelper::getParams('com_uvelir');
             $max_shown_sum = $params->get('max_shown_sum');
             
-            if($result['cena_tut'] > $max_shown_sum)
+            if( $result['cena_tut'] > $max_shown_sum)
             {
                 $result['cena_tut'] = 0;
             }

@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 require_once 'components/com_uvelir/helpers/robokassa.php'; 
+require_once JPATH_COMPONENT_ADMINISTRATOR.'/helpers/component.php';
 
 /**
  * View to edit
@@ -86,7 +87,7 @@ class UvelirViewOrder extends JView {
                 '_src'=>        $params->get('RobokassaTestMode'),
                 '_inv_id'=>     $this->item->id,
                 '_inv_desc'=>   JText::_('COM_UVELIR_INV_DESC').$this->item->id,
-                '_out_summ'=>   $this->total_sum
+                '_out_summ'=>   ComponentHelper::getCheckoutSum($this->total_sum)
             );
             $robokassa = new Robokassa($r_config);
             $this->robokassa_href = $robokassa->get_url();
