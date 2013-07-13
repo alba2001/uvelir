@@ -80,16 +80,17 @@ class UvelirModelCaddy extends ModelKModelform
         
         // Тело письма
         $caddy = json_decode($order->caddy, TRUE);
-        $body   = '<h1>Заказ №'.$order->id.'</h1>';
-        $body .= '<table style="border: 1px solid">';
-        $body .= '<tr>';
-        $body .= '<th>Выбранные товары</th>';
-        $body .= '<th>Количество</th>';
-        $body .= '<th>Размер</th>';
-        $body .= '<th>Цена</th>';
-        $body .= '<th>Сумма</th>';
-        $body .= '</tr>';
+        $body_head   = '<h1>Заказ №'.$order->id.'</h1>';
+        $body_head .= '<table style="border: 1px solid">';
+        $body_head .= '<tr>';
+        $body_head .= '<th>Выбранные товары</th>';
+        $body_head .= '<th>Количество</th>';
+        $body_head .= '<th>Размер</th>';
+        $body_head .= '<th>Цена</th>';
+        $body_head .= '<th>Сумма</th>';
+        $body_head .= '</tr>';
         
+        $body = '';
         foreach ($caddy as $key=>$value)
         {
             $cids = explode('_', $key);
@@ -103,46 +104,67 @@ class UvelirModelCaddy extends ModelKModelform
                     .$product_data['artikul'].'</b></td>';
             $body .= '<td>'.$value['count'].'</td>';
             $body .= '<td>'.$product_data['razmer'].'</td>';
-            $body .= '<td>'.$prises['cena_tut'].'</td>';
+            $client_cena = (int)$prises['cena_tut']?$prises['cena_tut']:JTEXT::_('COM_UVELIR_MANAGER_CENA');
+            $body .= '<td>'.$client_cena.'</td>';
             $body .= '<td>'.$value['sum'].'</td>';
             $body .= '</tr>';
         }
-        $body .= '</tr>';
-        $body .= '<td colspan="4">Итого: '.$order->sum.'руб.</td>';
-        $body .= '<tr>';
-        $body .= '</table>';
-        $body .= '<b>Способ оплаты: </b>'.$this->_get_oplata_name($order->oplata_id);
-        $body .= '<br>';
-        $body .= '<b>Способ доставки: </b>'.$this->_get_dostavka_name($order->dostavka_id);
-        $mailer->setBody($body);        
+        $body_foot = '</tr>';
+        $body_foot .= '<td colspan="4">Итого: '.$order->sum.'руб.</td>';
+        $body_foot .= '<tr>';
+        $body_foot .= '</table>';
+        $body_foot .= '<b>Способ оплаты: </b>'.$this->_get_oplata_name($order->oplata_id);
+        $body_foot .= '<br>';
+        $body_foot .= '<b>Способ доставки: </b>'.$this->_get_dostavka_name($order->dostavka_id);
+        $body_client = $body_head.$body.$body_foot;
+        $mailer->setBody($body_client);
         
         // Тема письма
-        $mailer->setSubject('Заказ №'.$order->id.' на сайте '.$sitename);
+        $subject = 'Заказ №'.$order->id.' на сайте '.$sitename;
+        $mailer->setSubject($subject);
         
         $mailer->isHTML(true);
         $mailer->Encoding = 'base64';
-//        $mailer->setBody($body);
      
         // Отправка письма заказчику
-//        $send = $mailer->Send();
-//        
-//        if(!$send == TRUE)
-//        {
-//            return $send;
-//        }
+        $send_to_client = $mailer->Send();
         
         // Отправляем второе письмо менеджеру
-        // Получатель
+        unset($mailer);
+        $mailer =& JFactory::getMailer();
+        $mailer->setSender($sender);
         $mailer->addRecipient($sender);
+        $mailer->setSubject($subject);
+        $mailer->isHTML(true);
+        $mailer->Encoding = 'base64';
+
+        $body = '';
+        foreach ($caddy as $key=>$value)
+        {
+            $cids = explode('_', $key);
+            $id = $cids[0];
+            $razmer_key = $cids[1];
+            
+            $product_data = $this->_get_product_data($id, $razmer_key);
+            $prises = ComponentHelper::getPrices($id, $razmer_key);
+            $body .= '<tr>';
+            $body .= '<td><img src="'.$product_data['img_src'].'"/><b>'
+                    .$product_data['artikul'].'</b></td>';
+            $body .= '<td>'.$value['count'].'</td>';
+            $body .= '<td>'.$product_data['razmer'].'</td>';
+            $body .= '<td>'.$prises['cena_manager'].'</td>';
+            $body .= '<td>'.$value['sum'].'</td>';
+            $body .= '</tr>';
+        }
+
         $user_data = '<b>ФИО: </b>'.$user->fam.' '.$user->im.' '.$user->ot.'<br>';
         $user_data .= '<b>Почтовый адрес: </b>'.$user->address.'<br>';
         $user_data .= '<b>Телефон: </b>'.$user->phone.'<br>';
         $user_data .= '<b>email: </b>'.$user->email.'<br>';
-        $body = $user_data.$body;
-        $mailer->setBody($body);
+        $body_manager = $user_data.$body_head.$body.$body_foot;
+        $mailer->setBody($body_manager);
         
-//        echo $body;exit;
-        return $mailer->Send();
+        return $mailer->Send() AND $send_to_client;
     }
     
     /**
