@@ -36,8 +36,12 @@ defined('_JEXEC') or die;
 	        <dd><?=$this->sposob_dostavki?></dd>
 	        <dt><?=JTEXT::_('COM_UVELIR_ITOGO').': '?></dt>
 	        <dd>
-                    <?=$this->total_sum?>
-                    <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                    <?php if((int)$this->total_sum):?>
+                        <?=$this->total_sum?>
+                        <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                    <?php else:?>
+                        <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
+                    <?php endif;?>
                 </dd>
 	        <dt><?=JTEXT::_('COM_UVELIR_CAN_PAY').': '?></dt>
 	        <dd>
