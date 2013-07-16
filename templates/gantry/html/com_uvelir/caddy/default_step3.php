@@ -32,6 +32,13 @@ defined('_JEXEC') or die;
             <label for="com_uvelir_cash" type="radio" ><?=  JText::_('COM_UVELIR_CASH')?></label>
         </td>
     </tr>
+<?php else:?>
+    <tr>
+        <td colspan="6" class="left">
+            <input id="com_uvelir_cash_express" type="radio" name="oplata" value="3" <?=$oplata=='3'?'checked="checked"':''?>/>
+            <label for="com_uvelir_cash_express" type="radio" ><?=  JText::_('COM_UVELIR_CASH_EXPRESS')?></label>
+        </td>
+    </tr>
 <?php endif;?>
     <tr>
         <td colspan="6" class="left">

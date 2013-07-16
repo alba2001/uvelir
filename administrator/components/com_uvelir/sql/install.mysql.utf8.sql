@@ -187,8 +187,9 @@ CREATE TABLE IF NOT EXISTS `#__uvelir_oplata` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 INSERT INTO `#__uvelir_oplata` (`id`, `name`) VALUES
-(1, 'Наличными при получении'),
-(2, 'Банковскими картами, электронными деньгами');
+(1, 'Оплата 100% наличными при получении курьеру службы СПСР-Экспресс.'),
+(2, 'Банковскими картами, электронными деньгами 50% от суммы, но не более 15 000, остальное курьеру службы СПСР-Экспресс после доставки.'),
+(3, 'Оплата 100% наличными при получении курьеру службы СПСР-Экспресс.');
 
 DROP TABLE IF EXISTS `#__uvelir_dostavka`;
 CREATE TABLE IF NOT EXISTS `#__uvelir_dostavka` (

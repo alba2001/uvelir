@@ -20,7 +20,7 @@ defined('_JEXEC') or die;
     }
 </style>
 <h1><?=JTEXT::_('COM_UVELIR_ORDER')?> № <?=$this->item->id?></h1>
-
+    <h4><?=JText::_('COM_UVELIR_CAN_PAY_MSG')?></h4>
 	    <dl class="dl_user_detail">
 	        <dt><?=JTEXT::_('COM_UVELIR_FIO').': '?></dt>
 	        <dd><?=$this->user->fam.' '.$this->user->im.' '.$this->user->ot?></dd>
@@ -47,9 +47,9 @@ defined('_JEXEC') or die;
 	        <dd>
                     <?=ComponentHelper::getCheckoutSum($this->total_sum)?>
                     <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
-                    <span><?=JText::_('COM_UVELIR_CAN_PAY_MSG')?></span>
                 </dd>
 	    </dl>
+
 
     <table>
     	<thead>

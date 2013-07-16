@@ -12,34 +12,30 @@ defined('_JEXEC') or die;
 $dostavka = isset($this->zakaz['dostavka'])?$this->zakaz['dostavka']:'1';
 ?>
 <form action="<?php echo JUri::base().'sposob-oplaty'; ?>" method="post" name="step1_form" id="step2_form">
-<table>    
+<table>
     <tr>
-        <th>
-            <label for="com_uvelir_courjer" type="radio" ><?=  JText::_('COM_UVELIR_COURJER')?></label>
-        </th>
-        <td>
+        <td colspan="6" class="left">
             <input id="com_uvelir_courjer" type="radio" name="dostavka" value="1" <?=$dostavka=='1'?'checked="checked"':''?>/>
+            <label for="com_uvelir_courjer" type="radio" ><?=  JText::_('COM_UVELIR_COURJER')?></label>
         </td>
     </tr>
     <tr>
-        <th>
-            <label for="com_uvelir_spsr" type="radio" ><?=  JText::_('COM_UVELIR_SPSR')?></label>
-        </th>
-        <td>
+        <td colspan="6" class="left">
             <input id="com_uvelir_spsr" type="radio" name="dostavka" value="2"  <?=$dostavka=='2'?'checked="checked"':''?>/>
+            <label for="com_uvelir_spsr" type="radio" ><?=  JText::_('COM_UVELIR_SPSR')?></label>
         </td>
     </tr>
 
-<!--Кнопки-->    
+<!--Кнопки-->
     <tr>
-        <th colspan="3" class="left">
+        <th colspan="4" class="left">
                 <a href="<?php echo JUri::base().'spisok-pokupok'?>" class="button" />Вернуться к списку покупок</a>
         </th>
         <th colspan="2" class="right">
                 <input id="to_step3" class="button" type="submit" value="Далее" />
         </th>
     </tr>
-</table>    
+</table>
 </form>
 <script type="text/javascript">
     jQuery(document).ready(function($){
@@ -61,5 +57,5 @@ $dostavka = isset($this->zakaz['dostavka'])?$this->zakaz['dostavka']:'1';
             });
         });
     });
-</script>    
+</script>
 

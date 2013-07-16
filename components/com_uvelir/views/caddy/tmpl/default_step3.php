@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
     $dostavka = isset($this->zakaz['dostavka'])?$this->zakaz['dostavka']:'1';
-    
+
     if($dostavka == '2')
     {
         $oplata = '2';
@@ -23,38 +23,39 @@ defined('_JEXEC') or die;
 
 ?>
 <form action="<?php echo JUri::base().'zavershenie-zakaza'?>" method="post" name="step1_form" id="step3_form">
-<table>    
-    
-        <?php if($dostavka == '1'):?>
-            <tr>
-                <th>
-                    <label for="com_uvelir_cash" type="radio" ><?=  JText::_('COM_UVELIR_CASH')?></label>
-                </th>
-                <td>
-                    <input id="com_uvelir_cash" type="radio" name="oplata" value="1" <?=$oplata=='1'?'checked="checked"':''?>/>
-                </td>
-            </tr>
-        <?php endif;?>
+<table>
+
+<?php if($dostavka == '1'):?>
     <tr>
-        <th>
-            <label for="com_uvelir_robokassa" type="radio" ><?=  JText::_('COM_UVELIR_ROBOKASSA')?></label>
-        </th>
-        <td>
-            <input id="com_uvelir_robokassa" type="radio" name="oplata" value="2"  <?=$oplata=='2'?'checked="checked"':''?>/>
+        <td colspan="6" class="left">
+            <input id="com_uvelir_cash" type="radio" name="oplata" value="1" <?=$oplata=='1'?'checked="checked"':''?>/>
+            <label for="com_uvelir_cash" type="radio" ><?=  JText::_('COM_UVELIR_CASH')?></label>
         </td>
     </tr>
-    
-    
-        	<tr>
-        		<th colspan="3" class="left">
-                            <a href="<?php echo JUri::base().'sposob-dostavki'?>" class="button" />Вернуться к способу доставки</a>
-        		</th>
-        		<th colspan="2" class="right">
-        			<input id="to_step4" class="button" type="submit" value="Далее" />
-        		</th>
-        	</tr>
-</table>    
-    
+<?php else:?>
+    <tr>
+        <td colspan="6" class="left">
+            <input id="com_uvelir_cash_express" type="radio" name="oplata" value="3" <?=$oplata=='3'?'checked="checked"':''?>/>
+            <label for="com_uvelir_cash_express" type="radio" ><?=  JText::_('COM_UVELIR_CASH_EXPRESS')?></label>
+        </td>
+    </tr>
+<?php endif;?>
+    <tr>
+        <td colspan="6" class="left">
+            <input id="com_uvelir_robokassa" type="radio" name="oplata" value="2"  <?=$oplata=='2'?'checked="checked"':''?>/>
+            <label for="com_uvelir_robokassa" type="radio" ><?=  JText::_('COM_UVELIR_ROBOKASSA')?></label>
+        </td>
+    </tr>
+	<tr>
+		<th colspan="4" class="left">
+                    <a href="<?php echo JUri::base().'sposob-dostavki'?>" class="button" />Вернуться к способу доставки</a>
+		</th>
+		<th colspan="2" class="right">
+			<input id="to_step4" class="button" type="submit" value="Далее" />
+		</th>
+	</tr>
+</table>
+
 </form>
 <script type="text/javascript">
     jQuery(document).ready(function($){
@@ -74,8 +75,8 @@ defined('_JEXEC') or die;
                    $('#step3_form').submit();
                 }
             });
-           
+
         });
     });
-</script>    
+</script>
 
