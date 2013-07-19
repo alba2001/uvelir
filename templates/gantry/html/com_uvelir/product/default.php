@@ -55,6 +55,13 @@ $desc = json_decode($this->item->desc);
 	        <!-- social block-->
         </div>
 
+        <div class="social-block">
+        	<script type="text/javascript" src="//yandex.st/share/share.js"
+        charset="utf-8"></script>
+
+			<div id="ya_share" class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"></div>
+        </div>
+
 	    <table class="fields_list">
 			<tbody>
 	      		 <?php if(isset($this->item->artikul) AND $this->item->artikul):?>
@@ -256,11 +263,22 @@ $desc = json_decode($this->item->desc);
 	        </tfoot>
 		</table>
 
+		<div class="size-block">
+        	<?
+	        	jimport('joomla.application.module.helper');
+	        	// this is where you want to load your module position
+	        	$modules = JModuleHelper::getModules('product-special');
+	        	foreach($modules as $module){
+		        	echo JModuleHelper::renderModule($module);
+	        	}
+        	?>
+        </div>
+
     </div>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
             $(".fancybox").fancybox();
-                
+
             // Изменение размера изделия
             $('#item_razmer').change(function(){
                 var url = '<?=JURI::base()?>index.php';
@@ -295,10 +313,10 @@ $desc = json_decode($this->item->desc);
                             $('#count_span_<?php echo $this->item->id; ?>').text(data.count);
                         }
                     }
-                
+
                 });
             });
-                
+
 	});
 </script>
 <?php endif ?>

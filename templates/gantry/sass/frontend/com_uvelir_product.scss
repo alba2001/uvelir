@@ -26,9 +26,18 @@
 			}
 		}
 	}
+	.size-block{
+		clear: both;
+	}
 	.social-block{
 		clear: both;
 		float: left;
+		margin-bottom: 15px;
+		.yashare-auto-init{
+			.b-share{
+				padding: 0 !important;
+			}
+		}
 	}
 	.fields_list{
 		font-size: 12px;
