@@ -27,7 +27,10 @@
 		}
 	}
 	.size-block{
-		clear: both;
+		// clear: both;
+		p{
+			margin: 0;
+		}
 	}
 	.social-block{
 		clear: both;
