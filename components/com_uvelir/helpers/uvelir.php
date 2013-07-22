@@ -11,10 +11,11 @@ defined('_JEXEC') or die;
 
 abstract class UvelirHelper
 {
-	public static function myFunction()
+	public static function isKoltsa($product_id)
 	{
-		$result = 'Something';
-		return $result;
+            require_once JPATH_COMPONENT.'/models/products.php';
+            $products = new UvelirModelProducts;
+            return $products->isKoltsa($product_id);
 	}
 
 }

@@ -8,6 +8,10 @@
  */
 
 defined('_JEXEC') or die;
+
+// Подключаем хелпер
+require_once JPATH_COMPONENT.'/helpers/uvelir.php';
+
 // Include dependancies
 jimport('joomla.application.component.controller');
 // Execute the task.

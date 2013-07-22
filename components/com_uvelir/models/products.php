@@ -149,15 +149,11 @@ class UvelirModelProducts extends JModelList {
             // Фильтр по виду изделия
             if($productvid_id = $this->getState('usearch_data.izdelie', 0))
             {
-                $product_vid = &$this->getTable('Productvid');
-                if($product_vid->load($productvid_id))
+                $category_ids = $this->_get_product_vid_categories($productvid_id);
+                if($category_ids)
                 {
-                    $category_ids = $this->_get_categiry_ids($product_vid->alias);
-                    if($category_ids)
-                    {
 //                        var_dump($category_ids);
-                        $query->where('category_id IN ('.  implode(', ', $category_ids).')');
-                    }
+                    $query->where('category_id IN ('.  implode(', ', $category_ids).')');
                 }
             }
             // Фильтр по наличию
@@ -260,6 +256,41 @@ class UvelirModelProducts extends JModelList {
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
+
+        /**
+         *  Проверка принадлежит ли изделие к кольцам?
+         * ID вида продукта = 1
+         * @return boolean
+         */
+        public function isKoltsa($product_id)
+        {
+            $list_koltsa_categories = $this->_get_product_vid_categories('1');
+            $query = &$this->_db->getQuery(true);
+            $query->select('category_id');
+            $query->from('#__uvelir_products');
+            $query->where('id = '.$product_id);
+            $this->_db->setQuery($query);
+            $category_id = $this->_db->loadResult();
+            
+            return in_array($category_id, $list_koltsa_categories);
+        }
+
+        /**
+         * Получение списка категорий от вида продукта
+         * @param type $productvid_id
+         * @return type 
+         */
+        private function _get_product_vid_categories($productvid_id)
+        {
+            $category_ids = array();
+            $product_vid = &$this->getTable('Productvid');
+            if($product_vid->load($productvid_id))
+            {
+                $category_ids = $this->_get_categiry_ids($product_vid->alias);
+            }
+            
+            return $category_ids;
+        }
 
         /**
          * Находим категории и их подкатегории
