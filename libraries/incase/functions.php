@@ -97,11 +97,11 @@
 			$host = 'http://' . $_SERVER['SERVER_NAME'] . '/';
 			(strpos($input, ':') === false) ? $input = $host . $input : '';
 			if ( !self::exist($input) ){
-				$dummy = $host . '/images/dummy.jpeg';
+				$dummy = $host . '/images/dummy.png';
 				if ( self::exist($dummy) ){
 					$input = $dummy;
 				}else{
-					return 'http://dummyimage.com/'.$a.'x'.$b.'/000/fff.jpg&text=/images/dummy.jpeg';
+					return 'http://dummyimage.com/'.$a.'x'.$b.'/000/fff.png&text=/images/dummy.png';
 				}
 			}
 			if (!file_exists($dir)) @mkdir($dir, 0777, true);

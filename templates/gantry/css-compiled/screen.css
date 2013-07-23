@@ -1422,30 +1422,27 @@ body h3 {
     left: -6px; }
   /* line 47, ../sass/frontend/com_uvelir_products.scss */
   .items-wrapper .items .com_uvelir_item .image {
-    display: table;
-    margin: 0 auto;
+    display: block;
     min-height: 120px;
-    padding-bottom: 10px;
-    vertical-align: middle; }
-    /* line 53, ../sass/frontend/com_uvelir_products.scss */
+    padding-bottom: 10px; }
+    /* line 51, ../sass/frontend/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .image a {
-      display: table-cell;
-      vertical-align: middle; }
-      /* line 56, ../sass/frontend/com_uvelir_products.scss */
+      line-height: 120px; }
+      /* line 53, ../sass/frontend/com_uvelir_products.scss */
       .items-wrapper .items .com_uvelir_item .image a img {
         max-width: 150px;
         max-height: 120px; }
-  /* line 62, ../sass/frontend/com_uvelir_products.scss */
+  /* line 59, ../sass/frontend/com_uvelir_products.scss */
   .items-wrapper .items .com_uvelir_item .article {
     color: #8c8c8c; }
-  /* line 65, ../sass/frontend/com_uvelir_products.scss */
+  /* line 62, ../sass/frontend/com_uvelir_products.scss */
   .items-wrapper .items .com_uvelir_item .price {
     font-weight: bold; }
-    /* line 67, ../sass/frontend/com_uvelir_products.scss */
+    /* line 64, ../sass/frontend/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .price span {
       color: #C02654;
       font-size: 18px; }
-    /* line 71, ../sass/frontend/com_uvelir_products.scss */
+    /* line 68, ../sass/frontend/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .price .line-through {
       position: relative;
       white-space: nowrap;
@@ -1460,7 +1457,7 @@ body h3 {
         top: 47%;
         left: 0;
         margin: 0 -2px; }
-  /* line 75, ../sass/frontend/com_uvelir_products.scss */
+  /* line 72, ../sass/frontend/com_uvelir_products.scss */
   .items-wrapper .items .com_uvelir_item .show {
     -moz-border-radius-bottomleft: 6px;
     -webkit-border-bottom-left-radius: 6px;
@@ -1481,14 +1478,14 @@ body h3 {
     top: 100%;
     width: 160px;
     z-index: 100; }
-    /* line 88, ../sass/frontend/com_uvelir_products.scss */
+    /* line 85, ../sass/frontend/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .show .desc {
       color: #c02654; }
-    /* line 92, ../sass/frontend/com_uvelir_products.scss */
+    /* line 89, ../sass/frontend/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .show .item_count span {
       color: #303030;
       font-weight: bold; }
-    /* line 98, ../sass/frontend/com_uvelir_products.scss */
+    /* line 95, ../sass/frontend/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .show .removeButton,
     .items-wrapper .items .com_uvelir_item .show .addButton {
       -moz-border-radius-bottomleft: 3px;
@@ -1516,7 +1513,7 @@ body h3 {
       text-align: center;
       width: 120px;
       margin-bottom: 3px; }
-    /* line 121, ../sass/frontend/com_uvelir_products.scss */
+    /* line 118, ../sass/frontend/com_uvelir_products.scss */
     .items-wrapper .items .com_uvelir_item .show .removeButton {
       display: none; }
 
