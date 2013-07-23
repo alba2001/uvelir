@@ -39,7 +39,9 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
 		// $gantry->addStyle('templates/' . $app->getTemplate() . '/lib/incase/compass/stylesheets/screen.css" type="text/css', 100);
 		$gantry->addStyle('grid-responsive.css', 5);
 		$gantry->addLess('bootstrap.less', 'bootstrap.css', 6);
-        $gantry->addLess('global.less', 'master.css', 8, array('headerstyle'=>$gantry->get('headerstyle','dark')));
+      $gantry->addLess('global.less', 'master.css', 8, array('headerstyle'=>$gantry->get('headerstyle','dark')));
+      $gantry->addScript('jquery.unveil.min.js');
+      $gantry->addScript('init.js');
 
         if ($gantry->browser->name == 'ie'){
         	if ($gantry->browser->shortversion == 9){

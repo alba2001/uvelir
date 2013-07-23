@@ -8,7 +8,7 @@
  */
 // no direct access
 defined('_JEXEC') or die;
-
+jimport('incase.init');
 //var_dump($this->item);
 ?>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm" class="items-wrapper">
@@ -20,7 +20,7 @@ defined('_JEXEC') or die;
             $src = $desc->img_small;
             $novinka = ($item->novinka_dt > date('d.m.Y'))?'new':'';
             $spets_predl = $item->spets_predl?'spets_predl':'';
-            
+
             // Вычисляем кол-во товаров в корзине без учета размеров
             $caddy_count = 0;
             $btn_del_style = $count_li_style = '';
@@ -41,11 +41,10 @@ defined('_JEXEC') or die;
 	            <div class="com_uvelir_item <?=$novinka.' '.$spets_predl?>">
 
 	                <div class="image">
-	                	<a href="<?=$href;?>">
-	                    	<img src="<?=$src?>" atl="<?=$item->name?>"/>
-	                    </a>
+	                	<a href="<?=$href?>">
+	                    	<img src="/images/dummy.jpeg" data-src="<?=incase::thumb($src, 'adaptiveResize', 150, 100);?>" atl="<?=$item->name?>"/>
+	                  </a>
 	                </div>
-
 
 	                <a href="<?=$href;?>" class="article">
 	                    <?php echo JText::_('COM_UVELIR_ARTIKUL').': '.$item->artikul; ?>
@@ -53,18 +52,17 @@ defined('_JEXEC') or die;
 
 	                <div class="price">
                             <?php $prises = ComponentHelper::getPrices($item->id); ?>
-                            
+
 	                    <div>
-                                <?php if((int)$prises['cena_mag']):?>
-	                        <?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
-	                        <span class="line-through"><?=$prises['cena_mag']?></span>
-	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
-                                <?php endif?>
+                           <?php if((int)$prises['cena_mag']):?>
+		                       	<?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
+		                       	<span class="line-through"><?=$prises['cena_mag']?></span>
+		                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
+                           <?php endif?>
 	                    </div>
-                            
+
 	                    <div>
-                            
-                            <?php if((int)$prises['cena_tut']):?>
+                           <?php if((int)$prises['cena_tut']):?>
 	                        <?= JText::_('COM_UVELIR_CENA_TUT').': <br>' ?>
 	                        <span><?=$prises['cena_tut']?></span>
 	                       	<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
@@ -116,8 +114,8 @@ defined('_JEXEC') or die;
 		                />
 
 
-					</div><!-- show -->
-	            </div><!-- com_uvelir_item -->
+					</div><?//<!-- show -->?>
+	            </div><?//<!-- com_uvelir_item -->?>
         <?php endforeach; ?>
 	</div><!-- items -->
 	<div class="pagination">
@@ -130,6 +128,6 @@ defined('_JEXEC') or die;
     <?php if(!isset($this->show_menu_groups) OR !$this->show_menu_groups):?>
         <input type="hidden" name="show_menu_groups" value="0" />
     <?php endif;?>
-    
+
     <?php echo JHtml::_('form.token'); ?>
 </form>

@@ -11,14 +11,14 @@ defined('_JEXEC') or die;
 //var_dump($this->item);
 
 //var_dump($this->products_group);exit;
-$izdelie = $this->_model->getState('usearch_data.izdelie',0);
+//$izdelie = $this->_model->getState('usearch_data.izdelie',0);
 ?>
 <!--Если это кольца, то выводим ссылку на размеры-->
-<?php if($izdelie == 1):?>
+<?/*php if($izdelie == 1):?>
 <a href="<?=JUri::base().'razmery'?>">
     Размеры
 </a>
-<?php endif;?>
+<?php endif;*/?>
 
 <!--Если не подходит группа, то не показываем список групп-->
 <?php if($this->show_menu_groups):?>

@@ -10,6 +10,7 @@
 // no direct access
 defined('_JEXEC') or die;
 UvelirHelper::isKoltsa($this->item->id);
+jimport('incase.init');
 
 //$params = array('size'=>array('x'=>100, 'y'=>100));
 //
@@ -48,9 +49,11 @@ $desc = json_decode($this->item->desc);
 		</h2>
 
     	<div class="leftside">
-		 		<a class="fancybox" href="<?=$desc->img_large?>" rel="{handler: 'iframe'}">
-		  		<img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>
-		  </a>
+    		<? $src = $desc->img_large?>
+		 	<a class="fancybox" href="<?=incase::thumb($src, 'resize', 800, 600)?>" rel="{handler: 'iframe'}">
+		 		<img src="<?=incase::thumb($src, 'resize', 400, 400)?>" atl="<?=$item->name?>"/>
+		  		<?/*<img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>*/?>
+		   </a>
 		</div>
 
       <div class="social-block">

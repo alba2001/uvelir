@@ -16,7 +16,7 @@
 
 	global $incase;	$incase = incase::getInstance();
 	define( 'TEMPLATEPATH', 'templates/' . $incase->getTemplate());
-	// require_once ("phpthumb/ThumbLib.inc.php");
+	require_once ("phpthumb/ThumbLib.inc.php");
 
 
 	/*

@@ -1,5 +1,6 @@
 #.htaccess
 *.DS_Store
+*.db
 *codekit-config.json
 .sass-cache/
 /cache/
