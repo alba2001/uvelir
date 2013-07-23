@@ -51,7 +51,7 @@ $desc = json_decode($this->item->desc);
     	<div class="leftside">
     		<? $src = $desc->img_large?>
 		 	<a class="fancybox" href="<?=incase::thumb($src, 'resize', 800, 600)?>" rel="{handler: 'iframe'}">
-		 		<img src="/images/load.gif" data-src="<?=incase::thumb($src, 'resize', 400, 400)?>" alt="<?=$item->name?>"/>
+		 		<img data-src="<?=incase::thumb($src, 'adaptiveResize', 400, 400)?>" src="/images/load.gif" alt="<?=$item->name?>"/>
 		  		<?/*<img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>*/?>
 		   </a>
 		</div>
