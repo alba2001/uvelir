@@ -63,13 +63,8 @@
 		}
 		//remote exist
 		function exist($input){
-			// $host = 'http://' . $_SERVER['SERVER_NAME'] . '/';
-			// $host = 'http://72uvelira.ru/';
-			// $local = str_replace($host, '', $input);
 			if (file_exists($input)){
 				return true;
-			// }elseif(file_exists($local)){
-			// 	return true;
 			}else{
 				$Headers = get_headers($input);
 				if( strpos($Headers[0], '200') )
