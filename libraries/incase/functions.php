@@ -61,7 +61,32 @@
 		function clog($what){
 			echo '<script type="text/javascript">console.log("'.$what.'");</script>';
 		}
+
+		//remote exist (faster)
+		function file_exists_remote($url) {
+			$curl = curl_init($url);
+			curl_setopt($curl, CURLOPT_NOBODY, true);
+			//Check connection only
+			$result = curl_exec($curl);
+			//Actual request
+			$ret = false;
+			if ($result !== false) {
+				$statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+			//Check HTTP status code
+			if ($statusCode == 200) {
+				$ret = true;
+				}
+			}
+			curl_close($curl);
+		 return $ret;
+		}
 		//remote exist
+		function exist2($input){
+			if (@fopen($input,"r")){
+				return true;
+			}
+			return false;
+		}
 		function exist($input){
 			if (file_exists($input)){
 				return true;
@@ -86,8 +111,47 @@
 			curl_close($ch);
 			return $size;
 		}
+		/*<img src="<?=incase::thumb('http://dummyimage.com/800x600/4d494d/686a82.jpg', 200, 200, true)?>">*/
+		function thumb($input, $a, $b, $proportional=false){
+			$dir = "cache/thumbs/";
+			$host = 'http://' . $_SERVER['SERVER_NAME'] . '/';
+			$dummy = $host . '/images/dummy.png';
+
+			// create cache folder
+			if (!file_exists($dir)) @mkdir($dir, 0777, true);
+			(strpos($input, ':') === false) ? $input = $host . $input : '';
+			$ext = '.' . strtolower(substr(strrchr($input, '.'), 1));
+			$fname = basename($input, '.' . $ext) . $a . $b . $param{0};
+
+			// create remote folders
+			$remotehost = parse_url($input, PHP_URL_HOST);
+			if ($_SERVER['SERVER_NAME'] == $remotehost) {
+				$output = $dir . md5($fname) . $ext;
+			}else{
+				$dir = $dir . $remotehost . '/';
+				$output = $dir . md5($fname) . $ext;
+				if (!file_exists($dir)) @mkdir($dir, 0777, true);
+			}
+
+			// create thumb
+			if(file_exists($output)){
+				return $output;
+			}else{
+				try {
+					smart_resize_image ($input, $a, $b, $proportional, $output);
+					return $output;
+				} catch (Exception $e) {
+					if ( file_exists($dummy) ){
+						return self::thumb($dummy, $param, $a, $b, $c, $d);
+					}else{
+						return 'http://dummyimage.com/'.$a.'x'.$b.'/000/fff.png&text=/images/dummy.png';
+					}
+				}
+			}
+		}
+
 		/*<img src="<?=incase::thumb('http://dummyimage.com/800x600/4d494d/686a82.jpg', 'resize', 200, 200)?>">*/
-		function thumb($input, $param, $a, $b, $c=null, $d=null){
+		function thumb_u($input, $param, $a, $b, $c=null, $d=null){
 			$dir = "cache/thumbs/";
 			$host = 'http://' . $_SERVER['SERVER_NAME'] . '/';
 			(strpos($input, ':') === false) ? $input = $host . $input : '';

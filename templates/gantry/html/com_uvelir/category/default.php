@@ -64,7 +64,7 @@ jimport('incase.init');
 	                    <?php $href = JRoute::_('index.php?option=com_uvelir&alias='.$child->alias)?>
 	                    <div class="image">
 		                    <a href="<?=$href?>">
-		                    		<img data-src="<?=incase::thumb($img_src, 'adaptiveResize', 150, 100);?>" src="/images/load.gif" alt="<?=$this->item->name?>"/>
+		                    		<img data-src="<?=incase::thumb($img_src, 150, 100, true);?>" src="/images/load.gif" alt="<?=$this->item->name?>"/>
 		                    </a>
 	                    </div>
 	                    <a href="<?=$href?>">

@@ -42,7 +42,7 @@ jimport('incase.init');
 
 	                <div class="image">
 	                	<a href="<?=$href?>">
-	                    	<img data-src="<?=incase::thumb($src, 'adaptiveResize', 150, 100);?>" src="/images/load.gif" alt="<?=$item->name?>"/>
+	                    	<img data-src="<?=incase::thumb($src, 150, 100, true);?>" src="/images/load.gif" alt="<?=$item->name?>"/>
 	                  </a>
 	                </div>
 
