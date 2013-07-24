@@ -81,12 +81,6 @@
 		 return $ret;
 		}
 		//remote exist
-		function exist2($input){
-			if (@fopen($input,"r")){
-				return true;
-			}
-			return false;
-		}
 		function exist($input){
 			if (file_exists($input)){
 				return true;
@@ -138,7 +132,16 @@
 				return $output;
 			}else{
 				try {
-					smart_resize_image ($input, $a, $b, $proportional, $output);
+					$thumb = PhpThumbFactory::create($input);
+					if($param=="crop"){
+						$thumb->crop($a, $b, $c, $d);
+					}elseif($param=="adaptiveResize"){
+						$thumb->adaptiveResize($a, $b);
+					}elseif($param=="resize"){
+						$thumb->resize($a, $b);
+					}
+					$thumb->save($output);
+					// smart_resize_image ($input, $a, $b, $proportional, $output);
 					return $output;
 				} catch (Exception $e) {
 					if ( file_exists($dummy) ){
