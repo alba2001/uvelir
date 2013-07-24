@@ -1030,11 +1030,8 @@ body h3 {
   #step3_form input,
   #step2_form label,
   #step2_form input {
-    display: inline-block;
-    vertical-align: baseline;
-    zoom: 1;
-    *display: inline;
-    *vertical-align: auto; }
+    display: inline;
+    vertical-align: baseline; }
 
 /* line 7, ../sass/frontend/com_uvelir_category.scss */
 .category .thumb {
@@ -1221,7 +1218,6 @@ body h3 {
 
 /* line 7, ../sass/frontend/com_uvelir_product.scss */
 .item_fields .leftside {
-  background: #FFF;
   display: block;
   float: left;
   height: 400px;
