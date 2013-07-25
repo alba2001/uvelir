@@ -9,6 +9,7 @@
 
 // no direct access
 defined('_JEXEC') or die;
+jimport('incase.init');
 
 //var_dump($this->children);
     $empty_img_src = JURI::base().'components/com_uvelir/assets/img/empty_64.png';
@@ -63,7 +64,7 @@ defined('_JEXEC') or die;
 	                    <?php $href = JRoute::_('index.php?option=com_uvelir&alias='.$child->alias)?>
 	                    <div class="image">
 		                    <a href="<?=$href?>">
-		                        <img src="<?=$img_src?>" atl="<?=$this->item->name?>"/>
+		                    		<img data-src="<?=incase::thumb($img_src, 150, 100, true);?>" src="/images/load.gif" alt="<?=$this->item->name?>"/>
 		                    </a>
 	                    </div>
 	                    <a href="<?=$href?>">

@@ -78,7 +78,7 @@ function pagination_list_footer($list)
  $lang =& JFactory::getLanguage();
  $html = "<div class=\"list-footer\">\n";
 
- $html .= "\n<div class=\"limit\">".JText::_('Display Num').$list['limitfield']."</div>";
+ $html .= "\n<div class=\"limit\">".JText::_('Показано').$list['limitfield']."</div>";
  $html .= $list['pageslinks'];
  $html .= "\n<div class=\"counter\">".$list['pagescounter']."</div>";
 

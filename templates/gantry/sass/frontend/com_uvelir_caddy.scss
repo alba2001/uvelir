@@ -190,6 +190,8 @@
 	@include table1();
 	label,
 	input{
-		@include inline-block;
+		display: inline;
+		vertical-align: baseline;
+		// @include inline-block;
 	}
 }

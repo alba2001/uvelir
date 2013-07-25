@@ -9,6 +9,8 @@
 
 // no direct access
 defined('_JEXEC') or die;
+UvelirHelper::isKoltsa($this->item->id);
+jimport('incase.init');
 
 //$params = array('size'=>array('x'=>100, 'y'=>100));
 //
@@ -35,7 +37,7 @@ $desc = json_decode($this->item->desc);
 
 ?>
 <?php if( $this->item ) : ?>
-    <div class="item_fields">
+   <div class="item_fields">
 
 		<h2>
 	    	<?php if(isset($this->item->name) AND $this->item->name):?>
@@ -47,20 +49,17 @@ $desc = json_decode($this->item->desc);
 		</h2>
 
     	<div class="leftside">
-	        <a class="fancybox"
-	        href="<?=$desc->img_large?>"
-	        rel="{handler: 'iframe'}">
-	        <img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>
-	        </a>
-	        <!-- social block-->
-        </div>
+    		<? $src = $desc->img_large?>
+		 	<a class="fancybox" href="<?=incase::thumb($src, 800, 600, true)?>" rel="{handler: 'iframe'}">
+		 		<img data-src="<?=incase::thumb($src, 400, 400, true)?>" src="/images/load.gif" alt="<?=$item->name?>"/>
+		  		<?/*<img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>*/?>
+		   </a>
+		</div>
 
-        <div class="social-block">
-        	<script type="text/javascript" src="//yandex.st/share/share.js"
-        charset="utf-8"></script>
-
+      <div class="social-block">
+     		<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
 			<div id="ya_share" class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"></div>
-        </div>
+      </div>
 
 	    <table class="fields_list">
 			<tbody>
@@ -149,7 +148,7 @@ $desc = json_decode($this->item->desc);
 		        	</tr>
 
 	        	<?php if(isset($this->item->opisanije) AND $this->item->opisanije):?>
-		        	<tr class="last">
+		        	<tr>
 		        		<td>
 		        			<span class="left">
 		        				<?= JText::_('COM_UVELIR_OPISANIJE').': ' ?></span>
@@ -161,6 +160,28 @@ $desc = json_decode($this->item->desc);
 		        		</td>
 		        	</tr>
 	        	<?php endif;?>
+
+  	        	<?php if( $this->item->id == 1):?>
+  		        	<tr>
+  		        		<td>
+  		        			<span class="left">
+  		        			</span>
+  		        		</td>
+  		        		<td>
+  		        			<span class="right size-block">
+  			        				<?
+        	      		        	jimport('joomla.application.module.helper');
+        	      		        	// this is where you want to load your module position
+        	      		        	$modules = JModuleHelper::getModules('product-special');
+        	      		        	foreach($modules as $module){
+        	      			        	echo JModuleHelper::renderModule($module);
+        	      		        	}
+        	      	        	?>
+  			        		</span>
+  		        		</td>
+  		        	</tr>
+  	        <?php endif;?>
+
 	        </tbody>
 	        <tfoot  class="bottom">
 
@@ -229,94 +250,79 @@ $desc = json_decode($this->item->desc);
 	        			</div>
 	        		</td>
 	        		<td>
-                                        <?php $prises = ComponentHelper::getPrices($this->item->id); ?>
-                                        <span class="black">
-                                            <?= JText::_('COM_UVELIR_CENA').': ' ?>
-                                        </span>
-                                        <br>
-                                        <span 	class="black big">
-                                            <?php if((int)$prises['cena_tut']):?>
-                                            <span id="item_cena_tut">
-                                                <?=number_format($prises['cena_tut'], 0, '.', ' ') . ' '?>
-                                            </span>
-                                            <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
-                                            <?php else:?>
-                                            <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
-                                            <?php endif?>
-                                        </span>
+                   <?php $prises = ComponentHelper::getPrices($this->item->id); ?>
+                   <span class="black">
+                       <?= JText::_('COM_UVELIR_CENA').': ' ?>
+                   </span>
+                   <br>
+                   <span 	class="black big">
+                       <?php if((int)$prises['cena_tut']):?>
+                       <span id="item_cena_tut">
+                           <?=number_format($prises['cena_tut'], 0, '.', ' ') . ' '?>
+                       </span>
+                       <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                       <?php else:?>
+                       <?=' '.JTEXT::_('COM_UVELIR_MANAGER_CENA')?>
+                       <?php endif?>
+                   </span>
 
-                                        <br>
-                                        <span class="gold">
-                                            <?= JText::_('COM_UVELIR_CENA_MAG').': ' ?>
-                                        </span>
-                                        <br>
-                                        <span class="gold small">
-                                                <span id="item_cena_mag">
-                                                    <?=number_format($prises['cena_mag'], 0, '.', ' ') . ' '?>
-                                                </span>
-                                                <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
-                                        </span>
-
-
+                   <br>
+                   <span class="gold">
+                       <?= JText::_('COM_UVELIR_CENA_MAG').': ' ?>
+                   </span>
+                   <br>
+                   <span class="gold small">
+                           <span id="item_cena_mag">
+                               <?=number_format($prises['cena_mag'], 0, '.', ' ') . ' '?>
+                           </span>
+                           <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
+                   </span>
 	        		</td>
 	        	</tr>
 	        </tfoot>
 		</table>
+   </div>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".fancybox").fancybox();
 
-		<div class="size-block">
-        	<?
-	        	jimport('joomla.application.module.helper');
-	        	// this is where you want to load your module position
-	        	$modules = JModuleHelper::getModules('product-special');
-	        	foreach($modules as $module){
-		        	echo JModuleHelper::renderModule($module);
-	        	}
-        	?>
-        </div>
+			// Изменение размера изделия
+			$('#item_razmer').change(function(){
+			    var url = '<?=JURI::base()?>index.php';
+			    var razmer_key = $(this).val();
+			    var cid = '<?=$this->item->id?>'
+			    $.ajax({
+			        type: 'POST',
+			        url: url,
+			        data: {
+			            cid: cid,
+			            razmer_key: razmer_key,
+			            option: 'com_uvelir',
+			            task: 'product.change_size',
+			            '<?php echo JUtility::getToken()?>':'1'
+			        },
+			        success: function(html){
+			            console.log(html);
+			            var data = $.parseJSON(html);
+			            $('#item_average_weight').text(data.average_weight);
+			            $('#item_cena_mag').number(data.cena_mag, 0, ',', ' ');
+			            $('#item_cena_tut').number(data.cena_tut, 0, ',', ' ');
+			            if(data.count)
+			            {
+			                $('#count_li_<?php echo $this->item->id; ?>').show();
+			                $('.removeButton').show('slow');
+			                $('#count_span_<?php echo $this->item->id; ?>').text(data.count);
+			            }
+			            else
+			            {
+			                $('#count_li_<?php echo $this->item->id; ?>').hide();
+			                $('.removeButton').hide('slow');
+			                $('#count_span_<?php echo $this->item->id; ?>').text(data.count);
+			            }
+			        }
 
-    </div>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-            $(".fancybox").fancybox();
-
-            // Изменение размера изделия
-            $('#item_razmer').change(function(){
-                var url = '<?=JURI::base()?>index.php';
-                var razmer_key = $(this).val();
-                var cid = '<?=$this->item->id?>'
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: {
-                        cid: cid,
-                        razmer_key: razmer_key,
-                        option: 'com_uvelir',
-                        task: 'product.change_size',
-                        '<?php echo JUtility::getToken()?>':'1'
-                    },
-                    success: function(html){
-                        console.log(html);
-                        var data = $.parseJSON(html);
-                        $('#item_average_weight').text(data.average_weight);
-                        $('#item_cena_mag').number(data.cena_mag, 0, ',', ' ');
-                        $('#item_cena_tut').number(data.cena_tut, 0, ',', ' ');
-                        if(data.count)
-                        {
-                            $('#count_li_<?php echo $this->item->id; ?>').show();
-                            $('.removeButton').show('slow');
-                            $('#count_span_<?php echo $this->item->id; ?>').text(data.count);
-                        }
-                        else
-                        {
-                            $('#count_li_<?php echo $this->item->id; ?>').hide();
-                            $('.removeButton').hide('slow');
-                            $('#count_span_<?php echo $this->item->id; ?>').text(data.count);
-                        }
-                    }
-
-                });
-            });
-
-	});
-</script>
+			    });
+			});
+		});
+	</script>
 <?php endif ?>
