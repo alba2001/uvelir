@@ -41,3 +41,11 @@ $base-font-size: 14px;
 	font-size: $px;
 	font-size: ($px / $base) * 0.9rem;
 }
+
+@mixin screen($res-min, $res-max)
+{
+  @media screen and ( min-width: $res-min ) and ( max-width: $res-max )
+  {
+    @content;
+  }
+}
