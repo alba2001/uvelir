@@ -190,7 +190,13 @@ class UvelirModelProducts extends JModelList {
             {
                 $query->where('cena_tut <= "'.$cost_2.'"');
             }
-            
+            // Если установлена вторая цена в поиске, а первая или 0 или не
+            // установлена, то не включаем товары с нулевой стоимостью
+            if($cost_2 AND !$cost_1)
+            {
+                $query->where('cena_tut >= "0.01"');
+                
+            }
             // Фильтр по группам товаров
             $group_flt = $this->_group_flt();
             if($group_flt)
