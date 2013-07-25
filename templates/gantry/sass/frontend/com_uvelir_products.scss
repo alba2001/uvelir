@@ -59,7 +59,7 @@
 			.article{
 				color: #8c8c8c;
 			}
-			.price{
+			.price-block{
 				font-weight: bold;
 				span{
 					color: #C02654;
@@ -67,6 +67,13 @@
 				}
 				.line-through{
 					@include line-through();
+				}
+				.manager{
+					color: #494949;
+					display: block;
+					font-size: 11px;
+					margin: 33px 0 17px;
+					padding: 0 10px;
 				}
 			}
 			.show{

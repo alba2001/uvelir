@@ -161,7 +161,7 @@ $desc = json_decode($this->item->desc);
 		        	</tr>
 	        	<?php endif;?>
 
-  	        	<?php if( $this->item->id == 1):?>
+  	        	<?php if( UvelirHelper::isKoltsa($this->item->id) ):?>
   		        	<tr>
   		        		<td>
   		        			<span class="left">

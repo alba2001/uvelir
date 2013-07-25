@@ -14,7 +14,7 @@
 
 	require_once ("lib/phpthumb/ThumbLib.inc.php");
 	require_once ("lib/smart_resize_image.php");
-	require ("functions.php");
+	require_once ("functions.php");
 
 	global $incase;	$incase = incase::getInstance();
 	define( 'TEMPLATEPATH', 'templates/' . $incase->getTemplate());

@@ -107,9 +107,9 @@
 		}
 		/*<img src="<?=incase::thumb('http://dummyimage.com/800x600/4d494d/686a82.jpg', 200, 200, true)?>">*/
 		function thumb($input, $a, $b, $proportional=false){
+			$dummy = 'images/dummy.png';
 			$dir = "cache/thumbs/";
 			$host = 'http://' . $_SERVER['SERVER_NAME'] . '/';
-			$dummy = $host . '/images/dummy.png';
 
 			// create cache folder
 			if (!file_exists($dir)) @mkdir($dir, 0777, true);
@@ -133,11 +133,9 @@
 			}else{
 				try {
 					$thumb = PhpThumbFactory::create($input);
-					if($param=="crop"){
-						$thumb->crop($a, $b, $c, $d);
-					}elseif($param=="adaptiveResize"){
+					if($proportional == true){
 						$thumb->adaptiveResize($a, $b);
-					}elseif($param=="resize"){
+					}else{
 						$thumb->resize($a, $b);
 					}
 					$thumb->save($output);
@@ -145,7 +143,7 @@
 					return $output;
 				} catch (Exception $e) {
 					if ( file_exists($dummy) ){
-						return self::thumb($dummy, $param, $a, $b, $c, $d);
+						return self::thumb($dummy, $a, $b, true);
 					}else{
 						return 'http://dummyimage.com/'.$a.'x'.$b.'/000/fff.png&text=/images/dummy.png';
 					}
