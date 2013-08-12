@@ -85,7 +85,7 @@ defined('_JEXEC') or die;
   <!-- K2 Plugins: K2AfterDisplayTitle -->
   <?php echo $this->item->event->K2AfterDisplayTitle; ?>
 
-	<?php if(0 && (
+	<?php if(
 		$this->item->params->get('itemFontResizer') ||
 		$this->item->params->get('itemPrintButton') ||
 		$this->item->params->get('itemEmailButton') ||
@@ -93,7 +93,7 @@ defined('_JEXEC') or die;
 		$this->item->params->get('itemVideoAnchor') ||
 		$this->item->params->get('itemImageGalleryAnchor') ||
 		$this->item->params->get('itemCommentsAnchor')
-	)): ?>
+	): ?>
   <div class="itemToolbar">
 		<ul>
 			<?php if($this->item->params->get('itemFontResizer')): ?>
