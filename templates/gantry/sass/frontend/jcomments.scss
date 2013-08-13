@@ -1,0 +1,38 @@
+#jc{
+	#comments-form-name,
+	#comments-form-email,
+	#comments-form-comment,
+	#comments-form-captcha
+	{
+		padding: 0 4px !important;
+	}
+	#comments-form{
+		label{
+			margin-bottom: 4px;
+		}
+	}
+}
+#comments-form-subscribe
+{
+	float: left;
+}
+#comments-footer{
+	display: none;
+}
+#comments-form-buttons{
+	#comments-form-send div{
+		background: none;
+	}
+	#comments-form-send{
+		@include pinkButton();
+		@include pressed();
+		a{
+			@include text-shadow(none);
+			color: #FFF;
+			font-weight: normal;
+			&:hover{
+				color: #FFF;
+			}
+		}
+	}
+}
