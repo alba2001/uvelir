@@ -1573,9 +1573,9 @@ class JCommentsFactory
 		$lang = $app->getCfg('lang');
 
 		if ($lang == 'russian' || $lang == 'ukrainian' || $lang == 'belorussian' || $lang == 'ru-RU' || $lang == 'uk-UA' || $lang == 'be-BY') {
-			$tmpl->addGlobalVar('support', base64_decode('PGEgaHJlZj0iaHR0cDovL3d3dy5qb29tbGF0dW5lLnJ1IiB0aXRsZT0iSkNvbW1lbnRzIiB0YXJnZXQ9Il9ibGFuayI+SkNvbW1lbnRzPC9hPg=='));
+			$tmpl->addGlobalVar('support', base64_decode(''));
 		} else {
-			$tmpl->addGlobalVar('support', base64_decode('PGEgaHJlZj0iaHR0cDovL3d3dy5qb29tbGF0dW5lLmNvbSIgdGl0bGU9IkpDb21tZW50cyIgdGFyZ2V0PSJfYmxhbmsiPkpDb21tZW50czwvYT4='));
+			$tmpl->addGlobalVar('support', base64_decode(''));
 		}
 
 		$tmpl->addGlobalVar('comment-object_id', $object_id);
