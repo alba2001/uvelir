@@ -78,7 +78,8 @@ class JFormFieldCategories extends JFormFieldList
             $where = '';
             if($category_id)
             {
-                $where = ' WHERE `id` = '.$category_id;
+                // Konstantin Снятие блокировки по просьбе клиента 15/08/2013
+//                $where = ' WHERE `id` = '.$category_id;
             }
             else
             {
