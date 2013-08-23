@@ -1644,8 +1644,7 @@ body h3 {
 /* line 3, ../sass/frontend/mod_breadcrumbs.scss */
 .breadcrumbs span,
 .breadcrumbs a {
-  font-size: 12px;
-  text-transform: capitalize; }
+  font-size: 12px; }
 /* line 7, ../sass/frontend/mod_breadcrumbs.scss */
 .breadcrumbs img {
   margin-top: -2px; }
