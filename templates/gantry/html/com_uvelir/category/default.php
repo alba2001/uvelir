@@ -31,7 +31,8 @@ else
 		<!--Детали категории-->
 		<h2>
 			<?/*<img class="thumb" src="<?=$img_src?>" atl="<?=$this->item->name?>"/>*/?>
-			<?=ucfirst( mb_convert_case($this->item->name, MB_CASE_TITLE, 'UTF-8') );?>
+			<?//=ucfirst( mb_convert_case($this->item->name, MB_CASE_TITLE, 'UTF-8') );?>
+			<?=$this->item->name;?>
 		</h2>
 		<div class="description">
 			<?php if($this->item->note):?>
