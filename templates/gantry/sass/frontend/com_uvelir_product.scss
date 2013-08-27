@@ -6,21 +6,24 @@
 	}
 	.leftside{
 		// background: #FFF;
-		display: block;
 		float: left;
-		height: 400px;
-		margin-bottom: 20px;
-		margin-right: 20px;
-		overflow: hidden;
-		text-align: center;
 		width: 400px;
-		@include border-bottom-radius(5px);
-		@include border-top-radius(5px);
-		a{
-			line-height: 400px;
-			img{
-				// max-width: 400px;
-				// min-height: 400px;
+		.image{
+			@include border-bottom-radius(5px);
+			@include border-top-radius(5px);
+			display: block;
+			// float: left;
+			// height: 400px;
+			margin-bottom: 20px;
+			margin-right: 20px;
+			overflow: hidden;
+			text-align: center;
+			a{
+				line-height: 400px;
+				img{
+					// max-width: 400px;
+					// min-height: 400px;
+				}
 			}
 		}
 	}
@@ -40,11 +43,18 @@
 			}
 		}
 	}
+	.rightside{
+		float: left;
+		.note{
+			color: #C02654;
+		}
+	}
 	.fields_list{
-		font-size: 12px;
 		@include respond-to(handhelds) { width: 315px;}
 		@include respond-to(medium-screens) { width: 420px; }
 		@include respond-to(wide-screens) { width: 640px; }
+		font-size: 12px;
+		margin-bottom: 14px;
 		tr{
 			border-bottom: 1px solid #E4D8BE;
 			&:last-child,
