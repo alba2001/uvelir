@@ -1,7 +1,7 @@
 <?php
 
 	  // *************** ********** *************** //
-	 // *************** 18.07.2013 *************** //
+	 // *************** 05.09.2013 *************** //
 	// *************** ********** *************** //
 
 	// jimport('incase.init'); //
@@ -110,11 +110,12 @@
 			$dummy = 'images/dummy.png';
 			$dir = "cache/thumbs/";
 			$host = 'http://' . $_SERVER['SERVER_NAME'] . '/';
+			if (!preg_match('/gif|ico|jpg|jpeg|png|tiff|tif$/', $input, $regs)) return $dummy;
 
 			// create cache folder
 			if (!file_exists($dir)) @mkdir($dir, 0777, true);
 			(strpos($input, ':') === false) ? $input = $host . $input : '';
-			$ext = '.' . strtolower(substr(strrchr($input, '.'), 1));
+			$ext = '.' . $regs[0];
 			$fname = basename($input, '.' . $ext) . $a . $b . $param{0};
 
 			// create remote folders
