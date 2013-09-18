@@ -9,8 +9,6 @@
 		float: left;
 		width: 400px;
 		.image{
-			@include border-bottom-radius(5px);
-			@include border-top-radius(5px);
 			display: block;
 			// float: left;
 			// height: 400px;
@@ -21,6 +19,7 @@
 			a{
 				line-height: 400px;
 				img{
+					@include border-radius(5px);
 					// max-width: 400px;
 					// min-height: 400px;
 				}
