@@ -173,6 +173,21 @@ body{
 		.logo-block{
 			margin-bottom: 22px;
 		}
+		.top-banner {
+			float: left;
+			margin: 0;
+			padding: 0;
+				@include respond-to(handhelds) { margin: 0;}
+				@include respond-to(medium-screens) { margin: 0 1%; }
+				@include screen(1280px, 1365px) { margin: 0 1%;}
+				@include screen(1366px, 1439px) { margin: 0 3%;}
+				@include screen(1440px, 1499px) { margin: 0 5%;}
+				@include respond-to(wide-screens) { margin: 0 8%; }
+				img {
+					@include respond-to(handhelds) { width: 260px; margin-top: 12px; }
+					max-width: 400px;
+				}
+		}
 		.workphone{
 			.icons-clock,
 			.icons-phone{
