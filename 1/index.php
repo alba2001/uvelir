@@ -4,13 +4,6 @@
  * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
-$http_host = $_SERVER['HTTP_HOST'];
-if($http_host == '72uvelira.ru')
-{
-    $request_uri= ($_SERVER["REQUEST_URI"] != '/' )?$_SERVER["REQUEST_URI"]:'';
-    $new_http_host = 'zoloto-online.net';
-    header( 'Location: http://'.$new_http_host.$request_uri, true, 301 );
-}
 
 if( !ini_get('zlib.output_compression') ){
     ini_set('zlib.output_compression', 'on');

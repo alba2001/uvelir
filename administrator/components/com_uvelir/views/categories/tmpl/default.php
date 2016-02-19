@@ -18,6 +18,30 @@ $document->addStyleSheet('components/com_uvelir/assets/css/uvelir.css');
 
 $listOrder = $this->state->get('list.ordering');
 $listDirn = $this->state->get('list.direction');
+
+
+$ajax_url = JRoute::_(JURI::base().'index.php?option=com_uvelir&');
+$succes_msg = ''.
+                '<dl id="system-message">'.
+                '<dt class="message">Сообщение</dt>'.
+                '<dd class="message message">'.
+                        '<ul>'.
+                                '<li>Успешное завершение</li>'.
+                        '</ul>'.
+                '</dd>'.
+                '</dl>'.
+                '';
+$error_msg = ''.
+                '<dl id="system-message">'.
+                '<dt class="error">Ошибка</dt>'.
+                '<dd class="message message">'.
+                        '<ul>'.
+                                '<li id="parse_error_msg">Были ошибки</li>'.
+                        '</ul>'.
+                '</dd>'.
+                '</dl>'.
+                '';
+
 ?>
 
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm">
@@ -137,10 +161,103 @@ foreach ($this->items as $i => $item) :
     <div>
         <input type="hidden" name="option" value="com_uvelir" />
         <input type="hidden" name="view" value="categories" />
-        <input type="hidden" name="task" value="" />
+        <input id="task" type="hidden" name="task" value="" />
         <input type="hidden" name="boxchecked" value="0" />
         <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
         <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
 <?php echo JHtml::_('form.token'); ?>
     </div>
 </form>
+
+
+<div id="show_process" style="height: 600px; overflow: scroll; display: none"></div>
+<script type="text/javascript">
+    Joomla.submitbutton = function(task)
+    {
+        var action = task.split('.');
+        if(action[1] == 'parse')
+        {
+            return false;
+        }
+        if(action[1] == 'parse_continue')
+        {
+            return false;
+        }
+        Joomla.submitform(task);
+    };
+    
+    jQuery(document).ready(function($){
+        $('#toolbar-parse').click(function(e){
+            $('#task').val('categories.parse');
+            parse(1);
+        });
+    });
+
+    jQuery(document).ready(function($){
+        $('#toolbar-parse_continue').click(function(e){
+            $('#task').val('categories.parse');
+            var form = $('#adminForm');
+            var div_txt = $('#show_process');
+            $(form).hide('slow');
+            $(div_txt).show('slow');
+            parse(0);
+        });
+    });
+
+    function parse(start)
+    {
+        var $ = jQuery;
+        var form = $('#adminForm');
+        var div_txt = $('#show_process');
+        var url = '<?php echo $ajax_url ?>'+$(form).serialize(); 
+        if(start)
+        {
+            $(form).hide('slow');
+            $(div_txt).show('slow');
+            $(div_txt).text('<?=JText::_('COM_UVELIR_OPEN_MAIN_PAGE')?>');
+            url += '&start=1';
+        }
+        console.log(url);
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function(html){
+                $('#html_show').html(html);
+                var data = $.parseJSON(html);
+                if(data[0] == 1)
+                {
+                    $('#system-message-container').html('<?=$succes_msg?>');
+                    $(form).show('slow');
+                    $('#html_show').hide();
+                    $(div_txt).hide('slow');
+                }
+                else if(data[0] == 2)
+                {
+                    $(div_txt).prepend('<br/>'+data[1]);
+                    parse(0);
+                }
+                else if(data[0] == 3)
+                {
+                    $.ajax({
+                    type: 'GET',
+                    url: data[1],
+                    success: function(html){
+                        
+                        $('#html_show').html(html);
+                    }});
+
+//                    parse(0);
+                }
+                else
+                {
+                    $('#system-message-container').html('<?=$error_msg?>');
+                    $('#parse_error_msg').text(data[1]);
+                    $(form).show('slow');
+                    $(div_txt).hide('slow');
+                    
+                }
+                console.log(data);
+            }
+        });
+    };
+</script>    

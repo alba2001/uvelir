@@ -26,4 +26,18 @@ class UvelirControllerCategories extends JControllerAdmin
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;
 	}
+        
+    /**
+     * Парсинг категорий
+     */
+    public function parse()
+    {
+        // Check for request forgeries.
+        JSession::checkToken('GET') or jexit(JText::_('JINVALID_TOKEN'));
+
+        $result = $this->getModel('categories')->parse_one_catrgory();
+        echo json_encode($result);
+        exit;
+    }
+        
 }

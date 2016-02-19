@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "/www/zoloto-online.net/webstat"
+AuthUserFile /var/www/tyumenhb/data/etc/49161907.passwd
+DirectoryIndex index.html
+<Limit GET POST>
+	require valid-user
+</Limit>

@@ -99,6 +99,8 @@ class UvelirModelProducts extends UvelirModelKModelList
 	 */
 	protected function getListQuery()
 	{
+            $this->_check_zavods();
+            
             $query = parent::getListQuery();
             
             $query->from('`#__uvelir_products` AS a');
@@ -200,5 +202,28 @@ class UvelirModelProducts extends UvelirModelKModelList
                 }
             }
             return TRUE;
+        }
+        
+        /**
+         * Заплатка проверки завода у продукта 
+         */
+        private function _check_zavods()
+        {
+            $query = 'SELECT c.zavod , c.name, p.*';
+            $query .= ' FROM jos_uvelir_categories c, jos_uvelir_products p';
+            $query .= ' WHERE c.id = p.category_id';
+            $query .= ' AND p.zavod_id = 0';
+            
+            $this->_db->setQuery($query);
+            $products = $this->_db->loadObjectList();
+            
+            foreach($products as $product)
+            {
+                $query = 'UPDATE  `#__uvelir_products`';
+                $query .= ' SET  `zavod_id` =  "'.$product->zavod.'"';
+                $query .= ' WHERE  `id` = '.$product->id;
+                $this->_db->setQuery($query);
+                $this->_db->query();
+            }
         }
 }

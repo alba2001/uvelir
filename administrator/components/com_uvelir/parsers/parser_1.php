@@ -204,6 +204,8 @@ class UvelirParseZavod_1
     {
        
         $data = $this->_get_data();
+//        var_dump($data);
+//        exit;
         if(!$data)
         {
             return array(0,  JText::_('COM_UVELIR_CAN_NOT_PARSE_PAGE'));
@@ -317,14 +319,16 @@ class UvelirParseZavod_1
             }
         }
         
+        
         // Вставляем запись
+        
         $img_small = $data_item['desc']['img_small'];
         $data_item['desc'] = json_encode($data_item['desc']);
         
         $data_item['name'] = $data_item['artikul'];
         $data_item['alias'] = JApplication::stringURLSafe($data_item['name']);
         $data_item['category_id'] = $data['category']['category_id'];
-        $data_item['zavod_id'] = '1';
+        $data_item['zavod_id'] = isset($data['zavod_id'])?$data['zavod_id']:'1';
         
         $product_model = new UvelirModelProduct;
         $save_item = $product_model->save_product($data_item);
@@ -420,5 +424,91 @@ class UvelirParseZavod_1
         }
         return $category_data;
     }
+    
+    
+    /**
+     * Парсинг одной категории
+     * напр.: Обручальные кольца 
+     * http://www.ju-ur.ru/?category=35&class=shop_items&catalogue_id=2 
+     */
+    public function parse_one_catrgory($data=NULL)
+    {
+        if(!isset($data))
+        {
+          $data = $this->_get_data();   
+        }
+
+        if(!isset($data['base_link']))
+        {
+            return array(1,  JText::_('COM_UVELIR_WRONG_PARSE_DATA')); 
+        }
+        // Исходные данные
+        $base_link = $data['base_link']; // Ссылка на главную страницу
+        $page_link = $data['page_link'][0]; // Ссылка на страницу с товарами
+
+        // Переходим на страницу списка товаров
+        $html = file_get_html($page_link);
+        if(!$html)
+        {
+            // Выход
+            return array(1,  JText::_('COM_UVELIR_END_PARSE_CATEGORY')); 
+        }
+        
+        // Корневой див для тизера товара
+        $items = $html->find('div[class=good_wrap]'); 
+        if(!$items)
+        {
+            // Выход
+            return array(1,  JText::_('COM_UVELIR_END_PARSE_CATEGORY')); 
+        }
+        
+        // Перебираем все тизеры товаров на странице
+        $data_items = array();
+        for ($i=0; $i<count($items);$i++)
+        {
+            // Данные краткого вывода товара
+            $data_items[$i]['desc'] = array(
+                'item_link' => '',
+                'img_small' => '',
+            );
+            // Ссылка на полную карточку товара
+            $item_links = $items[$i]->find('a');
+            if($item_links)
+            {
+                $data_items[$i]['desc']['item_link'] = $base_link.str_replace('&amp;', '&', $item_links[0]->href);
+            }
+            // Ссылка на тизер товара
+            $img_srcs = $items[$i]->find('img');
+            if($img_srcs)
+            {
+                $data_items[$i]['desc']['img_small'] = $img_srcs[0]->src;
+            }
+        }
+        $data['items'] = $data_items;    
+        // Вычисляем следующую страницу
+        $data['last_page'] = TRUE; // Для вычисления последней страницы
+        foreach($html->find('a') as $sub_link) 
+        {
+            if(preg_match("/^&rarr;$/", $sub_link->innertext))
+            {
+                $data['last_page'] = FALSE;
+                // Ссылка на следующую страницу
+                $next_link = str_replace('&amp;', '&', $base_link.$sub_link->href);
+                array_unshift($data['link'],$next_link);
+                break;
+            }
+        }
+        array_unshift($data['link'],$data_items[0]['desc']['item_link']);
+        array_unshift($data['func'],'parse_item');
+        // Продолжаем парсить уже карточку товара
+        $this->_set_data($data);
+        
+//var_dump($data);echo 'get_page 1 <hr>';
+        
+        $link = isset($data['link'][0])?$data['link'][0]:'';
+        return array(2,  JText::_('COM_UVELIR_OPEN_PAGE').': '.$link); // Продолжаем парсинг
+        
+    }
 }
+
 

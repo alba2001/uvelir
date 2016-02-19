@@ -14,5 +14,5 @@ class UvelirControllerCategory extends JControllerForm
         $this->view_list = 'categories';
         parent::__construct();
     }
-        
+
 }

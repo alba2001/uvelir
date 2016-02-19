@@ -83,11 +83,35 @@ class UvelirModelProduct extends JModelAdmin
 		return $data;
 	}
 
+        /**
+         * Возвращаем массив категорий, в которых есть продукты с этим  артиклем
+         * @param string
+         * @return array
+         */
+         private function _get_article_product_categories($artikul)
+         {
+            $query = 'SELECT `category_id` FROM `#__uvelir_products` WHERE `artikul` = '.$artikul;
+            $this->_db->setQuery($query);
+            return $this->_db->loadResultArray();
+         }
+
+         /**
+         * Запись отпарсеных продуктов
+         * @param type $data
+         * @return type 
+         */
         public function save_product($data)
         {
-            $table = $this->getTable('Product');
-            $table->load(array('artikul'=>$data['artikul']));
-            return $table->save($data);
+            $artikul = $data['artikul'];
+            $category_id = $data['category_id'];
+            $category_ids = $this->_get_article_product_categories($artikul);
+            if(in_array($category_ids, $category_id))
+            {
+                $table = $this->getTable('Product');
+                $table->load(array('artikul'=>$artikul));
+                return $table->save($data);
+            }
+            return $this->save($data);
         }
         
         /**
@@ -97,7 +121,8 @@ class UvelirModelProduct extends JModelAdmin
         public function save($data) 
         {
             // Вставляем ИД завода
-            if($data['category_id'] AND !isset($data['zavod_id']))
+//            if($data['category_id'] AND !isset($data['zavod_id']))
+            if($data['category_id'])
             {
                 $data['zavod_id'] = $this->_find_zavod_id($data['category_id']);
             }

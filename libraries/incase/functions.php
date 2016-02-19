@@ -1,7 +1,7 @@
 <?php
 
 	  // *************** ********** *************** //
-	 // *************** 05.09.2013 *************** //
+	 // *************** 18.07.2013 *************** //
 	// *************** ********** *************** //
 
 	// jimport('incase.init'); //
@@ -106,16 +106,23 @@
 			return $size;
 		}
 		/*<img src="<?=incase::thumb('http://dummyimage.com/800x600/4d494d/686a82.jpg', 200, 200, true)?>">*/
+		function thumb_($input, $a, $b, $proportional=false){
+			return $input;
+		}
 		function thumb($input, $a, $b, $proportional=false){
 			$dummy = 'images/dummy.png';
 			$dir = "cache/thumbs/";
 			$host = 'http://' . $_SERVER['SERVER_NAME'] . '/';
-			if (!preg_match('/gif|ico|jpg|jpeg|png|tiff|tif$/', $input, $regs)) return $dummy;
-
+                        if (!preg_match('/gif|ico|jpg|jpeg|png|tiff|tif$/', $input, $regs))
+                        {
+                            return $input;
+                        }
 			// create cache folder
 			if (!file_exists($dir)) @mkdir($dir, 0777, true);
 			(strpos($input, ':') === false) ? $input = $host . $input : '';
+//			$ext = '.' . strtolower(substr(strrchr($input, '.'), 1));
 			$ext = '.' . $regs[0];
+                        
 			$fname = basename($input, '.' . $ext) . $a . $b . $param{0};
 
 			// create remote folders
@@ -132,6 +139,7 @@
 			if(file_exists($output)){
 				return $output;
 			}else{
+                            return $input;
 				try {
 					$thumb = PhpThumbFactory::create($input);
 					if($proportional == true){
@@ -185,5 +193,17 @@
 				return $output;
 			}
 		}
+                
+            private function _is_image($path)
+            {
+                $a = getimagesize($path);
+                $image_type = $a[2];
+
+                if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG , IMAGETYPE_BMP)))
+                {
+                    return true;
+                }
+                return false;
+            }
 	}
 ?>

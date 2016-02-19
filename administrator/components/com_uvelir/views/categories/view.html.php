@@ -82,6 +82,9 @@ class UvelirViewCategories extends JView
             }
 			JToolBarHelper::preferences('com_uvelir');
 
+            JToolBarHelper::divider();
+            JToolBarHelper::custom( 'categories.parse', 'parse', '', 'PARSE', TRUE, false );
+            JToolBarHelper::custom( 'categories.parse_continue', 'parse_continue', '', 'PARSE_CONTINUE', TRUE, false );
 
 	}
         
