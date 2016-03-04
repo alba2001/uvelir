@@ -81,6 +81,10 @@ class UvelirViewProducts extends JView
 			    JToolBarHelper::divider();
 			    JToolBarHelper::custom('products.publish', 'publish.png', 'publish_f2.png','JTOOLBAR_PUBLISH', true);
 			    JToolBarHelper::custom('products.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);
+			    JToolBarHelper::divider();
+			    JToolBarHelper::custom('products.multy_set_show_logo', 'publish.png', 'publish_f2.png','COM_UVELIR_SET_SHOW_LOGO', true);
+			    JToolBarHelper::custom('products.multy_unset_show_logo', 'unpublish.png', 'unpublish_f2.png', 'COM_UVELIR_SET_NOT_SHOW_LOGO', true);
+			    JToolBarHelper::divider();
                             JToolBarHelper::deleteList('', 'products.delete','JTOOLBAR_DELETE');
 			    JToolBarHelper::divider();
                             JToolBarHelper::custom( 'products.fill_cenas', 'unpublish.png', '', 'FILL_CENAS', FALSE, false );

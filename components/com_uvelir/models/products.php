@@ -58,7 +58,8 @@ class UvelirModelProducts extends JModelList {
                     $product_group);
             
         }
-        $this->setState('products_group', $group);
+//        $this->setState('products_group', $group);
+        $this->setState('products_group', '');
         $this->setState('show_menu_groups', $show_menu_groups);
         
         // Если это не показ пунктов главного меню, то включаем фильтр

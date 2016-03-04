@@ -151,7 +151,22 @@ class UvelirModelProducts extends UvelirModelKModelList
             $result = 1;
             foreach($cids as $cid)
             {
-                $result = (int)$this->_availabled($cid, $value) * $result;
+                $result = (int)$this->_availabled($cid, $value, 'available') * $result;
+            }
+            return $result;
+        }
+        /**
+         * Меняем статус наличия товара
+         * @param array $cids
+         * @param int $value
+         * @return array
+         */
+        public function show_logo($cids, $value)
+        {
+            $result = 1;
+            foreach($cids as $cid)
+            {
+                $result = (int)$this->_availabled($cid, $value, 'show_logo') * $result;
             }
             return $result;
         }
@@ -163,12 +178,12 @@ class UvelirModelProducts extends UvelirModelKModelList
          * @param int $value
          * @return bolean
          */
-        private function _availabled($cid, $value)
+        private function _availabled($cid, $value, $field)
         {
             $table = $this->getTable('Product','UvelirTable');
             if($table->load($cid))
             {
-                $table->available = $value;
+                $table->$field = $value;
                 if($table->store())
                 {
                     return TRUE;

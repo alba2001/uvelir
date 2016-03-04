@@ -22,18 +22,18 @@ defined('_JEXEC') or die;
             <td><?=$izdelie?></td>
             <td><label for="mod_usearch_metal"><?php echo JText::_('MOD_USEARCH_METAL')?></label></td>
             <td><?=$metal?></td>
-            <td><label for="mod_usearch_vstavki"><?php echo JText::_('MOD_USEARCH_VSTAVKI')?></label></td>
-            <td><?=$vstavki?></td>
-            <td rowspan="2" class="available">
-                <?=$available?>
-                <label for="mod_usearch_available"><?php echo JText::_('MOD_USEARCH_AVAILABLE')?></label>
+            <!--<td><label for="mod_usearch_vstavki"><?php // echo JText::_('MOD_USEARCH_VSTAVKI')?></label></td>-->
+            <!--<td><?php //$vstavki?></td>-->
+            <!--<td rowspan="2" class="available">-->
+                <?php // $available?>
+                <!--<label for="mod_usearch_available"><?php // echo JText::_('MOD_USEARCH_AVAILABLE')?></label>-->
             </td>
         </tr>
         <tr>
             <td><label for="mod_usearch_razmer"><?php echo JText::_('MOD_USEARCH_RAZMER')?></label></td>
             <td><?=$razmer?></td>
-            <td><label for="mod_usearch_proba"><?php echo JText::_('MOD_USEARCH_PROBA')?></label></td>
-            <td><?=$proba?></td>
+            <!--<td><label for="mod_usearch_proba"><?php // echo JText::_('MOD_USEARCH_PROBA')?></label></td>-->
+            <!--<td><?php // $proba?></td>-->
             <td><label for="mod_usearch_cost_1"><?php echo JText::_('MOD_USEARCH_COST')?></label></td>
             <td>
             	<input placeholder="От" size="2" type="text" id="mod_usearch_cost_1" name="usearch_data[cost_1]" value="<?=$usearch_data['cost_1']?>"/>

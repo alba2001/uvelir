@@ -220,4 +220,21 @@ class UvelirTableNtable extends JTableNested {
             }
 		return JTable::getInstance($type, $prefix, $config);
 	}
+        public function get_parent_name_ids($id)
+        {
+            if(!$this->load($id))
+            {
+                return array();
+            }
+            $query = $this->_db->getQuery(TRUE)
+                    ->select('id')
+                    ->select('name')
+                    ->from($this->_tbl)
+                    ->where('lft <= '.$this->lft)
+                    ->where('rgt >= '.$this->rgt)
+                    ->where('name != ""')
+                    ->order('lft');
+            $this->_db->setQuery($query);
+            return $this->_db->loadAssocList();
+        }
 }

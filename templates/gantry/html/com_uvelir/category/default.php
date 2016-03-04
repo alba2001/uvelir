@@ -30,8 +30,8 @@ else
 
 		<!--Детали категории-->
 		<h2>
-			<?/*<img class="thumb" src="<?=$img_src?>" atl="<?=$this->item->name?>"/>*/?>
-			<?//=ucfirst( mb_convert_case($this->item->name, MB_CASE_TITLE, 'UTF-8') );?>
+			<?php /*<img class="thumb" src="<?=$img_src?>" atl="<?=$this->item->name?>"/>*/?>
+			<?php //=ucfirst( mb_convert_case($this->item->name, MB_CASE_TITLE, 'UTF-8') );?>
 			<?=$this->item->name;?>
 		</h2>
 		<div class="description">
@@ -79,11 +79,11 @@ else
 
 		<!--Список товаров категории-->
 		<?php if($this->items):?>
-			<?
+			<?php
 				require_once(dirname(dirname(__FILE__)) . DS . 'products' . DS . 'default_products.php');
 			?>
 
-			<?
+			<?php
 				// $this->addTemplatePath( JPATH_COMPONENT . DS . 'views'.DS.'products'.DS.'tmpl' );
 				// $this->setLayout( 'products' );
 				// echo $this->loadTemplate( 'products' );

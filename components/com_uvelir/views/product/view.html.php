@@ -36,12 +36,25 @@ class UvelirViewProduct extends JView {
         }
         
         $this->_prepareDocument();
-
+        $this->_set_pathway();
         parent::display($tpl);
     }
+    private function _set_pathway()
+    {
+        $app = JFactory::getApplication();
+        $pathway = $app->getPathway();
+        if(!$pathway->getPathWay())
+        {
+            $ar_pathways = $this->_model->get_pathways($this->item);
+            foreach($ar_pathways as $ar_pathway)
+            {
+                $pathway->addItem($ar_pathway['name'], $ar_pathway['link']);
+            }
+        }
+        $pathway->addItem($this->item->name, '');
+    }
 
-
-	/**
+        /**
 	 * Prepares the document
 	 */
 	protected function _prepareDocument()

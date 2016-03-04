@@ -56,7 +56,8 @@ jimport('incase.init');
 					<?php $prises = ComponentHelper::getPrices($item->id); ?>
 
 					<div class="block1">
-						<?php if((int)$prises['cena_mag']):?>
+						<?php // if((int)$prises['cena_mag']):?>
+						<?php if(FALSE):?>
 							<?= JText::_('COM_UVELIR_CENA_MAG').': <br>' ?>
 							<span class="line-through"><?=$prises['cena_mag']?></span>
 							<span class="ruble"><?=' '.JTEXT::_('COM_UVELIR_RUB')?></span>
@@ -118,8 +119,8 @@ jimport('incase.init');
 	/>
 
 
-</div><?//<!-- show -->?>
-</div><?//<!-- com_uvelir_item -->?>
+</div><?php//<!-- show -->?>
+</div><?php//<!-- com_uvelir_item -->?>
 <?php endforeach; ?>
 </div><!-- items -->
 <div class="pagination">

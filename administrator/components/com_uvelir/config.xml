@@ -56,6 +56,14 @@
              label="COM_UVELIR_PROC_ROBOKASSA_SUM"
              description="COM_UVELIR_PROC_ROBOKASSA_SUM_DESC">
          </field>
+        <field name="logo_on_product" type="editor"
+                label="COM_UVELIR_LOGO_ON_PRODUCT"
+                description="COM_UVELIR_LOGO_ON_PRODUCT_DESC"
+                class="inputbox"
+                filter="JComponentHelper::filterText"
+                buttons="true"
+                hide="readmore,pagebreak"
+                 />
 
 	</fieldset>
 

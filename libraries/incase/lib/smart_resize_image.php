@@ -1,4 +1,4 @@
-<?
+<?php
 function smart_resize_image(  $file,
                               $width              = 0,
                               $height             = 0,
@@ -93,4 +93,3 @@ function smart_resize_image(  $file,
 
     return true;
   }
-?>

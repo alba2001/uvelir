@@ -37,27 +37,30 @@ $desc = json_decode($this->item->desc);
 
 ?>
 <?php if( $this->item ) : ?>
-   <div class="item_fields">
+   <div class="item_fields com_uvelir_item">
 
 		<h2>
 	    	<?php if(isset($this->item->name) AND $this->item->name):?>
-	    		<? if ($this->item->name != $this->item->artikul){ ?>
+	    		<?php if ($this->item->name != $this->item->artikul){ ?>
 	    			<?//=ucfirst( mb_convert_case($this->item->name, MB_CASE_TITLE, 'UTF-8') );?>
 	    			<?=$this->item->name;?>
-	    		<?}else{?>
-	    		<?}?>
+	    		<?php }else{?>
+	    		<?php }?>
 	    	<?php endif;?>
 		</h2>
 
     	<div class="leftside">
 	    	<div class="image">
-	    		<? $src = $desc->img_large?>
+	    		<?php $src = $desc->img_large?>
 			 	<a class="fancybox" href="<?=incase::thumb($src, 800, 600, true)?>" rel="{handler: 'iframe'}">
 			 		<img data-src="<?=incase::thumb($src, 400, 400, true)?>" src="/images/load.gif" alt="<?=$item->name?>"/>
-			  		<?/*<img src="<?=isset($desc->img_medium)?$desc->img_medium:$desc->img_large?>" alt="<?=$this->item->name?>"/>*/?>
 			   </a>
-			</div>
-
+                </div>
+                <?php if($this->item->show_logo):?>
+                <div class="logo_on_product">
+                    <?=$this->item->logo_on_product;?>
+                </div>
+                <?php endif;?>
 	      <div class="social-block">
 	     		<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
 				<div id="ya_share" class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"></div>
@@ -271,6 +274,7 @@ $desc = json_decode($this->item->desc);
 	                   </span>
 
 	                   <br>
+                           <?php if(FALSE):?>
 	                   <span class="gold">
 	                       <?= JText::_('COM_UVELIR_CENA_MAG').': ' ?>
 	                   </span>
@@ -281,6 +285,7 @@ $desc = json_decode($this->item->desc);
 	                           </span>
 	                           <span class="ruble"><?=JTEXT::_('COM_UVELIR_RUB')?></span>
 	                   </span>
+                           <?php endif;?>
 		        		</td>
 		        	</tr>
 		        </tfoot>

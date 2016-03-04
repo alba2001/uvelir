@@ -67,6 +67,9 @@ $href = 'index.php?option=com_uvelir&view=product';
                 <th width="5%">
                     <?php echo JText::_('COM_UVELIR_PRODUCTS_AVIALABLE'); ?>
                 </th>
+                <th width="5%">
+                    <?php echo JText::_('COM_UVELIR_SHOW_LOGO'); ?>
+                </th>
 
                 <th class='left'>
                     <?php echo JText::_('COM_UVELIR_PRODUCTS_NAME'); ?>
@@ -125,6 +128,19 @@ foreach ($this->items as $i => $item) :
                         <a class="jgrid" href="javascript:void(0);" rel="<?=$i?>" task="<?=$available_task?>" title="<?=$available_text_set?>">
                                 <span class="state <?=$available_class?>">
                                         <span class="text"><?=$available_text?></span>
+                                </span>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <?php
+                            $show_logo_text_set = $item->show_logo?JText::_('COM_UVELIR_SET_NOT_SHOW_LOGO'):JText::_('COM_UVELIR_SET_SHOW_LOGO');
+                            $show_logo_text = $item->show_logo?JText::_('COM_UVELIR_SHOW_LOGO'):JText::_('COM_UVELIR_NOT_SHOW_LOGO');
+                            $show_logo_task = $item->show_logo?'products.unset_show_logo':'products.set_show_logo';
+                            $show_logo_class = $item->show_logo?'publish':'unpublish';
+                        ?>
+                        <a class="jgrid" href="javascript:void(0);" rel="<?=$i?>" task="<?=$show_logo_task?>" title="<?=$show_logo_text_set?>">
+                                <span class="state <?=$show_logo_class?>">
+                                        <span class="text"><?=$show_logo_text?></span>
                                 </span>
                         </a>
                     </td>

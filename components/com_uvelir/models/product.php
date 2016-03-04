@@ -106,6 +106,9 @@ class UvelirModelProduct extends JModel
 			} elseif ($error = $table->getError()) {
 				$this->setError($error);
 			}
+                        $params = JComponentHelper::getParams('com_uvelir');
+                        $this->_item->logo_on_product = $params->get('logo_on_product');
+                        
 		}
                 
 		return $this->_item;
@@ -153,5 +156,18 @@ class UvelirModelProduct extends JModel
             }
             
             return $result;
+        }
+        public function get_pathways($item)
+        {
+            $parent_name_ids = $this->getTable('Category')->get_parent_name_ids($item->category_id);
+            $pathways = array();
+            foreach ($parent_name_ids as $parent_name_id)
+            {
+                $pathways[] = array(
+                    'name'=>$parent_name_id['name'],
+                    'link'=>JURI::base().'index.php?option=com_uvelir&view=category&id='.$parent_name_id['id'],
+                );
+            }
+            return $pathways;
         }
 }

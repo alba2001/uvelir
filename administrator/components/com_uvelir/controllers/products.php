@@ -28,29 +28,49 @@ class UvelirControllerProducts extends JControllerAdmin
 	}
         
         /**
+         * Показывать логотип
+         */
+        public function multy_set_show_logo()
+        {
+            $this->call_method('show_logo',1);
+            $this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_list, false));
+        }
+        public function set_show_logo()
+        {
+            echo $this->call_method('show_logo',1);
+            exit;
+        }
+        /**
+         * Не показывать логотип
+         */
+        public function multy_unset_show_logo()
+        {
+            echo $this->call_method('show_logo',0);
+            $this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_list, false));
+        }
+        public function unset_show_logo()
+        {
+            echo $this->call_method('show_logo',0);
+            exit;
+        }
+        /**
          * Устанавливаем товар в наличие
          */
         public function set_available()
         {
-            // Check for request forgeries
-            JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
-            
-            $cid = JRequest::getVar('cid', array(), '', 'array');
-            // Get the model.
-            $model = $this->getModel('Products');
-
-            // Make sure the item ids are integers
-            JArrayHelper::toInteger($cid);
-            
-            echo (int)$model->set_available($cid, 1);
+            echo $this->call_method('set_available',1);
             exit;
         }
-        
         /**
          * Снимаем товар с наличия 
          */
         public function unset_available()
         {
+            echo $this->call_method('set_available',0);
+            exit;
+        }
+        public function call_method($task, $value)
+        {
             // Check for request forgeries
             JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
             
@@ -58,11 +78,7 @@ class UvelirControllerProducts extends JControllerAdmin
             // Get the model.
             $model = $this->getModel('Products');
 
-            // Make sure the item ids are integers
-            JArrayHelper::toInteger($cid);
-            
-            echo (int)$model->set_available($cid, 0);
-            exit;
+            return (int)$model->$task($cid, $value);
         }
         
         public function fill_cenas()

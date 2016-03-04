@@ -13,14 +13,15 @@ defined('_JEXEC') or die;
 //var_dump($this->products_group);exit;
 //$izdelie = $this->_model->getState('usearch_data.izdelie',0);
 ?>
-<?/*php if($izdelie == 1):?>
+<?php // if($izdelie == 1):?>
+<?php if(FALSE):?>
 <a href="<?=JUri::base().'razmery'?>">
     Размеры
 </a>
-<?php endif;*/?>
-
-<?//<!--Если не подходит группа, то не показываем список групп-->?>
-<?php if($this->show_menu_groups):?>
+<?php endif; ?>
+<!--Если не подходит группа, то не показываем список групп-->
+<?php // if($this->show_menu_groups):?>
+<?php if(FALSE):?>
 <ul class="tabs">
 	<li class="first">
 		<a class="<?=$this->products_group=='1'?'active':''?>" href="<?php echo JRoute::_('novinki')?>" class="trigger"><?=  JText::_('COM_UVELIR_PRODUCT_NEW')?></a>

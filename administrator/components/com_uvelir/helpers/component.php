@@ -158,6 +158,7 @@ class ComponentHelper
                         $result['cena_mag'] = $product->cena_mag;
                         $result['cena_tut'] = $product->cena_tut;
                 }
+                $result['cena_tut'] = $product->cena_tut; // ТЗ от 2016-01
             }
             
             // Корректировка цены с учетом максимальной показываемой на сайте суммы
@@ -167,9 +168,8 @@ class ComponentHelper
             
             if( $result['cena_tut'] > $max_shown_sum)
             {
-                $result['cena_tut'] = 0;
+//                $result['cena_tut'] = 0;
             }
-
             return $result;
 	}
         

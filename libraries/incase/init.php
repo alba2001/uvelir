@@ -1,4 +1,4 @@
-<?
+<?php
 	// variables
 	// global $menu;
 	// global $active;
