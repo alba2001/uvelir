@@ -237,4 +237,12 @@ class UvelirTableNtable extends JTableNested {
             $this->_db->setQuery($query);
             return $this->_db->loadAssocList();
         }
+        public function get_shoulders($id)
+        {
+            if(!$this->load($id))
+            {
+                return array(0,99999999999);
+            }
+            return array($this->lft, $this->rgt);
+        }
 }

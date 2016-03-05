@@ -22,8 +22,8 @@ class UvelirHelper
 	{
 		JSubMenuHelper::addEntry(
 			JText::_('COM_UVELIR_SUBMENU_CATEGORIES'),
-			'index.php?option=com_uvelir&view=categories',
-			$vName == 'categories'
+			'index.php?option=com_uvelir&view=categories_new',
+			$vName == 'categories_new'
 		);
 		JSubMenuHelper::addEntry(
 			JText::_('COM_UVELIR_TITLE_PRODUCTS'),
@@ -75,7 +75,11 @@ class UvelirHelper
 			'index.php?option=com_uvelir&view=metallists',
 			$vName == 'vstavkis'
 		);
-
+		JSubMenuHelper::addEntry(
+			JText::_('COM_UVELIR_SUBMENU_CATEGORIES_OLD'),
+			'index.php?option=com_uvelir&view=categories',
+			$vName == 'categories'
+		);
 	}
 
 	/**

@@ -22,42 +22,66 @@ $href = 'index.php?option=com_uvelir&view=product';
 ?>
 
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm">
+    <span onclick="jQuery('#old_filter_bar').toggle();jQuery('#new_filter_bar').toggle();" style="cursor: pointer">Старый фильтр</span>
+    <div style="clear: both"></div>
     <fieldset id="filter-bar">
-        <div class="filter-search fltlft">
-            <label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
-            <input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo JText::_('Search'); ?>" />
-            <button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
-            <button type="button" onclick="document.id('filter_search').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
+        <div id="old_filter_bar" style="display: none">
+            <div class="filter-search fltlft">
+                <label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
+                <input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo JText::_('Search'); ?>" />
+                <button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+                <button type="button" onclick="document.id('filter_search').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
+            </div>
+
+            <div class="filter-search fltlft">
+                <label class="filter-search-lbl" for="filter_search_artikul"><?php echo JText::_('COM_UVELIR_ARTIKUL_SEARCH'); ?></label>
+                <input type="text" name="filter_search_artikul" id="filter_search_artikul" value="<?php echo $this->escape($this->state->get('filter.search_artikul')); ?>" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" />
+                <button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+                <button type="button" onclick="document.id('filter_search_artikul').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
+            </div>
+
+
+            <div class='filter-select fltrt'>
+                <select name="filter_zavod" class="inputbox" onchange="document.getElementById('filter_category').value='0';this.form.submit()">
+                    <?php echo JHtml::_('select.options', KhtmlHelper::zavods(), "value", "text", $this->state->get('filter.zavod'), true); ?>
+                </select>
+
+                <select id="filter_category" name="filter_category" class="inputbox" onchange="this.form.submit()">
+                    <option value="0"><?php echo JText::_('JOPTION_SELECT_CATEGORIES'); ?></option>
+                    <?php echo JHtml::_('select.options', KhtmlHelper::categories($this->state->get('filter.zavod')), "value", "text", $this->state->get('filter.category'), true); ?>
+                </select>
+
+                <select name="filter_published" class="inputbox" onchange="this.form.submit()">
+                    <option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED'); ?></option>
+    <?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), "value", "text", $this->state->get('filter.state'), true); ?>
+                </select>
+            </div>
         </div>
-
-        <div class="filter-search fltlft">
-            <label class="filter-search-lbl" for="filter_search_artikul"><?php echo JText::_('COM_UVELIR_ARTIKUL_SEARCH'); ?></label>
-            <input type="text" name="filter_search_artikul" id="filter_search_artikul" value="<?php echo $this->escape($this->state->get('filter.search_artikul')); ?>" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" />
-            <button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
-            <button type="button" onclick="document.id('filter_search_artikul').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
+        <div id="new_filter_bar">
+            <div class="filter-search fltlft">
+                <label class="filter-search-lbl" for="filter_search_artikul"><?php echo JText::_('COM_UVELIR_ARTIKUL_SEARCH'); ?></label>
+                <input type="text" name="filter_search_artikul" id="filter_search_artikul" value="<?php echo $this->escape($this->state->get('filter.search_artikul')); ?>" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" />
+                <button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+                <button type="button" onclick="document.id('filter_search_artikul').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
+            </div>
+            <div class="filter-search fltlft" id="div_metal_flt">
+                <?=KhtmlHelper::getListMetal()?>
+            </div>
+            <div class="filter-search fltlft" id="div_izdelie_flt">
+                <?=KhtmlHelper::getListIzdelie()?>
+            </div>
         </div>
-
-
-        <div class='filter-select fltrt'>
-            <select name="filter_zavod" class="inputbox" onchange="document.getElementById('filter_category').value='0';this.form.submit()">
-                <?php echo JHtml::_('select.options', KhtmlHelper::zavods(), "value", "text", $this->state->get('filter.zavod'), true); ?>
-            </select>
-            
-            <select id="filter_category" name="filter_category" class="inputbox" onchange="this.form.submit()">
-                <option value="0"><?php echo JText::_('JOPTION_SELECT_CATEGORIES'); ?></option>
-                <?php echo JHtml::_('select.options', KhtmlHelper::categories($this->state->get('filter.zavod')), "value", "text", $this->state->get('filter.category'), true); ?>
-            </select>
-            
-            <select name="filter_published" class="inputbox" onchange="this.form.submit()">
-                <option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED'); ?></option>
-<?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), "value", "text", $this->state->get('filter.state'), true); ?>
-            </select>
-        </div>
-
-
     </fieldset>
     <div class="clr"> </div>
-
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+            $('#div_metal_flt option').first().text('Металл');
+            $('#div_izdelie_flt option').first().text('Изделие');
+            $('#mod_usearch_metal, #div_izdelie_flt').change(function(){
+                $('#adminForm').submit()
+            });
+        });
+    </script>
     <table class="adminlist">
         <thead>
             <tr>

@@ -18,7 +18,7 @@ JFormHelper::loadFieldClass('list');
  * @subpackage  Form
  * @since       11.1
  */
-class JFormFieldCategories extends JFormFieldList
+class JFormFieldCategoriesnew extends JFormFieldList
 {
 	/**
 	 * The form field type.
@@ -26,7 +26,7 @@ class JFormFieldCategories extends JFormFieldList
 	 * @var    string
 	 * @since  11.1
 	 */
-	public $type = 'Categories';
+	public $type = 'Categoriesnew';
 
 	/**
 	 * Method to get the custom field options.
@@ -41,7 +41,7 @@ class JFormFieldCategories extends JFormFieldList
 		// Initialize variables.
 		$options = array();
                 // Список уатегорий с учетом завода
-                $items = $this->_get_categories();
+                $items = $this->_get_categories_new();
 
 		// Build the field options.
 		if (!empty($items))
@@ -54,27 +54,58 @@ class JFormFieldCategories extends JFormFieldList
 
 		// Merge any additional options in the XML definition.
 		$options = array_merge(parent::getOptions(), $options);
-
+                
 		return $options;
 	}
         
-        private function _get_categories()
+
+        /**
+         * Выборка категорий
+         * @return string 
+         */
+        private function _get_categories_new()
         {
-            $zavod = JRequest::getInt('zavod', '2');
+            $app = JFactory::getApplication();
+
+            $this_context = $app->getUserState('com_uvelir.this_context', 'com_uvelir.products');            
+            
+            $category = $app->getUserStateFromRequest($this_context.'.filter.category', 'filter_category', '0', 'string');
+            $category_id = $this->value?$this->value:$category;
             $result = array();
             // Get the database object.
             $db = JFactory::getDBO();
-            $query = 'SELECT `id`, `name`, `level` FROM `#__uvelir_categories` WHERE `zavod`='.$zavod;
+            $query = 'SELECT `id`, `name`, `parent_id` FROM `#__uvelir_categories_new`';
+            $query .= ' ORDER BY `lft`';
             // Set the query and get the result list.
             $db->setQuery($query);
             $items = $db->loadObjectlist();
             foreach ($items as $item)
             {
+                $title = $item->parent_id?$this->_get_name($item->parent_id,$item->name):$item->name;
                 $result[] = array(
                     'id'=>$item->id,
-                    'title'=>str_repeat('|---', $item->level).' '.$item->name,
+                    'title'=>$title,
                 ); 
             }
             return $result;
+        }
+        
+        private function _get_name($id=0, $name='')
+        {
+            $db = JFactory::getDBO();
+            $query = 'SELECT `name`, `parent_id` FROM `#__uvelir_categories_new` WHERE `id`='.$id;
+            // Set the query and get the result list.
+            $db->setQuery($query);
+            $item = $db->loadObject();
+            if($item->parent_id)
+            {
+                $name = $this->_get_name($item->parent_id, $item->name).' | '.$name;
+            }
+            else 
+            {
+                $name = $item->name.' | '.$name;
+            }
+            return $name;
+            
         }
 }

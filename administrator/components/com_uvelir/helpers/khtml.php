@@ -9,12 +9,25 @@
 
 // No direct access
 defined('_JEXEC') or die;
+require_once JPATH_ROOT.'/modules/mod_usearch/helper.php';
 
 /**
  * Uvelir helper.
  */
 class KhtmlHelper
 {
+	public static function new_category_roots()
+	{
+            $db = JFactory::getDbo();
+            $query	= $db->getQuery(true);
+            // Select the required fields from the table.
+            $query->select('`id` AS value, `name` AS text')
+                    ->from('`#__uvelir_categories_new`');
+            $query->where('`level` <= 1');
+            $db->setQuery($query);
+            return $db->loadObjectList();
+	}
+    
         /**
         * Список заводов
         * @param noting
@@ -178,4 +191,15 @@ class KhtmlHelper
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
+        function getListIzdelie()
+        {
+            $izdelie = JFactory::getApplication()->getUserState('uvelir.flt_izdelie');
+            return modUsearchHelper::getListIzdelie($izdelie);
+        }
+        function getListMetal()
+        {
+            $metal = JFactory::getApplication()->getUserState('uvelir.flt_metal');
+            return modUsearchHelper::getListMetal($metal);
+        }
+        
 }
