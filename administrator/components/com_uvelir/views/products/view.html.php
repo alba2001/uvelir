@@ -116,4 +116,13 @@ class UvelirViewProducts extends JView
         {
             return ComponentHelper::getCategory_path($category_id);
         }
+        /**
+         * Наименование категории с путем
+         * @param int $category_id
+         * @return string
+         */
+        protected function get_categories($id)
+        {
+            return ComponentHelper::getCategories_new($id);
+        }
 }

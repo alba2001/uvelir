@@ -188,6 +188,39 @@ class ComponentHelper
             }
             return $category_path;
         }
+        /**
+         * Наименование категории с путем
+         * @param int $category_id
+         * @return string
+         */
+	public static function getCategory_path_new($category_id, $category_path = '')
+	{
+            $table = self::getTable('Category_new');
+            if($category_id AND $table->load($category_id))
+            {
+                $_category_path = $category_path?'|'.$category_path:'';
+                if($table->id > 1)
+                {
+                    $category_path = self::getCategory_path_new($table->parent_id,$table->name.$_category_path);
+                }
+            }
+            return $category_path;
+        }
+	public static function getCategories_new($id)
+        {
+            $db = JFactory::getDbo();
+            $query = 'SELECT c.id FROM `jos_uvelir_categories_new` c'
+                .' INNER JOIN `jos_uvelir_products_categories` pc ON pc.category_id = c.id'
+                .' WHERE pc.product_id = '.$id;
+            $db->setQuery($query);
+            $ids = $db->loadColumn();
+            $categories = array();
+            foreach ($ids as $id)
+            {
+                $categories[] = self::getCategory_path_new($id, '');
+            }
+            return implode('<br>',$categories);
+        }
 
         /**
 	 * Returns a reference to the a Table object, always creating it.

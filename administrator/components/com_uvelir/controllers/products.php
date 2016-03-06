@@ -48,6 +48,18 @@ class UvelirControllerProducts extends JControllerAdmin
             echo $this->call_method('show_logo',0);
             $this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_list, false));
         }
+        /**
+         * Изменение категории
+         */
+        public function category_change()
+        {
+            // Check for request forgeries
+            JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
+            $cid = JRequest::getVar('cid', array(), '', 'array');
+            $category_id = JRequest::getInt('category_change_id', 0);
+            $this->getModel('Products')->category_change($cid,$category_id);
+            $this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_list, false));
+        }
         public function unset_show_logo()
         {
             echo $this->call_method('show_logo',0);

@@ -56,7 +56,7 @@ class UvelirModelProducts extends UvelirModelKModelList
         $app->setUserState('com_uvelir.this_context', $this->context);
         
         // Фильтр по заводу
-        $zavod = $app->getUserStateFromRequest($this->context.'.filter.zavod', 'filter_zavod', '2', 'string');
+        $zavod = $app->getUserStateFromRequest($this->context.'.filter.zavod', 'filter_zavod', '', 'string');
         $this->setState('filter.zavod', $zavod);        
         
         // Фильтр по категории
@@ -66,17 +66,17 @@ class UvelirModelProducts extends UvelirModelKModelList
         // Поиск по артикулу
         $search = $app->getUserStateFromRequest($this->context.'.filter.search_artikul', 'filter_search_artikul');
         $this->setState('filter.search_artikul', $search);
-
-//        // Поле сортировки
-//        $order_field = $app->getUserStateFromRequest($this->context . '.ordercol', 'filter_order', $ordering);
-////        $ordering = $this->getState('list.ordering');
-//        var_dump($order_field);
-//        
-//        // Направление сортировки
-//        $sort_dir = $app->getUserStateFromRequest($this->context . '.orderdirn', 'filter_order_Dir', 'ASC');
-//        var_dump($sort_dir);
         
+        // Фильтр по новой категории
+        $category_new = $app->getUserStateFromRequest($this->context.'.filter.category_new_flt', 'category_new_flt', '0', 'integer');
+        $this->setState('filter.category_new', $category_new);        
+        $app->setUserState($this->context.'.filter.category_new_flt', $category_new);
         
+        // Фильтр по изделию и металлу
+        $usearch_data = $app->getUserStateFromRequest($this->context.'.filter.usearch', 'usearch_data', array(), 'array');
+        $this->setState('filter.metal', $usearch_data['metal']?$usearch_data['metal']:'');
+        $this->setState('filter.izdelie', $usearch_data['izdelie']?$usearch_data['izdelie']:'');
+        $app->setUserState($this->context.'.filter.usearch', $usearch_data);
         parent::populateState($ordering, $direction);
     }
 
@@ -106,16 +106,43 @@ class UvelirModelProducts extends UvelirModelKModelList
             $query->from('`#__uvelir_products` AS a');
             
             // Фильтр по заводу
-            $zavod = $this->getState('filter.zavod', '2');
-            $query->where('zavod_id = '.$zavod);
+            $zavod = $this->getState('filter.zavod', '');
+            if($zavod)
+            {
+                $query->where('zavod_id = '.$zavod);
+            }
 
+            
+            // Фильтр по новой категории
+            $category_new = $this->getState('filter.category_new', '0');
+            if($category_new)
+            {
+                $query->join('INNER', '`jos_uvelir_products_categories` pc ON pc.product_id = a.id');
+                $query->where('pc.category_id = '.$category_new);
+                $this->setState('filter.category', '0');
+            }
             // Фильтр по категории
             $category = $this->getState('filter.category', '0');
             if($category)
             {
-                $query->where('category_id = '.$category);
+                $query->where('a.category_id = '.$category);
             }
-
+            // Фильтр по изделию и металлу
+            $usearch_data = $this->getState('filter.usearch');
+            // Фильтр по металлу
+            if($metal = $this->getState('filter.metal', ''))
+            {
+                $query->where('material_id = "'.$metal.'"');
+            }
+            if($izdelie = $this->getState('filter.izdelie', ''))
+            {
+                $category_ids = $this->_get_product_vid_categories($izdelie);
+                if($category_ids)
+                {
+                    $query->where('a.category_id IN ('.  implode(', ', $category_ids).')');
+                }
+            }
+            
             // Filter by search in title
             $search = $this->getState('filter.search');
             $search_artikul = $this->getState('filter.search_artikul');
@@ -136,7 +163,6 @@ class UvelirModelProducts extends UvelirModelKModelList
                     $query->where('( a.name LIKE '.$search.' )');
                 }
             }
-//            var_dump((string)$query);
             return $query;
         }
         
@@ -241,4 +267,73 @@ class UvelirModelProducts extends UvelirModelKModelList
                 $this->_db->query();
             }
         }
+        public function category_change($cid,$category_id)
+        {
+            foreach ($cid as $product_id)
+            {
+                $this->_db->setQuery('DELETE FROM `jos_uvelir_products_categories` WHERE `product_id` = '.$product_id);
+                if($this->_db->query())
+                {
+                    $query = 'INSERT INTO `jos_uvelir_products_categories` (`product_id`, `category_id`)'
+                        .' VALUES ('.$product_id.','.$category_id.')';
+                    $this->_db->setQuery($query);
+                    $this->_db->query();
+                }
+            }
+        }
+        /*=================FIND IZDELIE====================*/
+        /**
+         * Получение списка категорий от вида продукта
+         * @param type $productvid_id
+         * @return type 
+         */
+        private function _get_product_vid_categories($productvid_id)
+        {
+            $category_ids = array();
+            $product_vid = $this->getTable('Productvid','UvelirTable');
+            if($product_vid->load($productvid_id))
+            {
+                $category_ids = $this->_get_categiry_ids($product_vid->alias);
+            }
+            
+            return $category_ids;
+        }
+
+        /**
+         * Находим категории и их подкатегории
+         * с наименованием совпадающим с псевдонимом вида изделия
+         * @param string $alias
+         * @return array
+         */
+        private function _get_categiry_ids($alias)
+        {
+            $_query = &$this->_db->getQuery(true);
+            $_query->select('id');
+            $_query->from('#__uvelir_categories');
+            $_query->where('`alias` LIKE "%'.$alias.'%"');
+            $this->_db->setQuery($_query);
+            $ar_parents = $this->_db->loadResultArray();
+            $ar_childrens = $this->_get_childrens($ar_parents);
+            
+//            var_dump((string)$_query);
+            return array_merge($ar_parents, $ar_childrens);
+        }
+        
+        /**
+         * Находим подкатегории списка категорий
+         * @param array $ar_parents
+         * @return array
+         */
+        private function _get_childrens($ar_parents)
+        {
+            $_query = &$this->_db->getQuery(true);
+            $_query->select('id');
+            $_query->from('#__uvelir_categories');
+            $_query->where('`parent_id` IN ('.  implode(',', $ar_parents).')');
+            $this->_db->setQuery($_query);
+            $ar_children = $this->_db->loadResultArray();
+            return $ar_children;
+            
+        }
+        /*===============/FIND IZDELIE======================*/
 }

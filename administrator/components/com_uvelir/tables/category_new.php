@@ -38,13 +38,14 @@ class UvelirTableCategory_new extends UvelirTableNtable {
     {
         $data = array(1,$alias);
         $queri = $this->_db->getQuery(TRUE)
-                ->select('level','path')
+                ->select('level, path')
                 ->from($this->_tbl)
                 ->where('`id` = '.$id);
         $this->_db->setQuery($queri);
         if($row = $this->_db->loadObject())
         {
-            $data = array($row->level+1,$row->path?$row->path.'/'.$alias:$alias);
+            $path = $row->path?$row->path.'/'.$alias:$alias;
+            $data = array($row->level+1,$path);
         }
         return $data;
     }

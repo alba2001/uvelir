@@ -22,7 +22,7 @@ $href = 'index.php?option=com_uvelir&view=product';
 ?>
 
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="adminForm" id="adminForm">
-    <span onclick="jQuery('#old_filter_bar').toggle();jQuery('#new_filter_bar').toggle();" style="cursor: pointer">Старый фильтр</span>
+    <span onclick="jQuery('#old_filter_bar').toggle();jQuery('#new_filter_bar').toggle();" style="cursor: pointer">Переключение на старый фильтр</span>
     <div style="clear: both"></div>
     <fieldset id="filter-bar">
         <div id="old_filter_bar" style="display: none">
@@ -43,6 +43,7 @@ $href = 'index.php?option=com_uvelir&view=product';
 
             <div class='filter-select fltrt'>
                 <select name="filter_zavod" class="inputbox" onchange="document.getElementById('filter_category').value='0';this.form.submit()">
+                    <option value="" <?=$this->state->get('filter.zavod')?'':'selected="selected"'?>>Все</option>
                     <?php echo JHtml::_('select.options', KhtmlHelper::zavods(), "value", "text", $this->state->get('filter.zavod'), true); ?>
                 </select>
 
@@ -57,6 +58,7 @@ $href = 'index.php?option=com_uvelir&view=product';
                 </select>
             </div>
         </div>
+<!--new_filter_bar-->
         <div id="new_filter_bar">
             <div class="filter-search fltlft">
                 <label class="filter-search-lbl" for="filter_search_artikul"><?php echo JText::_('COM_UVELIR_ARTIKUL_SEARCH'); ?></label>
@@ -70,15 +72,58 @@ $href = 'index.php?option=com_uvelir&view=product';
             <div class="filter-search fltlft" id="div_izdelie_flt">
                 <?=KhtmlHelper::getListIzdelie()?>
             </div>
+            <div class="filter-search fltlft" id="div_category_new_flt">
+                <label for="category_new_flt">Отфильтровать по категории: </label>
+                <?=KhtmlHelper::getListNewCategories('category_new_flt')?>
+            </div>
         </div>
     </fieldset>
+    <div id="product_category_change" style="display:none">
+        <div class="m" style="margin: 0 10px;">
+                <ul style="list-style: none;">
+                    <li>
+                    <label for="category_change_select">Изменить на категорию: </label>
+                    <?=KhtmlHelper::getListNewCategories('category_change_select')?>
+                    <button id="category_change_submit">Изменить</button>
+                    </li>
+                </ul>
+        </div>
+    </div>
     <div class="clr"> </div>
     <script type="text/javascript">
         jQuery(document).ready(function($){
+            $('#element-box').before($('#product_category_change').html());
+            $('#product_category_change').remove();
             $('#div_metal_flt option').first().text('Металл');
             $('#div_izdelie_flt option').first().text('Изделие');
             $('#mod_usearch_metal, #div_izdelie_flt').change(function(){
-                $('#adminForm').submit()
+                $('#adminForm').submit();
+            });
+            $('#category_new_flt').change(function(){
+                $('#adminForm').submit();
+            });
+            $('#category_change_submit').click(function(){
+                var category_change_id = $('#category_change_select').val();
+                if(!category_change_id)
+                {
+                    alert('Вы не выбрали категорию');
+                    return;
+                }
+                var submit = false;
+                $('input[name="cid[]"]').each(function(){
+                    if($(this).prop('checked'))
+                    {
+                        submit = true;
+                    }
+                });
+                if(!submit)
+                {
+                    alert('Вы не выбрали изделия');
+                    return;
+                }
+                $('input[name="task"]').val('products.category_change');
+                $('input[name="category_change_id"]').val(category_change_id);
+                $('#adminForm').submit();
             });
         });
     </script>
@@ -102,10 +147,10 @@ $href = 'index.php?option=com_uvelir&view=product';
                     <?php echo JHtml::_('grid.sort',  'COM_UVELIR_ARTIKUL', 'a.artikul', $listDirn, $listOrder); ?>
                 </th>
                 <th class='left'>
-                    <?php echo JText::_('COM_UVELIR_PRODUCTS_CREATED_BY'); ?>
+                    <?php echo JText::_('COM_UVELIR_PRODUCTS_CATEGORY_PATH'); ?>
                 </th>
                 <th class='left'>
-                    <?php echo JText::_('COM_UVELIR_PRODUCTS_CATEGORY_PATH'); ?>
+                    <?php echo JText::_('COM_UVELIR_PRODUCTS_CATEGORY_PATH').'(old)'; ?>
                 </th>
                 <th width="5%">
                     <?php echo JText::_('JPUBLISHED'); ?>
@@ -183,7 +228,7 @@ foreach ($this->items as $i => $item) :
                         <?php echo $item->artikul; ?>
                     </td>
                     <td>
-                        <?php echo $item->created_by; ?>
+                        <?php echo $this->get_categories($item->id); ?>
                     </td>
                     <td>
                         <?php echo $this->get_category_path($item->category_id); ?>
@@ -208,6 +253,7 @@ foreach ($this->items as $i => $item) :
         <input type="hidden" name="option" value="com_uvelir" />
         <input type="hidden" name="view" value="products" />
         <input type="hidden" name="task" value="" />
+        <input type="hidden" name="category_change_id" value="" />
         <input type="hidden" name="boxchecked" value="0" />
         <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
         <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />

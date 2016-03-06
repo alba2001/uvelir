@@ -191,14 +191,53 @@ class KhtmlHelper
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
+        function getListNewCategories($item_id)
+        {
+            $db = JFactory::getDbo();
+            $query	= $db->getQuery(true);
+            // Select the required fields from the table.
+            $query->select('`id`, `name`, `level`')
+                    ->from('`#__uvelir_categories_new`')
+                    ->where('`level` > 0')
+                    ->order('lft');
+            $db->setQuery($query);
+            $state = array();
+            $state[] = JHTML::_('select.option'
+                    , ''
+                    , '0'
+            );
+            if ($list = $db->LoadObjectList())
+            {
+                foreach ($list as $row)
+                {
+                    if($row->id)
+                    {
+                        $state[] = JHTML::_('select.option'
+                                , $row->id
+                                , str_repeat('--', $row->level-1).$row->name
+                        );
+                    }
+                }
+            }
+            $category_id = JFactory::getApplication()->getUserState('com_uvelir.products.filter.'.$item_id,0);
+            return JHTML::_('select.genericlist'
+                            , $state
+                            , $item_id
+                            , array()
+                            , 'value'
+                            , 'text'
+                            , $category_id
+                            , $item_id
+                            , false );
+        }
         function getListIzdelie()
         {
-            $izdelie = JFactory::getApplication()->getUserState('uvelir.flt_izdelie');
+            $izdelie = JFactory::getApplication()->getUserState('com_uvelir.products.filter.usearch')['izdelie'];
             return modUsearchHelper::getListIzdelie($izdelie);
         }
         function getListMetal()
         {
-            $metal = JFactory::getApplication()->getUserState('uvelir.flt_metal');
+            $metal = JFactory::getApplication()->getUserState('com_uvelir.products.filter.usearch')['metal'];
             return modUsearchHelper::getListMetal($metal);
         }
         
