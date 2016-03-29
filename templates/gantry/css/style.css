@@ -1,0 +1,89 @@
+/**
+* @version   $Id: style.css 2917 2012-08-31 00:50:20Z rhuk $
+* @author    RocketTheme http://www.rockettheme.com
+* @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+* @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+*/
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,400italic&subset=latin,cyrillic-ext);
+/*
+font-family: 'Merriweather', serif;
+*/
+p {
+    font-size: 1.2em;
+    line-height: 150%;
+}
+h2 {
+    font-family: Helvetica, Arial, Sans-Serif!important;
+}
+ul li {
+    font-size: 1.1em;
+}
+.workphone .left {
+    position: relative;
+}
+button#btn-zzv {
+    width: 40%;
+    margin: 0px 0px 0px 8px;
+    text-shadow: none;
+    box-shadow: 0px 65px 60px -35px rgba(247, 72, 132, 0.67) inset, rgba(0, 0, 0, 0.2) 0px 4px 16px;
+    border: 0;
+    padding: 6px 0px;
+    background: #701742 url('../images/sprites/filter-s1d46ed0bae.png') 63% -4px no-repeat;
+    transition: 200ms;
+}
+/*button#btn-zzv:hover {
+    box-shadow: 0px 0px 60px -35px #DB4E7E inset, rgba(0, 0, 0, 0.2) 0px 0px 0px;
+}*/
+.l-left {
+    float: left;
+}
+button#btn-zzv a{
+    color: white;
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+}
+#rt-sidebar-a ul li a {
+    font-size: 14px!important;
+}
+#rt-bottom ul li a {
+    font-size: 13px!important;
+}
+.slider-container ul li .slide-desc-bg {
+    background: none;
+    opacity: 0;
+}
+.slider-container ul li .slide-desc {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+}
+.slider-container ul li .slide-desc .slide-title{
+    color: #C32A74;
+	line-height: 22px;
+}
+.slider-container ul li .slide-desc .slide-text{
+    color: #831A4C;
+}
+.slider-container ul li .slide-desc .slide-text p:first-child {
+    font-size: 45px;
+}
+.slider-container ul li .slide-desc .slide-text p:last-child {
+        font-size: 18px;
+    color: #575757;
+}
+.slider-container ul li .slide-desc .slide-text p{
+    line-height: 27px;
+}
+.slider-container ul li .slide-desc .slide-desc-text{
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    margin: 0 auto;
+    width: 520px;
+    padding-top: 58px;
+	font-family: 'Merriweather', serif;
+	    font-style: italic;
+}

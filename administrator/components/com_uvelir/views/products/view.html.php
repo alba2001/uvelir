@@ -59,25 +59,16 @@ class UvelirViewProducts extends JView
 		JToolBarHelper::title(JText::_('COM_UVELIR_TITLE_PRODUCTS'), 'products.png');
 
         //Check if the form exists before showing the add/edit buttons
-        $formPath = JPATH_COMPONENT_ADMINISTRATOR.'/views/company';
-        if (file_exists($formPath)) {
-
             if ($canDo->get('core.create')) {
-			    JToolBarHelper::addNew('company.add','JTOOLBAR_NEW');
+			    JToolBarHelper::addNew('product.add','JTOOLBAR_NEW');
 		    }
 
 		    if ($canDo->get('core.edit') && isset($this->items[0])) {
-			    JToolBarHelper::editList('company.edit','JTOOLBAR_EDIT');
+			    JToolBarHelper::editList('product.edit','JTOOLBAR_EDIT');
 		    }
-
-        }
-
 		if ($canDo->get('core.edit.state')) {
 
             if (isset($this->items[0]->state)) {
-			    JToolBarHelper::addNew('product.add','JTOOLBAR_NEW');
-			    JToolBarHelper::editList('product.edit','JTOOLBAR_EDIT');
-                
 			    JToolBarHelper::divider();
 			    JToolBarHelper::custom('products.publish', 'publish.png', 'publish_f2.png','JTOOLBAR_PUBLISH', true);
 			    JToolBarHelper::custom('products.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);

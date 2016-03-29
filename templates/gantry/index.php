@@ -25,6 +25,7 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
 <!doctype html>
 <html xml:lang="<?php echo $gantry->language; ?>" lang="<?php echo $gantry->language;?>" >
 <head>
+  <link rel="stylesheet" type="text/css" href="<?=$incase->noCache('/templates/gantry/css/style.css')?>" />
   <script type="text/javascript" src="https://lcab.sms-uslugi.ru/support/support.js?h=2e4fcf211d79d5bcaa3f3259538ae4c5" id="supportScript"></script>
   <?php if ($gantry->get('layout-mode') == '960fixed') : ?>
   <meta name="viewport" content="width=960px">
@@ -63,6 +64,8 @@ $gpreset = str_replace(' ','',strtolower($gantry->get('name')));
     <![endif]-->
     <script src="<?='templates/' . $app->getTemplate();?>/js/slideUpText.js"></script>
     <link rel="stylesheet" type="text/css" href="<?=$incase->noCache('/templates/gantry/css-compiled/screen.css')?>" />
+<?php JHTML::_('behavior.modal', '#btn-zzv a'); ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body class="<?php echo (($incase->getMenu()->getActive() == $incase->getMenu()->getDefault()) ? ('front') : ('page')).' '.$incase->getActive()->alias.' '.$pageclass; ?>">
   <div class="strips"></div>
